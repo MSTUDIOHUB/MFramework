@@ -1,0 +1,1411 @@
+### YamlMime:ManagedReference
+items:
+- uid: MFramework.MAudio
+  commentId: T:MFramework.MAudio
+  id: MAudio
+  parent: MFramework
+  children:
+  - MFramework.MAudio.#ctor(UnityEngine.GameObject,System.Int32)
+  - MFramework.MAudio.CurrentBgmId
+  - MFramework.MAudio.Dispose
+  - MFramework.MAudio.Initialize(MFramework.MFrameworkApp)
+  - MFramework.MAudio.IsRegistered(MFramework.MAudioId)
+  - MFramework.MAudio.MaxConcurrentSfx
+  - MFramework.MAudio.MusicMuted
+  - MFramework.MAudio.MusicVolume
+  - MFramework.MAudio.Pause
+  - MFramework.MAudio.PlayBgm(MFramework.MAudioId,System.Boolean)
+  - MFramework.MAudio.PlaySfx(MFramework.MAudioId,System.Single)
+  - MFramework.MAudio.Register(MFramework.MAudioId,UnityEngine.AudioClip,System.Single,System.Int32)
+  - MFramework.MAudio.RegisteredCount
+  - MFramework.MAudio.Resume
+  - MFramework.MAudio.SfxMuted
+  - MFramework.MAudio.SfxVolume
+  - MFramework.MAudio.Shutdown
+  - MFramework.MAudio.StopAllSfx
+  - MFramework.MAudio.StopBgm
+  - MFramework.MAudio.Unregister(MFramework.MAudioId,System.Boolean)
+  langs:
+  - csharp
+  - vb
+  name: MAudio
+  nameWithType: MAudio
+  fullName: MFramework.MAudio
+  type: Class
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 使用已注册的 AudioClip 播放一路 BGM，以及数量受限的并发 SFX。
+  remarks: >-
+    调用方拥有宿主 GameObject；本服务会添加并持有自己的 AudioSource 组件，
+
+    并在 <xref href="MFramework.MAudio.Dispose" data-throw-if-not-resolved="false"></xref> 时移除这些组件。本服务不负责加载或释放 AudioClip。
+  example: []
+  syntax:
+    content: 'public sealed class MAudio : IMFrameworkModule, IDisposable'
+    content.vb: Public NotInheritable Class MAudio Implements IMFrameworkModule, IDisposable
+  inheritance:
+  - System.Object
+  implements:
+  - MFramework.IMFrameworkModule
+  - System.IDisposable
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - MFramework.MAudio.MFramework.MDisposableExtensions.AddTo``1(MFramework.MAssetScope)
+  - MFramework.MAudio.MFramework.MDisposableExtensions.AddTo``1(MFramework.MDisposableBag)
+- uid: MFramework.MAudio.#ctor(UnityEngine.GameObject,System.Int32)
+  commentId: M:MFramework.MAudio.#ctor(UnityEngine.GameObject,System.Int32)
+  id: '#ctor(UnityEngine.GameObject,System.Int32)'
+  parent: MFramework.MAudio
+  langs:
+  - csharp
+  - vb
+  name: MAudio(GameObject, int)
+  nameWithType: MAudio.MAudio(GameObject, int)
+  fullName: MFramework.MAudio.MAudio(UnityEngine.GameObject, int)
+  type: Constructor
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 创建音频服务，并把所需的 AudioSource 组件添加到宿主 GameObject。
+  example: []
+  syntax:
+    content: public MAudio(GameObject host, int maxConcurrentSfx = 8)
+    parameters:
+    - id: host
+      type: UnityEngine.GameObject
+      description: 用于承载新建 AudioSource 组件的有效 GameObject。
+    - id: maxConcurrentSfx
+      type: System.Int32
+      description: 固定的 SFX 声部数量，同时也是全局 SFX 并发上限。
+    content.vb: Public Sub New(host As GameObject, maxConcurrentSfx As Integer = 8)
+  overload: MFramework.MAudio.#ctor*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: 当 <code class="paramref">host</code> 为 null 时抛出。
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: 当 <code class="paramref">maxConcurrentSfx</code> 小于一时抛出。
+  nameWithType.vb: MAudio.New(GameObject, Integer)
+  fullName.vb: MFramework.MAudio.New(UnityEngine.GameObject, Integer)
+  name.vb: New(GameObject, Integer)
+- uid: MFramework.MAudio.RegisteredCount
+  commentId: P:MFramework.MAudio.RegisteredCount
+  id: RegisteredCount
+  parent: MFramework.MAudio
+  langs:
+  - csharp
+  - vb
+  name: RegisteredCount
+  nameWithType: MAudio.RegisteredCount
+  fullName: MFramework.MAudio.RegisteredCount
+  type: Property
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 获取已注册的 AudioClip 数量。
+  example: []
+  syntax:
+    content: public int RegisteredCount { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property RegisteredCount As Integer
+  overload: MFramework.MAudio.RegisteredCount*
+- uid: MFramework.MAudio.MaxConcurrentSfx
+  commentId: P:MFramework.MAudio.MaxConcurrentSfx
+  id: MaxConcurrentSfx
+  parent: MFramework.MAudio
+  langs:
+  - csharp
+  - vb
+  name: MaxConcurrentSfx
+  nameWithType: MAudio.MaxConcurrentSfx
+  fullName: MFramework.MAudio.MaxConcurrentSfx
+  type: Property
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 获取全局可同时播放的 SFX 声部数量。
+  example: []
+  syntax:
+    content: public int MaxConcurrentSfx { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property MaxConcurrentSfx As Integer
+  overload: MFramework.MAudio.MaxConcurrentSfx*
+- uid: MFramework.MAudio.MusicVolume
+  commentId: P:MFramework.MAudio.MusicVolume
+  id: MusicVolume
+  parent: MFramework.MAudio
+  langs:
+  - csharp
+  - vb
+  name: MusicVolume
+  nameWithType: MAudio.MusicVolume
+  fullName: MFramework.MAudio.MusicVolume
+  type: Property
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 获取或设置 BGM 音量，取值范围为零到一（包含边界）；超出范围的值会被截断。
+  example: []
+  syntax:
+    content: public float MusicVolume { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public Property MusicVolume As Single
+  overload: MFramework.MAudio.MusicVolume*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: 值不是有限数字。
+- uid: MFramework.MAudio.SfxVolume
+  commentId: P:MFramework.MAudio.SfxVolume
+  id: SfxVolume
+  parent: MFramework.MAudio
+  langs:
+  - csharp
+  - vb
+  name: SfxVolume
+  nameWithType: MAudio.SfxVolume
+  fullName: MFramework.MAudio.SfxVolume
+  type: Property
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 获取或设置 SFX 总线音量，取值范围为零到一（包含边界）；超出范围的值会被截断。
+  example: []
+  syntax:
+    content: public float SfxVolume { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public Property SfxVolume As Single
+  overload: MFramework.MAudio.SfxVolume*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: 值不是有限数字。
+- uid: MFramework.MAudio.MusicMuted
+  commentId: P:MFramework.MAudio.MusicMuted
+  id: MusicMuted
+  parent: MFramework.MAudio
+  langs:
+  - csharp
+  - vb
+  name: MusicMuted
+  nameWithType: MAudio.MusicMuted
+  fullName: MFramework.MAudio.MusicMuted
+  type: Property
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 获取或设置 BGM 总线是否静音；此操作不会改变 <xref href="MFramework.MAudio.MusicVolume" data-throw-if-not-resolved="false"></xref>。
+  example: []
+  syntax:
+    content: public bool MusicMuted { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property MusicMuted As Boolean
+  overload: MFramework.MAudio.MusicMuted*
+- uid: MFramework.MAudio.SfxMuted
+  commentId: P:MFramework.MAudio.SfxMuted
+  id: SfxMuted
+  parent: MFramework.MAudio
+  langs:
+  - csharp
+  - vb
+  name: SfxMuted
+  nameWithType: MAudio.SfxMuted
+  fullName: MFramework.MAudio.SfxMuted
+  type: Property
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 获取或设置 SFX 总线是否静音；此操作不会改变 <xref href="MFramework.MAudio.SfxVolume" data-throw-if-not-resolved="false"></xref>。
+  example: []
+  syntax:
+    content: public bool SfxMuted { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property SfxMuted As Boolean
+  overload: MFramework.MAudio.SfxMuted*
+- uid: MFramework.MAudio.CurrentBgmId
+  commentId: P:MFramework.MAudio.CurrentBgmId
+  id: CurrentBgmId
+  parent: MFramework.MAudio
+  langs:
+  - csharp
+  - vb
+  name: CurrentBgmId
+  nameWithType: MAudio.CurrentBgmId
+  fullName: MFramework.MAudio.CurrentBgmId
+  type: Property
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 获取当前请求播放的 BGM ID；未指定 BGM 时返回 <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>。
+  example: []
+  syntax:
+    content: public MAudioId? CurrentBgmId { get; }
+    parameters: []
+    return:
+      type: System.Nullable{MFramework.MAudioId}
+    content.vb: Public ReadOnly Property CurrentBgmId As MAudioId?
+  overload: MFramework.MAudio.CurrentBgmId*
+- uid: MFramework.MAudio.Register(MFramework.MAudioId,UnityEngine.AudioClip,System.Single,System.Int32)
+  commentId: M:MFramework.MAudio.Register(MFramework.MAudioId,UnityEngine.AudioClip,System.Single,System.Int32)
+  id: Register(MFramework.MAudioId,UnityEngine.AudioClip,System.Single,System.Int32)
+  parent: MFramework.MAudio
+  langs:
+  - csharp
+  - vb
+  name: Register(MAudioId, AudioClip, float, int)
+  nameWithType: MAudio.Register(MAudioId, AudioClip, float, int)
+  fullName: MFramework.MAudio.Register(MFramework.MAudioId, UnityEngine.AudioClip, float, int)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 注册 AudioClip。音频必须先注册，之后才能播放。
+  example: []
+  syntax:
+    content: public void Register(MAudioId id, AudioClip clip, float minimumIntervalSeconds = 0, int maxConcurrentInstances = 0)
+    parameters:
+    - id: id
+      type: MFramework.MAudioId
+      description: 玩法代码使用的稳定 ID。
+    - id: clip
+      type: UnityEngine.AudioClip
+      description: 需要注册的 AudioClip；MAudio 不持有其资源所有权，也不会释放它。
+    - id: minimumIntervalSeconds
+      type: System.Single
+      description: 此 ID 两次成功播放 SFX 之间所需的最短真实时间间隔。
+    - id: maxConcurrentInstances
+      type: System.Int32
+      description: 此 ID 可同时占用的最大 SFX 声部数；零表示只使用全局上限。
+    content.vb: Public Sub Register(id As MAudioId, clip As AudioClip, minimumIntervalSeconds As Single = 0, maxConcurrentInstances As Integer = 0)
+  overload: MFramework.MAudio.Register*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: 当 <code class="paramref">id</code> 无效时抛出。
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: 当 <code class="paramref">clip</code> 为 null 时抛出。
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: 当时间间隔或单 ID 并发上限为负数时抛出。
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: 当 ID 已经注册时抛出。
+  nameWithType.vb: MAudio.Register(MAudioId, AudioClip, Single, Integer)
+  fullName.vb: MFramework.MAudio.Register(MFramework.MAudioId, UnityEngine.AudioClip, Single, Integer)
+  name.vb: Register(MAudioId, AudioClip, Single, Integer)
+- uid: MFramework.MAudio.IsRegistered(MFramework.MAudioId)
+  commentId: M:MFramework.MAudio.IsRegistered(MFramework.MAudioId)
+  id: IsRegistered(MFramework.MAudioId)
+  parent: MFramework.MAudio
+  langs:
+  - csharp
+  - vb
+  name: IsRegistered(MAudioId)
+  nameWithType: MAudio.IsRegistered(MAudioId)
+  fullName: MFramework.MAudio.IsRegistered(MFramework.MAudioId)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 获取指定 ID 是否已经注册 AudioClip。
+  example: []
+  syntax:
+    content: public bool IsRegistered(MAudioId id)
+    parameters:
+    - id: id
+      type: MFramework.MAudioId
+      description: 需要查询的 ID。
+    return:
+      type: System.Boolean
+      description: ID 已注册时返回 <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>。
+    content.vb: Public Function IsRegistered(id As MAudioId) As Boolean
+  overload: MFramework.MAudio.IsRegistered*
+- uid: MFramework.MAudio.Unregister(MFramework.MAudioId,System.Boolean)
+  commentId: M:MFramework.MAudio.Unregister(MFramework.MAudioId,System.Boolean)
+  id: Unregister(MFramework.MAudioId,System.Boolean)
+  parent: MFramework.MAudio
+  langs:
+  - csharp
+  - vb
+  name: Unregister(MAudioId, bool)
+  nameWithType: MAudio.Unregister(MAudioId, bool)
+  fullName: MFramework.MAudio.Unregister(MFramework.MAudioId, bool)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 移除 AudioClip 注册，并可选择停止正在使用它的声部。
+  example: []
+  syntax:
+    content: public bool Unregister(MAudioId id, bool stopPlaying = true)
+    parameters:
+    - id: id
+      type: MFramework.MAudioId
+      description: 需要移除的已注册 ID。
+    - id: stopPlaying
+      type: System.Boolean
+      description: 是否停止正在使用该 ID 的 BGM 或 SFX 声部。
+    return:
+      type: System.Boolean
+      description: 成功移除注册时返回 <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>。
+    content.vb: Public Function Unregister(id As MAudioId, stopPlaying As Boolean = True) As Boolean
+  overload: MFramework.MAudio.Unregister*
+  nameWithType.vb: MAudio.Unregister(MAudioId, Boolean)
+  fullName.vb: MFramework.MAudio.Unregister(MFramework.MAudioId, Boolean)
+  name.vb: Unregister(MAudioId, Boolean)
+- uid: MFramework.MAudio.PlayBgm(MFramework.MAudioId,System.Boolean)
+  commentId: M:MFramework.MAudio.PlayBgm(MFramework.MAudioId,System.Boolean)
+  id: PlayBgm(MFramework.MAudioId,System.Boolean)
+  parent: MFramework.MAudio
+  langs:
+  - csharp
+  - vb
+  name: PlayBgm(MAudioId, bool)
+  nameWithType: MAudio.PlayBgm(MAudioId, bool)
+  fullName: MFramework.MAudio.PlayBgm(MFramework.MAudioId, bool)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 使用唯一的循环 BGM AudioSource 播放已注册的 AudioClip。
+  example: []
+  syntax:
+    content: public bool PlayBgm(MAudioId id, bool restart = false)
+    parameters:
+    - id: id
+      type: MFramework.MAudioId
+      description: 已注册 AudioClip 的 ID。
+    - id: restart
+      type: System.Boolean
+      description: >-
+        请求的 BGM 与当前 BGM 相同时是否重新开始播放。默认忽略重复请求，
+
+        避免重新进入场景时叠加或重启音乐。
+    return:
+      type: System.Boolean
+      description: >-
+        开始或重新开始播放时返回 <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>；忽略重复请求时返回
+
+        <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>。
+    content.vb: Public Function PlayBgm(id As MAudioId, restart As Boolean = False) As Boolean
+  overload: MFramework.MAudio.PlayBgm*
+  nameWithType.vb: MAudio.PlayBgm(MAudioId, Boolean)
+  fullName.vb: MFramework.MAudio.PlayBgm(MFramework.MAudioId, Boolean)
+  name.vb: PlayBgm(MAudioId, Boolean)
+- uid: MFramework.MAudio.StopBgm
+  commentId: M:MFramework.MAudio.StopBgm
+  id: StopBgm
+  parent: MFramework.MAudio
+  langs:
+  - csharp
+  - vb
+  name: StopBgm()
+  nameWithType: MAudio.StopBgm()
+  fullName: MFramework.MAudio.StopBgm()
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: >-
+    停止当前 BGM，并清除对应 ID；即使宿主、AudioSource 或服务已经被释放，
+
+    也可安全调用。
+  example: []
+  syntax:
+    content: public void StopBgm()
+    content.vb: Public Sub StopBgm()
+  overload: MFramework.MAudio.StopBgm*
+- uid: MFramework.MAudio.PlaySfx(MFramework.MAudioId,System.Single)
+  commentId: M:MFramework.MAudio.PlaySfx(MFramework.MAudioId,System.Single)
+  id: PlaySfx(MFramework.MAudioId,System.Single)
+  parent: MFramework.MAudio
+  langs:
+  - csharp
+  - vb
+  name: PlaySfx(MAudioId, float)
+  nameWithType: MAudio.PlaySfx(MAudioId, float)
+  fullName: MFramework.MAudio.PlaySfx(MFramework.MAudioId, float)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 尝试在 SFX 总线上播放已注册的 AudioClip。
+  example: []
+  syntax:
+    content: public bool PlaySfx(MAudioId id, float volumeScale = 1)
+    parameters:
+    - id: id
+      type: MFramework.MAudioId
+      description: 已注册 AudioClip 的 ID。
+    - id: volumeScale
+      type: System.Single
+      description: 本次播放使用的音量倍率，取值范围为零到一（包含边界）；超出范围的值会被截断。
+    return:
+      type: System.Boolean
+      description: >-
+        成功启动声部时返回 <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>；因全局上限、单 ID 上限或最短播放间隔
+
+        拒绝请求时返回 <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>。
+    content.vb: Public Function PlaySfx(id As MAudioId, volumeScale As Single = 1) As Boolean
+  overload: MFramework.MAudio.PlaySfx*
+  nameWithType.vb: MAudio.PlaySfx(MAudioId, Single)
+  fullName.vb: MFramework.MAudio.PlaySfx(MFramework.MAudioId, Single)
+  name.vb: PlaySfx(MAudioId, Single)
+- uid: MFramework.MAudio.StopAllSfx
+  commentId: M:MFramework.MAudio.StopAllSfx
+  id: StopAllSfx
+  parent: MFramework.MAudio
+  langs:
+  - csharp
+  - vb
+  name: StopAllSfx()
+  nameWithType: MAudio.StopAllSfx()
+  fullName: MFramework.MAudio.StopAllSfx()
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: >-
+    停止所有活跃 SFX 声部，但不改变 AudioClip 注册；即使宿主、AudioSource
+
+    或服务已经被释放，也可安全调用。
+  example: []
+  syntax:
+    content: public void StopAllSfx()
+    content.vb: Public Sub StopAllSfx()
+  overload: MFramework.MAudio.StopAllSfx*
+- uid: MFramework.MAudio.Pause
+  commentId: M:MFramework.MAudio.Pause
+  id: Pause
+  parent: MFramework.MAudio
+  langs:
+  - csharp
+  - vb
+  name: Pause()
+  nameWithType: MAudio.Pause()
+  fullName: MFramework.MAudio.Pause()
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 暂停 BGM 与当前占用中的 SFX 声部；可以安全地重复调用。
+  example: []
+  syntax:
+    content: public void Pause()
+    content.vb: Public Sub Pause()
+  overload: MFramework.MAudio.Pause*
+- uid: MFramework.MAudio.Resume
+  commentId: M:MFramework.MAudio.Resume
+  id: Resume
+  parent: MFramework.MAudio
+  langs:
+  - csharp
+  - vb
+  name: Resume()
+  nameWithType: MAudio.Resume()
+  fullName: MFramework.MAudio.Resume()
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 只恢复由 <xref href="MFramework.MAudio.Pause" data-throw-if-not-resolved="false"></xref> 暂停的声部；可以安全地重复调用。
+  example: []
+  syntax:
+    content: public void Resume()
+    content.vb: Public Sub [Resume]()
+  overload: MFramework.MAudio.Resume*
+- uid: MFramework.MAudio.Initialize(MFramework.MFrameworkApp)
+  commentId: M:MFramework.MAudio.Initialize(MFramework.MFrameworkApp)
+  id: Initialize(MFramework.MFrameworkApp)
+  parent: MFramework.MAudio
+  langs:
+  - csharp
+  - vb
+  name: Initialize(MFrameworkApp)
+  nameWithType: MAudio.Initialize(MFrameworkApp)
+  fullName: MFramework.MAudio.Initialize(MFramework.MFrameworkApp)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 不执行额外初始化，因为 AudioSource 已在构造函数中创建。
+  example: []
+  syntax:
+    content: public void Initialize(MFrameworkApp app)
+    parameters:
+    - id: app
+      type: MFramework.MFrameworkApp
+      description: 持有此模块的框架应用；本模块不需要读取它。
+    content.vb: Public Sub Initialize(app As MFrameworkApp)
+  overload: MFramework.MAudio.Initialize*
+  implements:
+  - MFramework.IMFrameworkModule.Initialize(MFramework.MFrameworkApp)
+- uid: MFramework.MAudio.Shutdown
+  commentId: M:MFramework.MAudio.Shutdown
+  id: Shutdown
+  parent: MFramework.MAudio
+  langs:
+  - csharp
+  - vb
+  name: Shutdown()
+  nameWithType: MAudio.Shutdown()
+  fullName: MFramework.MAudio.Shutdown()
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 关闭音频模块，并释放其创建的 AudioSource。
+  example: []
+  syntax:
+    content: public void Shutdown()
+    content.vb: Public Sub Shutdown()
+  overload: MFramework.MAudio.Shutdown*
+  implements:
+  - MFramework.IMFrameworkModule.Shutdown
+- uid: MFramework.MAudio.Dispose
+  commentId: M:MFramework.MAudio.Dispose
+  id: Dispose
+  parent: MFramework.MAudio
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: MAudio.Dispose()
+  fullName: MFramework.MAudio.Dispose()
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 停止播放、清空注册，并移除 MAudio 创建的 AudioSource 组件；可以安全地重复调用。
+  example: []
+  syntax:
+    content: public void Dispose()
+    content.vb: Public Sub Dispose()
+  overload: MFramework.MAudio.Dispose*
+  implements:
+  - System.IDisposable.Dispose
+references:
+- uid: MFramework.MAudio.Dispose
+  commentId: M:MFramework.MAudio.Dispose
+  href: MFramework.MAudio.html#MFramework_MAudio_Dispose
+  name: Dispose()
+  nameWithType: MAudio.Dispose()
+  fullName: MFramework.MAudio.Dispose()
+  spec.csharp:
+  - uid: MFramework.MAudio.Dispose
+    name: Dispose
+    href: MFramework.MAudio.html#MFramework_MAudio_Dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: MFramework.MAudio.Dispose
+    name: Dispose
+    href: MFramework.MAudio.html#MFramework_MAudio_Dispose
+  - name: (
+  - name: )
+- uid: MFramework
+  commentId: N:MFramework
+  href: MFramework.html
+  name: MFramework
+  nameWithType: MFramework
+  fullName: MFramework
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: MFramework.IMFrameworkModule
+  commentId: T:MFramework.IMFrameworkModule
+  parent: MFramework
+  href: MFramework.IMFrameworkModule.html
+  name: IMFrameworkModule
+  nameWithType: IMFrameworkModule
+  fullName: MFramework.IMFrameworkModule
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: MFramework.MAudio.MFramework.MDisposableExtensions.AddTo``1(MFramework.MAssetScope)
+  commentId: M:MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MAssetScope)
+  parent: MFramework.MDisposableExtensions
+  definition: MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MAssetScope)
+  href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MAssetScope_
+  name: AddTo<MAudio>(MAudio, MAssetScope)
+  nameWithType: MDisposableExtensions.AddTo<MAudio>(MAudio, MAssetScope)
+  fullName: MFramework.MDisposableExtensions.AddTo<MFramework.MAudio>(MFramework.MAudio, MFramework.MAssetScope)
+  nameWithType.vb: MDisposableExtensions.AddTo(Of MAudio)(MAudio, MAssetScope)
+  fullName.vb: MFramework.MDisposableExtensions.AddTo(Of MFramework.MAudio)(MFramework.MAudio, MFramework.MAssetScope)
+  name.vb: AddTo(Of MAudio)(MAudio, MAssetScope)
+  spec.csharp:
+  - uid: MFramework.MDisposableExtensions.AddTo``1(MFramework.MAudio,MFramework.MAssetScope)
+    name: AddTo
+    href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MAssetScope_
+  - name: <
+  - uid: MFramework.MAudio
+    name: MAudio
+    href: MFramework.MAudio.html
+  - name: '>'
+  - name: (
+  - uid: MFramework.MAudio
+    name: MAudio
+    href: MFramework.MAudio.html
+  - name: ','
+  - name: " "
+  - uid: MFramework.MAssetScope
+    name: MAssetScope
+    href: MFramework.MAssetScope.html
+  - name: )
+  spec.vb:
+  - uid: MFramework.MDisposableExtensions.AddTo``1(MFramework.MAudio,MFramework.MAssetScope)
+    name: AddTo
+    href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MAssetScope_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MFramework.MAudio
+    name: MAudio
+    href: MFramework.MAudio.html
+  - name: )
+  - name: (
+  - uid: MFramework.MAudio
+    name: MAudio
+    href: MFramework.MAudio.html
+  - name: ','
+  - name: " "
+  - uid: MFramework.MAssetScope
+    name: MAssetScope
+    href: MFramework.MAssetScope.html
+  - name: )
+- uid: MFramework.MAudio.MFramework.MDisposableExtensions.AddTo``1(MFramework.MDisposableBag)
+  commentId: M:MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MDisposableBag)
+  parent: MFramework.MDisposableExtensions
+  definition: MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MDisposableBag)
+  href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MDisposableBag_
+  name: AddTo<MAudio>(MAudio, MDisposableBag)
+  nameWithType: MDisposableExtensions.AddTo<MAudio>(MAudio, MDisposableBag)
+  fullName: MFramework.MDisposableExtensions.AddTo<MFramework.MAudio>(MFramework.MAudio, MFramework.MDisposableBag)
+  nameWithType.vb: MDisposableExtensions.AddTo(Of MAudio)(MAudio, MDisposableBag)
+  fullName.vb: MFramework.MDisposableExtensions.AddTo(Of MFramework.MAudio)(MFramework.MAudio, MFramework.MDisposableBag)
+  name.vb: AddTo(Of MAudio)(MAudio, MDisposableBag)
+  spec.csharp:
+  - uid: MFramework.MDisposableExtensions.AddTo``1(MFramework.MAudio,MFramework.MDisposableBag)
+    name: AddTo
+    href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MDisposableBag_
+  - name: <
+  - uid: MFramework.MAudio
+    name: MAudio
+    href: MFramework.MAudio.html
+  - name: '>'
+  - name: (
+  - uid: MFramework.MAudio
+    name: MAudio
+    href: MFramework.MAudio.html
+  - name: ','
+  - name: " "
+  - uid: MFramework.MDisposableBag
+    name: MDisposableBag
+    href: MFramework.MDisposableBag.html
+  - name: )
+  spec.vb:
+  - uid: MFramework.MDisposableExtensions.AddTo``1(MFramework.MAudio,MFramework.MDisposableBag)
+    name: AddTo
+    href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MDisposableBag_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MFramework.MAudio
+    name: MAudio
+    href: MFramework.MAudio.html
+  - name: )
+  - name: (
+  - uid: MFramework.MAudio
+    name: MAudio
+    href: MFramework.MAudio.html
+  - name: ','
+  - name: " "
+  - uid: MFramework.MDisposableBag
+    name: MDisposableBag
+    href: MFramework.MDisposableBag.html
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MAssetScope)
+  commentId: M:MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MAssetScope)
+  href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MAssetScope_
+  name: AddTo<T>(T, MAssetScope)
+  nameWithType: MDisposableExtensions.AddTo<T>(T, MAssetScope)
+  fullName: MFramework.MDisposableExtensions.AddTo<T>(T, MFramework.MAssetScope)
+  nameWithType.vb: MDisposableExtensions.AddTo(Of T)(T, MAssetScope)
+  fullName.vb: MFramework.MDisposableExtensions.AddTo(Of T)(T, MFramework.MAssetScope)
+  name.vb: AddTo(Of T)(T, MAssetScope)
+  spec.csharp:
+  - uid: MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MAssetScope)
+    name: AddTo
+    href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MAssetScope_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: MFramework.MAssetScope
+    name: MAssetScope
+    href: MFramework.MAssetScope.html
+  - name: )
+  spec.vb:
+  - uid: MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MAssetScope)
+    name: AddTo
+    href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MAssetScope_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: MFramework.MAssetScope
+    name: MAssetScope
+    href: MFramework.MAssetScope.html
+  - name: )
+- uid: MFramework.MDisposableExtensions
+  commentId: T:MFramework.MDisposableExtensions
+  parent: MFramework
+  href: MFramework.MDisposableExtensions.html
+  name: MDisposableExtensions
+  nameWithType: MDisposableExtensions
+  fullName: MFramework.MDisposableExtensions
+- uid: MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MDisposableBag)
+  commentId: M:MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MDisposableBag)
+  href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MDisposableBag_
+  name: AddTo<T>(T, MDisposableBag)
+  nameWithType: MDisposableExtensions.AddTo<T>(T, MDisposableBag)
+  fullName: MFramework.MDisposableExtensions.AddTo<T>(T, MFramework.MDisposableBag)
+  nameWithType.vb: MDisposableExtensions.AddTo(Of T)(T, MDisposableBag)
+  fullName.vb: MFramework.MDisposableExtensions.AddTo(Of T)(T, MFramework.MDisposableBag)
+  name.vb: AddTo(Of T)(T, MDisposableBag)
+  spec.csharp:
+  - uid: MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MDisposableBag)
+    name: AddTo
+    href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MDisposableBag_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: MFramework.MDisposableBag
+    name: MDisposableBag
+    href: MFramework.MDisposableBag.html
+  - name: )
+  spec.vb:
+  - uid: MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MDisposableBag)
+    name: AddTo
+    href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MDisposableBag_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: MFramework.MDisposableBag
+    name: MDisposableBag
+    href: MFramework.MDisposableBag.html
+  - name: )
+- uid: System.ArgumentNullException
+  commentId: T:System.ArgumentNullException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.argumentnullexception
+  name: ArgumentNullException
+  nameWithType: ArgumentNullException
+  fullName: System.ArgumentNullException
+- uid: System.ArgumentOutOfRangeException
+  commentId: T:System.ArgumentOutOfRangeException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.argumentoutofrangeexception
+  name: ArgumentOutOfRangeException
+  nameWithType: ArgumentOutOfRangeException
+  fullName: System.ArgumentOutOfRangeException
+- uid: MFramework.MAudio.#ctor*
+  commentId: Overload:MFramework.MAudio.#ctor
+  href: MFramework.MAudio.html#MFramework_MAudio__ctor_UnityEngine_GameObject_System_Int32_
+  name: MAudio
+  nameWithType: MAudio.MAudio
+  fullName: MFramework.MAudio.MAudio
+  nameWithType.vb: MAudio.New
+  fullName.vb: MFramework.MAudio.New
+  name.vb: New
+- uid: UnityEngine.GameObject
+  commentId: T:UnityEngine.GameObject
+  parent: UnityEngine
+  isExternal: true
+  name: GameObject
+  nameWithType: GameObject
+  fullName: UnityEngine.GameObject
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: UnityEngine
+  commentId: N:UnityEngine
+  isExternal: true
+  name: UnityEngine
+  nameWithType: UnityEngine
+  fullName: UnityEngine
+- uid: MFramework.MAudio.RegisteredCount*
+  commentId: Overload:MFramework.MAudio.RegisteredCount
+  href: MFramework.MAudio.html#MFramework_MAudio_RegisteredCount
+  name: RegisteredCount
+  nameWithType: MAudio.RegisteredCount
+  fullName: MFramework.MAudio.RegisteredCount
+- uid: MFramework.MAudio.MaxConcurrentSfx*
+  commentId: Overload:MFramework.MAudio.MaxConcurrentSfx
+  href: MFramework.MAudio.html#MFramework_MAudio_MaxConcurrentSfx
+  name: MaxConcurrentSfx
+  nameWithType: MAudio.MaxConcurrentSfx
+  fullName: MFramework.MAudio.MaxConcurrentSfx
+- uid: MFramework.MAudio.MusicVolume*
+  commentId: Overload:MFramework.MAudio.MusicVolume
+  href: MFramework.MAudio.html#MFramework_MAudio_MusicVolume
+  name: MusicVolume
+  nameWithType: MAudio.MusicVolume
+  fullName: MFramework.MAudio.MusicVolume
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: MFramework.MAudio.SfxVolume*
+  commentId: Overload:MFramework.MAudio.SfxVolume
+  href: MFramework.MAudio.html#MFramework_MAudio_SfxVolume
+  name: SfxVolume
+  nameWithType: MAudio.SfxVolume
+  fullName: MFramework.MAudio.SfxVolume
+- uid: MFramework.MAudio.MusicVolume
+  commentId: P:MFramework.MAudio.MusicVolume
+  href: MFramework.MAudio.html#MFramework_MAudio_MusicVolume
+  name: MusicVolume
+  nameWithType: MAudio.MusicVolume
+  fullName: MFramework.MAudio.MusicVolume
+- uid: MFramework.MAudio.MusicMuted*
+  commentId: Overload:MFramework.MAudio.MusicMuted
+  href: MFramework.MAudio.html#MFramework_MAudio_MusicMuted
+  name: MusicMuted
+  nameWithType: MAudio.MusicMuted
+  fullName: MFramework.MAudio.MusicMuted
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: MFramework.MAudio.SfxVolume
+  commentId: P:MFramework.MAudio.SfxVolume
+  href: MFramework.MAudio.html#MFramework_MAudio_SfxVolume
+  name: SfxVolume
+  nameWithType: MAudio.SfxVolume
+  fullName: MFramework.MAudio.SfxVolume
+- uid: MFramework.MAudio.SfxMuted*
+  commentId: Overload:MFramework.MAudio.SfxMuted
+  href: MFramework.MAudio.html#MFramework_MAudio_SfxMuted
+  name: SfxMuted
+  nameWithType: MAudio.SfxMuted
+  fullName: MFramework.MAudio.SfxMuted
+- uid: MFramework.MAudio.CurrentBgmId*
+  commentId: Overload:MFramework.MAudio.CurrentBgmId
+  href: MFramework.MAudio.html#MFramework_MAudio_CurrentBgmId
+  name: CurrentBgmId
+  nameWithType: MAudio.CurrentBgmId
+  fullName: MFramework.MAudio.CurrentBgmId
+- uid: System.Nullable{MFramework.MAudioId}
+  commentId: T:System.Nullable{MFramework.MAudioId}
+  parent: System
+  definition: System.Nullable`1
+  href: MFramework.MAudioId.html
+  name: MAudioId?
+  nameWithType: MAudioId?
+  fullName: MFramework.MAudioId?
+  spec.csharp:
+  - uid: MFramework.MAudioId
+    name: MAudioId
+    href: MFramework.MAudioId.html
+  - name: '?'
+  spec.vb:
+  - uid: MFramework.MAudioId
+    name: MAudioId
+    href: MFramework.MAudioId.html
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.ArgumentException
+  commentId: T:System.ArgumentException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.argumentexception
+  name: ArgumentException
+  nameWithType: ArgumentException
+  fullName: System.ArgumentException
+- uid: System.InvalidOperationException
+  commentId: T:System.InvalidOperationException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.invalidoperationexception
+  name: InvalidOperationException
+  nameWithType: InvalidOperationException
+  fullName: System.InvalidOperationException
+- uid: MFramework.MAudio.Register*
+  commentId: Overload:MFramework.MAudio.Register
+  href: MFramework.MAudio.html#MFramework_MAudio_Register_MFramework_MAudioId_UnityEngine_AudioClip_System_Single_System_Int32_
+  name: Register
+  nameWithType: MAudio.Register
+  fullName: MFramework.MAudio.Register
+- uid: MFramework.MAudioId
+  commentId: T:MFramework.MAudioId
+  parent: MFramework
+  href: MFramework.MAudioId.html
+  name: MAudioId
+  nameWithType: MAudioId
+  fullName: MFramework.MAudioId
+- uid: UnityEngine.AudioClip
+  commentId: T:UnityEngine.AudioClip
+  parent: UnityEngine
+  isExternal: true
+  name: AudioClip
+  nameWithType: AudioClip
+  fullName: UnityEngine.AudioClip
+- uid: MFramework.MAudio.IsRegistered*
+  commentId: Overload:MFramework.MAudio.IsRegistered
+  href: MFramework.MAudio.html#MFramework_MAudio_IsRegistered_MFramework_MAudioId_
+  name: IsRegistered
+  nameWithType: MAudio.IsRegistered
+  fullName: MFramework.MAudio.IsRegistered
+- uid: MFramework.MAudio.Unregister*
+  commentId: Overload:MFramework.MAudio.Unregister
+  href: MFramework.MAudio.html#MFramework_MAudio_Unregister_MFramework_MAudioId_System_Boolean_
+  name: Unregister
+  nameWithType: MAudio.Unregister
+  fullName: MFramework.MAudio.Unregister
+- uid: MFramework.MAudio.PlayBgm*
+  commentId: Overload:MFramework.MAudio.PlayBgm
+  href: MFramework.MAudio.html#MFramework_MAudio_PlayBgm_MFramework_MAudioId_System_Boolean_
+  name: PlayBgm
+  nameWithType: MAudio.PlayBgm
+  fullName: MFramework.MAudio.PlayBgm
+- uid: MFramework.MAudio.StopBgm*
+  commentId: Overload:MFramework.MAudio.StopBgm
+  href: MFramework.MAudio.html#MFramework_MAudio_StopBgm
+  name: StopBgm
+  nameWithType: MAudio.StopBgm
+  fullName: MFramework.MAudio.StopBgm
+- uid: MFramework.MAudio.PlaySfx*
+  commentId: Overload:MFramework.MAudio.PlaySfx
+  href: MFramework.MAudio.html#MFramework_MAudio_PlaySfx_MFramework_MAudioId_System_Single_
+  name: PlaySfx
+  nameWithType: MAudio.PlaySfx
+  fullName: MFramework.MAudio.PlaySfx
+- uid: MFramework.MAudio.StopAllSfx*
+  commentId: Overload:MFramework.MAudio.StopAllSfx
+  href: MFramework.MAudio.html#MFramework_MAudio_StopAllSfx
+  name: StopAllSfx
+  nameWithType: MAudio.StopAllSfx
+  fullName: MFramework.MAudio.StopAllSfx
+- uid: MFramework.MAudio.Pause*
+  commentId: Overload:MFramework.MAudio.Pause
+  href: MFramework.MAudio.html#MFramework_MAudio_Pause
+  name: Pause
+  nameWithType: MAudio.Pause
+  fullName: MFramework.MAudio.Pause
+- uid: MFramework.MAudio.Pause
+  commentId: M:MFramework.MAudio.Pause
+  href: MFramework.MAudio.html#MFramework_MAudio_Pause
+  name: Pause()
+  nameWithType: MAudio.Pause()
+  fullName: MFramework.MAudio.Pause()
+  spec.csharp:
+  - uid: MFramework.MAudio.Pause
+    name: Pause
+    href: MFramework.MAudio.html#MFramework_MAudio_Pause
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: MFramework.MAudio.Pause
+    name: Pause
+    href: MFramework.MAudio.html#MFramework_MAudio_Pause
+  - name: (
+  - name: )
+- uid: MFramework.MAudio.Resume*
+  commentId: Overload:MFramework.MAudio.Resume
+  href: MFramework.MAudio.html#MFramework_MAudio_Resume
+  name: Resume
+  nameWithType: MAudio.Resume
+  fullName: MFramework.MAudio.Resume
+- uid: MFramework.MAudio.Initialize*
+  commentId: Overload:MFramework.MAudio.Initialize
+  href: MFramework.MAudio.html#MFramework_MAudio_Initialize_MFramework_MFrameworkApp_
+  name: Initialize
+  nameWithType: MAudio.Initialize
+  fullName: MFramework.MAudio.Initialize
+- uid: MFramework.IMFrameworkModule.Initialize(MFramework.MFrameworkApp)
+  commentId: M:MFramework.IMFrameworkModule.Initialize(MFramework.MFrameworkApp)
+  parent: MFramework.IMFrameworkModule
+  href: MFramework.IMFrameworkModule.html#MFramework_IMFrameworkModule_Initialize_MFramework_MFrameworkApp_
+  name: Initialize(MFrameworkApp)
+  nameWithType: IMFrameworkModule.Initialize(MFrameworkApp)
+  fullName: MFramework.IMFrameworkModule.Initialize(MFramework.MFrameworkApp)
+  spec.csharp:
+  - uid: MFramework.IMFrameworkModule.Initialize(MFramework.MFrameworkApp)
+    name: Initialize
+    href: MFramework.IMFrameworkModule.html#MFramework_IMFrameworkModule_Initialize_MFramework_MFrameworkApp_
+  - name: (
+  - uid: MFramework.MFrameworkApp
+    name: MFrameworkApp
+    href: MFramework.MFrameworkApp.html
+  - name: )
+  spec.vb:
+  - uid: MFramework.IMFrameworkModule.Initialize(MFramework.MFrameworkApp)
+    name: Initialize
+    href: MFramework.IMFrameworkModule.html#MFramework_IMFrameworkModule_Initialize_MFramework_MFrameworkApp_
+  - name: (
+  - uid: MFramework.MFrameworkApp
+    name: MFrameworkApp
+    href: MFramework.MFrameworkApp.html
+  - name: )
+- uid: MFramework.MFrameworkApp
+  commentId: T:MFramework.MFrameworkApp
+  parent: MFramework
+  href: MFramework.MFrameworkApp.html
+  name: MFrameworkApp
+  nameWithType: MFrameworkApp
+  fullName: MFramework.MFrameworkApp
+- uid: MFramework.MAudio.Shutdown*
+  commentId: Overload:MFramework.MAudio.Shutdown
+  href: MFramework.MAudio.html#MFramework_MAudio_Shutdown
+  name: Shutdown
+  nameWithType: MAudio.Shutdown
+  fullName: MFramework.MAudio.Shutdown
+- uid: MFramework.IMFrameworkModule.Shutdown
+  commentId: M:MFramework.IMFrameworkModule.Shutdown
+  parent: MFramework.IMFrameworkModule
+  href: MFramework.IMFrameworkModule.html#MFramework_IMFrameworkModule_Shutdown
+  name: Shutdown()
+  nameWithType: IMFrameworkModule.Shutdown()
+  fullName: MFramework.IMFrameworkModule.Shutdown()
+  spec.csharp:
+  - uid: MFramework.IMFrameworkModule.Shutdown
+    name: Shutdown
+    href: MFramework.IMFrameworkModule.html#MFramework_IMFrameworkModule_Shutdown
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: MFramework.IMFrameworkModule.Shutdown
+    name: Shutdown
+    href: MFramework.IMFrameworkModule.html#MFramework_IMFrameworkModule_Shutdown
+  - name: (
+  - name: )
+- uid: MFramework.MAudio.Dispose*
+  commentId: Overload:MFramework.MAudio.Dispose
+  href: MFramework.MAudio.html#MFramework_MAudio_Dispose
+  name: Dispose
+  nameWithType: MAudio.Dispose
+  fullName: MFramework.MAudio.Dispose
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )

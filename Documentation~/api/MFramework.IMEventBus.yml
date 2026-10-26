@@ -1,0 +1,233 @@
+### YamlMime:ManagedReference
+items:
+- uid: MFramework.IMEventBus
+  commentId: T:MFramework.IMEventBus
+  id: IMEventBus
+  parent: MFramework
+  children:
+  - MFramework.IMEventBus.Clear
+  - MFramework.IMEventBus.Publish``1(``0)
+  - MFramework.IMEventBus.Subscribe``1(System.Action{``0},UnityEngine.Object)
+  langs:
+  - csharp
+  - vb
+  name: IMEventBus
+  nameWithType: IMEventBus
+  fullName: MFramework.IMEventBus
+  type: Interface
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 向显式注册的观察者发布类型安全的事实事件。
+  example: []
+  syntax:
+    content: public interface IMEventBus
+    content.vb: Public Interface IMEventBus
+  derivedClasses:
+  - MFramework.MEventBus
+- uid: MFramework.IMEventBus.Subscribe``1(System.Action{``0},UnityEngine.Object)
+  commentId: M:MFramework.IMEventBus.Subscribe``1(System.Action{``0},UnityEngine.Object)
+  id: Subscribe``1(System.Action{``0},UnityEngine.Object)
+  parent: MFramework.IMEventBus
+  langs:
+  - csharp
+  - vb
+  name: Subscribe<TEvent>(Action<TEvent>, Object)
+  nameWithType: IMEventBus.Subscribe<TEvent>(Action<TEvent>, Object)
+  fullName: MFramework.IMEventBus.Subscribe<TEvent>(System.Action<TEvent>, UnityEngine.Object)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 为指定事件类型订阅一个处理器。
+  example: []
+  syntax:
+    content: IDisposable Subscribe<TEvent>(Action<TEvent> handler, Object owner = null)
+    parameters:
+    - id: handler
+      type: System.Action{{TEvent}}
+      description: 发布事件时同步调用的回调。
+    - id: owner
+      type: UnityEngine.Object
+      description: 可选的 Unity 所有者。所有者销毁后，该订阅会失效。
+    typeParameters:
+    - id: TEvent
+      description: 事件载荷类型。
+    return:
+      type: System.IDisposable
+      description: 订阅句柄；释放该句柄时会移除订阅。
+    content.vb: Function Subscribe(Of TEvent)(handler As Action(Of TEvent), owner As [Object] = Nothing) As IDisposable
+  overload: MFramework.IMEventBus.Subscribe*
+  nameWithType.vb: IMEventBus.Subscribe(Of TEvent)(Action(Of TEvent), Object)
+  fullName.vb: MFramework.IMEventBus.Subscribe(Of TEvent)(System.Action(Of TEvent), UnityEngine.Object)
+  name.vb: Subscribe(Of TEvent)(Action(Of TEvent), Object)
+- uid: MFramework.IMEventBus.Publish``1(``0)
+  commentId: M:MFramework.IMEventBus.Publish``1(``0)
+  id: Publish``1(``0)
+  parent: MFramework.IMEventBus
+  langs:
+  - csharp
+  - vb
+  name: Publish<TEvent>(TEvent)
+  nameWithType: IMEventBus.Publish<TEvent>(TEvent)
+  fullName: MFramework.IMEventBus.Publish<TEvent>(TEvent)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 向当前订阅者快照同步发布一个事件。
+  example: []
+  syntax:
+    content: void Publish<TEvent>(TEvent message)
+    parameters:
+    - id: message
+      type: '{TEvent}'
+      description: 要发布的事实事件。
+    typeParameters:
+    - id: TEvent
+      description: 事件载荷类型。
+    content.vb: Sub Publish(Of TEvent)(message As TEvent)
+  overload: MFramework.IMEventBus.Publish*
+  nameWithType.vb: IMEventBus.Publish(Of TEvent)(TEvent)
+  fullName.vb: MFramework.IMEventBus.Publish(Of TEvent)(TEvent)
+  name.vb: Publish(Of TEvent)(TEvent)
+- uid: MFramework.IMEventBus.Clear
+  commentId: M:MFramework.IMEventBus.Clear
+  id: Clear
+  parent: MFramework.IMEventBus
+  langs:
+  - csharp
+  - vb
+  name: Clear()
+  nameWithType: IMEventBus.Clear()
+  fullName: MFramework.IMEventBus.Clear()
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 移除全部订阅。
+  example: []
+  syntax:
+    content: void Clear()
+    content.vb: Sub Clear()
+  overload: MFramework.IMEventBus.Clear*
+references:
+- uid: MFramework
+  commentId: N:MFramework
+  href: MFramework.html
+  name: MFramework
+  nameWithType: MFramework
+  fullName: MFramework
+- uid: MFramework.IMEventBus.Subscribe*
+  commentId: Overload:MFramework.IMEventBus.Subscribe
+  href: MFramework.IMEventBus.html#MFramework_IMEventBus_Subscribe__1_System_Action___0__UnityEngine_Object_
+  name: Subscribe
+  nameWithType: IMEventBus.Subscribe
+  fullName: MFramework.IMEventBus.Subscribe
+- uid: System.Action{{TEvent}}
+  commentId: T:System.Action{``0}
+  parent: System
+  definition: System.Action`1
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<TEvent>
+  nameWithType: Action<TEvent>
+  fullName: System.Action<TEvent>
+  nameWithType.vb: Action(Of TEvent)
+  fullName.vb: System.Action(Of TEvent)
+  name.vb: Action(Of TEvent)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - name: TEvent
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEvent
+  - name: )
+- uid: UnityEngine.Object
+  commentId: T:UnityEngine.Object
+  parent: UnityEngine
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: UnityEngine.Object
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: System.Action`1
+  commentId: T:System.Action`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<T>
+  nameWithType: Action<T>
+  fullName: System.Action<T>
+  nameWithType.vb: Action(Of T)
+  fullName.vb: System.Action(Of T)
+  name.vb: Action(Of T)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: UnityEngine
+  commentId: N:UnityEngine
+  isExternal: true
+  name: UnityEngine
+  nameWithType: UnityEngine
+  fullName: UnityEngine
+- uid: MFramework.IMEventBus.Publish*
+  commentId: Overload:MFramework.IMEventBus.Publish
+  href: MFramework.IMEventBus.html#MFramework_IMEventBus_Publish__1___0_
+  name: Publish
+  nameWithType: IMEventBus.Publish
+  fullName: MFramework.IMEventBus.Publish
+- uid: '{TEvent}'
+  commentId: '!:TEvent'
+  definition: TEvent
+  name: TEvent
+  nameWithType: TEvent
+  fullName: TEvent
+- uid: TEvent
+  name: TEvent
+  nameWithType: TEvent
+  fullName: TEvent
+- uid: MFramework.IMEventBus.Clear*
+  commentId: Overload:MFramework.IMEventBus.Clear
+  href: MFramework.IMEventBus.html#MFramework_IMEventBus_Clear
+  name: Clear
+  nameWithType: IMEventBus.Clear
+  fullName: MFramework.IMEventBus.Clear

@@ -1,0 +1,148 @@
+### YamlMime:ManagedReference
+items:
+- uid: MFramework.MActionStatus
+  commentId: T:MFramework.MActionStatus
+  id: MActionStatus
+  parent: MFramework
+  children:
+  - MFramework.MActionStatus.Cancelled
+  - MFramework.MActionStatus.Completed
+  - MFramework.MActionStatus.Created
+  - MFramework.MActionStatus.Failed
+  - MFramework.MActionStatus.Running
+  langs:
+  - csharp
+  - vb
+  name: MActionStatus
+  nameWithType: MActionStatus
+  fullName: MFramework.MActionStatus
+  type: Enum
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 描述 <xref href="MFramework.IMActionNode" data-throw-if-not-resolved="false"></xref> 的生命周期状态。
+  example: []
+  syntax:
+    content: public enum MActionStatus
+    content.vb: Public Enum MActionStatus
+- uid: MFramework.MActionStatus.Created
+  commentId: F:MFramework.MActionStatus.Created
+  id: Created
+  parent: MFramework.MActionStatus
+  langs:
+  - csharp
+  - vb
+  name: Created
+  nameWithType: MActionStatus.Created
+  fullName: MFramework.MActionStatus.Created
+  type: Field
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 动作尚未启动。
+  example: []
+  syntax:
+    content: Created = 0
+    return:
+      type: MFramework.MActionStatus
+- uid: MFramework.MActionStatus.Running
+  commentId: F:MFramework.MActionStatus.Running
+  id: Running
+  parent: MFramework.MActionStatus
+  langs:
+  - csharp
+  - vb
+  name: Running
+  nameWithType: MActionStatus.Running
+  fullName: MFramework.MActionStatus.Running
+  type: Field
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 动作正在接收每帧更新。
+  example: []
+  syntax:
+    content: Running = 1
+    return:
+      type: MFramework.MActionStatus
+- uid: MFramework.MActionStatus.Completed
+  commentId: F:MFramework.MActionStatus.Completed
+  id: Completed
+  parent: MFramework.MActionStatus
+  langs:
+  - csharp
+  - vb
+  name: Completed
+  nameWithType: MActionStatus.Completed
+  fullName: MFramework.MActionStatus.Completed
+  type: Field
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 动作已自然完成。
+  example: []
+  syntax:
+    content: Completed = 2
+    return:
+      type: MFramework.MActionStatus
+- uid: MFramework.MActionStatus.Cancelled
+  commentId: F:MFramework.MActionStatus.Cancelled
+  id: Cancelled
+  parent: MFramework.MActionStatus
+  langs:
+  - csharp
+  - vb
+  name: Cancelled
+  nameWithType: MActionStatus.Cancelled
+  fullName: MFramework.MActionStatus.Cancelled
+  type: Field
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 动作在自然完成前被取消。
+  example: []
+  syntax:
+    content: Cancelled = 3
+    return:
+      type: MFramework.MActionStatus
+- uid: MFramework.MActionStatus.Failed
+  commentId: F:MFramework.MActionStatus.Failed
+  id: Failed
+  parent: MFramework.MActionStatus
+  langs:
+  - csharp
+  - vb
+  name: Failed
+  nameWithType: MActionStatus.Failed
+  fullName: MFramework.MActionStatus.Failed
+  type: Field
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 动作因某个回调抛出异常而停止。
+  example: []
+  syntax:
+    content: Failed = 4
+    return:
+      type: MFramework.MActionStatus
+references:
+- uid: MFramework.IMActionNode
+  commentId: T:MFramework.IMActionNode
+  parent: MFramework
+  href: MFramework.IMActionNode.html
+  name: IMActionNode
+  nameWithType: IMActionNode
+  fullName: MFramework.IMActionNode
+- uid: MFramework
+  commentId: N:MFramework
+  href: MFramework.html
+  name: MFramework
+  nameWithType: MFramework
+  fullName: MFramework
+- uid: MFramework.MActionStatus
+  commentId: T:MFramework.MActionStatus
+  parent: MFramework
+  href: MFramework.MActionStatus.html
+  name: MActionStatus
+  nameWithType: MActionStatus
+  fullName: MFramework.MActionStatus

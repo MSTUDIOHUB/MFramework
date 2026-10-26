@@ -1,0 +1,137 @@
+### YamlMime:ManagedReference
+items:
+- uid: MFramework.IMSaveMigration
+  commentId: T:MFramework.IMSaveMigration
+  id: IMSaveMigration
+  parent: MFramework
+  children:
+  - MFramework.IMSaveMigration.FromSchemaVersion
+  - MFramework.IMSaveMigration.Migrate(System.Byte[])
+  langs:
+  - csharp
+  - vb
+  name: IMSaveMigration
+  nameWithType: IMSaveMigration
+  fullName: MFramework.IMSaveMigration
+  type: Interface
+  assemblies:
+  - MStudio.MFramework.Foundation
+  namespace: MFramework
+  summary: 单步迁移，严格从 FromSchemaVersion 转到 FromSchemaVersion + 1；不执行任何存储写入。
+  example: []
+  syntax:
+    content: public interface IMSaveMigration
+    content.vb: Public Interface IMSaveMigration
+- uid: MFramework.IMSaveMigration.FromSchemaVersion
+  commentId: P:MFramework.IMSaveMigration.FromSchemaVersion
+  id: FromSchemaVersion
+  parent: MFramework.IMSaveMigration
+  langs:
+  - csharp
+  - vb
+  name: FromSchemaVersion
+  nameWithType: IMSaveMigration.FromSchemaVersion
+  fullName: MFramework.IMSaveMigration.FromSchemaVersion
+  type: Property
+  assemblies:
+  - MStudio.MFramework.Foundation
+  namespace: MFramework
+  summary: 此步骤接受的旧数据结构版本，必须大于零。
+  example: []
+  syntax:
+    content: int FromSchemaVersion { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: ReadOnly Property FromSchemaVersion As Integer
+  overload: MFramework.IMSaveMigration.FromSchemaVersion*
+- uid: MFramework.IMSaveMigration.Migrate(System.Byte[])
+  commentId: M:MFramework.IMSaveMigration.Migrate(System.Byte[])
+  id: Migrate(System.Byte[])
+  parent: MFramework.IMSaveMigration
+  langs:
+  - csharp
+  - vb
+  name: Migrate(byte[])
+  nameWithType: IMSaveMigration.Migrate(byte[])
+  fullName: MFramework.IMSaveMigration.Migrate(byte[])
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Foundation
+  namespace: MFramework
+  summary: 在独立副本上迁移旧结构；抛出异常或返回 null 会使读取返回 MigrationFailure。
+  example: []
+  syntax:
+    content: byte[] Migrate(byte[] payload)
+    parameters:
+    - id: payload
+      type: System.Byte[]
+      description: 旧版本序列化数据的副本；可原地修改。
+    return:
+      type: System.Byte[]
+      description: 下一结构版本的序列化数据。
+    content.vb: Function Migrate(payload As Byte()) As Byte()
+  overload: MFramework.IMSaveMigration.Migrate*
+  nameWithType.vb: IMSaveMigration.Migrate(Byte())
+  fullName.vb: MFramework.IMSaveMigration.Migrate(Byte())
+  name.vb: Migrate(Byte())
+references:
+- uid: MFramework
+  commentId: N:MFramework
+  href: MFramework.html
+  name: MFramework
+  nameWithType: MFramework
+  fullName: MFramework
+- uid: MFramework.IMSaveMigration.FromSchemaVersion*
+  commentId: Overload:MFramework.IMSaveMigration.FromSchemaVersion
+  href: MFramework.IMSaveMigration.html#MFramework_IMSaveMigration_FromSchemaVersion
+  name: FromSchemaVersion
+  nameWithType: IMSaveMigration.FromSchemaVersion
+  fullName: MFramework.IMSaveMigration.FromSchemaVersion
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MFramework.IMSaveMigration.Migrate*
+  commentId: Overload:MFramework.IMSaveMigration.Migrate
+  href: MFramework.IMSaveMigration.html#MFramework_IMSaveMigration_Migrate_System_Byte___
+  name: Migrate
+  nameWithType: IMSaveMigration.Migrate
+  fullName: MFramework.IMSaveMigration.Migrate
+- uid: System.Byte[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.byte
+  name: byte[]
+  nameWithType: byte[]
+  fullName: byte[]
+  nameWithType.vb: Byte()
+  fullName.vb: Byte()
+  name.vb: Byte()
+  spec.csharp:
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: (
+  - name: )

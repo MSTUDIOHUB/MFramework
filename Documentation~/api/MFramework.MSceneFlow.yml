@@ -1,0 +1,1043 @@
+### YamlMime:ManagedReference
+items:
+- uid: MFramework.MSceneFlow
+  commentId: T:MFramework.MSceneFlow
+  id: MSceneFlow
+  parent: MFramework
+  children:
+  - MFramework.MSceneFlow.#ctor
+  - MFramework.MSceneFlow.#ctor(MFramework.IMSceneFlowBackend)
+  - MFramework.MSceneFlow.ActiveRequest
+  - MFramework.MSceneFlow.AdoptCurrentScene(MFramework.IMSceneFlowScene)
+  - MFramework.MSceneFlow.CurrentScene
+  - MFramework.MSceneFlow.Dispose
+  - MFramework.MSceneFlow.Initialize(MFramework.MFrameworkApp)
+  - MFramework.MSceneFlow.IsBusy
+  - MFramework.MSceneFlow.Shutdown
+  - MFramework.MSceneFlow.TakeCurrentScene
+  - MFramework.MSceneFlow.Tick(MFramework.MFrameTime)
+  - MFramework.MSceneFlow.Transition(MFramework.MSceneFlowPlan)
+  - MFramework.MSceneFlow.Transition(System.Object,MFramework.MSceneFlowOrder)
+  langs:
+  - csharp
+  - vb
+  name: MSceneFlow
+  nameWithType: MSceneFlow
+  fullName: MFramework.MSceneFlow
+  type: Class
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 串行执行一个可观察、可取消且拥有明确场景所有权的内容场景切换。
+  remarks: >-
+    MSceneFlow 只管理一个 Additive 内容场景；承载 MGameEntry 的 Bootstrap 场景必须常驻。
+
+    Fade、输入锁、出生点、镜头和游戏模式等项目逻辑应注册为阶段命令。
+  example: []
+  syntax:
+    content: 'public sealed class MSceneFlow : IMFrameworkModule, IMFrameworkTickable, IDisposable'
+    content.vb: Public NotInheritable Class MSceneFlow Implements IMFrameworkModule, IMFrameworkTickable, IDisposable
+  inheritance:
+  - System.Object
+  implements:
+  - MFramework.IMFrameworkModule
+  - MFramework.IMFrameworkTickable
+  - System.IDisposable
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - MFramework.MSceneFlow.MFramework.MDisposableExtensions.AddTo``1(MFramework.MAssetScope)
+  - MFramework.MSceneFlow.MFramework.MDisposableExtensions.AddTo``1(MFramework.MDisposableBag)
+- uid: MFramework.MSceneFlow.#ctor
+  commentId: M:MFramework.MSceneFlow.#ctor
+  id: '#ctor'
+  parent: MFramework.MSceneFlow
+  langs:
+  - csharp
+  - vb
+  name: MSceneFlow()
+  nameWithType: MSceneFlow.MSceneFlow()
+  fullName: MFramework.MSceneFlow.MSceneFlow()
+  type: Constructor
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 创建使用 Addressables 的默认场景流。
+  example: []
+  syntax:
+    content: public MSceneFlow()
+    content.vb: Public Sub New()
+  overload: MFramework.MSceneFlow.#ctor*
+  nameWithType.vb: MSceneFlow.New()
+  fullName.vb: MFramework.MSceneFlow.New()
+  name.vb: New()
+- uid: MFramework.MSceneFlow.#ctor(MFramework.IMSceneFlowBackend)
+  commentId: M:MFramework.MSceneFlow.#ctor(MFramework.IMSceneFlowBackend)
+  id: '#ctor(MFramework.IMSceneFlowBackend)'
+  parent: MFramework.MSceneFlow
+  langs:
+  - csharp
+  - vb
+  name: MSceneFlow(IMSceneFlowBackend)
+  nameWithType: MSceneFlow.MSceneFlow(IMSceneFlowBackend)
+  fullName: MFramework.MSceneFlow.MSceneFlow(MFramework.IMSceneFlowBackend)
+  type: Constructor
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 创建使用指定可替换后端的场景流。
+  example: []
+  syntax:
+    content: public MSceneFlow(IMSceneFlowBackend backend)
+    parameters:
+    - id: backend
+      type: MFramework.IMSceneFlowBackend
+      description: 负责加载、激活、卸载和设置 Active Scene 的后端。
+    content.vb: Public Sub New(backend As IMSceneFlowBackend)
+  overload: MFramework.MSceneFlow.#ctor*
+  nameWithType.vb: MSceneFlow.New(IMSceneFlowBackend)
+  fullName.vb: MFramework.MSceneFlow.New(MFramework.IMSceneFlowBackend)
+  name.vb: New(IMSceneFlowBackend)
+- uid: MFramework.MSceneFlow.IsBusy
+  commentId: P:MFramework.MSceneFlow.IsBusy
+  id: IsBusy
+  parent: MFramework.MSceneFlow
+  langs:
+  - csharp
+  - vb
+  name: IsBusy
+  nameWithType: MSceneFlow.IsBusy
+  fullName: MFramework.MSceneFlow.IsBusy
+  type: Property
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 获取当前是否有场景切换正在执行。
+  example: []
+  syntax:
+    content: public bool IsBusy { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property IsBusy As Boolean
+  overload: MFramework.MSceneFlow.IsBusy*
+- uid: MFramework.MSceneFlow.CurrentScene
+  commentId: P:MFramework.MSceneFlow.CurrentScene
+  id: CurrentScene
+  parent: MFramework.MSceneFlow
+  langs:
+  - csharp
+  - vb
+  name: CurrentScene
+  nameWithType: MSceneFlow.CurrentScene
+  fullName: MFramework.MSceneFlow.CurrentScene
+  type: Property
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 获取当前由场景流持有的内容场景；首次加载前为 null。
+  example: []
+  syntax:
+    content: public IMSceneFlowScene CurrentScene { get; }
+    parameters: []
+    return:
+      type: MFramework.IMSceneFlowScene
+    content.vb: Public ReadOnly Property CurrentScene As IMSceneFlowScene
+  overload: MFramework.MSceneFlow.CurrentScene*
+- uid: MFramework.MSceneFlow.ActiveRequest
+  commentId: P:MFramework.MSceneFlow.ActiveRequest
+  id: ActiveRequest
+  parent: MFramework.MSceneFlow
+  langs:
+  - csharp
+  - vb
+  name: ActiveRequest
+  nameWithType: MSceneFlow.ActiveRequest
+  fullName: MFramework.MSceneFlow.ActiveRequest
+  type: Property
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 获取当前切换请求；没有正在执行的切换时为 null。
+  example: []
+  syntax:
+    content: public MSceneFlowRequest ActiveRequest { get; }
+    parameters: []
+    return:
+      type: MFramework.MSceneFlowRequest
+    content.vb: Public ReadOnly Property ActiveRequest As MSceneFlowRequest
+  overload: MFramework.MSceneFlow.ActiveRequest*
+- uid: MFramework.MSceneFlow.AdoptCurrentScene(MFramework.IMSceneFlowScene)
+  commentId: M:MFramework.MSceneFlow.AdoptCurrentScene(MFramework.IMSceneFlowScene)
+  id: AdoptCurrentScene(MFramework.IMSceneFlowScene)
+  parent: MFramework.MSceneFlow
+  langs:
+  - csharp
+  - vb
+  name: AdoptCurrentScene(IMSceneFlowScene)
+  nameWithType: MSceneFlow.AdoptCurrentScene(IMSceneFlowScene)
+  fullName: MFramework.MSceneFlow.AdoptCurrentScene(MFramework.IMSceneFlowScene)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 接管一个已经由相同后端加载的初始内容场景。
+  example: []
+  syntax:
+    content: public void AdoptCurrentScene(IMSceneFlowScene scene)
+    parameters:
+    - id: scene
+      type: MFramework.IMSceneFlowScene
+    content.vb: Public Sub AdoptCurrentScene(scene As IMSceneFlowScene)
+  overload: MFramework.MSceneFlow.AdoptCurrentScene*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: 正在切换、已有当前场景，或场景已经释放。
+- uid: MFramework.MSceneFlow.TakeCurrentScene
+  commentId: M:MFramework.MSceneFlow.TakeCurrentScene
+  id: TakeCurrentScene
+  parent: MFramework.MSceneFlow
+  langs:
+  - csharp
+  - vb
+  name: TakeCurrentScene()
+  nameWithType: MSceneFlow.TakeCurrentScene()
+  fullName: MFramework.MSceneFlow.TakeCurrentScene()
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 把当前内容场景所有权转移给调用方。仅应在框架外部接管生命周期时使用。
+  example: []
+  syntax:
+    content: public IMSceneFlowScene TakeCurrentScene()
+    return:
+      type: MFramework.IMSceneFlowScene
+    content.vb: Public Function TakeCurrentScene() As IMSceneFlowScene
+  overload: MFramework.MSceneFlow.TakeCurrentScene*
+- uid: MFramework.MSceneFlow.Transition(System.Object,MFramework.MSceneFlowOrder)
+  commentId: M:MFramework.MSceneFlow.Transition(System.Object,MFramework.MSceneFlowOrder)
+  id: Transition(System.Object,MFramework.MSceneFlowOrder)
+  parent: MFramework.MSceneFlow
+  langs:
+  - csharp
+  - vb
+  name: Transition(object, MSceneFlowOrder)
+  nameWithType: MSceneFlow.Transition(object, MSceneFlowOrder)
+  fullName: MFramework.MSceneFlow.Transition(object, MFramework.MSceneFlowOrder)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 使用默认配置直接切换到指定目标场景（适合无需自定义阶段命令的快捷场景切换）。
+  example: []
+  syntax:
+    content: public MSceneFlowRequest Transition(object targetKey, MSceneFlowOrder order = MSceneFlowOrder.LoadThenUnload)
+    parameters:
+    - id: targetKey
+      type: System.Object
+      description: 目标场景键（Addressables 地址或 AssetReference）。
+    - id: order
+      type: MFramework.MSceneFlowOrder
+      description: 加载与卸载顺序；默认先加载后卸载。
+    return:
+      type: MFramework.MSceneFlowRequest
+      description: 可观察或取消此次切换的请求。
+    content.vb: Public Function Transition(targetKey As Object, order As MSceneFlowOrder = MSceneFlowOrder.LoadThenUnload) As MSceneFlowRequest
+  overload: MFramework.MSceneFlow.Transition*
+  nameWithType.vb: MSceneFlow.Transition(Object, MSceneFlowOrder)
+  fullName.vb: MFramework.MSceneFlow.Transition(Object, MFramework.MSceneFlowOrder)
+  name.vb: Transition(Object, MSceneFlowOrder)
+- uid: MFramework.MSceneFlow.Transition(MFramework.MSceneFlowPlan)
+  commentId: M:MFramework.MSceneFlow.Transition(MFramework.MSceneFlowPlan)
+  id: Transition(MFramework.MSceneFlowPlan)
+  parent: MFramework.MSceneFlow
+  langs:
+  - csharp
+  - vb
+  name: Transition(MSceneFlowPlan)
+  nameWithType: MSceneFlow.Transition(MSceneFlowPlan)
+  fullName: MFramework.MSceneFlow.Transition(MFramework.MSceneFlowPlan)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 开始执行一个已经配置好的场景切换计划。
+  example: []
+  syntax:
+    content: public MSceneFlowRequest Transition(MSceneFlowPlan plan)
+    parameters:
+    - id: plan
+      type: MFramework.MSceneFlowPlan
+      description: 目标、策略和阶段命令。
+    return:
+      type: MFramework.MSceneFlowRequest
+      description: 可观察或取消此次切换的请求。
+    content.vb: Public Function Transition(plan As MSceneFlowPlan) As MSceneFlowRequest
+  overload: MFramework.MSceneFlow.Transition*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: 模块已关闭、正在切换，或当前场景已被外部释放。
+- uid: MFramework.MSceneFlow.Initialize(MFramework.MFrameworkApp)
+  commentId: M:MFramework.MSceneFlow.Initialize(MFramework.MFrameworkApp)
+  id: Initialize(MFramework.MFrameworkApp)
+  parent: MFramework.MSceneFlow
+  langs:
+  - csharp
+  - vb
+  name: Initialize(MFrameworkApp)
+  nameWithType: MSceneFlow.Initialize(MFrameworkApp)
+  fullName: MFramework.MSceneFlow.Initialize(MFramework.MFrameworkApp)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 所有服务注册完成后，初始化该模块。
+  example: []
+  syntax:
+    content: public void Initialize(MFrameworkApp app)
+    parameters:
+    - id: app
+      type: MFramework.MFrameworkApp
+      description: 持有该模块的框架应用。
+    content.vb: Public Sub Initialize(app As MFrameworkApp)
+  overload: MFramework.MSceneFlow.Initialize*
+  implements:
+  - MFramework.IMFrameworkModule.Initialize(MFramework.MFrameworkApp)
+- uid: MFramework.MSceneFlow.Tick(MFramework.MFrameTime)
+  commentId: M:MFramework.MSceneFlow.Tick(MFramework.MFrameTime)
+  id: Tick(MFramework.MFrameTime)
+  parent: MFramework.MSceneFlow
+  langs:
+  - csharp
+  - vb
+  name: Tick(MFrameTime)
+  nameWithType: MSceneFlow.Tick(MFrameTime)
+  fullName: MFramework.MSceneFlow.Tick(MFramework.MFrameTime)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 让对象向前运行一帧。
+  example: []
+  syntax:
+    content: public void Tick(MFrameTime time)
+    parameters:
+    - id: time
+      type: MFramework.MFrameTime
+      description: 缩放与非缩放的帧时间。
+    content.vb: Public Sub Tick(time As MFrameTime)
+  overload: MFramework.MSceneFlow.Tick*
+  implements:
+  - MFramework.IMFrameworkTickable.Tick(MFramework.MFrameTime)
+- uid: MFramework.MSceneFlow.Shutdown
+  commentId: M:MFramework.MSceneFlow.Shutdown
+  id: Shutdown
+  parent: MFramework.MSceneFlow
+  langs:
+  - csharp
+  - vb
+  name: Shutdown()
+  nameWithType: MSceneFlow.Shutdown()
+  fullName: MFramework.MSceneFlow.Shutdown()
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 释放该模块持有的资源；即使尚未初始化或初始化中途失败，也必须能够安全调用。
+  example: []
+  syntax:
+    content: public void Shutdown()
+    content.vb: Public Sub Shutdown()
+  overload: MFramework.MSceneFlow.Shutdown*
+  implements:
+  - MFramework.IMFrameworkModule.Shutdown
+- uid: MFramework.MSceneFlow.Dispose
+  commentId: M:MFramework.MSceneFlow.Dispose
+  id: Dispose
+  parent: MFramework.MSceneFlow
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: MSceneFlow.Dispose()
+  fullName: MFramework.MSceneFlow.Dispose()
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 关闭场景流并释放当前内容场景。
+  example: []
+  syntax:
+    content: public void Dispose()
+    content.vb: Public Sub Dispose()
+  overload: MFramework.MSceneFlow.Dispose*
+  implements:
+  - System.IDisposable.Dispose
+references:
+- uid: MFramework
+  commentId: N:MFramework
+  href: MFramework.html
+  name: MFramework
+  nameWithType: MFramework
+  fullName: MFramework
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: MFramework.IMFrameworkModule
+  commentId: T:MFramework.IMFrameworkModule
+  parent: MFramework
+  href: MFramework.IMFrameworkModule.html
+  name: IMFrameworkModule
+  nameWithType: IMFrameworkModule
+  fullName: MFramework.IMFrameworkModule
+- uid: MFramework.IMFrameworkTickable
+  commentId: T:MFramework.IMFrameworkTickable
+  parent: MFramework
+  href: MFramework.IMFrameworkTickable.html
+  name: IMFrameworkTickable
+  nameWithType: IMFrameworkTickable
+  fullName: MFramework.IMFrameworkTickable
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: MFramework.MSceneFlow.MFramework.MDisposableExtensions.AddTo``1(MFramework.MAssetScope)
+  commentId: M:MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MAssetScope)
+  parent: MFramework.MDisposableExtensions
+  definition: MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MAssetScope)
+  href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MAssetScope_
+  name: AddTo<MSceneFlow>(MSceneFlow, MAssetScope)
+  nameWithType: MDisposableExtensions.AddTo<MSceneFlow>(MSceneFlow, MAssetScope)
+  fullName: MFramework.MDisposableExtensions.AddTo<MFramework.MSceneFlow>(MFramework.MSceneFlow, MFramework.MAssetScope)
+  nameWithType.vb: MDisposableExtensions.AddTo(Of MSceneFlow)(MSceneFlow, MAssetScope)
+  fullName.vb: MFramework.MDisposableExtensions.AddTo(Of MFramework.MSceneFlow)(MFramework.MSceneFlow, MFramework.MAssetScope)
+  name.vb: AddTo(Of MSceneFlow)(MSceneFlow, MAssetScope)
+  spec.csharp:
+  - uid: MFramework.MDisposableExtensions.AddTo``1(MFramework.MSceneFlow,MFramework.MAssetScope)
+    name: AddTo
+    href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MAssetScope_
+  - name: <
+  - uid: MFramework.MSceneFlow
+    name: MSceneFlow
+    href: MFramework.MSceneFlow.html
+  - name: '>'
+  - name: (
+  - uid: MFramework.MSceneFlow
+    name: MSceneFlow
+    href: MFramework.MSceneFlow.html
+  - name: ','
+  - name: " "
+  - uid: MFramework.MAssetScope
+    name: MAssetScope
+    href: MFramework.MAssetScope.html
+  - name: )
+  spec.vb:
+  - uid: MFramework.MDisposableExtensions.AddTo``1(MFramework.MSceneFlow,MFramework.MAssetScope)
+    name: AddTo
+    href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MAssetScope_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MFramework.MSceneFlow
+    name: MSceneFlow
+    href: MFramework.MSceneFlow.html
+  - name: )
+  - name: (
+  - uid: MFramework.MSceneFlow
+    name: MSceneFlow
+    href: MFramework.MSceneFlow.html
+  - name: ','
+  - name: " "
+  - uid: MFramework.MAssetScope
+    name: MAssetScope
+    href: MFramework.MAssetScope.html
+  - name: )
+- uid: MFramework.MSceneFlow.MFramework.MDisposableExtensions.AddTo``1(MFramework.MDisposableBag)
+  commentId: M:MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MDisposableBag)
+  parent: MFramework.MDisposableExtensions
+  definition: MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MDisposableBag)
+  href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MDisposableBag_
+  name: AddTo<MSceneFlow>(MSceneFlow, MDisposableBag)
+  nameWithType: MDisposableExtensions.AddTo<MSceneFlow>(MSceneFlow, MDisposableBag)
+  fullName: MFramework.MDisposableExtensions.AddTo<MFramework.MSceneFlow>(MFramework.MSceneFlow, MFramework.MDisposableBag)
+  nameWithType.vb: MDisposableExtensions.AddTo(Of MSceneFlow)(MSceneFlow, MDisposableBag)
+  fullName.vb: MFramework.MDisposableExtensions.AddTo(Of MFramework.MSceneFlow)(MFramework.MSceneFlow, MFramework.MDisposableBag)
+  name.vb: AddTo(Of MSceneFlow)(MSceneFlow, MDisposableBag)
+  spec.csharp:
+  - uid: MFramework.MDisposableExtensions.AddTo``1(MFramework.MSceneFlow,MFramework.MDisposableBag)
+    name: AddTo
+    href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MDisposableBag_
+  - name: <
+  - uid: MFramework.MSceneFlow
+    name: MSceneFlow
+    href: MFramework.MSceneFlow.html
+  - name: '>'
+  - name: (
+  - uid: MFramework.MSceneFlow
+    name: MSceneFlow
+    href: MFramework.MSceneFlow.html
+  - name: ','
+  - name: " "
+  - uid: MFramework.MDisposableBag
+    name: MDisposableBag
+    href: MFramework.MDisposableBag.html
+  - name: )
+  spec.vb:
+  - uid: MFramework.MDisposableExtensions.AddTo``1(MFramework.MSceneFlow,MFramework.MDisposableBag)
+    name: AddTo
+    href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MDisposableBag_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MFramework.MSceneFlow
+    name: MSceneFlow
+    href: MFramework.MSceneFlow.html
+  - name: )
+  - name: (
+  - uid: MFramework.MSceneFlow
+    name: MSceneFlow
+    href: MFramework.MSceneFlow.html
+  - name: ','
+  - name: " "
+  - uid: MFramework.MDisposableBag
+    name: MDisposableBag
+    href: MFramework.MDisposableBag.html
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MAssetScope)
+  commentId: M:MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MAssetScope)
+  href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MAssetScope_
+  name: AddTo<T>(T, MAssetScope)
+  nameWithType: MDisposableExtensions.AddTo<T>(T, MAssetScope)
+  fullName: MFramework.MDisposableExtensions.AddTo<T>(T, MFramework.MAssetScope)
+  nameWithType.vb: MDisposableExtensions.AddTo(Of T)(T, MAssetScope)
+  fullName.vb: MFramework.MDisposableExtensions.AddTo(Of T)(T, MFramework.MAssetScope)
+  name.vb: AddTo(Of T)(T, MAssetScope)
+  spec.csharp:
+  - uid: MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MAssetScope)
+    name: AddTo
+    href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MAssetScope_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: MFramework.MAssetScope
+    name: MAssetScope
+    href: MFramework.MAssetScope.html
+  - name: )
+  spec.vb:
+  - uid: MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MAssetScope)
+    name: AddTo
+    href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MAssetScope_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: MFramework.MAssetScope
+    name: MAssetScope
+    href: MFramework.MAssetScope.html
+  - name: )
+- uid: MFramework.MDisposableExtensions
+  commentId: T:MFramework.MDisposableExtensions
+  parent: MFramework
+  href: MFramework.MDisposableExtensions.html
+  name: MDisposableExtensions
+  nameWithType: MDisposableExtensions
+  fullName: MFramework.MDisposableExtensions
+- uid: MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MDisposableBag)
+  commentId: M:MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MDisposableBag)
+  href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MDisposableBag_
+  name: AddTo<T>(T, MDisposableBag)
+  nameWithType: MDisposableExtensions.AddTo<T>(T, MDisposableBag)
+  fullName: MFramework.MDisposableExtensions.AddTo<T>(T, MFramework.MDisposableBag)
+  nameWithType.vb: MDisposableExtensions.AddTo(Of T)(T, MDisposableBag)
+  fullName.vb: MFramework.MDisposableExtensions.AddTo(Of T)(T, MFramework.MDisposableBag)
+  name.vb: AddTo(Of T)(T, MDisposableBag)
+  spec.csharp:
+  - uid: MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MDisposableBag)
+    name: AddTo
+    href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MDisposableBag_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: MFramework.MDisposableBag
+    name: MDisposableBag
+    href: MFramework.MDisposableBag.html
+  - name: )
+  spec.vb:
+  - uid: MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MDisposableBag)
+    name: AddTo
+    href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MDisposableBag_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: MFramework.MDisposableBag
+    name: MDisposableBag
+    href: MFramework.MDisposableBag.html
+  - name: )
+- uid: MFramework.MSceneFlow.#ctor*
+  commentId: Overload:MFramework.MSceneFlow.#ctor
+  href: MFramework.MSceneFlow.html#MFramework_MSceneFlow__ctor
+  name: MSceneFlow
+  nameWithType: MSceneFlow.MSceneFlow
+  fullName: MFramework.MSceneFlow.MSceneFlow
+  nameWithType.vb: MSceneFlow.New
+  fullName.vb: MFramework.MSceneFlow.New
+  name.vb: New
+- uid: MFramework.IMSceneFlowBackend
+  commentId: T:MFramework.IMSceneFlowBackend
+  parent: MFramework
+  href: MFramework.IMSceneFlowBackend.html
+  name: IMSceneFlowBackend
+  nameWithType: IMSceneFlowBackend
+  fullName: MFramework.IMSceneFlowBackend
+- uid: MFramework.MSceneFlow.IsBusy*
+  commentId: Overload:MFramework.MSceneFlow.IsBusy
+  href: MFramework.MSceneFlow.html#MFramework_MSceneFlow_IsBusy
+  name: IsBusy
+  nameWithType: MSceneFlow.IsBusy
+  fullName: MFramework.MSceneFlow.IsBusy
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: MFramework.MSceneFlow.CurrentScene*
+  commentId: Overload:MFramework.MSceneFlow.CurrentScene
+  href: MFramework.MSceneFlow.html#MFramework_MSceneFlow_CurrentScene
+  name: CurrentScene
+  nameWithType: MSceneFlow.CurrentScene
+  fullName: MFramework.MSceneFlow.CurrentScene
+- uid: MFramework.IMSceneFlowScene
+  commentId: T:MFramework.IMSceneFlowScene
+  parent: MFramework
+  href: MFramework.IMSceneFlowScene.html
+  name: IMSceneFlowScene
+  nameWithType: IMSceneFlowScene
+  fullName: MFramework.IMSceneFlowScene
+- uid: MFramework.MSceneFlow.ActiveRequest*
+  commentId: Overload:MFramework.MSceneFlow.ActiveRequest
+  href: MFramework.MSceneFlow.html#MFramework_MSceneFlow_ActiveRequest
+  name: ActiveRequest
+  nameWithType: MSceneFlow.ActiveRequest
+  fullName: MFramework.MSceneFlow.ActiveRequest
+- uid: MFramework.MSceneFlowRequest
+  commentId: T:MFramework.MSceneFlowRequest
+  parent: MFramework
+  href: MFramework.MSceneFlowRequest.html
+  name: MSceneFlowRequest
+  nameWithType: MSceneFlowRequest
+  fullName: MFramework.MSceneFlowRequest
+- uid: System.InvalidOperationException
+  commentId: T:System.InvalidOperationException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.invalidoperationexception
+  name: InvalidOperationException
+  nameWithType: InvalidOperationException
+  fullName: System.InvalidOperationException
+- uid: MFramework.MSceneFlow.AdoptCurrentScene*
+  commentId: Overload:MFramework.MSceneFlow.AdoptCurrentScene
+  href: MFramework.MSceneFlow.html#MFramework_MSceneFlow_AdoptCurrentScene_MFramework_IMSceneFlowScene_
+  name: AdoptCurrentScene
+  nameWithType: MSceneFlow.AdoptCurrentScene
+  fullName: MFramework.MSceneFlow.AdoptCurrentScene
+- uid: MFramework.MSceneFlow.TakeCurrentScene*
+  commentId: Overload:MFramework.MSceneFlow.TakeCurrentScene
+  href: MFramework.MSceneFlow.html#MFramework_MSceneFlow_TakeCurrentScene
+  name: TakeCurrentScene
+  nameWithType: MSceneFlow.TakeCurrentScene
+  fullName: MFramework.MSceneFlow.TakeCurrentScene
+- uid: MFramework.MSceneFlow.Transition*
+  commentId: Overload:MFramework.MSceneFlow.Transition
+  href: MFramework.MSceneFlow.html#MFramework_MSceneFlow_Transition_System_Object_MFramework_MSceneFlowOrder_
+  name: Transition
+  nameWithType: MSceneFlow.Transition
+  fullName: MFramework.MSceneFlow.Transition
+- uid: MFramework.MSceneFlowOrder
+  commentId: T:MFramework.MSceneFlowOrder
+  parent: MFramework
+  href: MFramework.MSceneFlowOrder.html
+  name: MSceneFlowOrder
+  nameWithType: MSceneFlowOrder
+  fullName: MFramework.MSceneFlowOrder
+- uid: MFramework.MSceneFlowPlan
+  commentId: T:MFramework.MSceneFlowPlan
+  parent: MFramework
+  href: MFramework.MSceneFlowPlan.html
+  name: MSceneFlowPlan
+  nameWithType: MSceneFlowPlan
+  fullName: MFramework.MSceneFlowPlan
+- uid: MFramework.MSceneFlow.Initialize*
+  commentId: Overload:MFramework.MSceneFlow.Initialize
+  href: MFramework.MSceneFlow.html#MFramework_MSceneFlow_Initialize_MFramework_MFrameworkApp_
+  name: Initialize
+  nameWithType: MSceneFlow.Initialize
+  fullName: MFramework.MSceneFlow.Initialize
+- uid: MFramework.IMFrameworkModule.Initialize(MFramework.MFrameworkApp)
+  commentId: M:MFramework.IMFrameworkModule.Initialize(MFramework.MFrameworkApp)
+  parent: MFramework.IMFrameworkModule
+  href: MFramework.IMFrameworkModule.html#MFramework_IMFrameworkModule_Initialize_MFramework_MFrameworkApp_
+  name: Initialize(MFrameworkApp)
+  nameWithType: IMFrameworkModule.Initialize(MFrameworkApp)
+  fullName: MFramework.IMFrameworkModule.Initialize(MFramework.MFrameworkApp)
+  spec.csharp:
+  - uid: MFramework.IMFrameworkModule.Initialize(MFramework.MFrameworkApp)
+    name: Initialize
+    href: MFramework.IMFrameworkModule.html#MFramework_IMFrameworkModule_Initialize_MFramework_MFrameworkApp_
+  - name: (
+  - uid: MFramework.MFrameworkApp
+    name: MFrameworkApp
+    href: MFramework.MFrameworkApp.html
+  - name: )
+  spec.vb:
+  - uid: MFramework.IMFrameworkModule.Initialize(MFramework.MFrameworkApp)
+    name: Initialize
+    href: MFramework.IMFrameworkModule.html#MFramework_IMFrameworkModule_Initialize_MFramework_MFrameworkApp_
+  - name: (
+  - uid: MFramework.MFrameworkApp
+    name: MFrameworkApp
+    href: MFramework.MFrameworkApp.html
+  - name: )
+- uid: MFramework.MFrameworkApp
+  commentId: T:MFramework.MFrameworkApp
+  parent: MFramework
+  href: MFramework.MFrameworkApp.html
+  name: MFrameworkApp
+  nameWithType: MFrameworkApp
+  fullName: MFramework.MFrameworkApp
+- uid: MFramework.MSceneFlow.Tick*
+  commentId: Overload:MFramework.MSceneFlow.Tick
+  href: MFramework.MSceneFlow.html#MFramework_MSceneFlow_Tick_MFramework_MFrameTime_
+  name: Tick
+  nameWithType: MSceneFlow.Tick
+  fullName: MFramework.MSceneFlow.Tick
+- uid: MFramework.IMFrameworkTickable.Tick(MFramework.MFrameTime)
+  commentId: M:MFramework.IMFrameworkTickable.Tick(MFramework.MFrameTime)
+  parent: MFramework.IMFrameworkTickable
+  href: MFramework.IMFrameworkTickable.html#MFramework_IMFrameworkTickable_Tick_MFramework_MFrameTime_
+  name: Tick(MFrameTime)
+  nameWithType: IMFrameworkTickable.Tick(MFrameTime)
+  fullName: MFramework.IMFrameworkTickable.Tick(MFramework.MFrameTime)
+  spec.csharp:
+  - uid: MFramework.IMFrameworkTickable.Tick(MFramework.MFrameTime)
+    name: Tick
+    href: MFramework.IMFrameworkTickable.html#MFramework_IMFrameworkTickable_Tick_MFramework_MFrameTime_
+  - name: (
+  - uid: MFramework.MFrameTime
+    name: MFrameTime
+    href: MFramework.MFrameTime.html
+  - name: )
+  spec.vb:
+  - uid: MFramework.IMFrameworkTickable.Tick(MFramework.MFrameTime)
+    name: Tick
+    href: MFramework.IMFrameworkTickable.html#MFramework_IMFrameworkTickable_Tick_MFramework_MFrameTime_
+  - name: (
+  - uid: MFramework.MFrameTime
+    name: MFrameTime
+    href: MFramework.MFrameTime.html
+  - name: )
+- uid: MFramework.MFrameTime
+  commentId: T:MFramework.MFrameTime
+  parent: MFramework
+  href: MFramework.MFrameTime.html
+  name: MFrameTime
+  nameWithType: MFrameTime
+  fullName: MFramework.MFrameTime
+- uid: MFramework.MSceneFlow.Shutdown*
+  commentId: Overload:MFramework.MSceneFlow.Shutdown
+  href: MFramework.MSceneFlow.html#MFramework_MSceneFlow_Shutdown
+  name: Shutdown
+  nameWithType: MSceneFlow.Shutdown
+  fullName: MFramework.MSceneFlow.Shutdown
+- uid: MFramework.IMFrameworkModule.Shutdown
+  commentId: M:MFramework.IMFrameworkModule.Shutdown
+  parent: MFramework.IMFrameworkModule
+  href: MFramework.IMFrameworkModule.html#MFramework_IMFrameworkModule_Shutdown
+  name: Shutdown()
+  nameWithType: IMFrameworkModule.Shutdown()
+  fullName: MFramework.IMFrameworkModule.Shutdown()
+  spec.csharp:
+  - uid: MFramework.IMFrameworkModule.Shutdown
+    name: Shutdown
+    href: MFramework.IMFrameworkModule.html#MFramework_IMFrameworkModule_Shutdown
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: MFramework.IMFrameworkModule.Shutdown
+    name: Shutdown
+    href: MFramework.IMFrameworkModule.html#MFramework_IMFrameworkModule_Shutdown
+  - name: (
+  - name: )
+- uid: MFramework.MSceneFlow.Dispose*
+  commentId: Overload:MFramework.MSceneFlow.Dispose
+  href: MFramework.MSceneFlow.html#MFramework_MSceneFlow_Dispose
+  name: Dispose
+  nameWithType: MSceneFlow.Dispose
+  fullName: MFramework.MSceneFlow.Dispose
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )

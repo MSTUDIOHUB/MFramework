@@ -1,0 +1,819 @@
+### YamlMime:ManagedReference
+items:
+- uid: MFramework.MAction
+  commentId: T:MFramework.MAction
+  id: MAction
+  parent: MFramework
+  children:
+  - MFramework.MAction.Callback(System.Action)
+  - MFramework.MAction.Custom(System.Func{System.Single,MFramework.MActionTickResult},System.Action,System.Action)
+  - MFramework.MAction.Delay(System.Single)
+  - MFramework.MAction.Parallel(MFramework.IMActionNode[])
+  - MFramework.MAction.Repeat(System.Int32,System.Func{MFramework.IMActionNode})
+  - MFramework.MAction.Sequence(MFramework.IMActionNode[])
+  - MFramework.MAction.WaitUntil(System.Func{System.Boolean})
+  langs:
+  - csharp
+  - vb
+  name: MAction
+  nameWithType: MAction
+  fullName: MFramework.MAction
+  type: Class
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 创建只能运行一次的动作节点，并将它们组合成易于阅读的游戏流程。
+  example: []
+  syntax:
+    content: public static class MAction
+    content.vb: Public Module MAction
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MFramework.MAction.Callback(System.Action)
+  commentId: M:MFramework.MAction.Callback(System.Action)
+  id: Callback(System.Action)
+  parent: MFramework.MAction
+  langs:
+  - csharp
+  - vb
+  name: Callback(Action)
+  nameWithType: MAction.Callback(Action)
+  fullName: MFramework.MAction.Callback(System.Action)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 创建一个执行一次回调的动作。
+  example: []
+  syntax:
+    content: public static IMActionNode Callback(Action callback)
+    parameters:
+    - id: callback
+      type: System.Action
+      description: 节点启动时要执行的回调。
+    return:
+      type: MFramework.IMActionNode
+      description: 新的单次使用动作节点。
+    content.vb: Public Shared Function Callback(callback As Action) As IMActionNode
+  overload: MFramework.MAction.Callback*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code class="paramref">callback</code> 为 null。
+- uid: MFramework.MAction.Delay(System.Single)
+  commentId: M:MFramework.MAction.Delay(System.Single)
+  id: Delay(System.Single)
+  parent: MFramework.MAction
+  langs:
+  - csharp
+  - vb
+  name: Delay(float)
+  nameWithType: MAction.Delay(float)
+  fullName: MFramework.MAction.Delay(float)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 创建一个等待指定时长的动作。
+  example: []
+  syntax:
+    content: public static IMActionNode Delay(float seconds)
+    parameters:
+    - id: seconds
+      type: System.Single
+      description: 等待时长，单位为秒，不能为负数。
+    return:
+      type: MFramework.IMActionNode
+      description: 新的单次使用动作节点。
+    content.vb: Public Shared Function Delay(seconds As Single) As IMActionNode
+  overload: MFramework.MAction.Delay*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: <code class="paramref">seconds</code> 为负数。
+  nameWithType.vb: MAction.Delay(Single)
+  fullName.vb: MFramework.MAction.Delay(Single)
+  name.vb: Delay(Single)
+- uid: MFramework.MAction.WaitUntil(System.Func{System.Boolean})
+  commentId: M:MFramework.MAction.WaitUntil(System.Func{System.Boolean})
+  id: WaitUntil(System.Func{System.Boolean})
+  parent: MFramework.MAction
+  langs:
+  - csharp
+  - vb
+  name: WaitUntil(Func<bool>)
+  nameWithType: MAction.WaitUntil(Func<bool>)
+  fullName: MFramework.MAction.WaitUntil(System.Func<bool>)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 创建一个在条件成立时完成的动作。
+  example: []
+  syntax:
+    content: public static IMActionNode WaitUntil(Func<bool> condition)
+    parameters:
+    - id: condition
+      type: System.Func{System.Boolean}
+      description: 节点启动时及每次 Tick 时要检查的条件。
+    return:
+      type: MFramework.IMActionNode
+      description: 新的单次使用动作节点。
+    content.vb: Public Shared Function WaitUntil(condition As Func(Of Boolean)) As IMActionNode
+  overload: MFramework.MAction.WaitUntil*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code class="paramref">condition</code> 为 null。
+  nameWithType.vb: MAction.WaitUntil(Func(Of Boolean))
+  fullName.vb: MFramework.MAction.WaitUntil(System.Func(Of Boolean))
+  name.vb: WaitUntil(Func(Of Boolean))
+- uid: MFramework.MAction.Sequence(MFramework.IMActionNode[])
+  commentId: M:MFramework.MAction.Sequence(MFramework.IMActionNode[])
+  id: Sequence(MFramework.IMActionNode[])
+  parent: MFramework.MAction
+  langs:
+  - csharp
+  - vb
+  name: Sequence(params IMActionNode[])
+  nameWithType: MAction.Sequence(params IMActionNode[])
+  fullName: MFramework.MAction.Sequence(params MFramework.IMActionNode[])
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 创建一个按顺序运行子节点的动作。
+  example: []
+  syntax:
+    content: public static IMActionNode Sequence(params IMActionNode[] children)
+    parameters:
+    - id: children
+      type: MFramework.IMActionNode[]
+      description: 按照执行顺序排列的单次使用子节点。
+    return:
+      type: MFramework.IMActionNode
+      description: 新的顺序动作节点。
+    content.vb: Public Shared Function Sequence(ParamArray children As IMActionNode()) As IMActionNode
+  overload: MFramework.MAction.Sequence*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code class="paramref">children</code> 或其中的某个元素为 null。
+  nameWithType.vb: MAction.Sequence(ParamArray IMActionNode())
+  fullName.vb: MFramework.MAction.Sequence(ParamArray MFramework.IMActionNode())
+  name.vb: Sequence(ParamArray IMActionNode())
+- uid: MFramework.MAction.Parallel(MFramework.IMActionNode[])
+  commentId: M:MFramework.MAction.Parallel(MFramework.IMActionNode[])
+  id: Parallel(MFramework.IMActionNode[])
+  parent: MFramework.MAction
+  langs:
+  - csharp
+  - vb
+  name: Parallel(params IMActionNode[])
+  nameWithType: MAction.Parallel(params IMActionNode[])
+  fullName: MFramework.MAction.Parallel(params MFramework.IMActionNode[])
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 创建一个同时运行所有子节点的动作。
+  example: []
+  syntax:
+    content: public static IMActionNode Parallel(params IMActionNode[] children)
+    parameters:
+    - id: children
+      type: MFramework.IMActionNode[]
+      description: 要运行的单次使用子节点。
+    return:
+      type: MFramework.IMActionNode
+      description: 新的并行动作节点；所有子节点完成后，该节点才会完成。
+    content.vb: Public Shared Function Parallel(ParamArray children As IMActionNode()) As IMActionNode
+  overload: MFramework.MAction.Parallel*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code class="paramref">children</code> 或其中的某个元素为 null。
+  nameWithType.vb: MAction.Parallel(ParamArray IMActionNode())
+  fullName.vb: MFramework.MAction.Parallel(ParamArray MFramework.IMActionNode())
+  name.vb: Parallel(ParamArray IMActionNode())
+- uid: MFramework.MAction.Repeat(System.Int32,System.Func{MFramework.IMActionNode})
+  commentId: M:MFramework.MAction.Repeat(System.Int32,System.Func{MFramework.IMActionNode})
+  id: Repeat(System.Int32,System.Func{MFramework.IMActionNode})
+  parent: MFramework.MAction
+  langs:
+  - csharp
+  - vb
+  name: Repeat(int, Func<IMActionNode>)
+  nameWithType: MAction.Repeat(int, Func<IMActionNode>)
+  fullName: MFramework.MAction.Repeat(int, System.Func<MFramework.IMActionNode>)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 创建一个按指定次数生成并运行全新子节点的动作。
+  example: []
+  syntax:
+    content: public static IMActionNode Repeat(int repeatCount, Func<IMActionNode> actionFactory)
+    parameters:
+    - id: repeatCount
+      type: System.Int32
+      description: 重复次数，不能为负数。
+    - id: actionFactory
+      type: System.Func{MFramework.IMActionNode}
+      description: 动作工厂；每次重复时都必须返回一个全新且非 null 的节点。
+    return:
+      type: MFramework.IMActionNode
+      description: 新的重复动作节点。
+    content.vb: Public Shared Function Repeat(repeatCount As Integer, actionFactory As Func(Of IMActionNode)) As IMActionNode
+  overload: MFramework.MAction.Repeat*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: <code class="paramref">repeatCount</code> 为负数。
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code class="paramref">actionFactory</code> 为 null。
+  nameWithType.vb: MAction.Repeat(Integer, Func(Of IMActionNode))
+  fullName.vb: MFramework.MAction.Repeat(Integer, System.Func(Of MFramework.IMActionNode))
+  name.vb: Repeat(Integer, Func(Of IMActionNode))
+- uid: MFramework.MAction.Custom(System.Func{System.Single,MFramework.MActionTickResult},System.Action,System.Action)
+  commentId: M:MFramework.MAction.Custom(System.Func{System.Single,MFramework.MActionTickResult},System.Action,System.Action)
+  id: Custom(System.Func{System.Single,MFramework.MActionTickResult},System.Action,System.Action)
+  parent: MFramework.MAction
+  langs:
+  - csharp
+  - vb
+  name: Custom(Func<float, MActionTickResult>, Action, Action)
+  nameWithType: MAction.Custom(Func<float, MActionTickResult>, Action, Action)
+  fullName: MFramework.MAction.Custom(System.Func<float, MFramework.MActionTickResult>, System.Action, System.Action)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 创建一个由调用方提供的生命周期回调驱动的动作。
+  example: []
+  syntax:
+    content: public static IMActionNode Custom(Func<float, MActionTickResult> onTick, Action onStart = null, Action onCancel = null)
+    parameters:
+    - id: onTick
+      type: System.Func{System.Single,MFramework.MActionTickResult}
+      description: 每次 Tick 时调用；动作需要结束时返回 Completed。
+    - id: onStart
+      type: System.Action
+      description: 可选回调，节点启动时执行一次。
+    - id: onCancel
+      type: System.Action
+      description: 可选回调，节点被取消时执行。
+    return:
+      type: MFramework.IMActionNode
+      description: 新的自定义动作节点。
+    content.vb: Public Shared Function Custom(onTick As Func(Of Single, MActionTickResult), onStart As Action = Nothing, onCancel As Action = Nothing) As IMActionNode
+  overload: MFramework.MAction.Custom*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code class="paramref">onTick</code> 为 null。
+  nameWithType.vb: MAction.Custom(Func(Of Single, MActionTickResult), Action, Action)
+  fullName.vb: MFramework.MAction.Custom(System.Func(Of Single, MFramework.MActionTickResult), System.Action, System.Action)
+  name.vb: Custom(Func(Of Single, MActionTickResult), Action, Action)
+references:
+- uid: MFramework
+  commentId: N:MFramework
+  href: MFramework.html
+  name: MFramework
+  nameWithType: MFramework
+  fullName: MFramework
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.ArgumentNullException
+  commentId: T:System.ArgumentNullException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.argumentnullexception
+  name: ArgumentNullException
+  nameWithType: ArgumentNullException
+  fullName: System.ArgumentNullException
+- uid: MFramework.MAction.Callback*
+  commentId: Overload:MFramework.MAction.Callback
+  href: MFramework.MAction.html#MFramework_MAction_Callback_System_Action_
+  name: Callback
+  nameWithType: MAction.Callback
+  fullName: MFramework.MAction.Callback
+- uid: System.Action
+  commentId: T:System.Action
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.action
+  name: Action
+  nameWithType: Action
+  fullName: System.Action
+- uid: MFramework.IMActionNode
+  commentId: T:MFramework.IMActionNode
+  parent: MFramework
+  href: MFramework.IMActionNode.html
+  name: IMActionNode
+  nameWithType: IMActionNode
+  fullName: MFramework.IMActionNode
+- uid: System.ArgumentOutOfRangeException
+  commentId: T:System.ArgumentOutOfRangeException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.argumentoutofrangeexception
+  name: ArgumentOutOfRangeException
+  nameWithType: ArgumentOutOfRangeException
+  fullName: System.ArgumentOutOfRangeException
+- uid: MFramework.MAction.Delay*
+  commentId: Overload:MFramework.MAction.Delay
+  href: MFramework.MAction.html#MFramework_MAction_Delay_System_Single_
+  name: Delay
+  nameWithType: MAction.Delay
+  fullName: MFramework.MAction.Delay
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: MFramework.MAction.WaitUntil*
+  commentId: Overload:MFramework.MAction.WaitUntil
+  href: MFramework.MAction.html#MFramework_MAction_WaitUntil_System_Func_System_Boolean__
+  name: WaitUntil
+  nameWithType: MAction.WaitUntil
+  fullName: MFramework.MAction.WaitUntil
+- uid: System.Func{System.Boolean}
+  commentId: T:System.Func{System.Boolean}
+  parent: System
+  definition: System.Func`1
+  href: https://learn.microsoft.com/dotnet/api/system.func-1
+  name: Func<bool>
+  nameWithType: Func<bool>
+  fullName: System.Func<bool>
+  nameWithType.vb: Func(Of Boolean)
+  fullName.vb: System.Func(Of Boolean)
+  name.vb: Func(Of Boolean)
+  spec.csharp:
+  - uid: System.Func`1
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-1
+  - name: <
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '>'
+  spec.vb:
+  - uid: System.Func`1
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: System.Func`1
+  commentId: T:System.Func`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.func-1
+  name: Func<TResult>
+  nameWithType: Func<TResult>
+  fullName: System.Func<TResult>
+  nameWithType.vb: Func(Of TResult)
+  fullName.vb: System.Func(Of TResult)
+  name.vb: Func(Of TResult)
+  spec.csharp:
+  - uid: System.Func`1
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Func`1
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: MFramework.MAction.Sequence*
+  commentId: Overload:MFramework.MAction.Sequence
+  href: MFramework.MAction.html#MFramework_MAction_Sequence_MFramework_IMActionNode___
+  name: Sequence
+  nameWithType: MAction.Sequence
+  fullName: MFramework.MAction.Sequence
+- uid: MFramework.IMActionNode[]
+  isExternal: true
+  href: MFramework.IMActionNode.html
+  name: IMActionNode[]
+  nameWithType: IMActionNode[]
+  fullName: MFramework.IMActionNode[]
+  nameWithType.vb: IMActionNode()
+  fullName.vb: MFramework.IMActionNode()
+  name.vb: IMActionNode()
+  spec.csharp:
+  - uid: MFramework.IMActionNode
+    name: IMActionNode
+    href: MFramework.IMActionNode.html
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: MFramework.IMActionNode
+    name: IMActionNode
+    href: MFramework.IMActionNode.html
+  - name: (
+  - name: )
+- uid: MFramework.MAction.Parallel*
+  commentId: Overload:MFramework.MAction.Parallel
+  href: MFramework.MAction.html#MFramework_MAction_Parallel_MFramework_IMActionNode___
+  name: Parallel
+  nameWithType: MAction.Parallel
+  fullName: MFramework.MAction.Parallel
+- uid: MFramework.MAction.Repeat*
+  commentId: Overload:MFramework.MAction.Repeat
+  href: MFramework.MAction.html#MFramework_MAction_Repeat_System_Int32_System_Func_MFramework_IMActionNode__
+  name: Repeat
+  nameWithType: MAction.Repeat
+  fullName: MFramework.MAction.Repeat
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.Func{MFramework.IMActionNode}
+  commentId: T:System.Func{MFramework.IMActionNode}
+  parent: System
+  definition: System.Func`1
+  href: https://learn.microsoft.com/dotnet/api/system.func-1
+  name: Func<IMActionNode>
+  nameWithType: Func<IMActionNode>
+  fullName: System.Func<MFramework.IMActionNode>
+  nameWithType.vb: Func(Of IMActionNode)
+  fullName.vb: System.Func(Of MFramework.IMActionNode)
+  name.vb: Func(Of IMActionNode)
+  spec.csharp:
+  - uid: System.Func`1
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-1
+  - name: <
+  - uid: MFramework.IMActionNode
+    name: IMActionNode
+    href: MFramework.IMActionNode.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Func`1
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MFramework.IMActionNode
+    name: IMActionNode
+    href: MFramework.IMActionNode.html
+  - name: )
+- uid: MFramework.MAction.Custom*
+  commentId: Overload:MFramework.MAction.Custom
+  href: MFramework.MAction.html#MFramework_MAction_Custom_System_Func_System_Single_MFramework_MActionTickResult__System_Action_System_Action_
+  name: Custom
+  nameWithType: MAction.Custom
+  fullName: MFramework.MAction.Custom
+- uid: System.Func{System.Single,MFramework.MActionTickResult}
+  commentId: T:System.Func{System.Single,MFramework.MActionTickResult}
+  parent: System
+  definition: System.Func`2
+  href: https://learn.microsoft.com/dotnet/api/system.func-2
+  name: Func<float, MActionTickResult>
+  nameWithType: Func<float, MActionTickResult>
+  fullName: System.Func<float, MFramework.MActionTickResult>
+  nameWithType.vb: Func(Of Single, MActionTickResult)
+  fullName.vb: System.Func(Of Single, MFramework.MActionTickResult)
+  name.vb: Func(Of Single, MActionTickResult)
+  spec.csharp:
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: MFramework.MActionTickResult
+    name: MActionTickResult
+    href: MFramework.MActionTickResult.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: MFramework.MActionTickResult
+    name: MActionTickResult
+    href: MFramework.MActionTickResult.html
+  - name: )
+- uid: System.Func`2
+  commentId: T:System.Func`2
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.func-2
+  name: Func<T, TResult>
+  nameWithType: Func<T, TResult>
+  fullName: System.Func<T, TResult>
+  nameWithType.vb: Func(Of T, TResult)
+  fullName.vb: System.Func(Of T, TResult)
+  name.vb: Func(Of T, TResult)
+  spec.csharp:
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TResult
+  - name: )

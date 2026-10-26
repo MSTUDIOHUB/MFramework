@@ -1,0 +1,227 @@
+### YamlMime:ManagedReference
+items:
+- uid: MFramework.IMSceneFlowBackend
+  commentId: T:MFramework.IMSceneFlowBackend
+  id: IMSceneFlowBackend
+  parent: MFramework
+  children:
+  - MFramework.IMSceneFlowBackend.ActivateAsync(MFramework.IMSceneFlowScene)
+  - MFramework.IMSceneFlowBackend.LoadAsync(System.Object,System.Int32)
+  - MFramework.IMSceneFlowBackend.SetActiveScene(MFramework.IMSceneFlowScene)
+  - MFramework.IMSceneFlowBackend.UnloadAsync(MFramework.IMSceneFlowScene)
+  langs:
+  - csharp
+  - vb
+  name: IMSceneFlowBackend
+  nameWithType: IMSceneFlowBackend
+  fullName: MFramework.IMSceneFlowBackend
+  type: Interface
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 隔离 MSceneFlow 与具体场景提供方，并让加载、激活和卸载顺序可以独立测试。
+  example: []
+  syntax:
+    content: public interface IMSceneFlowBackend
+    content.vb: Public Interface IMSceneFlowBackend
+  derivedClasses:
+  - MFramework.MAddressablesSceneFlowBackend
+- uid: MFramework.IMSceneFlowBackend.LoadAsync(System.Object,System.Int32)
+  commentId: M:MFramework.IMSceneFlowBackend.LoadAsync(System.Object,System.Int32)
+  id: LoadAsync(System.Object,System.Int32)
+  parent: MFramework.IMSceneFlowBackend
+  langs:
+  - csharp
+  - vb
+  name: LoadAsync(object, int)
+  nameWithType: IMSceneFlowBackend.LoadAsync(object, int)
+  fullName: MFramework.IMSceneFlowBackend.LoadAsync(object, int)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 以 Additive 且暂不激活的方式开始加载目标内容场景。
+  remarks: >-
+    返回的操作必须遵守 <xref href="MFramework.IMSceneFlowLoadOperation" data-throw-if-not-resolved="false"></xref> 的放弃契约：在场景所有权
+
+    转移前被释放时，后端负责处理并最终释放任何迟到的成功结果。
+  example: []
+  syntax:
+    content: IMSceneFlowLoadOperation LoadAsync(object key, int priority)
+    parameters:
+    - id: key
+      type: System.Object
+    - id: priority
+      type: System.Int32
+    return:
+      type: MFramework.IMSceneFlowLoadOperation
+    content.vb: Function LoadAsync(key As Object, priority As Integer) As IMSceneFlowLoadOperation
+  overload: MFramework.IMSceneFlowBackend.LoadAsync*
+  nameWithType.vb: IMSceneFlowBackend.LoadAsync(Object, Integer)
+  fullName.vb: MFramework.IMSceneFlowBackend.LoadAsync(Object, Integer)
+  name.vb: LoadAsync(Object, Integer)
+- uid: MFramework.IMSceneFlowBackend.ActivateAsync(MFramework.IMSceneFlowScene)
+  commentId: M:MFramework.IMSceneFlowBackend.ActivateAsync(MFramework.IMSceneFlowScene)
+  id: ActivateAsync(MFramework.IMSceneFlowScene)
+  parent: MFramework.IMSceneFlowBackend
+  langs:
+  - csharp
+  - vb
+  name: ActivateAsync(IMSceneFlowScene)
+  nameWithType: IMSceneFlowBackend.ActivateAsync(IMSceneFlowScene)
+  fullName: MFramework.IMSceneFlowBackend.ActivateAsync(MFramework.IMSceneFlowScene)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 开始激活一个已经加载但尚未激活的目标场景。
+  example: []
+  syntax:
+    content: IMSceneFlowOperation ActivateAsync(IMSceneFlowScene scene)
+    parameters:
+    - id: scene
+      type: MFramework.IMSceneFlowScene
+    return:
+      type: MFramework.IMSceneFlowOperation
+    content.vb: Function ActivateAsync(scene As IMSceneFlowScene) As IMSceneFlowOperation
+  overload: MFramework.IMSceneFlowBackend.ActivateAsync*
+- uid: MFramework.IMSceneFlowBackend.UnloadAsync(MFramework.IMSceneFlowScene)
+  commentId: M:MFramework.IMSceneFlowBackend.UnloadAsync(MFramework.IMSceneFlowScene)
+  id: UnloadAsync(MFramework.IMSceneFlowScene)
+  parent: MFramework.IMSceneFlowBackend
+  langs:
+  - csharp
+  - vb
+  name: UnloadAsync(IMSceneFlowScene)
+  nameWithType: IMSceneFlowBackend.UnloadAsync(IMSceneFlowScene)
+  fullName: MFramework.IMSceneFlowBackend.UnloadAsync(MFramework.IMSceneFlowScene)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: >-
+    开始卸载场景。操作运行期间调用方不得释放场景；成功后后端完成所有权交还，
+
+    失败时场景仍归调用方持有，可再次释放或重试。
+  remarks: >-
+    若运行中的操作被 Dispose，后端仍必须负责让已经发起的底层卸载安全收口；此时场景
+
+    不会归还给调用方。只有可观察操作以 Failed 终态完成时，所有权才归还调用方。
+
+    本方法还必须以返回值作为原子所有权边界：抛出异常或返回 null 时不得已经发起卸载，
+
+    场景仍归调用方；一旦返回非 null 操作，运行期间及操作被提前释放后的收口均归后端。
+  example: []
+  syntax:
+    content: IMSceneFlowOperation UnloadAsync(IMSceneFlowScene scene)
+    parameters:
+    - id: scene
+      type: MFramework.IMSceneFlowScene
+    return:
+      type: MFramework.IMSceneFlowOperation
+    content.vb: Function UnloadAsync(scene As IMSceneFlowScene) As IMSceneFlowOperation
+  overload: MFramework.IMSceneFlowBackend.UnloadAsync*
+- uid: MFramework.IMSceneFlowBackend.SetActiveScene(MFramework.IMSceneFlowScene)
+  commentId: M:MFramework.IMSceneFlowBackend.SetActiveScene(MFramework.IMSceneFlowScene)
+  id: SetActiveScene(MFramework.IMSceneFlowScene)
+  parent: MFramework.IMSceneFlowBackend
+  langs:
+  - csharp
+  - vb
+  name: SetActiveScene(IMSceneFlowScene)
+  nameWithType: IMSceneFlowBackend.SetActiveScene(IMSceneFlowScene)
+  fullName: MFramework.IMSceneFlowBackend.SetActiveScene(MFramework.IMSceneFlowScene)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 把场景设置为 Unity Active Scene；失败时应抛出异常。
+  example: []
+  syntax:
+    content: void SetActiveScene(IMSceneFlowScene scene)
+    parameters:
+    - id: scene
+      type: MFramework.IMSceneFlowScene
+    content.vb: Sub SetActiveScene(scene As IMSceneFlowScene)
+  overload: MFramework.IMSceneFlowBackend.SetActiveScene*
+references:
+- uid: MFramework
+  commentId: N:MFramework
+  href: MFramework.html
+  name: MFramework
+  nameWithType: MFramework
+  fullName: MFramework
+- uid: MFramework.IMSceneFlowLoadOperation
+  commentId: T:MFramework.IMSceneFlowLoadOperation
+  parent: MFramework
+  href: MFramework.IMSceneFlowLoadOperation.html
+  name: IMSceneFlowLoadOperation
+  nameWithType: IMSceneFlowLoadOperation
+  fullName: MFramework.IMSceneFlowLoadOperation
+- uid: MFramework.IMSceneFlowBackend.LoadAsync*
+  commentId: Overload:MFramework.IMSceneFlowBackend.LoadAsync
+  href: MFramework.IMSceneFlowBackend.html#MFramework_IMSceneFlowBackend_LoadAsync_System_Object_System_Int32_
+  name: LoadAsync
+  nameWithType: IMSceneFlowBackend.LoadAsync
+  fullName: MFramework.IMSceneFlowBackend.LoadAsync
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MFramework.IMSceneFlowBackend.ActivateAsync*
+  commentId: Overload:MFramework.IMSceneFlowBackend.ActivateAsync
+  href: MFramework.IMSceneFlowBackend.html#MFramework_IMSceneFlowBackend_ActivateAsync_MFramework_IMSceneFlowScene_
+  name: ActivateAsync
+  nameWithType: IMSceneFlowBackend.ActivateAsync
+  fullName: MFramework.IMSceneFlowBackend.ActivateAsync
+- uid: MFramework.IMSceneFlowScene
+  commentId: T:MFramework.IMSceneFlowScene
+  parent: MFramework
+  href: MFramework.IMSceneFlowScene.html
+  name: IMSceneFlowScene
+  nameWithType: IMSceneFlowScene
+  fullName: MFramework.IMSceneFlowScene
+- uid: MFramework.IMSceneFlowOperation
+  commentId: T:MFramework.IMSceneFlowOperation
+  parent: MFramework
+  href: MFramework.IMSceneFlowOperation.html
+  name: IMSceneFlowOperation
+  nameWithType: IMSceneFlowOperation
+  fullName: MFramework.IMSceneFlowOperation
+- uid: MFramework.IMSceneFlowBackend.UnloadAsync*
+  commentId: Overload:MFramework.IMSceneFlowBackend.UnloadAsync
+  href: MFramework.IMSceneFlowBackend.html#MFramework_IMSceneFlowBackend_UnloadAsync_MFramework_IMSceneFlowScene_
+  name: UnloadAsync
+  nameWithType: IMSceneFlowBackend.UnloadAsync
+  fullName: MFramework.IMSceneFlowBackend.UnloadAsync
+- uid: MFramework.IMSceneFlowBackend.SetActiveScene*
+  commentId: Overload:MFramework.IMSceneFlowBackend.SetActiveScene
+  href: MFramework.IMSceneFlowBackend.html#MFramework_IMSceneFlowBackend_SetActiveScene_MFramework_IMSceneFlowScene_
+  name: SetActiveScene
+  nameWithType: IMSceneFlowBackend.SetActiveScene
+  fullName: MFramework.IMSceneFlowBackend.SetActiveScene

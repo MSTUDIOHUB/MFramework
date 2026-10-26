@@ -1,0 +1,648 @@
+### YamlMime:ManagedReference
+items:
+- uid: MFramework.MJsonUtilitySaveSerializer`1
+  commentId: T:MFramework.MJsonUtilitySaveSerializer`1
+  id: MJsonUtilitySaveSerializer`1
+  parent: MFramework
+  children:
+  - MFramework.MJsonUtilitySaveSerializer`1.#ctor(System.Action{`0})
+  - MFramework.MJsonUtilitySaveSerializer`1.Deserialize(System.Byte[])
+  - MFramework.MJsonUtilitySaveSerializer`1.Serialize(`0)
+  langs:
+  - csharp
+  - vb
+  name: MJsonUtilitySaveSerializer<T>
+  nameWithType: MJsonUtilitySaveSerializer<T>
+  fullName: MFramework.MJsonUtilitySaveSerializer<T>
+  type: Class
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: >-
+    使用 Unity JsonUtility 的快照序列化适配器；T 必须是符合 Unity 字段序列化规则的普通可序列化类。
+
+    不支持直接保存 MonoBehaviour、ScriptableObject、字典或任意多态对象图；业务约束需另行验证。
+  example: []
+  syntax:
+    content: 'public sealed class MJsonUtilitySaveSerializer<T> : IMSaveSerializer<T> where T : class'
+    typeParameters:
+    - id: T
+      description: 带 Serializable 标记的普通快照类。
+    content.vb: Public NotInheritable Class MJsonUtilitySaveSerializer(Of T As Class) Implements IMSaveSerializer(Of T)
+  inheritance:
+  - System.Object
+  implements:
+  - MFramework.IMSaveSerializer{{T}}
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  nameWithType.vb: MJsonUtilitySaveSerializer(Of T)
+  fullName.vb: MFramework.MJsonUtilitySaveSerializer(Of T)
+  name.vb: MJsonUtilitySaveSerializer(Of T)
+- uid: MFramework.MJsonUtilitySaveSerializer`1.#ctor(System.Action{`0})
+  commentId: M:MFramework.MJsonUtilitySaveSerializer`1.#ctor(System.Action{`0})
+  id: '#ctor(System.Action{`0})'
+  parent: MFramework.MJsonUtilitySaveSerializer`1
+  langs:
+  - csharp
+  - vb
+  name: MJsonUtilitySaveSerializer(Action<T>)
+  nameWithType: MJsonUtilitySaveSerializer<T>.MJsonUtilitySaveSerializer(Action<T>)
+  fullName: MFramework.MJsonUtilitySaveSerializer<T>.MJsonUtilitySaveSerializer(System.Action<T>)
+  type: Constructor
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 创建适配器，并拒绝 JsonUtility 明确不能完整表示的根对象类型。
+  example: []
+  syntax:
+    content: public MJsonUtilitySaveSerializer(Action<T> validate = null)
+    parameters:
+    - id: validate
+      type: System.Action{{T}}
+      description: 可选业务校验器，在写入前与读取后执行；无效数据应抛出异常。
+    content.vb: Public Sub New(validate As Action(Of T) = Nothing)
+  overload: MFramework.MJsonUtilitySaveSerializer`1.#ctor*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: T 不是带 Serializable 标记的具体普通数据类，或属于明显不支持的根类型。
+  nameWithType.vb: MJsonUtilitySaveSerializer(Of T).New(Action(Of T))
+  fullName.vb: MFramework.MJsonUtilitySaveSerializer(Of T).New(System.Action(Of T))
+  name.vb: New(Action(Of T))
+- uid: MFramework.MJsonUtilitySaveSerializer`1.Serialize(`0)
+  commentId: M:MFramework.MJsonUtilitySaveSerializer`1.Serialize(`0)
+  id: Serialize(`0)
+  parent: MFramework.MJsonUtilitySaveSerializer`1
+  langs:
+  - csharp
+  - vb
+  name: Serialize(T)
+  nameWithType: MJsonUtilitySaveSerializer<T>.Serialize(T)
+  fullName: MFramework.MJsonUtilitySaveSerializer<T>.Serialize(T)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 序列化完整快照；返回 null 会作为序列化失败处理。
+  example: []
+  syntax:
+    content: public byte[] Serialize(T value)
+    parameters:
+    - id: value
+      type: '{T}'
+      description: 业务快照；是否允许 null 由序列化器决定。
+    return:
+      type: System.Byte[]
+      description: 独立的序列化数据。
+    content.vb: Public Function Serialize(value As T) As Byte()
+  overload: MFramework.MJsonUtilitySaveSerializer`1.Serialize*
+  implements:
+  - MFramework.IMSaveSerializer{{T}}.Serialize({T})
+  nameWithType.vb: MJsonUtilitySaveSerializer(Of T).Serialize(T)
+  fullName.vb: MFramework.MJsonUtilitySaveSerializer(Of T).Serialize(T)
+- uid: MFramework.MJsonUtilitySaveSerializer`1.Deserialize(System.Byte[])
+  commentId: M:MFramework.MJsonUtilitySaveSerializer`1.Deserialize(System.Byte[])
+  id: Deserialize(System.Byte[])
+  parent: MFramework.MJsonUtilitySaveSerializer`1
+  langs:
+  - csharp
+  - vb
+  name: Deserialize(byte[])
+  nameWithType: MJsonUtilitySaveSerializer<T>.Deserialize(byte[])
+  fullName: MFramework.MJsonUtilitySaveSerializer<T>.Deserialize(byte[])
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 反序列化并验证当前结构版本的数据；损坏时应抛出异常。
+  example: []
+  syntax:
+    content: public T Deserialize(byte[] payload)
+    parameters:
+    - id: payload
+      type: System.Byte[]
+      description: 只属于本次调用的数据副本，可以修改而不影响磁盘快照。
+    return:
+      type: '{T}'
+      description: 业务快照。
+    content.vb: Public Function Deserialize(payload As Byte()) As T
+  overload: MFramework.MJsonUtilitySaveSerializer`1.Deserialize*
+  implements:
+  - MFramework.IMSaveSerializer{{T}}.Deserialize(System.Byte[])
+  nameWithType.vb: MJsonUtilitySaveSerializer(Of T).Deserialize(Byte())
+  fullName.vb: MFramework.MJsonUtilitySaveSerializer(Of T).Deserialize(Byte())
+  name.vb: Deserialize(Byte())
+references:
+- uid: MFramework
+  commentId: N:MFramework
+  href: MFramework.html
+  name: MFramework
+  nameWithType: MFramework
+  fullName: MFramework
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: MFramework.IMSaveSerializer{{T}}
+  commentId: T:MFramework.IMSaveSerializer{`0}
+  parent: MFramework
+  definition: MFramework.IMSaveSerializer`1
+  href: MFramework.IMSaveSerializer-1.html
+  name: IMSaveSerializer<T>
+  nameWithType: IMSaveSerializer<T>
+  fullName: MFramework.IMSaveSerializer<T>
+  nameWithType.vb: IMSaveSerializer(Of T)
+  fullName.vb: MFramework.IMSaveSerializer(Of T)
+  name.vb: IMSaveSerializer(Of T)
+  spec.csharp:
+  - uid: MFramework.IMSaveSerializer`1
+    name: IMSaveSerializer
+    href: MFramework.IMSaveSerializer-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: MFramework.IMSaveSerializer`1
+    name: IMSaveSerializer
+    href: MFramework.IMSaveSerializer-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MFramework.IMSaveSerializer`1
+  commentId: T:MFramework.IMSaveSerializer`1
+  href: MFramework.IMSaveSerializer-1.html
+  name: IMSaveSerializer<T>
+  nameWithType: IMSaveSerializer<T>
+  fullName: MFramework.IMSaveSerializer<T>
+  nameWithType.vb: IMSaveSerializer(Of T)
+  fullName.vb: MFramework.IMSaveSerializer(Of T)
+  name.vb: IMSaveSerializer(Of T)
+  spec.csharp:
+  - uid: MFramework.IMSaveSerializer`1
+    name: IMSaveSerializer
+    href: MFramework.IMSaveSerializer-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: MFramework.IMSaveSerializer`1
+    name: IMSaveSerializer
+    href: MFramework.IMSaveSerializer-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.ArgumentException
+  commentId: T:System.ArgumentException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.argumentexception
+  name: ArgumentException
+  nameWithType: ArgumentException
+  fullName: System.ArgumentException
+- uid: MFramework.MJsonUtilitySaveSerializer`1.#ctor*
+  commentId: Overload:MFramework.MJsonUtilitySaveSerializer`1.#ctor
+  href: MFramework.MJsonUtilitySaveSerializer-1.html#MFramework_MJsonUtilitySaveSerializer_1__ctor_System_Action__0__
+  name: MJsonUtilitySaveSerializer
+  nameWithType: MJsonUtilitySaveSerializer<T>.MJsonUtilitySaveSerializer
+  fullName: MFramework.MJsonUtilitySaveSerializer<T>.MJsonUtilitySaveSerializer
+  nameWithType.vb: MJsonUtilitySaveSerializer(Of T).New
+  fullName.vb: MFramework.MJsonUtilitySaveSerializer(Of T).New
+  name.vb: New
+- uid: System.Action{{T}}
+  commentId: T:System.Action{`0}
+  parent: System
+  definition: System.Action`1
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<T>
+  nameWithType: Action<T>
+  fullName: System.Action<T>
+  nameWithType.vb: Action(Of T)
+  fullName.vb: System.Action(Of T)
+  name.vb: Action(Of T)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Action`1
+  commentId: T:System.Action`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<T>
+  nameWithType: Action<T>
+  fullName: System.Action<T>
+  nameWithType.vb: Action(Of T)
+  fullName.vb: System.Action(Of T)
+  name.vb: Action(Of T)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MFramework.MJsonUtilitySaveSerializer`1.Serialize*
+  commentId: Overload:MFramework.MJsonUtilitySaveSerializer`1.Serialize
+  href: MFramework.MJsonUtilitySaveSerializer-1.html#MFramework_MJsonUtilitySaveSerializer_1_Serialize__0_
+  name: Serialize
+  nameWithType: MJsonUtilitySaveSerializer<T>.Serialize
+  fullName: MFramework.MJsonUtilitySaveSerializer<T>.Serialize
+  nameWithType.vb: MJsonUtilitySaveSerializer(Of T).Serialize
+  fullName.vb: MFramework.MJsonUtilitySaveSerializer(Of T).Serialize
+- uid: MFramework.IMSaveSerializer{{T}}.Serialize({T})
+  commentId: M:MFramework.IMSaveSerializer{`0}.Serialize(`0)
+  parent: MFramework.IMSaveSerializer{{T}}
+  definition: MFramework.IMSaveSerializer`1.Serialize(`0)
+  href: MFramework.IMSaveSerializer-1.html#MFramework_IMSaveSerializer_1_Serialize__0_
+  name: Serialize(T)
+  nameWithType: IMSaveSerializer<T>.Serialize(T)
+  fullName: MFramework.IMSaveSerializer<T>.Serialize(T)
+  nameWithType.vb: IMSaveSerializer(Of T).Serialize(T)
+  fullName.vb: MFramework.IMSaveSerializer(Of T).Serialize(T)
+  spec.csharp:
+  - uid: MFramework.IMSaveSerializer{`0}.Serialize(`0)
+    name: Serialize
+    href: MFramework.IMSaveSerializer-1.html#MFramework_IMSaveSerializer_1_Serialize__0_
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: MFramework.IMSaveSerializer{`0}.Serialize(`0)
+    name: Serialize
+    href: MFramework.IMSaveSerializer-1.html#MFramework_IMSaveSerializer_1_Serialize__0_
+  - name: (
+  - name: T
+  - name: )
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: System.Byte[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.byte
+  name: byte[]
+  nameWithType: byte[]
+  fullName: byte[]
+  nameWithType.vb: Byte()
+  fullName.vb: Byte()
+  name.vb: Byte()
+  spec.csharp:
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: (
+  - name: )
+- uid: MFramework.IMSaveSerializer`1.Serialize(`0)
+  commentId: M:MFramework.IMSaveSerializer`1.Serialize(`0)
+  href: MFramework.IMSaveSerializer-1.html#MFramework_IMSaveSerializer_1_Serialize__0_
+  name: Serialize(T)
+  nameWithType: IMSaveSerializer<T>.Serialize(T)
+  fullName: MFramework.IMSaveSerializer<T>.Serialize(T)
+  nameWithType.vb: IMSaveSerializer(Of T).Serialize(T)
+  fullName.vb: MFramework.IMSaveSerializer(Of T).Serialize(T)
+  spec.csharp:
+  - uid: MFramework.IMSaveSerializer`1.Serialize(`0)
+    name: Serialize
+    href: MFramework.IMSaveSerializer-1.html#MFramework_IMSaveSerializer_1_Serialize__0_
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: MFramework.IMSaveSerializer`1.Serialize(`0)
+    name: Serialize
+    href: MFramework.IMSaveSerializer-1.html#MFramework_IMSaveSerializer_1_Serialize__0_
+  - name: (
+  - name: T
+  - name: )
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: MFramework.MJsonUtilitySaveSerializer`1.Deserialize*
+  commentId: Overload:MFramework.MJsonUtilitySaveSerializer`1.Deserialize
+  href: MFramework.MJsonUtilitySaveSerializer-1.html#MFramework_MJsonUtilitySaveSerializer_1_Deserialize_System_Byte___
+  name: Deserialize
+  nameWithType: MJsonUtilitySaveSerializer<T>.Deserialize
+  fullName: MFramework.MJsonUtilitySaveSerializer<T>.Deserialize
+  nameWithType.vb: MJsonUtilitySaveSerializer(Of T).Deserialize
+  fullName.vb: MFramework.MJsonUtilitySaveSerializer(Of T).Deserialize
+- uid: MFramework.IMSaveSerializer{{T}}.Deserialize(System.Byte[])
+  commentId: M:MFramework.IMSaveSerializer{`0}.Deserialize(System.Byte[])
+  parent: MFramework.IMSaveSerializer{{T}}
+  definition: MFramework.IMSaveSerializer`1.Deserialize(System.Byte[])
+  href: MFramework.IMSaveSerializer-1.html#MFramework_IMSaveSerializer_1_Deserialize_System_Byte___
+  name: Deserialize(byte[])
+  nameWithType: IMSaveSerializer<T>.Deserialize(byte[])
+  fullName: MFramework.IMSaveSerializer<T>.Deserialize(byte[])
+  nameWithType.vb: IMSaveSerializer(Of T).Deserialize(Byte())
+  fullName.vb: MFramework.IMSaveSerializer(Of T).Deserialize(Byte())
+  name.vb: Deserialize(Byte())
+  spec.csharp:
+  - uid: MFramework.IMSaveSerializer{`0}.Deserialize(System.Byte[])
+    name: Deserialize
+    href: MFramework.IMSaveSerializer-1.html#MFramework_IMSaveSerializer_1_Deserialize_System_Byte___
+  - name: (
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: '['
+  - name: ']'
+  - name: )
+  spec.vb:
+  - uid: MFramework.IMSaveSerializer{`0}.Deserialize(System.Byte[])
+    name: Deserialize
+    href: MFramework.IMSaveSerializer-1.html#MFramework_IMSaveSerializer_1_Deserialize_System_Byte___
+  - name: (
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: (
+  - name: )
+  - name: )
+- uid: MFramework.IMSaveSerializer`1.Deserialize(System.Byte[])
+  commentId: M:MFramework.IMSaveSerializer`1.Deserialize(System.Byte[])
+  isExternal: true
+  href: MFramework.IMSaveSerializer-1.html#MFramework_IMSaveSerializer_1_Deserialize_System_Byte___
+  name: Deserialize(byte[])
+  nameWithType: IMSaveSerializer<T>.Deserialize(byte[])
+  fullName: MFramework.IMSaveSerializer<T>.Deserialize(byte[])
+  nameWithType.vb: IMSaveSerializer(Of T).Deserialize(Byte())
+  fullName.vb: MFramework.IMSaveSerializer(Of T).Deserialize(Byte())
+  name.vb: Deserialize(Byte())
+  spec.csharp:
+  - uid: MFramework.IMSaveSerializer`1.Deserialize(System.Byte[])
+    name: Deserialize
+    href: MFramework.IMSaveSerializer-1.html#MFramework_IMSaveSerializer_1_Deserialize_System_Byte___
+  - name: (
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: '['
+  - name: ']'
+  - name: )
+  spec.vb:
+  - uid: MFramework.IMSaveSerializer`1.Deserialize(System.Byte[])
+    name: Deserialize
+    href: MFramework.IMSaveSerializer-1.html#MFramework_IMSaveSerializer_1_Deserialize_System_Byte___
+  - name: (
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: (
+  - name: )
+  - name: )

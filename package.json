@@ -1,0 +1,32 @@
+{
+  "name": "com.mstudio.mframework",
+  "version": "0.1.0",
+  "displayName": "MFramework",
+  "description": "MSTUDIO 面向团结引擎与 Unity 的轻量运行时框架，提供中文使用手册和 API 参考。",
+  "unity": "2022.3",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MSTUDIOHUB/MFramework.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MSTUDIOHUB/MFramework/issues"
+  },
+  "documentationUrl": "https://github.com/MSTUDIOHUB/MFramework/blob/main/Documentation~/index.md",
+  "changelogUrl": "https://github.com/MSTUDIOHUB/MFramework/blob/main/CHANGELOG.md",
+  "author": {
+    "name": "MSTUDIO"
+  },
+  "dependencies": {
+    "com.unity.addressables": "1.22.3",
+    "com.unity.ugui": "1.0.0"
+  },
+  "keywords": [
+    "mstudio",
+    "framework",
+    "ugui",
+    "addressables",
+    "scene-flow",
+    "minigame"
+  ]
+}

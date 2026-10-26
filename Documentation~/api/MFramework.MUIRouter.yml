@@ -1,0 +1,1460 @@
+### YamlMime:ManagedReference
+items:
+- uid: MFramework.MUIRouter
+  commentId: T:MFramework.MUIRouter
+  id: MUIRouter
+  parent: MFramework
+  children:
+  - MFramework.MUIRouter.#ctor(MFramework.MUIService)
+  - MFramework.MUIRouter.ActionRejected
+  - MFramework.MUIRouter.Back
+  - MFramework.MUIRouter.CanGoBack
+  - MFramework.MUIRouter.CloseTopPopup(MFramework.MUIPopupResult)
+  - MFramework.MUIRouter.CurrentPage
+  - MFramework.MUIRouter.CurrentPopup
+  - MFramework.MUIRouter.Dispose
+  - MFramework.MUIRouter.HideOverlay``1
+  - MFramework.MUIRouter.Initialize(MFramework.MFrameworkApp)
+  - MFramework.MUIRouter.PageCount
+  - MFramework.MUIRouter.PopToRoot
+  - MFramework.MUIRouter.PopupCount
+  - MFramework.MUIRouter.Push``1(System.Object)
+  - MFramework.MUIRouter.Replace``1(System.Object)
+  - MFramework.MUIRouter.RequestBack
+  - MFramework.MUIRouter.RootBackRequested
+  - MFramework.MUIRouter.ShowOverlay``1(System.Object)
+  - MFramework.MUIRouter.ShowPopup``1(System.Object)
+  - MFramework.MUIRouter.Shutdown
+  langs:
+  - csharp
+  - vb
+  name: MUIRouter
+  nameWithType: MUIRouter
+  fullName: MFramework.MUIRouter
+  type: Class
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 协调缓存的 UGUI 页面、模态弹窗、通用按钮以及统一返回行为。
+  remarks: >-
+    导航操作不会同步重入。视图生命周期钩子抛出异常时，路由器会先恢复一致的可见状态与栈状态，
+
+    再把原异常交还给调用方；回滚阶段也失败时会抛出 <xref href="System.AggregateException" data-throw-if-not-resolved="false"></xref>。
+  example: []
+  syntax:
+    content: 'public sealed class MUIRouter : IMFrameworkModule, IDisposable'
+    content.vb: Public NotInheritable Class MUIRouter Implements IMFrameworkModule, IDisposable
+  inheritance:
+  - System.Object
+  implements:
+  - MFramework.IMFrameworkModule
+  - System.IDisposable
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - MFramework.MUIRouter.MFramework.MDisposableExtensions.AddTo``1(MFramework.MAssetScope)
+  - MFramework.MUIRouter.MFramework.MDisposableExtensions.AddTo``1(MFramework.MDisposableBag)
+- uid: MFramework.MUIRouter.#ctor(MFramework.MUIService)
+  commentId: M:MFramework.MUIRouter.#ctor(MFramework.MUIService)
+  id: '#ctor(MFramework.MUIService)'
+  parent: MFramework.MUIRouter
+  langs:
+  - csharp
+  - vb
+  name: MUIRouter(MUIService)
+  nameWithType: MUIRouter.MUIRouter(MUIService)
+  fullName: MFramework.MUIRouter.MUIRouter(MFramework.MUIService)
+  type: Constructor
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 为一个 UGUI 服务创建路由器。
+  example: []
+  syntax:
+    content: public MUIRouter(MUIService ui)
+    parameters:
+    - id: ui
+      type: MFramework.MUIService
+      description: 持有已注册视图实例的服务。
+    content.vb: Public Sub New(ui As MUIService)
+  overload: MFramework.MUIRouter.#ctor*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code class="paramref">ui</code> 为 null。
+  - type: System.ObjectDisposedException
+    commentId: T:System.ObjectDisposedException
+    description: <code class="paramref">ui</code> 已经释放。
+  nameWithType.vb: MUIRouter.New(MUIService)
+  fullName.vb: MFramework.MUIRouter.New(MFramework.MUIService)
+  name.vb: New(MUIService)
+- uid: MFramework.MUIRouter.RootBackRequested
+  commentId: E:MFramework.MUIRouter.RootBackRequested
+  id: RootBackRequested
+  parent: MFramework.MUIRouter
+  langs:
+  - csharp
+  - vb
+  name: RootBackRequested
+  nameWithType: MUIRouter.RootBackRequested
+  fullName: MFramework.MUIRouter.RootBackRequested
+  type: Event
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 返回请求到达根页面时触发。
+  remarks: 游戏层可以把此事件映射为暂停、退出确认或平台桥接操作。
+  example: []
+  syntax:
+    content: public event Action RootBackRequested
+    return:
+      type: System.Action
+    content.vb: Public Event RootBackRequested As Action
+- uid: MFramework.MUIRouter.ActionRejected
+  commentId: E:MFramework.MUIRouter.ActionRejected
+  id: ActionRejected
+  parent: MFramework.MUIRouter
+  langs:
+  - csharp
+  - vb
+  name: ActionRejected
+  nameWithType: MUIRouter.ActionRejected
+  fullName: MFramework.MUIRouter.ActionRejected
+  type: Event
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 视图因校验失败而拒绝操作时触发。
+  example: []
+  syntax:
+    content: public event Action<MUIView, string> ActionRejected
+    return:
+      type: System.Action{MFramework.MUIView,System.String}
+    content.vb: Public Event ActionRejected As Action(Of MUIView, String)
+- uid: MFramework.MUIRouter.CurrentPage
+  commentId: P:MFramework.MUIRouter.CurrentPage
+  id: CurrentPage
+  parent: MFramework.MUIRouter
+  langs:
+  - csharp
+  - vb
+  name: CurrentPage
+  nameWithType: MUIRouter.CurrentPage
+  fullName: MFramework.MUIRouter.CurrentPage
+  type: Property
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 获取当前可见页面；首次 Push 之前返回 null。
+  example: []
+  syntax:
+    content: public MUIPage CurrentPage { get; }
+    parameters: []
+    return:
+      type: MFramework.MUIPage
+    content.vb: Public ReadOnly Property CurrentPage As MUIPage
+  overload: MFramework.MUIRouter.CurrentPage*
+- uid: MFramework.MUIRouter.CurrentPopup
+  commentId: P:MFramework.MUIRouter.CurrentPopup
+  id: CurrentPopup
+  parent: MFramework.MUIRouter
+  langs:
+  - csharp
+  - vb
+  name: CurrentPopup
+  nameWithType: MUIRouter.CurrentPopup
+  fullName: MFramework.MUIRouter.CurrentPopup
+  type: Property
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 获取最上层模态弹窗；没有打开弹窗时返回 null。
+  example: []
+  syntax:
+    content: public MUIPopup CurrentPopup { get; }
+    parameters: []
+    return:
+      type: MFramework.MUIPopup
+    content.vb: Public ReadOnly Property CurrentPopup As MUIPopup
+  overload: MFramework.MUIRouter.CurrentPopup*
+- uid: MFramework.MUIRouter.PageCount
+  commentId: P:MFramework.MUIRouter.PageCount
+  id: PageCount
+  parent: MFramework.MUIRouter
+  langs:
+  - csharp
+  - vb
+  name: PageCount
+  nameWithType: MUIRouter.PageCount
+  fullName: MFramework.MUIRouter.PageCount
+  type: Property
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 获取导航历史中的页面数量。
+  example: []
+  syntax:
+    content: public int PageCount { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property PageCount As Integer
+  overload: MFramework.MUIRouter.PageCount*
+- uid: MFramework.MUIRouter.PopupCount
+  commentId: P:MFramework.MUIRouter.PopupCount
+  id: PopupCount
+  parent: MFramework.MUIRouter
+  langs:
+  - csharp
+  - vb
+  name: PopupCount
+  nameWithType: MUIRouter.PopupCount
+  fullName: MFramework.MUIRouter.PopupCount
+  type: Property
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 获取当前打开的弹窗数量。
+  example: []
+  syntax:
+    content: public int PopupCount { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property PopupCount As Integer
+  overload: MFramework.MUIRouter.PopupCount*
+- uid: MFramework.MUIRouter.CanGoBack
+  commentId: P:MFramework.MUIRouter.CanGoBack
+  id: CanGoBack
+  parent: MFramework.MUIRouter
+  langs:
+  - csharp
+  - vb
+  name: CanGoBack
+  nameWithType: MUIRouter.CanGoBack
+  fullName: MFramework.MUIRouter.CanGoBack
+  type: Property
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 获取当前是否存在可由框架关闭的弹窗或上一层页面。
+  example: []
+  syntax:
+    content: public bool CanGoBack { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property CanGoBack As Boolean
+  overload: MFramework.MUIRouter.CanGoBack*
+- uid: MFramework.MUIRouter.Push``1(System.Object)
+  commentId: M:MFramework.MUIRouter.Push``1(System.Object)
+  id: Push``1(System.Object)
+  parent: MFramework.MUIRouter
+  langs:
+  - csharp
+  - vb
+  name: Push<TPage>(object)
+  nameWithType: MUIRouter.Push<TPage>(object)
+  fullName: MFramework.MUIRouter.Push<TPage>(object)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 压入一个页面；若同类型缓存页已在历史中，则回到该页并移除其后的历史。
+  example: []
+  syntax:
+    content: 'public TPage Push<TPage>(object arguments = null) where TPage : MUIPage'
+    parameters:
+    - id: arguments
+      type: System.Object
+      description: 可选页面参数。
+    typeParameters:
+    - id: TPage
+      description: 已注册的页面类型。
+    return:
+      type: '{TPage}'
+      description: 当前可见页面。
+    content.vb: Public Function Push(Of TPage As MUIPage)(arguments As Object = Nothing) As TPage
+  overload: MFramework.MUIRouter.Push*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: 另一个导航操作尚未完成。
+  - type: System.ObjectDisposedException
+    commentId: T:System.ObjectDisposedException
+    description: 路由器已经释放。
+  nameWithType.vb: MUIRouter.Push(Of TPage)(Object)
+  fullName.vb: MFramework.MUIRouter.Push(Of TPage)(Object)
+  name.vb: Push(Of TPage)(Object)
+- uid: MFramework.MUIRouter.Replace``1(System.Object)
+  commentId: M:MFramework.MUIRouter.Replace``1(System.Object)
+  id: Replace``1(System.Object)
+  parent: MFramework.MUIRouter
+  langs:
+  - csharp
+  - vb
+  name: Replace<TPage>(object)
+  nameWithType: MUIRouter.Replace<TPage>(object)
+  fullName: MFramework.MUIRouter.Replace<TPage>(object)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 替换当前页面，同时保留更早的导航历史。
+  remarks: 目标缓存页已在更早历史中时，会先移除它原来的历史位置，确保同一实例不会重复入栈。
+  example: []
+  syntax:
+    content: 'public TPage Replace<TPage>(object arguments = null) where TPage : MUIPage'
+    parameters:
+    - id: arguments
+      type: System.Object
+      description: 可选页面参数。
+    typeParameters:
+    - id: TPage
+      description: 已注册的页面类型。
+    return:
+      type: '{TPage}'
+      description: 替换后显示的页面。
+    content.vb: Public Function Replace(Of TPage As MUIPage)(arguments As Object = Nothing) As TPage
+  overload: MFramework.MUIRouter.Replace*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: 另一个导航操作尚未完成。
+  - type: System.ObjectDisposedException
+    commentId: T:System.ObjectDisposedException
+    description: 路由器已经释放。
+  nameWithType.vb: MUIRouter.Replace(Of TPage)(Object)
+  fullName.vb: MFramework.MUIRouter.Replace(Of TPage)(Object)
+  name.vb: Replace(Of TPage)(Object)
+- uid: MFramework.MUIRouter.Back
+  commentId: M:MFramework.MUIRouter.Back
+  id: Back
+  parent: MFramework.MUIRouter
+  langs:
+  - csharp
+  - vb
+  name: Back()
+  nameWithType: MUIRouter.Back()
+  fullName: MFramework.MUIRouter.Back()
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 在页面栈中返回一级。
+  example: []
+  syntax:
+    content: public bool Back()
+    return:
+      type: System.Boolean
+      description: 成功弹出页面时返回 <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>。
+    content.vb: Public Function Back() As Boolean
+  overload: MFramework.MUIRouter.Back*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: 另一个导航操作尚未完成。
+  - type: System.ObjectDisposedException
+    commentId: T:System.ObjectDisposedException
+    description: 路由器已经释放。
+- uid: MFramework.MUIRouter.PopToRoot
+  commentId: M:MFramework.MUIRouter.PopToRoot
+  id: PopToRoot
+  parent: MFramework.MUIRouter
+  langs:
+  - csharp
+  - vb
+  name: PopToRoot()
+  nameWithType: MUIRouter.PopToRoot()
+  fullName: MFramework.MUIRouter.PopToRoot()
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 关闭中间页面并返回第一个页面。
+  example: []
+  syntax:
+    content: public bool PopToRoot()
+    return:
+      type: System.Boolean
+      description: 至少移除一个页面时返回 <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>。
+    content.vb: Public Function PopToRoot() As Boolean
+  overload: MFramework.MUIRouter.PopToRoot*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: 另一个导航操作尚未完成。
+  - type: System.ObjectDisposedException
+    commentId: T:System.ObjectDisposedException
+    description: 路由器已经释放。
+- uid: MFramework.MUIRouter.ShowPopup``1(System.Object)
+  commentId: M:MFramework.MUIRouter.ShowPopup``1(System.Object)
+  id: ShowPopup``1(System.Object)
+  parent: MFramework.MUIRouter
+  langs:
+  - csharp
+  - vb
+  name: ShowPopup<TPopup>(object)
+  nameWithType: MUIRouter.ShowPopup<TPopup>(object)
+  fullName: MFramework.MUIRouter.ShowPopup<TPopup>(object)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 在当前页面上方显示模态弹窗。
+  example: []
+  syntax:
+    content: 'public TPopup ShowPopup<TPopup>(object arguments = null) where TPopup : MUIPopup'
+    parameters:
+    - id: arguments
+      type: System.Object
+      description: 可选弹窗参数。
+    typeParameters:
+    - id: TPopup
+      description: 已注册的弹窗类型。
+    return:
+      type: '{TPopup}'
+      description: 当前可见弹窗。
+    content.vb: Public Function ShowPopup(Of TPopup As MUIPopup)(arguments As Object = Nothing) As TPopup
+  overload: MFramework.MUIRouter.ShowPopup*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: 另一个导航操作尚未完成。
+  - type: System.ObjectDisposedException
+    commentId: T:System.ObjectDisposedException
+    description: 路由器已经释放。
+  nameWithType.vb: MUIRouter.ShowPopup(Of TPopup)(Object)
+  fullName.vb: MFramework.MUIRouter.ShowPopup(Of TPopup)(Object)
+  name.vb: ShowPopup(Of TPopup)(Object)
+- uid: MFramework.MUIRouter.CloseTopPopup(MFramework.MUIPopupResult)
+  commentId: M:MFramework.MUIRouter.CloseTopPopup(MFramework.MUIPopupResult)
+  id: CloseTopPopup(MFramework.MUIPopupResult)
+  parent: MFramework.MUIRouter
+  langs:
+  - csharp
+  - vb
+  name: CloseTopPopup(MUIPopupResult)
+  nameWithType: MUIRouter.CloseTopPopup(MUIPopupResult)
+  fullName: MFramework.MUIRouter.CloseTopPopup(MFramework.MUIPopupResult)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 关闭最上层弹窗，并传递语义化结果。
+  example: []
+  syntax:
+    content: public bool CloseTopPopup(MUIPopupResult result = null)
+    parameters:
+    - id: result
+      type: MFramework.MUIPopupResult
+      description: 弹窗结果；null 表示取消。
+    return:
+      type: System.Boolean
+      description: 成功关闭弹窗时返回 <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>。
+    content.vb: Public Function CloseTopPopup(result As MUIPopupResult = Nothing) As Boolean
+  overload: MFramework.MUIRouter.CloseTopPopup*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: 另一个导航操作尚未完成。
+  - type: System.ObjectDisposedException
+    commentId: T:System.ObjectDisposedException
+    description: 路由器已经释放。
+- uid: MFramework.MUIRouter.ShowOverlay``1(System.Object)
+  commentId: M:MFramework.MUIRouter.ShowOverlay``1(System.Object)
+  id: ShowOverlay``1(System.Object)
+  parent: MFramework.MUIRouter
+  langs:
+  - csharp
+  - vb
+  name: ShowOverlay<TOverlay>(object)
+  nameWithType: MUIRouter.ShowOverlay<TOverlay>(object)
+  fullName: MFramework.MUIRouter.ShowOverlay<TOverlay>(object)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 显示非模态覆盖层，不修改页面或弹窗历史。
+  example: []
+  syntax:
+    content: 'public TOverlay ShowOverlay<TOverlay>(object arguments = null) where TOverlay : MUIOverlay'
+    parameters:
+    - id: arguments
+      type: System.Object
+      description: 可选覆盖层参数。
+    typeParameters:
+    - id: TOverlay
+      description: 已注册的覆盖层类型。
+    return:
+      type: '{TOverlay}'
+      description: 当前可见覆盖层。
+    content.vb: Public Function ShowOverlay(Of TOverlay As MUIOverlay)(arguments As Object = Nothing) As TOverlay
+  overload: MFramework.MUIRouter.ShowOverlay*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: 另一个导航操作尚未完成。
+  - type: System.ObjectDisposedException
+    commentId: T:System.ObjectDisposedException
+    description: 路由器已经释放。
+  nameWithType.vb: MUIRouter.ShowOverlay(Of TOverlay)(Object)
+  fullName.vb: MFramework.MUIRouter.ShowOverlay(Of TOverlay)(Object)
+  name.vb: ShowOverlay(Of TOverlay)(Object)
+- uid: MFramework.MUIRouter.HideOverlay``1
+  commentId: M:MFramework.MUIRouter.HideOverlay``1
+  id: HideOverlay``1
+  parent: MFramework.MUIRouter
+  langs:
+  - csharp
+  - vb
+  name: HideOverlay<TOverlay>()
+  nameWithType: MUIRouter.HideOverlay<TOverlay>()
+  fullName: MFramework.MUIRouter.HideOverlay<TOverlay>()
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 隐藏非模态覆盖层。
+  example: []
+  syntax:
+    content: 'public bool HideOverlay<TOverlay>() where TOverlay : MUIOverlay'
+    typeParameters:
+    - id: TOverlay
+      description: 已注册的覆盖层类型。
+    return:
+      type: System.Boolean
+      description: 覆盖层实例存在时返回 <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>。
+    content.vb: Public Function HideOverlay(Of TOverlay As MUIOverlay)() As Boolean
+  overload: MFramework.MUIRouter.HideOverlay*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: 另一个导航操作尚未完成。
+  - type: System.ObjectDisposedException
+    commentId: T:System.ObjectDisposedException
+    description: 路由器已经释放。
+  nameWithType.vb: MUIRouter.HideOverlay(Of TOverlay)()
+  fullName.vb: MFramework.MUIRouter.HideOverlay(Of TOverlay)()
+  name.vb: HideOverlay(Of TOverlay)()
+- uid: MFramework.MUIRouter.RequestBack
+  commentId: M:MFramework.MUIRouter.RequestBack
+  id: RequestBack
+  parent: MFramework.MUIRouter
+  langs:
+  - csharp
+  - vb
+  name: RequestBack()
+  nameWithType: MUIRouter.RequestBack()
+  fullName: MFramework.MUIRouter.RequestBack()
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 使用相同 UI 规则处理返回按钮、键盘 Escape、Android 返回键或小游戏平台返回操作。
+  example: []
+  syntax:
+    content: public bool RequestBack()
+    return:
+      type: System.Boolean
+      description: 当前视图消费了请求或完成了返回时返回 <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>；请求到达根页面时返回 <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>。
+    content.vb: Public Function RequestBack() As Boolean
+  overload: MFramework.MUIRouter.RequestBack*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: 另一个导航操作尚未完成。
+  - type: System.ObjectDisposedException
+    commentId: T:System.ObjectDisposedException
+    description: 路由器已经释放。
+- uid: MFramework.MUIRouter.Initialize(MFramework.MFrameworkApp)
+  commentId: M:MFramework.MUIRouter.Initialize(MFramework.MFrameworkApp)
+  id: Initialize(MFramework.MFrameworkApp)
+  parent: MFramework.MUIRouter
+  langs:
+  - csharp
+  - vb
+  name: Initialize(MFrameworkApp)
+  nameWithType: MUIRouter.Initialize(MFrameworkApp)
+  fullName: MFramework.MUIRouter.Initialize(MFramework.MFrameworkApp)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 确认路由器尚未释放；视图绑定已在构造阶段完成。
+  example: []
+  syntax:
+    content: public void Initialize(MFrameworkApp app)
+    parameters:
+    - id: app
+      type: MFramework.MFrameworkApp
+      description: 持有此模块的框架应用。
+    content.vb: Public Sub Initialize(app As MFrameworkApp)
+  overload: MFramework.MUIRouter.Initialize*
+  exceptions:
+  - type: System.ObjectDisposedException
+    commentId: T:System.ObjectDisposedException
+    description: 路由器已经释放。
+  implements:
+  - MFramework.IMFrameworkModule.Initialize(MFramework.MFrameworkApp)
+- uid: MFramework.MUIRouter.Shutdown
+  commentId: M:MFramework.MUIRouter.Shutdown
+  id: Shutdown
+  parent: MFramework.MUIRouter
+  langs:
+  - csharp
+  - vb
+  name: Shutdown()
+  nameWithType: MUIRouter.Shutdown()
+  fullName: MFramework.MUIRouter.Shutdown()
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 解除路由器订阅、隐藏受管视图，并清空导航状态。
+  example: []
+  syntax:
+    content: public void Shutdown()
+    content.vb: Public Sub Shutdown()
+  overload: MFramework.MUIRouter.Shutdown*
+  implements:
+  - MFramework.IMFrameworkModule.Shutdown
+- uid: MFramework.MUIRouter.Dispose
+  commentId: M:MFramework.MUIRouter.Dispose
+  id: Dispose
+  parent: MFramework.MUIRouter
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: MUIRouter.Dispose()
+  fullName: MFramework.MUIRouter.Dispose()
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 解除路由器订阅、隐藏受管视图，并清空导航状态。
+  example: []
+  syntax:
+    content: public void Dispose()
+    content.vb: Public Sub Dispose()
+  overload: MFramework.MUIRouter.Dispose*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: 正在执行导航操作。
+  implements:
+  - System.IDisposable.Dispose
+references:
+- uid: System.AggregateException
+  commentId: T:System.AggregateException
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.aggregateexception
+  name: AggregateException
+  nameWithType: AggregateException
+  fullName: System.AggregateException
+- uid: MFramework
+  commentId: N:MFramework
+  href: MFramework.html
+  name: MFramework
+  nameWithType: MFramework
+  fullName: MFramework
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: MFramework.IMFrameworkModule
+  commentId: T:MFramework.IMFrameworkModule
+  parent: MFramework
+  href: MFramework.IMFrameworkModule.html
+  name: IMFrameworkModule
+  nameWithType: IMFrameworkModule
+  fullName: MFramework.IMFrameworkModule
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: MFramework.MUIRouter.MFramework.MDisposableExtensions.AddTo``1(MFramework.MAssetScope)
+  commentId: M:MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MAssetScope)
+  parent: MFramework.MDisposableExtensions
+  definition: MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MAssetScope)
+  href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MAssetScope_
+  name: AddTo<MUIRouter>(MUIRouter, MAssetScope)
+  nameWithType: MDisposableExtensions.AddTo<MUIRouter>(MUIRouter, MAssetScope)
+  fullName: MFramework.MDisposableExtensions.AddTo<MFramework.MUIRouter>(MFramework.MUIRouter, MFramework.MAssetScope)
+  nameWithType.vb: MDisposableExtensions.AddTo(Of MUIRouter)(MUIRouter, MAssetScope)
+  fullName.vb: MFramework.MDisposableExtensions.AddTo(Of MFramework.MUIRouter)(MFramework.MUIRouter, MFramework.MAssetScope)
+  name.vb: AddTo(Of MUIRouter)(MUIRouter, MAssetScope)
+  spec.csharp:
+  - uid: MFramework.MDisposableExtensions.AddTo``1(MFramework.MUIRouter,MFramework.MAssetScope)
+    name: AddTo
+    href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MAssetScope_
+  - name: <
+  - uid: MFramework.MUIRouter
+    name: MUIRouter
+    href: MFramework.MUIRouter.html
+  - name: '>'
+  - name: (
+  - uid: MFramework.MUIRouter
+    name: MUIRouter
+    href: MFramework.MUIRouter.html
+  - name: ','
+  - name: " "
+  - uid: MFramework.MAssetScope
+    name: MAssetScope
+    href: MFramework.MAssetScope.html
+  - name: )
+  spec.vb:
+  - uid: MFramework.MDisposableExtensions.AddTo``1(MFramework.MUIRouter,MFramework.MAssetScope)
+    name: AddTo
+    href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MAssetScope_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MFramework.MUIRouter
+    name: MUIRouter
+    href: MFramework.MUIRouter.html
+  - name: )
+  - name: (
+  - uid: MFramework.MUIRouter
+    name: MUIRouter
+    href: MFramework.MUIRouter.html
+  - name: ','
+  - name: " "
+  - uid: MFramework.MAssetScope
+    name: MAssetScope
+    href: MFramework.MAssetScope.html
+  - name: )
+- uid: MFramework.MUIRouter.MFramework.MDisposableExtensions.AddTo``1(MFramework.MDisposableBag)
+  commentId: M:MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MDisposableBag)
+  parent: MFramework.MDisposableExtensions
+  definition: MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MDisposableBag)
+  href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MDisposableBag_
+  name: AddTo<MUIRouter>(MUIRouter, MDisposableBag)
+  nameWithType: MDisposableExtensions.AddTo<MUIRouter>(MUIRouter, MDisposableBag)
+  fullName: MFramework.MDisposableExtensions.AddTo<MFramework.MUIRouter>(MFramework.MUIRouter, MFramework.MDisposableBag)
+  nameWithType.vb: MDisposableExtensions.AddTo(Of MUIRouter)(MUIRouter, MDisposableBag)
+  fullName.vb: MFramework.MDisposableExtensions.AddTo(Of MFramework.MUIRouter)(MFramework.MUIRouter, MFramework.MDisposableBag)
+  name.vb: AddTo(Of MUIRouter)(MUIRouter, MDisposableBag)
+  spec.csharp:
+  - uid: MFramework.MDisposableExtensions.AddTo``1(MFramework.MUIRouter,MFramework.MDisposableBag)
+    name: AddTo
+    href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MDisposableBag_
+  - name: <
+  - uid: MFramework.MUIRouter
+    name: MUIRouter
+    href: MFramework.MUIRouter.html
+  - name: '>'
+  - name: (
+  - uid: MFramework.MUIRouter
+    name: MUIRouter
+    href: MFramework.MUIRouter.html
+  - name: ','
+  - name: " "
+  - uid: MFramework.MDisposableBag
+    name: MDisposableBag
+    href: MFramework.MDisposableBag.html
+  - name: )
+  spec.vb:
+  - uid: MFramework.MDisposableExtensions.AddTo``1(MFramework.MUIRouter,MFramework.MDisposableBag)
+    name: AddTo
+    href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MDisposableBag_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MFramework.MUIRouter
+    name: MUIRouter
+    href: MFramework.MUIRouter.html
+  - name: )
+  - name: (
+  - uid: MFramework.MUIRouter
+    name: MUIRouter
+    href: MFramework.MUIRouter.html
+  - name: ','
+  - name: " "
+  - uid: MFramework.MDisposableBag
+    name: MDisposableBag
+    href: MFramework.MDisposableBag.html
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MAssetScope)
+  commentId: M:MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MAssetScope)
+  href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MAssetScope_
+  name: AddTo<T>(T, MAssetScope)
+  nameWithType: MDisposableExtensions.AddTo<T>(T, MAssetScope)
+  fullName: MFramework.MDisposableExtensions.AddTo<T>(T, MFramework.MAssetScope)
+  nameWithType.vb: MDisposableExtensions.AddTo(Of T)(T, MAssetScope)
+  fullName.vb: MFramework.MDisposableExtensions.AddTo(Of T)(T, MFramework.MAssetScope)
+  name.vb: AddTo(Of T)(T, MAssetScope)
+  spec.csharp:
+  - uid: MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MAssetScope)
+    name: AddTo
+    href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MAssetScope_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: MFramework.MAssetScope
+    name: MAssetScope
+    href: MFramework.MAssetScope.html
+  - name: )
+  spec.vb:
+  - uid: MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MAssetScope)
+    name: AddTo
+    href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MAssetScope_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: MFramework.MAssetScope
+    name: MAssetScope
+    href: MFramework.MAssetScope.html
+  - name: )
+- uid: MFramework.MDisposableExtensions
+  commentId: T:MFramework.MDisposableExtensions
+  parent: MFramework
+  href: MFramework.MDisposableExtensions.html
+  name: MDisposableExtensions
+  nameWithType: MDisposableExtensions
+  fullName: MFramework.MDisposableExtensions
+- uid: MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MDisposableBag)
+  commentId: M:MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MDisposableBag)
+  href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MDisposableBag_
+  name: AddTo<T>(T, MDisposableBag)
+  nameWithType: MDisposableExtensions.AddTo<T>(T, MDisposableBag)
+  fullName: MFramework.MDisposableExtensions.AddTo<T>(T, MFramework.MDisposableBag)
+  nameWithType.vb: MDisposableExtensions.AddTo(Of T)(T, MDisposableBag)
+  fullName.vb: MFramework.MDisposableExtensions.AddTo(Of T)(T, MFramework.MDisposableBag)
+  name.vb: AddTo(Of T)(T, MDisposableBag)
+  spec.csharp:
+  - uid: MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MDisposableBag)
+    name: AddTo
+    href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MDisposableBag_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: MFramework.MDisposableBag
+    name: MDisposableBag
+    href: MFramework.MDisposableBag.html
+  - name: )
+  spec.vb:
+  - uid: MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MDisposableBag)
+    name: AddTo
+    href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MDisposableBag_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: MFramework.MDisposableBag
+    name: MDisposableBag
+    href: MFramework.MDisposableBag.html
+  - name: )
+- uid: System.ArgumentNullException
+  commentId: T:System.ArgumentNullException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.argumentnullexception
+  name: ArgumentNullException
+  nameWithType: ArgumentNullException
+  fullName: System.ArgumentNullException
+- uid: System.ObjectDisposedException
+  commentId: T:System.ObjectDisposedException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.objectdisposedexception
+  name: ObjectDisposedException
+  nameWithType: ObjectDisposedException
+  fullName: System.ObjectDisposedException
+- uid: MFramework.MUIRouter.#ctor*
+  commentId: Overload:MFramework.MUIRouter.#ctor
+  href: MFramework.MUIRouter.html#MFramework_MUIRouter__ctor_MFramework_MUIService_
+  name: MUIRouter
+  nameWithType: MUIRouter.MUIRouter
+  fullName: MFramework.MUIRouter.MUIRouter
+  nameWithType.vb: MUIRouter.New
+  fullName.vb: MFramework.MUIRouter.New
+  name.vb: New
+- uid: MFramework.MUIService
+  commentId: T:MFramework.MUIService
+  parent: MFramework
+  href: MFramework.MUIService.html
+  name: MUIService
+  nameWithType: MUIService
+  fullName: MFramework.MUIService
+- uid: System.Action
+  commentId: T:System.Action
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.action
+  name: Action
+  nameWithType: Action
+  fullName: System.Action
+- uid: System.Action{MFramework.MUIView,System.String}
+  commentId: T:System.Action{MFramework.MUIView,System.String}
+  parent: System
+  definition: System.Action`2
+  href: https://learn.microsoft.com/dotnet/api/system.action-2
+  name: Action<MUIView, string>
+  nameWithType: Action<MUIView, string>
+  fullName: System.Action<MFramework.MUIView, string>
+  nameWithType.vb: Action(Of MUIView, String)
+  fullName.vb: System.Action(Of MFramework.MUIView, String)
+  name.vb: Action(Of MUIView, String)
+  spec.csharp:
+  - uid: System.Action`2
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-2
+  - name: <
+  - uid: MFramework.MUIView
+    name: MUIView
+    href: MFramework.MUIView.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`2
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MFramework.MUIView
+    name: MUIView
+    href: MFramework.MUIView.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.Action`2
+  commentId: T:System.Action`2
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.action-2
+  name: Action<T1, T2>
+  nameWithType: Action<T1, T2>
+  fullName: System.Action<T1, T2>
+  nameWithType.vb: Action(Of T1, T2)
+  fullName.vb: System.Action(Of T1, T2)
+  name.vb: Action(Of T1, T2)
+  spec.csharp:
+  - uid: System.Action`2
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-2
+  - name: <
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`2
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: )
+- uid: MFramework.MUIRouter.CurrentPage*
+  commentId: Overload:MFramework.MUIRouter.CurrentPage
+  href: MFramework.MUIRouter.html#MFramework_MUIRouter_CurrentPage
+  name: CurrentPage
+  nameWithType: MUIRouter.CurrentPage
+  fullName: MFramework.MUIRouter.CurrentPage
+- uid: MFramework.MUIPage
+  commentId: T:MFramework.MUIPage
+  parent: MFramework
+  href: MFramework.MUIPage.html
+  name: MUIPage
+  nameWithType: MUIPage
+  fullName: MFramework.MUIPage
+- uid: MFramework.MUIRouter.CurrentPopup*
+  commentId: Overload:MFramework.MUIRouter.CurrentPopup
+  href: MFramework.MUIRouter.html#MFramework_MUIRouter_CurrentPopup
+  name: CurrentPopup
+  nameWithType: MUIRouter.CurrentPopup
+  fullName: MFramework.MUIRouter.CurrentPopup
+- uid: MFramework.MUIPopup
+  commentId: T:MFramework.MUIPopup
+  parent: MFramework
+  href: MFramework.MUIPopup.html
+  name: MUIPopup
+  nameWithType: MUIPopup
+  fullName: MFramework.MUIPopup
+- uid: MFramework.MUIRouter.PageCount*
+  commentId: Overload:MFramework.MUIRouter.PageCount
+  href: MFramework.MUIRouter.html#MFramework_MUIRouter_PageCount
+  name: PageCount
+  nameWithType: MUIRouter.PageCount
+  fullName: MFramework.MUIRouter.PageCount
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: MFramework.MUIRouter.PopupCount*
+  commentId: Overload:MFramework.MUIRouter.PopupCount
+  href: MFramework.MUIRouter.html#MFramework_MUIRouter_PopupCount
+  name: PopupCount
+  nameWithType: MUIRouter.PopupCount
+  fullName: MFramework.MUIRouter.PopupCount
+- uid: MFramework.MUIRouter.CanGoBack*
+  commentId: Overload:MFramework.MUIRouter.CanGoBack
+  href: MFramework.MUIRouter.html#MFramework_MUIRouter_CanGoBack
+  name: CanGoBack
+  nameWithType: MUIRouter.CanGoBack
+  fullName: MFramework.MUIRouter.CanGoBack
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: System.InvalidOperationException
+  commentId: T:System.InvalidOperationException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.invalidoperationexception
+  name: InvalidOperationException
+  nameWithType: InvalidOperationException
+  fullName: System.InvalidOperationException
+- uid: MFramework.MUIRouter.Push*
+  commentId: Overload:MFramework.MUIRouter.Push
+  href: MFramework.MUIRouter.html#MFramework_MUIRouter_Push__1_System_Object_
+  name: Push
+  nameWithType: MUIRouter.Push
+  fullName: MFramework.MUIRouter.Push
+- uid: '{TPage}'
+  commentId: '!:TPage'
+  definition: TPage
+  name: TPage
+  nameWithType: TPage
+  fullName: TPage
+- uid: TPage
+  name: TPage
+  nameWithType: TPage
+  fullName: TPage
+- uid: MFramework.MUIRouter.Replace*
+  commentId: Overload:MFramework.MUIRouter.Replace
+  href: MFramework.MUIRouter.html#MFramework_MUIRouter_Replace__1_System_Object_
+  name: Replace
+  nameWithType: MUIRouter.Replace
+  fullName: MFramework.MUIRouter.Replace
+- uid: MFramework.MUIRouter.Back*
+  commentId: Overload:MFramework.MUIRouter.Back
+  href: MFramework.MUIRouter.html#MFramework_MUIRouter_Back
+  name: Back
+  nameWithType: MUIRouter.Back
+  fullName: MFramework.MUIRouter.Back
+- uid: MFramework.MUIRouter.PopToRoot*
+  commentId: Overload:MFramework.MUIRouter.PopToRoot
+  href: MFramework.MUIRouter.html#MFramework_MUIRouter_PopToRoot
+  name: PopToRoot
+  nameWithType: MUIRouter.PopToRoot
+  fullName: MFramework.MUIRouter.PopToRoot
+- uid: MFramework.MUIRouter.ShowPopup*
+  commentId: Overload:MFramework.MUIRouter.ShowPopup
+  href: MFramework.MUIRouter.html#MFramework_MUIRouter_ShowPopup__1_System_Object_
+  name: ShowPopup
+  nameWithType: MUIRouter.ShowPopup
+  fullName: MFramework.MUIRouter.ShowPopup
+- uid: '{TPopup}'
+  commentId: '!:TPopup'
+  definition: TPopup
+  name: TPopup
+  nameWithType: TPopup
+  fullName: TPopup
+- uid: TPopup
+  commentId: '!:TPopup'
+  name: TPopup
+  nameWithType: TPopup
+  fullName: TPopup
+- uid: MFramework.MUIRouter.CloseTopPopup*
+  commentId: Overload:MFramework.MUIRouter.CloseTopPopup
+  href: MFramework.MUIRouter.html#MFramework_MUIRouter_CloseTopPopup_MFramework_MUIPopupResult_
+  name: CloseTopPopup
+  nameWithType: MUIRouter.CloseTopPopup
+  fullName: MFramework.MUIRouter.CloseTopPopup
+- uid: MFramework.MUIPopupResult
+  commentId: T:MFramework.MUIPopupResult
+  parent: MFramework
+  href: MFramework.MUIPopupResult.html
+  name: MUIPopupResult
+  nameWithType: MUIPopupResult
+  fullName: MFramework.MUIPopupResult
+- uid: MFramework.MUIRouter.ShowOverlay*
+  commentId: Overload:MFramework.MUIRouter.ShowOverlay
+  href: MFramework.MUIRouter.html#MFramework_MUIRouter_ShowOverlay__1_System_Object_
+  name: ShowOverlay
+  nameWithType: MUIRouter.ShowOverlay
+  fullName: MFramework.MUIRouter.ShowOverlay
+- uid: '{TOverlay}'
+  commentId: '!:TOverlay'
+  definition: TOverlay
+  name: TOverlay
+  nameWithType: TOverlay
+  fullName: TOverlay
+- uid: TOverlay
+  commentId: '!:TOverlay'
+  name: TOverlay
+  nameWithType: TOverlay
+  fullName: TOverlay
+- uid: MFramework.MUIRouter.HideOverlay*
+  commentId: Overload:MFramework.MUIRouter.HideOverlay
+  href: MFramework.MUIRouter.html#MFramework_MUIRouter_HideOverlay__1
+  name: HideOverlay
+  nameWithType: MUIRouter.HideOverlay
+  fullName: MFramework.MUIRouter.HideOverlay
+- uid: MFramework.MUIRouter.RequestBack*
+  commentId: Overload:MFramework.MUIRouter.RequestBack
+  href: MFramework.MUIRouter.html#MFramework_MUIRouter_RequestBack
+  name: RequestBack
+  nameWithType: MUIRouter.RequestBack
+  fullName: MFramework.MUIRouter.RequestBack
+- uid: MFramework.MUIRouter.Initialize*
+  commentId: Overload:MFramework.MUIRouter.Initialize
+  href: MFramework.MUIRouter.html#MFramework_MUIRouter_Initialize_MFramework_MFrameworkApp_
+  name: Initialize
+  nameWithType: MUIRouter.Initialize
+  fullName: MFramework.MUIRouter.Initialize
+- uid: MFramework.IMFrameworkModule.Initialize(MFramework.MFrameworkApp)
+  commentId: M:MFramework.IMFrameworkModule.Initialize(MFramework.MFrameworkApp)
+  parent: MFramework.IMFrameworkModule
+  href: MFramework.IMFrameworkModule.html#MFramework_IMFrameworkModule_Initialize_MFramework_MFrameworkApp_
+  name: Initialize(MFrameworkApp)
+  nameWithType: IMFrameworkModule.Initialize(MFrameworkApp)
+  fullName: MFramework.IMFrameworkModule.Initialize(MFramework.MFrameworkApp)
+  spec.csharp:
+  - uid: MFramework.IMFrameworkModule.Initialize(MFramework.MFrameworkApp)
+    name: Initialize
+    href: MFramework.IMFrameworkModule.html#MFramework_IMFrameworkModule_Initialize_MFramework_MFrameworkApp_
+  - name: (
+  - uid: MFramework.MFrameworkApp
+    name: MFrameworkApp
+    href: MFramework.MFrameworkApp.html
+  - name: )
+  spec.vb:
+  - uid: MFramework.IMFrameworkModule.Initialize(MFramework.MFrameworkApp)
+    name: Initialize
+    href: MFramework.IMFrameworkModule.html#MFramework_IMFrameworkModule_Initialize_MFramework_MFrameworkApp_
+  - name: (
+  - uid: MFramework.MFrameworkApp
+    name: MFrameworkApp
+    href: MFramework.MFrameworkApp.html
+  - name: )
+- uid: MFramework.MFrameworkApp
+  commentId: T:MFramework.MFrameworkApp
+  parent: MFramework
+  href: MFramework.MFrameworkApp.html
+  name: MFrameworkApp
+  nameWithType: MFrameworkApp
+  fullName: MFramework.MFrameworkApp
+- uid: MFramework.MUIRouter.Shutdown*
+  commentId: Overload:MFramework.MUIRouter.Shutdown
+  href: MFramework.MUIRouter.html#MFramework_MUIRouter_Shutdown
+  name: Shutdown
+  nameWithType: MUIRouter.Shutdown
+  fullName: MFramework.MUIRouter.Shutdown
+- uid: MFramework.IMFrameworkModule.Shutdown
+  commentId: M:MFramework.IMFrameworkModule.Shutdown
+  parent: MFramework.IMFrameworkModule
+  href: MFramework.IMFrameworkModule.html#MFramework_IMFrameworkModule_Shutdown
+  name: Shutdown()
+  nameWithType: IMFrameworkModule.Shutdown()
+  fullName: MFramework.IMFrameworkModule.Shutdown()
+  spec.csharp:
+  - uid: MFramework.IMFrameworkModule.Shutdown
+    name: Shutdown
+    href: MFramework.IMFrameworkModule.html#MFramework_IMFrameworkModule_Shutdown
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: MFramework.IMFrameworkModule.Shutdown
+    name: Shutdown
+    href: MFramework.IMFrameworkModule.html#MFramework_IMFrameworkModule_Shutdown
+  - name: (
+  - name: )
+- uid: MFramework.MUIRouter.Dispose*
+  commentId: Overload:MFramework.MUIRouter.Dispose
+  href: MFramework.MUIRouter.html#MFramework_MUIRouter_Dispose
+  name: Dispose
+  nameWithType: MUIRouter.Dispose
+  fullName: MFramework.MUIRouter.Dispose
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )

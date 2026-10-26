@@ -1,0 +1,741 @@
+### YamlMime:ManagedReference
+items:
+- uid: MFramework.MAudioId
+  commentId: T:MFramework.MAudioId
+  id: MAudioId
+  parent: MFramework
+  children:
+  - MFramework.MAudioId.#ctor(System.String)
+  - MFramework.MAudioId.Equals(MFramework.MAudioId)
+  - MFramework.MAudioId.Equals(System.Object)
+  - MFramework.MAudioId.GetHashCode
+  - MFramework.MAudioId.IsValid
+  - MFramework.MAudioId.ToString
+  - MFramework.MAudioId.Value
+  - MFramework.MAudioId.op_Equality(MFramework.MAudioId,MFramework.MAudioId)
+  - MFramework.MAudioId.op_Inequality(MFramework.MAudioId,MFramework.MAudioId)
+  langs:
+  - csharp
+  - vb
+  name: MAudioId
+  nameWithType: MAudioId
+  fullName: MFramework.MAudioId
+  type: Struct
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 标识一个注册到 <xref href="MFramework.MAudio" data-throw-if-not-resolved="false"></xref> 的 AudioClip。
+  remarks: ID 使用区分大小写的序号字符串比较。玩法代码应把 ID 保存为稳定常量，不要传入场景对象名称。
+  example: []
+  syntax:
+    content: 'public readonly struct MAudioId : IEquatable<MAudioId>'
+    content.vb: Public Structure MAudioId Implements IEquatable(Of MAudioId)
+  implements:
+  - System.IEquatable{MFramework.MAudioId}
+  inheritedMembers:
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+- uid: MFramework.MAudioId.#ctor(System.String)
+  commentId: M:MFramework.MAudioId.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: MFramework.MAudioId
+  langs:
+  - csharp
+  - vb
+  name: MAudioId(string)
+  nameWithType: MAudioId.MAudioId(string)
+  fullName: MFramework.MAudioId.MAudioId(string)
+  type: Constructor
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 创建一个音频 ID。
+  example: []
+  syntax:
+    content: public MAudioId(string value)
+    parameters:
+    - id: value
+      type: System.String
+      description: 非空且稳定的标识字符串。
+    content.vb: Public Sub New(value As String)
+  overload: MFramework.MAudioId.#ctor*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: 当 <code class="paramref">value</code> 为 null、空字符串或仅包含空白字符时抛出。
+  nameWithType.vb: MAudioId.New(String)
+  fullName.vb: MFramework.MAudioId.New(String)
+  name.vb: New(String)
+- uid: MFramework.MAudioId.Value
+  commentId: P:MFramework.MAudioId.Value
+  id: Value
+  parent: MFramework.MAudioId
+  langs:
+  - csharp
+  - vb
+  name: Value
+  nameWithType: MAudioId.Value
+  fullName: MFramework.MAudioId.Value
+  type: Property
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 获取底层字符串标识。
+  example: []
+  syntax:
+    content: public string Value { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property Value As String
+  overload: MFramework.MAudioId.Value*
+- uid: MFramework.MAudioId.IsValid
+  commentId: P:MFramework.MAudioId.IsValid
+  id: IsValid
+  parent: MFramework.MAudioId
+  langs:
+  - csharp
+  - vb
+  name: IsValid
+  nameWithType: MAudioId.IsValid
+  fullName: MFramework.MAudioId.IsValid
+  type: Property
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 获取当前 ID 是否包含可用值。
+  example: []
+  syntax:
+    content: public bool IsValid { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property IsValid As Boolean
+  overload: MFramework.MAudioId.IsValid*
+- uid: MFramework.MAudioId.Equals(MFramework.MAudioId)
+  commentId: M:MFramework.MAudioId.Equals(MFramework.MAudioId)
+  id: Equals(MFramework.MAudioId)
+  parent: MFramework.MAudioId
+  langs:
+  - csharp
+  - vb
+  name: Equals(MAudioId)
+  nameWithType: MAudioId.Equals(MAudioId)
+  fullName: MFramework.MAudioId.Equals(MFramework.MAudioId)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  example: []
+  syntax:
+    content: public bool Equals(MAudioId other)
+    parameters:
+    - id: other
+      type: MFramework.MAudioId
+    return:
+      type: System.Boolean
+    content.vb: Public Function Equals(other As MAudioId) As Boolean
+  overload: MFramework.MAudioId.Equals*
+  implements:
+  - System.IEquatable{MFramework.MAudioId}.Equals(MFramework.MAudioId)
+- uid: MFramework.MAudioId.Equals(System.Object)
+  commentId: M:MFramework.MAudioId.Equals(System.Object)
+  id: Equals(System.Object)
+  parent: MFramework.MAudioId
+  langs:
+  - csharp
+  - vb
+  name: Equals(object)
+  nameWithType: MAudioId.Equals(object)
+  fullName: MFramework.MAudioId.Equals(object)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  example: []
+  syntax:
+    content: public override bool Equals(object obj)
+    parameters:
+    - id: obj
+      type: System.Object
+    return:
+      type: System.Boolean
+    content.vb: Public Overrides Function Equals(obj As Object) As Boolean
+  overridden: System.ValueType.Equals(System.Object)
+  overload: MFramework.MAudioId.Equals*
+  nameWithType.vb: MAudioId.Equals(Object)
+  fullName.vb: MFramework.MAudioId.Equals(Object)
+  name.vb: Equals(Object)
+- uid: MFramework.MAudioId.GetHashCode
+  commentId: M:MFramework.MAudioId.GetHashCode
+  id: GetHashCode
+  parent: MFramework.MAudioId
+  langs:
+  - csharp
+  - vb
+  name: GetHashCode()
+  nameWithType: MAudioId.GetHashCode()
+  fullName: MFramework.MAudioId.GetHashCode()
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  example: []
+  syntax:
+    content: public override int GetHashCode()
+    return:
+      type: System.Int32
+    content.vb: Public Overrides Function GetHashCode() As Integer
+  overridden: System.ValueType.GetHashCode
+  overload: MFramework.MAudioId.GetHashCode*
+- uid: MFramework.MAudioId.ToString
+  commentId: M:MFramework.MAudioId.ToString
+  id: ToString
+  parent: MFramework.MAudioId
+  langs:
+  - csharp
+  - vb
+  name: ToString()
+  nameWithType: MAudioId.ToString()
+  fullName: MFramework.MAudioId.ToString()
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  example: []
+  syntax:
+    content: public override string ToString()
+    return:
+      type: System.String
+    content.vb: Public Overrides Function ToString() As String
+  overridden: System.ValueType.ToString
+  overload: MFramework.MAudioId.ToString*
+- uid: MFramework.MAudioId.op_Equality(MFramework.MAudioId,MFramework.MAudioId)
+  commentId: M:MFramework.MAudioId.op_Equality(MFramework.MAudioId,MFramework.MAudioId)
+  id: op_Equality(MFramework.MAudioId,MFramework.MAudioId)
+  parent: MFramework.MAudioId
+  langs:
+  - csharp
+  - vb
+  name: operator ==(MAudioId, MAudioId)
+  nameWithType: MAudioId.operator ==(MAudioId, MAudioId)
+  fullName: MFramework.MAudioId.operator ==(MFramework.MAudioId, MFramework.MAudioId)
+  type: Operator
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 使用区分大小写的序号比较方式比较两个音频 ID。
+  example: []
+  syntax:
+    content: public static bool operator ==(MAudioId left, MAudioId right)
+    parameters:
+    - id: left
+      type: MFramework.MAudioId
+      description: 第一个 ID。
+    - id: right
+      type: MFramework.MAudioId
+      description: 第二个 ID。
+    return:
+      type: System.Boolean
+      description: 两个 ID 的值相同时返回 <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>。
+    content.vb: Public Shared Operator =(left As MAudioId, right As MAudioId) As Boolean
+  overload: MFramework.MAudioId.op_Equality*
+  nameWithType.vb: MAudioId.=(MAudioId, MAudioId)
+  fullName.vb: MFramework.MAudioId.=(MFramework.MAudioId, MFramework.MAudioId)
+  name.vb: =(MAudioId, MAudioId)
+- uid: MFramework.MAudioId.op_Inequality(MFramework.MAudioId,MFramework.MAudioId)
+  commentId: M:MFramework.MAudioId.op_Inequality(MFramework.MAudioId,MFramework.MAudioId)
+  id: op_Inequality(MFramework.MAudioId,MFramework.MAudioId)
+  parent: MFramework.MAudioId
+  langs:
+  - csharp
+  - vb
+  name: operator !=(MAudioId, MAudioId)
+  nameWithType: MAudioId.operator !=(MAudioId, MAudioId)
+  fullName: MFramework.MAudioId.operator !=(MFramework.MAudioId, MFramework.MAudioId)
+  type: Operator
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 使用区分大小写的序号比较方式比较两个音频 ID。
+  example: []
+  syntax:
+    content: public static bool operator !=(MAudioId left, MAudioId right)
+    parameters:
+    - id: left
+      type: MFramework.MAudioId
+      description: 第一个 ID。
+    - id: right
+      type: MFramework.MAudioId
+      description: 第二个 ID。
+    return:
+      type: System.Boolean
+      description: 两个 ID 的值不同时返回 <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>。
+    content.vb: Public Shared Operator <>(left As MAudioId, right As MAudioId) As Boolean
+  overload: MFramework.MAudioId.op_Inequality*
+  nameWithType.vb: MAudioId.<>(MAudioId, MAudioId)
+  fullName.vb: MFramework.MAudioId.<>(MFramework.MAudioId, MFramework.MAudioId)
+  name.vb: <>(MAudioId, MAudioId)
+references:
+- uid: MFramework.MAudio
+  commentId: T:MFramework.MAudio
+  href: MFramework.MAudio.html
+  name: MAudio
+  nameWithType: MAudio
+  fullName: MFramework.MAudio
+- uid: MFramework
+  commentId: N:MFramework
+  href: MFramework.html
+  name: MFramework
+  nameWithType: MFramework
+  fullName: MFramework
+- uid: System.IEquatable{MFramework.MAudioId}
+  commentId: T:System.IEquatable{MFramework.MAudioId}
+  parent: System
+  definition: System.IEquatable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<MAudioId>
+  nameWithType: IEquatable<MAudioId>
+  fullName: System.IEquatable<MFramework.MAudioId>
+  nameWithType.vb: IEquatable(Of MAudioId)
+  fullName.vb: System.IEquatable(Of MFramework.MAudioId)
+  name.vb: IEquatable(Of MAudioId)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - uid: MFramework.MAudioId
+    name: MAudioId
+    href: MFramework.MAudioId.html
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MFramework.MAudioId
+    name: MAudioId
+    href: MFramework.MAudioId.html
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.IEquatable`1
+  commentId: T:System.IEquatable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<T>
+  nameWithType: IEquatable<T>
+  fullName: System.IEquatable<T>
+  nameWithType.vb: IEquatable(Of T)
+  fullName.vb: System.IEquatable(Of T)
+  name.vb: IEquatable(Of T)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.ArgumentException
+  commentId: T:System.ArgumentException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.argumentexception
+  name: ArgumentException
+  nameWithType: ArgumentException
+  fullName: System.ArgumentException
+- uid: MFramework.MAudioId.#ctor*
+  commentId: Overload:MFramework.MAudioId.#ctor
+  href: MFramework.MAudioId.html#MFramework_MAudioId__ctor_System_String_
+  name: MAudioId
+  nameWithType: MAudioId.MAudioId
+  fullName: MFramework.MAudioId.MAudioId
+  nameWithType.vb: MAudioId.New
+  fullName.vb: MFramework.MAudioId.New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: MFramework.MAudioId.Value*
+  commentId: Overload:MFramework.MAudioId.Value
+  href: MFramework.MAudioId.html#MFramework_MAudioId_Value
+  name: Value
+  nameWithType: MAudioId.Value
+  fullName: MFramework.MAudioId.Value
+- uid: MFramework.MAudioId.IsValid*
+  commentId: Overload:MFramework.MAudioId.IsValid
+  href: MFramework.MAudioId.html#MFramework_MAudioId_IsValid
+  name: IsValid
+  nameWithType: MAudioId.IsValid
+  fullName: MFramework.MAudioId.IsValid
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: MFramework.MAudioId.Equals*
+  commentId: Overload:MFramework.MAudioId.Equals
+  href: MFramework.MAudioId.html#MFramework_MAudioId_Equals_MFramework_MAudioId_
+  name: Equals
+  nameWithType: MAudioId.Equals
+  fullName: MFramework.MAudioId.Equals
+- uid: System.IEquatable{MFramework.MAudioId}.Equals(MFramework.MAudioId)
+  commentId: M:System.IEquatable{MFramework.MAudioId}.Equals(MFramework.MAudioId)
+  parent: System.IEquatable{MFramework.MAudioId}
+  definition: System.IEquatable`1.Equals(`0)
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  name: Equals(MAudioId)
+  nameWithType: IEquatable<MAudioId>.Equals(MAudioId)
+  fullName: System.IEquatable<MFramework.MAudioId>.Equals(MFramework.MAudioId)
+  nameWithType.vb: IEquatable(Of MAudioId).Equals(MAudioId)
+  fullName.vb: System.IEquatable(Of MFramework.MAudioId).Equals(MFramework.MAudioId)
+  spec.csharp:
+  - uid: System.IEquatable{MFramework.MAudioId}.Equals(MFramework.MAudioId)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  - name: (
+  - uid: MFramework.MAudioId
+    name: MAudioId
+    href: MFramework.MAudioId.html
+  - name: )
+  spec.vb:
+  - uid: System.IEquatable{MFramework.MAudioId}.Equals(MFramework.MAudioId)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  - name: (
+  - uid: MFramework.MAudioId
+    name: MAudioId
+    href: MFramework.MAudioId.html
+  - name: )
+- uid: MFramework.MAudioId
+  commentId: T:MFramework.MAudioId
+  parent: MFramework
+  href: MFramework.MAudioId.html
+  name: MAudioId
+  nameWithType: MAudioId
+  fullName: MFramework.MAudioId
+- uid: System.IEquatable`1.Equals(`0)
+  commentId: M:System.IEquatable`1.Equals(`0)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  name: Equals(T)
+  nameWithType: IEquatable<T>.Equals(T)
+  fullName: System.IEquatable<T>.Equals(T)
+  nameWithType.vb: IEquatable(Of T).Equals(T)
+  fullName.vb: System.IEquatable(Of T).Equals(T)
+  spec.csharp:
+  - uid: System.IEquatable`1.Equals(`0)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: System.IEquatable`1.Equals(`0)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  - name: (
+  - name: T
+  - name: )
+- uid: System.ValueType.Equals(System.Object)
+  commentId: M:System.ValueType.Equals(System.Object)
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  name: Equals(object)
+  nameWithType: ValueType.Equals(object)
+  fullName: System.ValueType.Equals(object)
+  nameWithType.vb: ValueType.Equals(Object)
+  fullName.vb: System.ValueType.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType
+  commentId: T:System.ValueType
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype
+  name: ValueType
+  nameWithType: ValueType
+  fullName: System.ValueType
+- uid: System.ValueType.GetHashCode
+  commentId: M:System.ValueType.GetHashCode
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  name: GetHashCode()
+  nameWithType: ValueType.GetHashCode()
+  fullName: System.ValueType.GetHashCode()
+  spec.csharp:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+- uid: MFramework.MAudioId.GetHashCode*
+  commentId: Overload:MFramework.MAudioId.GetHashCode
+  href: MFramework.MAudioId.html#MFramework_MAudioId_GetHashCode
+  name: GetHashCode
+  nameWithType: MAudioId.GetHashCode
+  fullName: MFramework.MAudioId.GetHashCode
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.ValueType.ToString
+  commentId: M:System.ValueType.ToString
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  name: ToString()
+  nameWithType: ValueType.ToString()
+  fullName: System.ValueType.ToString()
+  spec.csharp:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+- uid: MFramework.MAudioId.ToString*
+  commentId: Overload:MFramework.MAudioId.ToString
+  href: MFramework.MAudioId.html#MFramework_MAudioId_ToString
+  name: ToString
+  nameWithType: MAudioId.ToString
+  fullName: MFramework.MAudioId.ToString
+- uid: MFramework.MAudioId.op_Equality*
+  commentId: Overload:MFramework.MAudioId.op_Equality
+  href: MFramework.MAudioId.html#MFramework_MAudioId_op_Equality_MFramework_MAudioId_MFramework_MAudioId_
+  name: operator ==
+  nameWithType: MAudioId.operator ==
+  fullName: MFramework.MAudioId.operator ==
+  nameWithType.vb: MAudioId.=
+  fullName.vb: MFramework.MAudioId.=
+  name.vb: =
+  spec.csharp:
+  - name: operator
+  - name: " "
+  - uid: MFramework.MAudioId.op_Equality*
+    name: ==
+    href: MFramework.MAudioId.html#MFramework_MAudioId_op_Equality_MFramework_MAudioId_MFramework_MAudioId_
+- uid: MFramework.MAudioId.op_Inequality*
+  commentId: Overload:MFramework.MAudioId.op_Inequality
+  href: MFramework.MAudioId.html#MFramework_MAudioId_op_Inequality_MFramework_MAudioId_MFramework_MAudioId_
+  name: operator !=
+  nameWithType: MAudioId.operator !=
+  fullName: MFramework.MAudioId.operator !=
+  nameWithType.vb: MAudioId.<>
+  fullName.vb: MFramework.MAudioId.<>
+  name.vb: <>
+  spec.csharp:
+  - name: operator
+  - name: " "
+  - uid: MFramework.MAudioId.op_Inequality*
+    name: '!='
+    href: MFramework.MAudioId.html#MFramework_MAudioId_op_Inequality_MFramework_MAudioId_MFramework_MAudioId_

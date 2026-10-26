@@ -1,0 +1,511 @@
+### YamlMime:ManagedReference
+items:
+- uid: MFramework.MConfigValidationContext
+  commentId: T:MFramework.MConfigValidationContext
+  id: MConfigValidationContext
+  parent: MFramework
+  children:
+  - MFramework.MConfigValidationContext.AddError(System.String)
+  - MFramework.MConfigValidationContext.AddError(System.String,System.String)
+  - MFramework.MConfigValidationContext.RequireReference(System.Type,System.String,System.String,System.Boolean)
+  - MFramework.MConfigValidationContext.RequireReference``1(System.String,System.String,System.Boolean)
+  - MFramework.MConfigValidationContext.TryResolve(System.Type,System.String,MFramework.MConfigAsset@)
+  - MFramework.MConfigValidationContext.TryResolve``1(System.String,``0@)
+  langs:
+  - csharp
+  - vb
+  name: MConfigValidationContext
+  nameWithType: MConfigValidationContext
+  fullName: MFramework.MConfigValidationContext
+  type: Class
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 收集一个配置项的校验错误，并显式查询同一注册表中的引用目标。
+  example: []
+  syntax:
+    content: public sealed class MConfigValidationContext
+    content.vb: Public NotInheritable Class MConfigValidationContext
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MFramework.MConfigValidationContext.AddError(System.String)
+  commentId: M:MFramework.MConfigValidationContext.AddError(System.String)
+  id: AddError(System.String)
+  parent: MFramework.MConfigValidationContext
+  langs:
+  - csharp
+  - vb
+  name: AddError(string)
+  nameWithType: MConfigValidationContext.AddError(string)
+  fullName: MFramework.MConfigValidationContext.AddError(string)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 为当前配置项添加一条整体校验错误。
+  example: []
+  syntax:
+    content: public void AddError(string message)
+    parameters:
+    - id: message
+      type: System.String
+      description: 具体的问题说明和修改建议。
+    content.vb: Public Sub AddError(message As String)
+  overload: MFramework.MConfigValidationContext.AddError*
+  nameWithType.vb: MConfigValidationContext.AddError(String)
+  fullName.vb: MFramework.MConfigValidationContext.AddError(String)
+  name.vb: AddError(String)
+- uid: MFramework.MConfigValidationContext.AddError(System.String,System.String)
+  commentId: M:MFramework.MConfigValidationContext.AddError(System.String,System.String)
+  id: AddError(System.String,System.String)
+  parent: MFramework.MConfigValidationContext
+  langs:
+  - csharp
+  - vb
+  name: AddError(string, string)
+  nameWithType: MConfigValidationContext.AddError(string, string)
+  fullName: MFramework.MConfigValidationContext.AddError(string, string)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 为当前来源配置的指定字段添加一条校验错误。
+  example: []
+  syntax:
+    content: public void AddError(string fieldPath, string message)
+    parameters:
+    - id: fieldPath
+      type: System.String
+      description: 字段路径，例如 options[0].labelId。
+    - id: message
+      type: System.String
+      description: 具体的问题说明和修改建议。
+    content.vb: Public Sub AddError(fieldPath As String, message As String)
+  overload: MFramework.MConfigValidationContext.AddError*
+  nameWithType.vb: MConfigValidationContext.AddError(String, String)
+  fullName.vb: MFramework.MConfigValidationContext.AddError(String, String)
+  name.vb: AddError(String, String)
+- uid: MFramework.MConfigValidationContext.TryResolve``1(System.String,``0@)
+  commentId: M:MFramework.MConfigValidationContext.TryResolve``1(System.String,``0@)
+  id: TryResolve``1(System.String,``0@)
+  parent: MFramework.MConfigValidationContext
+  langs:
+  - csharp
+  - vb
+  name: TryResolve<TConfig>(string, out TConfig)
+  nameWithType: MConfigValidationContext.TryResolve<TConfig>(string, out TConfig)
+  fullName: MFramework.MConfigValidationContext.TryResolve<TConfig>(string, out TConfig)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 按精确注册类型与 ID 查询引用目标，不自动报告错误。
+  example: []
+  syntax:
+    content: 'public bool TryResolve<TConfig>(string id, out TConfig config) where TConfig : MConfigAsset'
+    parameters:
+    - id: id
+      type: System.String
+    - id: config
+      type: '{TConfig}'
+    typeParameters:
+    - id: TConfig
+    return:
+      type: System.Boolean
+    content.vb: Public Function TryResolve(Of TConfig As MConfigAsset)(id As String, config As TConfig) As Boolean
+  overload: MFramework.MConfigValidationContext.TryResolve*
+  nameWithType.vb: MConfigValidationContext.TryResolve(Of TConfig)(String, TConfig)
+  fullName.vb: MFramework.MConfigValidationContext.TryResolve(Of TConfig)(String, TConfig)
+  name.vb: TryResolve(Of TConfig)(String, TConfig)
+- uid: MFramework.MConfigValidationContext.TryResolve(System.Type,System.String,MFramework.MConfigAsset@)
+  commentId: M:MFramework.MConfigValidationContext.TryResolve(System.Type,System.String,MFramework.MConfigAsset@)
+  id: TryResolve(System.Type,System.String,MFramework.MConfigAsset@)
+  parent: MFramework.MConfigValidationContext
+  langs:
+  - csharp
+  - vb
+  name: TryResolve(Type, string, out MConfigAsset)
+  nameWithType: MConfigValidationContext.TryResolve(Type, string, out MConfigAsset)
+  fullName: MFramework.MConfigValidationContext.TryResolve(System.Type, string, out MFramework.MConfigAsset)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 使用显式 Type 与 ID 查询引用目标，不自动报告错误。
+  example: []
+  syntax:
+    content: public bool TryResolve(Type targetType, string id, out MConfigAsset config)
+    parameters:
+    - id: targetType
+      type: System.Type
+    - id: id
+      type: System.String
+    - id: config
+      type: MFramework.MConfigAsset
+    return:
+      type: System.Boolean
+    content.vb: Public Function TryResolve(targetType As Type, id As String, config As MConfigAsset) As Boolean
+  overload: MFramework.MConfigValidationContext.TryResolve*
+  nameWithType.vb: MConfigValidationContext.TryResolve(Type, String, MConfigAsset)
+  fullName.vb: MFramework.MConfigValidationContext.TryResolve(System.Type, String, MFramework.MConfigAsset)
+  name.vb: TryResolve(Type, String, MConfigAsset)
+- uid: MFramework.MConfigValidationContext.RequireReference``1(System.String,System.String,System.Boolean)
+  commentId: M:MFramework.MConfigValidationContext.RequireReference``1(System.String,System.String,System.Boolean)
+  id: RequireReference``1(System.String,System.String,System.Boolean)
+  parent: MFramework.MConfigValidationContext
+  langs:
+  - csharp
+  - vb
+  name: RequireReference<TConfig>(string, string, bool)
+  nameWithType: MConfigValidationContext.RequireReference<TConfig>(string, string, bool)
+  fullName: MFramework.MConfigValidationContext.RequireReference<TConfig>(string, string, bool)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 校验一个显式声明的配置引用，并将缺失信息报告到当前来源字段。
+  example: []
+  syntax:
+    content: 'public bool RequireReference<TConfig>(string fieldPath, string id, bool optional = false) where TConfig : MConfigAsset'
+    parameters:
+    - id: fieldPath
+      type: System.String
+    - id: id
+      type: System.String
+    - id: optional
+      type: System.Boolean
+    typeParameters:
+    - id: TConfig
+    return:
+      type: System.Boolean
+    content.vb: Public Function RequireReference(Of TConfig As MConfigAsset)(fieldPath As String, id As String, [optional] As Boolean = False) As Boolean
+  overload: MFramework.MConfigValidationContext.RequireReference*
+  nameWithType.vb: MConfigValidationContext.RequireReference(Of TConfig)(String, String, Boolean)
+  fullName.vb: MFramework.MConfigValidationContext.RequireReference(Of TConfig)(String, String, Boolean)
+  name.vb: RequireReference(Of TConfig)(String, String, Boolean)
+- uid: MFramework.MConfigValidationContext.RequireReference(System.Type,System.String,System.String,System.Boolean)
+  commentId: M:MFramework.MConfigValidationContext.RequireReference(System.Type,System.String,System.String,System.Boolean)
+  id: RequireReference(System.Type,System.String,System.String,System.Boolean)
+  parent: MFramework.MConfigValidationContext
+  langs:
+  - csharp
+  - vb
+  name: RequireReference(Type, string, string, bool)
+  nameWithType: MConfigValidationContext.RequireReference(Type, string, string, bool)
+  fullName: MFramework.MConfigValidationContext.RequireReference(System.Type, string, string, bool)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 使用调用方显式提供的目标类型校验引用，并报告可定位的缺失错误。
+  example: []
+  syntax:
+    content: public bool RequireReference(Type targetType, string fieldPath, string id, bool optional = false)
+    parameters:
+    - id: targetType
+      type: System.Type
+    - id: fieldPath
+      type: System.String
+    - id: id
+      type: System.String
+    - id: optional
+      type: System.Boolean
+    return:
+      type: System.Boolean
+    content.vb: Public Function RequireReference(targetType As Type, fieldPath As String, id As String, [optional] As Boolean = False) As Boolean
+  overload: MFramework.MConfigValidationContext.RequireReference*
+  nameWithType.vb: MConfigValidationContext.RequireReference(Type, String, String, Boolean)
+  fullName.vb: MFramework.MConfigValidationContext.RequireReference(System.Type, String, String, Boolean)
+  name.vb: RequireReference(Type, String, String, Boolean)
+references:
+- uid: MFramework
+  commentId: N:MFramework
+  href: MFramework.html
+  name: MFramework
+  nameWithType: MFramework
+  fullName: MFramework
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MFramework.MConfigValidationContext.AddError*
+  commentId: Overload:MFramework.MConfigValidationContext.AddError
+  href: MFramework.MConfigValidationContext.html#MFramework_MConfigValidationContext_AddError_System_String_
+  name: AddError
+  nameWithType: MConfigValidationContext.AddError
+  fullName: MFramework.MConfigValidationContext.AddError
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: MFramework.MConfigValidationContext.TryResolve*
+  commentId: Overload:MFramework.MConfigValidationContext.TryResolve
+  href: MFramework.MConfigValidationContext.html#MFramework_MConfigValidationContext_TryResolve__1_System_String___0__
+  name: TryResolve
+  nameWithType: MConfigValidationContext.TryResolve
+  fullName: MFramework.MConfigValidationContext.TryResolve
+- uid: '{TConfig}'
+  commentId: '!:TConfig'
+  definition: TConfig
+  name: TConfig
+  nameWithType: TConfig
+  fullName: TConfig
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: TConfig
+  name: TConfig
+  nameWithType: TConfig
+  fullName: TConfig
+- uid: System.Type
+  commentId: T:System.Type
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.type
+  name: Type
+  nameWithType: Type
+  fullName: System.Type
+- uid: MFramework.MConfigAsset
+  commentId: T:MFramework.MConfigAsset
+  parent: MFramework
+  href: MFramework.MConfigAsset.html
+  name: MConfigAsset
+  nameWithType: MConfigAsset
+  fullName: MFramework.MConfigAsset
+- uid: MFramework.MConfigValidationContext.RequireReference*
+  commentId: Overload:MFramework.MConfigValidationContext.RequireReference
+  href: MFramework.MConfigValidationContext.html#MFramework_MConfigValidationContext_RequireReference__1_System_String_System_String_System_Boolean_
+  name: RequireReference
+  nameWithType: MConfigValidationContext.RequireReference
+  fullName: MFramework.MConfigValidationContext.RequireReference

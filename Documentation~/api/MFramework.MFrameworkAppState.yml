@@ -1,0 +1,169 @@
+### YamlMime:ManagedReference
+items:
+- uid: MFramework.MFrameworkAppState
+  commentId: T:MFramework.MFrameworkAppState
+  id: MFrameworkAppState
+  parent: MFramework
+  children:
+  - MFramework.MFrameworkAppState.Created
+  - MFramework.MFrameworkAppState.Faulted
+  - MFramework.MFrameworkAppState.Initializing
+  - MFramework.MFrameworkAppState.Running
+  - MFramework.MFrameworkAppState.Shutdown
+  - MFramework.MFrameworkAppState.ShuttingDown
+  langs:
+  - csharp
+  - vb
+  name: MFrameworkAppState
+  nameWithType: MFrameworkAppState
+  fullName: MFramework.MFrameworkAppState
+  type: Enum
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 描述 <xref href="MFramework.MFrameworkApp" data-throw-if-not-resolved="false"></xref> 的生命周期状态。
+  example: []
+  syntax:
+    content: public enum MFrameworkAppState
+    content.vb: Public Enum MFrameworkAppState
+- uid: MFramework.MFrameworkAppState.Created
+  commentId: F:MFramework.MFrameworkAppState.Created
+  id: Created
+  parent: MFramework.MFrameworkAppState
+  langs:
+  - csharp
+  - vb
+  name: Created
+  nameWithType: MFrameworkAppState.Created
+  fullName: MFramework.MFrameworkAppState.Created
+  type: Field
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 应用正在接受服务注册。
+  example: []
+  syntax:
+    content: Created = 0
+    return:
+      type: MFramework.MFrameworkAppState
+- uid: MFramework.MFrameworkAppState.Initializing
+  commentId: F:MFramework.MFrameworkAppState.Initializing
+  id: Initializing
+  parent: MFramework.MFrameworkAppState
+  langs:
+  - csharp
+  - vb
+  name: Initializing
+  nameWithType: MFrameworkAppState.Initializing
+  fullName: MFramework.MFrameworkAppState.Initializing
+  type: Field
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 应用正在初始化模块。
+  example: []
+  syntax:
+    content: Initializing = 1
+    return:
+      type: MFramework.MFrameworkAppState
+- uid: MFramework.MFrameworkAppState.Running
+  commentId: F:MFramework.MFrameworkAppState.Running
+  id: Running
+  parent: MFramework.MFrameworkAppState
+  langs:
+  - csharp
+  - vb
+  name: Running
+  nameWithType: MFrameworkAppState.Running
+  fullName: MFramework.MFrameworkAppState.Running
+  type: Field
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 应用已经初始化，可以接收 Tick。
+  example: []
+  syntax:
+    content: Running = 2
+    return:
+      type: MFramework.MFrameworkAppState
+- uid: MFramework.MFrameworkAppState.ShuttingDown
+  commentId: F:MFramework.MFrameworkAppState.ShuttingDown
+  id: ShuttingDown
+  parent: MFramework.MFrameworkAppState
+  langs:
+  - csharp
+  - vb
+  name: ShuttingDown
+  nameWithType: MFrameworkAppState.ShuttingDown
+  fullName: MFramework.MFrameworkAppState.ShuttingDown
+  type: Field
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 应用正在关闭模块。
+  example: []
+  syntax:
+    content: ShuttingDown = 3
+    return:
+      type: MFramework.MFrameworkAppState
+- uid: MFramework.MFrameworkAppState.Shutdown
+  commentId: F:MFramework.MFrameworkAppState.Shutdown
+  id: Shutdown
+  parent: MFramework.MFrameworkAppState
+  langs:
+  - csharp
+  - vb
+  name: Shutdown
+  nameWithType: MFrameworkAppState.Shutdown
+  fullName: MFramework.MFrameworkAppState.Shutdown
+  type: Field
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 应用已经关闭。
+  example: []
+  syntax:
+    content: Shutdown = 4
+    return:
+      type: MFramework.MFrameworkAppState
+- uid: MFramework.MFrameworkAppState.Faulted
+  commentId: F:MFramework.MFrameworkAppState.Faulted
+  id: Faulted
+  parent: MFramework.MFrameworkAppState
+  langs:
+  - csharp
+  - vb
+  name: Faulted
+  nameWithType: MFrameworkAppState.Faulted
+  fullName: MFramework.MFrameworkAppState.Faulted
+  type: Field
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 应用初始化失败。
+  example: []
+  syntax:
+    content: Faulted = 5
+    return:
+      type: MFramework.MFrameworkAppState
+references:
+- uid: MFramework.MFrameworkApp
+  commentId: T:MFramework.MFrameworkApp
+  parent: MFramework
+  href: MFramework.MFrameworkApp.html
+  name: MFrameworkApp
+  nameWithType: MFrameworkApp
+  fullName: MFramework.MFrameworkApp
+- uid: MFramework
+  commentId: N:MFramework
+  href: MFramework.html
+  name: MFramework
+  nameWithType: MFramework
+  fullName: MFramework
+- uid: MFramework.MFrameworkAppState
+  commentId: T:MFramework.MFrameworkAppState
+  parent: MFramework
+  href: MFramework.MFrameworkAppState.html
+  name: MFrameworkAppState
+  nameWithType: MFrameworkAppState
+  fullName: MFramework.MFrameworkAppState

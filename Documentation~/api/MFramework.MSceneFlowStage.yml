@@ -1,0 +1,456 @@
+### YamlMime:ManagedReference
+items:
+- uid: MFramework.MSceneFlowStage
+  commentId: T:MFramework.MSceneFlowStage
+  id: MSceneFlowStage
+  parent: MFramework
+  children:
+  - MFramework.MSceneFlowStage.Activating
+  - MFramework.MSceneFlowStage.AfterActivation
+  - MFramework.MSceneFlowStage.AfterLoad
+  - MFramework.MSceneFlowStage.AfterSetActiveScene
+  - MFramework.MSceneFlowStage.AfterTransition
+  - MFramework.MSceneFlowStage.AfterUnload
+  - MFramework.MSceneFlowStage.BeforeActivation
+  - MFramework.MSceneFlowStage.BeforeLoad
+  - MFramework.MSceneFlowStage.BeforeSetActiveScene
+  - MFramework.MSceneFlowStage.BeforeTransition
+  - MFramework.MSceneFlowStage.BeforeUnload
+  - MFramework.MSceneFlowStage.Cancelled
+  - MFramework.MSceneFlowStage.CleaningTarget
+  - MFramework.MSceneFlowStage.Completed
+  - MFramework.MSceneFlowStage.Failed
+  - MFramework.MSceneFlowStage.Finally
+  - MFramework.MSceneFlowStage.Loading
+  - MFramework.MSceneFlowStage.None
+  - MFramework.MSceneFlowStage.SettingActiveScene
+  - MFramework.MSceneFlowStage.Unloading
+  langs:
+  - csharp
+  - vb
+  name: MSceneFlowStage
+  nameWithType: MSceneFlowStage
+  fullName: MFramework.MSceneFlowStage
+  type: Enum
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 描述 MSceneFlow 当前所在的确定性执行阶段。
+  example: []
+  syntax:
+    content: public enum MSceneFlowStage
+    content.vb: Public Enum MSceneFlowStage
+- uid: MFramework.MSceneFlowStage.None
+  commentId: F:MFramework.MSceneFlowStage.None
+  id: None
+  parent: MFramework.MSceneFlowStage
+  langs:
+  - csharp
+  - vb
+  name: None
+  nameWithType: MSceneFlowStage.None
+  fullName: MFramework.MSceneFlowStage.None
+  type: Field
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 尚未开始。
+  example: []
+  syntax:
+    content: None = 0
+    return:
+      type: MFramework.MSceneFlowStage
+- uid: MFramework.MSceneFlowStage.BeforeTransition
+  commentId: F:MFramework.MSceneFlowStage.BeforeTransition
+  id: BeforeTransition
+  parent: MFramework.MSceneFlowStage
+  langs:
+  - csharp
+  - vb
+  name: BeforeTransition
+  nameWithType: MSceneFlowStage.BeforeTransition
+  fullName: MFramework.MSceneFlowStage.BeforeTransition
+  type: Field
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 整次切换开始前的命令点。
+  example: []
+  syntax:
+    content: BeforeTransition = 1
+    return:
+      type: MFramework.MSceneFlowStage
+- uid: MFramework.MSceneFlowStage.BeforeLoad
+  commentId: F:MFramework.MSceneFlowStage.BeforeLoad
+  id: BeforeLoad
+  parent: MFramework.MSceneFlowStage
+  langs:
+  - csharp
+  - vb
+  name: BeforeLoad
+  nameWithType: MSceneFlowStage.BeforeLoad
+  fullName: MFramework.MSceneFlowStage.BeforeLoad
+  type: Field
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 发起目标场景加载前的命令点。
+  example: []
+  syntax:
+    content: BeforeLoad = 2
+    return:
+      type: MFramework.MSceneFlowStage
+- uid: MFramework.MSceneFlowStage.Loading
+  commentId: F:MFramework.MSceneFlowStage.Loading
+  id: Loading
+  parent: MFramework.MSceneFlowStage
+  langs:
+  - csharp
+  - vb
+  name: Loading
+  nameWithType: MSceneFlowStage.Loading
+  fullName: MFramework.MSceneFlowStage.Loading
+  type: Field
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 正在加载尚未激活的目标场景。
+  example: []
+  syntax:
+    content: Loading = 3
+    return:
+      type: MFramework.MSceneFlowStage
+- uid: MFramework.MSceneFlowStage.AfterLoad
+  commentId: F:MFramework.MSceneFlowStage.AfterLoad
+  id: AfterLoad
+  parent: MFramework.MSceneFlowStage
+  langs:
+  - csharp
+  - vb
+  name: AfterLoad
+  nameWithType: MSceneFlowStage.AfterLoad
+  fullName: MFramework.MSceneFlowStage.AfterLoad
+  type: Field
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 目标场景加载完成、开始激活前的命令点。
+  example: []
+  syntax:
+    content: AfterLoad = 4
+    return:
+      type: MFramework.MSceneFlowStage
+- uid: MFramework.MSceneFlowStage.BeforeActivation
+  commentId: F:MFramework.MSceneFlowStage.BeforeActivation
+  id: BeforeActivation
+  parent: MFramework.MSceneFlowStage
+  langs:
+  - csharp
+  - vb
+  name: BeforeActivation
+  nameWithType: MSceneFlowStage.BeforeActivation
+  fullName: MFramework.MSceneFlowStage.BeforeActivation
+  type: Field
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 开始激活目标场景前的命令点。
+  example: []
+  syntax:
+    content: BeforeActivation = 5
+    return:
+      type: MFramework.MSceneFlowStage
+- uid: MFramework.MSceneFlowStage.Activating
+  commentId: F:MFramework.MSceneFlowStage.Activating
+  id: Activating
+  parent: MFramework.MSceneFlowStage
+  langs:
+  - csharp
+  - vb
+  name: Activating
+  nameWithType: MSceneFlowStage.Activating
+  fullName: MFramework.MSceneFlowStage.Activating
+  type: Field
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 正在激活目标场景。
+  example: []
+  syntax:
+    content: Activating = 6
+    return:
+      type: MFramework.MSceneFlowStage
+- uid: MFramework.MSceneFlowStage.AfterActivation
+  commentId: F:MFramework.MSceneFlowStage.AfterActivation
+  id: AfterActivation
+  parent: MFramework.MSceneFlowStage
+  langs:
+  - csharp
+  - vb
+  name: AfterActivation
+  nameWithType: MSceneFlowStage.AfterActivation
+  fullName: MFramework.MSceneFlowStage.AfterActivation
+  type: Field
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 目标场景激活完成后的命令点。
+  example: []
+  syntax:
+    content: AfterActivation = 7
+    return:
+      type: MFramework.MSceneFlowStage
+- uid: MFramework.MSceneFlowStage.BeforeSetActiveScene
+  commentId: F:MFramework.MSceneFlowStage.BeforeSetActiveScene
+  id: BeforeSetActiveScene
+  parent: MFramework.MSceneFlowStage
+  langs:
+  - csharp
+  - vb
+  name: BeforeSetActiveScene
+  nameWithType: MSceneFlowStage.BeforeSetActiveScene
+  fullName: MFramework.MSceneFlowStage.BeforeSetActiveScene
+  type: Field
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 把目标设为 Unity Active Scene 前的命令点。
+  example: []
+  syntax:
+    content: BeforeSetActiveScene = 8
+    return:
+      type: MFramework.MSceneFlowStage
+- uid: MFramework.MSceneFlowStage.SettingActiveScene
+  commentId: F:MFramework.MSceneFlowStage.SettingActiveScene
+  id: SettingActiveScene
+  parent: MFramework.MSceneFlowStage
+  langs:
+  - csharp
+  - vb
+  name: SettingActiveScene
+  nameWithType: MSceneFlowStage.SettingActiveScene
+  fullName: MFramework.MSceneFlowStage.SettingActiveScene
+  type: Field
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 正在把目标设为 Unity Active Scene。
+  example: []
+  syntax:
+    content: SettingActiveScene = 9
+    return:
+      type: MFramework.MSceneFlowStage
+- uid: MFramework.MSceneFlowStage.AfterSetActiveScene
+  commentId: F:MFramework.MSceneFlowStage.AfterSetActiveScene
+  id: AfterSetActiveScene
+  parent: MFramework.MSceneFlowStage
+  langs:
+  - csharp
+  - vb
+  name: AfterSetActiveScene
+  nameWithType: MSceneFlowStage.AfterSetActiveScene
+  fullName: MFramework.MSceneFlowStage.AfterSetActiveScene
+  type: Field
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 目标已成为 Unity Active Scene 后的命令点。
+  example: []
+  syntax:
+    content: AfterSetActiveScene = 10
+    return:
+      type: MFramework.MSceneFlowStage
+- uid: MFramework.MSceneFlowStage.BeforeUnload
+  commentId: F:MFramework.MSceneFlowStage.BeforeUnload
+  id: BeforeUnload
+  parent: MFramework.MSceneFlowStage
+  langs:
+  - csharp
+  - vb
+  name: BeforeUnload
+  nameWithType: MSceneFlowStage.BeforeUnload
+  fullName: MFramework.MSceneFlowStage.BeforeUnload
+  type: Field
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 发起旧场景卸载前的命令点。
+  example: []
+  syntax:
+    content: BeforeUnload = 11
+    return:
+      type: MFramework.MSceneFlowStage
+- uid: MFramework.MSceneFlowStage.Unloading
+  commentId: F:MFramework.MSceneFlowStage.Unloading
+  id: Unloading
+  parent: MFramework.MSceneFlowStage
+  langs:
+  - csharp
+  - vb
+  name: Unloading
+  nameWithType: MSceneFlowStage.Unloading
+  fullName: MFramework.MSceneFlowStage.Unloading
+  type: Field
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 正在卸载旧场景。
+  example: []
+  syntax:
+    content: Unloading = 12
+    return:
+      type: MFramework.MSceneFlowStage
+- uid: MFramework.MSceneFlowStage.AfterUnload
+  commentId: F:MFramework.MSceneFlowStage.AfterUnload
+  id: AfterUnload
+  parent: MFramework.MSceneFlowStage
+  langs:
+  - csharp
+  - vb
+  name: AfterUnload
+  nameWithType: MSceneFlowStage.AfterUnload
+  fullName: MFramework.MSceneFlowStage.AfterUnload
+  type: Field
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 旧场景物理卸载完成后的命令点。
+  example: []
+  syntax:
+    content: AfterUnload = 13
+    return:
+      type: MFramework.MSceneFlowStage
+- uid: MFramework.MSceneFlowStage.AfterTransition
+  commentId: F:MFramework.MSceneFlowStage.AfterTransition
+  id: AfterTransition
+  parent: MFramework.MSceneFlowStage
+  langs:
+  - csharp
+  - vb
+  name: AfterTransition
+  nameWithType: MSceneFlowStage.AfterTransition
+  fullName: MFramework.MSceneFlowStage.AfterTransition
+  type: Field
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 所有成功路径步骤完成后的命令点。
+  example: []
+  syntax:
+    content: AfterTransition = 14
+    return:
+      type: MFramework.MSceneFlowStage
+- uid: MFramework.MSceneFlowStage.CleaningTarget
+  commentId: F:MFramework.MSceneFlowStage.CleaningTarget
+  id: CleaningTarget
+  parent: MFramework.MSceneFlowStage
+  langs:
+  - csharp
+  - vb
+  name: CleaningTarget
+  nameWithType: MSceneFlowStage.CleaningTarget
+  fullName: MFramework.MSceneFlowStage.CleaningTarget
+  type: Field
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 失败或取消后，正在回收尚未提交的目标场景。
+  example: []
+  syntax:
+    content: CleaningTarget = 15
+    return:
+      type: MFramework.MSceneFlowStage
+- uid: MFramework.MSceneFlowStage.Finally
+  commentId: F:MFramework.MSceneFlowStage.Finally
+  id: Finally
+  parent: MFramework.MSceneFlowStage
+  langs:
+  - csharp
+  - vb
+  name: Finally
+  nameWithType: MSceneFlowStage.Finally
+  fullName: MFramework.MSceneFlowStage.Finally
+  type: Field
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 成功、失败或取消路径都会执行的最终命令点。
+  example: []
+  syntax:
+    content: Finally = 16
+    return:
+      type: MFramework.MSceneFlowStage
+- uid: MFramework.MSceneFlowStage.Completed
+  commentId: F:MFramework.MSceneFlowStage.Completed
+  id: Completed
+  parent: MFramework.MSceneFlowStage
+  langs:
+  - csharp
+  - vb
+  name: Completed
+  nameWithType: MSceneFlowStage.Completed
+  fullName: MFramework.MSceneFlowStage.Completed
+  type: Field
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 切换已成功完成。
+  example: []
+  syntax:
+    content: Completed = 17
+    return:
+      type: MFramework.MSceneFlowStage
+- uid: MFramework.MSceneFlowStage.Failed
+  commentId: F:MFramework.MSceneFlowStage.Failed
+  id: Failed
+  parent: MFramework.MSceneFlowStage
+  langs:
+  - csharp
+  - vb
+  name: Failed
+  nameWithType: MSceneFlowStage.Failed
+  fullName: MFramework.MSceneFlowStage.Failed
+  type: Field
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 切换因错误结束。
+  example: []
+  syntax:
+    content: Failed = 18
+    return:
+      type: MFramework.MSceneFlowStage
+- uid: MFramework.MSceneFlowStage.Cancelled
+  commentId: F:MFramework.MSceneFlowStage.Cancelled
+  id: Cancelled
+  parent: MFramework.MSceneFlowStage
+  langs:
+  - csharp
+  - vb
+  name: Cancelled
+  nameWithType: MSceneFlowStage.Cancelled
+  fullName: MFramework.MSceneFlowStage.Cancelled
+  type: Field
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 切换因调用方取消结束。
+  example: []
+  syntax:
+    content: Cancelled = 19
+    return:
+      type: MFramework.MSceneFlowStage
+references:
+- uid: MFramework
+  commentId: N:MFramework
+  href: MFramework.html
+  name: MFramework
+  nameWithType: MFramework
+  fullName: MFramework
+- uid: MFramework.MSceneFlowStage
+  commentId: T:MFramework.MSceneFlowStage
+  parent: MFramework
+  href: MFramework.MSceneFlowStage.html
+  name: MSceneFlowStage
+  nameWithType: MSceneFlowStage
+  fullName: MFramework.MSceneFlowStage

@@ -1,0 +1,106 @@
+### YamlMime:ManagedReference
+items:
+- uid: MFramework.IMPooledGameObject
+  commentId: T:MFramework.IMPooledGameObject
+  id: IMPooledGameObject
+  parent: MFramework
+  children:
+  - MFramework.IMPooledGameObject.OnDespawned
+  - MFramework.IMPooledGameObject.OnSpawned
+  langs:
+  - csharp
+  - vb
+  name: IMPooledGameObject
+  nameWithType: IMPooledGameObject
+  fullName: MFramework.IMPooledGameObject
+  type: Interface
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 在 <xref href="UnityEngine.GameObject" data-throw-if-not-resolved="false"></xref> 进入或离开 <xref href="MFramework.MPool" data-throw-if-not-resolved="false"></xref> 时接收生命周期回调。
+  remarks: >-
+    需要重置玩法状态的组件应实现此接口。回收时应停止仍在运行的 Action、解除事件订阅，
+
+    并清除不能带到下一次生成过程中的状态。
+  example: []
+  syntax:
+    content: public interface IMPooledGameObject
+    content.vb: Public Interface IMPooledGameObject
+- uid: MFramework.IMPooledGameObject.OnSpawned
+  commentId: M:MFramework.IMPooledGameObject.OnSpawned
+  id: OnSpawned
+  parent: MFramework.IMPooledGameObject
+  langs:
+  - csharp
+  - vb
+  name: OnSpawned()
+  nameWithType: IMPooledGameObject.OnSpawned()
+  fullName: MFramework.IMPooledGameObject.OnSpawned()
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 对象池实例完成定位并激活后调用。
+  example: []
+  syntax:
+    content: void OnSpawned()
+    content.vb: Sub OnSpawned()
+  overload: MFramework.IMPooledGameObject.OnSpawned*
+- uid: MFramework.IMPooledGameObject.OnDespawned
+  commentId: M:MFramework.IMPooledGameObject.OnDespawned
+  id: OnDespawned
+  parent: MFramework.IMPooledGameObject
+  langs:
+  - csharp
+  - vb
+  name: OnDespawned()
+  nameWithType: IMPooledGameObject.OnDespawned()
+  fullName: MFramework.IMPooledGameObject.OnDespawned()
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 对象池实例被停用或由对象池销毁前调用。
+  example: []
+  syntax:
+    content: void OnDespawned()
+    content.vb: Sub OnDespawned()
+  overload: MFramework.IMPooledGameObject.OnDespawned*
+references:
+- uid: UnityEngine.GameObject
+  commentId: T:UnityEngine.GameObject
+  parent: UnityEngine
+  isExternal: true
+  name: GameObject
+  nameWithType: GameObject
+  fullName: UnityEngine.GameObject
+- uid: MFramework.MPool
+  commentId: T:MFramework.MPool
+  href: MFramework.MPool.html
+  name: MPool
+  nameWithType: MPool
+  fullName: MFramework.MPool
+- uid: MFramework
+  commentId: N:MFramework
+  href: MFramework.html
+  name: MFramework
+  nameWithType: MFramework
+  fullName: MFramework
+- uid: UnityEngine
+  commentId: N:UnityEngine
+  isExternal: true
+  name: UnityEngine
+  nameWithType: UnityEngine
+  fullName: UnityEngine
+- uid: MFramework.IMPooledGameObject.OnSpawned*
+  commentId: Overload:MFramework.IMPooledGameObject.OnSpawned
+  href: MFramework.IMPooledGameObject.html#MFramework_IMPooledGameObject_OnSpawned
+  name: OnSpawned
+  nameWithType: IMPooledGameObject.OnSpawned
+  fullName: MFramework.IMPooledGameObject.OnSpawned
+- uid: MFramework.IMPooledGameObject.OnDespawned*
+  commentId: Overload:MFramework.IMPooledGameObject.OnDespawned
+  href: MFramework.IMPooledGameObject.html#MFramework_IMPooledGameObject_OnDespawned
+  name: OnDespawned
+  nameWithType: IMPooledGameObject.OnDespawned
+  fullName: MFramework.IMPooledGameObject.OnDespawned

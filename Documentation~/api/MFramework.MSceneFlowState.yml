@@ -1,0 +1,141 @@
+### YamlMime:ManagedReference
+items:
+- uid: MFramework.MSceneFlowState
+  commentId: T:MFramework.MSceneFlowState
+  id: MSceneFlowState
+  parent: MFramework
+  children:
+  - MFramework.MSceneFlowState.Cancelled
+  - MFramework.MSceneFlowState.Cancelling
+  - MFramework.MSceneFlowState.Failed
+  - MFramework.MSceneFlowState.Running
+  - MFramework.MSceneFlowState.Succeeded
+  langs:
+  - csharp
+  - vb
+  name: MSceneFlowState
+  nameWithType: MSceneFlowState
+  fullName: MFramework.MSceneFlowState
+  type: Enum
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 描述一个 MSceneFlow 请求的生命周期状态。
+  example: []
+  syntax:
+    content: public enum MSceneFlowState
+    content.vb: Public Enum MSceneFlowState
+- uid: MFramework.MSceneFlowState.Running
+  commentId: F:MFramework.MSceneFlowState.Running
+  id: Running
+  parent: MFramework.MSceneFlowState
+  langs:
+  - csharp
+  - vb
+  name: Running
+  nameWithType: MSceneFlowState.Running
+  fullName: MFramework.MSceneFlowState.Running
+  type: Field
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 请求正在执行阶段或用户命令。
+  example: []
+  syntax:
+    content: Running = 0
+    return:
+      type: MFramework.MSceneFlowState
+- uid: MFramework.MSceneFlowState.Cancelling
+  commentId: F:MFramework.MSceneFlowState.Cancelling
+  id: Cancelling
+  parent: MFramework.MSceneFlowState
+  langs:
+  - csharp
+  - vb
+  name: Cancelling
+  nameWithType: MSceneFlowState.Cancelling
+  fullName: MFramework.MSceneFlowState.Cancelling
+  type: Field
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 已经请求取消，正在等待不可中断的 Unity 操作安全收口。
+  example: []
+  syntax:
+    content: Cancelling = 1
+    return:
+      type: MFramework.MSceneFlowState
+- uid: MFramework.MSceneFlowState.Succeeded
+  commentId: F:MFramework.MSceneFlowState.Succeeded
+  id: Succeeded
+  parent: MFramework.MSceneFlowState
+  langs:
+  - csharp
+  - vb
+  name: Succeeded
+  nameWithType: MSceneFlowState.Succeeded
+  fullName: MFramework.MSceneFlowState.Succeeded
+  type: Field
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 全部阶段和最终命令已完成。
+  example: []
+  syntax:
+    content: Succeeded = 2
+    return:
+      type: MFramework.MSceneFlowState
+- uid: MFramework.MSceneFlowState.Failed
+  commentId: F:MFramework.MSceneFlowState.Failed
+  id: Failed
+  parent: MFramework.MSceneFlowState
+  langs:
+  - csharp
+  - vb
+  name: Failed
+  nameWithType: MSceneFlowState.Failed
+  fullName: MFramework.MSceneFlowState.Failed
+  type: Field
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 某个阶段、命令或最终清理失败。
+  example: []
+  syntax:
+    content: Failed = 3
+    return:
+      type: MFramework.MSceneFlowState
+- uid: MFramework.MSceneFlowState.Cancelled
+  commentId: F:MFramework.MSceneFlowState.Cancelled
+  id: Cancelled
+  parent: MFramework.MSceneFlowState
+  langs:
+  - csharp
+  - vb
+  name: Cancelled
+  nameWithType: MSceneFlowState.Cancelled
+  fullName: MFramework.MSceneFlowState.Cancelled
+  type: Field
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 请求已经安全取消。
+  example: []
+  syntax:
+    content: Cancelled = 4
+    return:
+      type: MFramework.MSceneFlowState
+references:
+- uid: MFramework
+  commentId: N:MFramework
+  href: MFramework.html
+  name: MFramework
+  nameWithType: MFramework
+  fullName: MFramework
+- uid: MFramework.MSceneFlowState
+  commentId: T:MFramework.MSceneFlowState
+  parent: MFramework
+  href: MFramework.MSceneFlowState.html
+  name: MSceneFlowState
+  nameWithType: MSceneFlowState
+  fullName: MFramework.MSceneFlowState

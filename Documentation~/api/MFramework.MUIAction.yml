@@ -1,0 +1,147 @@
+### YamlMime:ManagedReference
+items:
+- uid: MFramework.MUIAction
+  commentId: T:MFramework.MUIAction
+  id: MUIAction
+  parent: MFramework
+  children:
+  - MFramework.MUIAction.Back
+  - MFramework.MUIAction.Cancel
+  - MFramework.MUIAction.Confirm
+  - MFramework.MUIAction.Next
+  - MFramework.MUIAction.Previous
+  langs:
+  - csharp
+  - vb
+  name: MUIAction
+  nameWithType: MUIAction
+  fullName: MFramework.MUIAction
+  type: Enum
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 定义菜单与对话框共用的五种语义操作。
+  example: []
+  syntax:
+    content: public enum MUIAction
+    content.vb: Public Enum MUIAction
+- uid: MFramework.MUIAction.Confirm
+  commentId: F:MFramework.MUIAction.Confirm
+  id: Confirm
+  parent: MFramework.MUIAction
+  langs:
+  - csharp
+  - vb
+  name: Confirm
+  nameWithType: MUIAction.Confirm
+  fullName: MFramework.MUIAction.Confirm
+  type: Field
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 确认当前选择。
+  example: []
+  syntax:
+    content: Confirm = 0
+    return:
+      type: MFramework.MUIAction
+- uid: MFramework.MUIAction.Cancel
+  commentId: F:MFramework.MUIAction.Cancel
+  id: Cancel
+  parent: MFramework.MUIAction
+  langs:
+  - csharp
+  - vb
+  name: Cancel
+  nameWithType: MUIAction.Cancel
+  fullName: MFramework.MUIAction.Cancel
+  type: Field
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 取消当前临时选择。
+  remarks: 弹窗未处理时默认取消关闭；页面未处理时不会自动返回页面栈。
+  example: []
+  syntax:
+    content: Cancel = 1
+    return:
+      type: MFramework.MUIAction
+- uid: MFramework.MUIAction.Next
+  commentId: F:MFramework.MUIAction.Next
+  id: Next
+  parent: MFramework.MUIAction
+  langs:
+  - csharp
+  - vb
+  name: Next
+  nameWithType: MUIAction.Next
+  fullName: MFramework.MUIAction.Next
+  type: Field
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 前往下一页或下一步骤。
+  example: []
+  syntax:
+    content: Next = 2
+    return:
+      type: MFramework.MUIAction
+- uid: MFramework.MUIAction.Previous
+  commentId: F:MFramework.MUIAction.Previous
+  id: Previous
+  parent: MFramework.MUIAction
+  langs:
+  - csharp
+  - vb
+  name: Previous
+  nameWithType: MUIAction.Previous
+  fullName: MFramework.MUIAction.Previous
+  type: Field
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 返回向导或教学流程的上一步骤。
+  remarks: 页面可以优先处理步骤数据；未处理时路由器按兼容约定返回一级页面历史。
+  example: []
+  syntax:
+    content: Previous = 3
+    return:
+      type: MFramework.MUIAction
+- uid: MFramework.MUIAction.Back
+  commentId: F:MFramework.MUIAction.Back
+  id: Back
+  parent: MFramework.MUIAction
+  langs:
+  - csharp
+  - vb
+  name: Back
+  nameWithType: MUIAction.Back
+  fullName: MFramework.MUIAction.Back
+  type: Field
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 离开当前弹窗或返回页面栈的上一页。
+  remarks: >-
+    弹窗未处理时默认以取消结果关闭；页面未处理时默认返回一级页面历史。
+
+    此枚举值固定为 4，以免改变 Prefab 中已经序列化的其他操作数值。
+  example: []
+  syntax:
+    content: Back = 4
+    return:
+      type: MFramework.MUIAction
+references:
+- uid: MFramework
+  commentId: N:MFramework
+  href: MFramework.html
+  name: MFramework
+  nameWithType: MFramework
+  fullName: MFramework
+- uid: MFramework.MUIAction
+  commentId: T:MFramework.MUIAction
+  parent: MFramework
+  href: MFramework.MUIAction.html
+  name: MUIAction
+  nameWithType: MUIAction
+  fullName: MFramework.MUIAction

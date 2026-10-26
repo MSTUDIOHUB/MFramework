@@ -1,0 +1,461 @@
+### YamlMime:ManagedReference
+items:
+- uid: MFramework.MRandomState
+  commentId: T:MFramework.MRandomState
+  id: MRandomState
+  parent: MFramework
+  children:
+  - MFramework.MRandomState.#ctor(System.String,System.Int32,System.UInt64,System.UInt64)
+  - MFramework.MRandomState.Algorithm
+  - MFramework.MRandomState.Increment
+  - MFramework.MRandomState.State
+  - MFramework.MRandomState.Version
+  langs:
+  - csharp
+  - vb
+  name: MRandomState
+  nameWithType: MRandomState
+  fullName: MFramework.MRandomState
+  type: Struct
+  assemblies:
+  - MStudio.MFramework.Foundation
+  namespace: MFramework
+  summary: 保存一个随机流的完整状态及解释该状态所需的算法标识。
+  remarks: >-
+    公开字段用于显式的数据序列化；反序列化后必须交给 <xref href="MFramework.MRandom.RestoreState(MFramework.MRandomState)" data-throw-if-not-resolved="false"></xref> 校验。
+
+    默认值不是有效状态。序列化器必须无损保存两个 64 位无符号整数，不能经由浮点数中转。
+
+    本类型不包含游戏概率、已生成结果或命令回执，也不负责持久化提交。
+  example: []
+  syntax:
+    content: >-
+      [Serializable]
+
+      public struct MRandomState
+    content.vb: >-
+      <Serializable>
+
+      Public Structure MRandomState
+  inheritedMembers:
+  - System.ValueType.Equals(System.Object)
+  - System.ValueType.GetHashCode
+  - System.ValueType.ToString
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  attributes:
+  - type: System.SerializableAttribute
+    ctor: System.SerializableAttribute.#ctor
+    arguments: []
+- uid: MFramework.MRandomState.Algorithm
+  commentId: F:MFramework.MRandomState.Algorithm
+  id: Algorithm
+  parent: MFramework.MRandomState
+  langs:
+  - csharp
+  - vb
+  name: Algorithm
+  nameWithType: MRandomState.Algorithm
+  fullName: MFramework.MRandomState.Algorithm
+  type: Field
+  assemblies:
+  - MStudio.MFramework.Foundation
+  namespace: MFramework
+  summary: 算法及输出变换的稳定标识；恢复时必须匹配受支持的算法。
+  example: []
+  syntax:
+    content: public string Algorithm
+    return:
+      type: System.String
+    content.vb: Public Algorithm As String
+- uid: MFramework.MRandomState.Version
+  commentId: F:MFramework.MRandomState.Version
+  id: Version
+  parent: MFramework.MRandomState
+  langs:
+  - csharp
+  - vb
+  name: Version
+  nameWithType: MRandomState.Version
+  fullName: MFramework.MRandomState.Version
+  type: Field
+  assemblies:
+  - MStudio.MFramework.Foundation
+  namespace: MFramework
+  summary: 状态格式和公开抽样规则的版本；恢复时必须匹配受支持的版本。
+  example: []
+  syntax:
+    content: public int Version
+    return:
+      type: System.Int32
+    content.vb: Public Version As Integer
+- uid: MFramework.MRandomState.State
+  commentId: F:MFramework.MRandomState.State
+  id: State
+  parent: MFramework.MRandomState
+  langs:
+  - csharp
+  - vb
+  name: State
+  nameWithType: MRandomState.State
+  fullName: MFramework.MRandomState.State
+  type: Field
+  assemblies:
+  - MStudio.MFramework.Foundation
+  namespace: MFramework
+  summary: 下一次生成输出之前的 64 位状态；零也是合法取值。
+  example: []
+  syntax:
+    content: public ulong State
+    return:
+      type: System.UInt64
+    content.vb: Public State As ULong
+- uid: MFramework.MRandomState.Increment
+  commentId: F:MFramework.MRandomState.Increment
+  id: Increment
+  parent: MFramework.MRandomState
+  langs:
+  - csharp
+  - vb
+  name: Increment
+  nameWithType: MRandomState.Increment
+  fullName: MFramework.MRandomState.Increment
+  type: Field
+  assemblies:
+  - MStudio.MFramework.Foundation
+  namespace: MFramework
+  summary: PCG 流使用的奇数增量；偶数增量不是本实现接受的有效状态。
+  example: []
+  syntax:
+    content: public ulong Increment
+    return:
+      type: System.UInt64
+    content.vb: Public Increment As ULong
+- uid: MFramework.MRandomState.#ctor(System.String,System.Int32,System.UInt64,System.UInt64)
+  commentId: M:MFramework.MRandomState.#ctor(System.String,System.Int32,System.UInt64,System.UInt64)
+  id: '#ctor(System.String,System.Int32,System.UInt64,System.UInt64)'
+  parent: MFramework.MRandomState
+  langs:
+  - csharp
+  - vb
+  name: MRandomState(string, int, ulong, ulong)
+  nameWithType: MRandomState.MRandomState(string, int, ulong, ulong)
+  fullName: MFramework.MRandomState.MRandomState(string, int, ulong, ulong)
+  type: Constructor
+  assemblies:
+  - MStudio.MFramework.Foundation
+  namespace: MFramework
+  summary: 构造供传输或持久化使用的状态记录。
+  remarks: 本构造函数只保存字段；合法性检查由生成器恢复入口统一执行。
+  example: []
+  syntax:
+    content: public MRandomState(string algorithm, int version, ulong state, ulong increment)
+    parameters:
+    - id: algorithm
+      type: System.String
+      description: 算法稳定标识。
+    - id: version
+      type: System.Int32
+      description: 状态格式及抽样规则版本。
+    - id: state
+      type: System.UInt64
+      description: 生成器内部状态。
+    - id: increment
+      type: System.UInt64
+      description: 该流的奇数增量。
+    content.vb: Public Sub New(algorithm As String, version As Integer, state As ULong, increment As ULong)
+  overload: MFramework.MRandomState.#ctor*
+  nameWithType.vb: MRandomState.New(String, Integer, ULong, ULong)
+  fullName.vb: MFramework.MRandomState.New(String, Integer, ULong, ULong)
+  name.vb: New(String, Integer, ULong, ULong)
+references:
+- uid: MFramework.MRandom.RestoreState(MFramework.MRandomState)
+  commentId: M:MFramework.MRandom.RestoreState(MFramework.MRandomState)
+  href: MFramework.MRandom.html#MFramework_MRandom_RestoreState_MFramework_MRandomState_
+  name: RestoreState(MRandomState)
+  nameWithType: MRandom.RestoreState(MRandomState)
+  fullName: MFramework.MRandom.RestoreState(MFramework.MRandomState)
+  spec.csharp:
+  - uid: MFramework.MRandom.RestoreState(MFramework.MRandomState)
+    name: RestoreState
+    href: MFramework.MRandom.html#MFramework_MRandom_RestoreState_MFramework_MRandomState_
+  - name: (
+  - uid: MFramework.MRandomState
+    name: MRandomState
+    href: MFramework.MRandomState.html
+  - name: )
+  spec.vb:
+  - uid: MFramework.MRandom.RestoreState(MFramework.MRandomState)
+    name: RestoreState
+    href: MFramework.MRandom.html#MFramework_MRandom_RestoreState_MFramework_MRandomState_
+  - name: (
+  - uid: MFramework.MRandomState
+    name: MRandomState
+    href: MFramework.MRandomState.html
+  - name: )
+- uid: MFramework
+  commentId: N:MFramework
+  href: MFramework.html
+  name: MFramework
+  nameWithType: MFramework
+  fullName: MFramework
+- uid: System.ValueType.Equals(System.Object)
+  commentId: M:System.ValueType.Equals(System.Object)
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  name: Equals(object)
+  nameWithType: ValueType.Equals(object)
+  fullName: System.ValueType.Equals(object)
+  nameWithType.vb: ValueType.Equals(Object)
+  fullName.vb: System.ValueType.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType.GetHashCode
+  commentId: M:System.ValueType.GetHashCode
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  name: GetHashCode()
+  nameWithType: ValueType.GetHashCode()
+  fullName: System.ValueType.GetHashCode()
+  spec.csharp:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+- uid: System.ValueType.ToString
+  commentId: M:System.ValueType.ToString
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  name: ToString()
+  nameWithType: ValueType.ToString()
+  fullName: System.ValueType.ToString()
+  spec.csharp:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType
+  commentId: T:System.ValueType
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype
+  name: ValueType
+  nameWithType: ValueType
+  fullName: System.ValueType
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.UInt64
+  commentId: T:System.UInt64
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.uint64
+  name: ulong
+  nameWithType: ulong
+  fullName: ulong
+  nameWithType.vb: ULong
+  fullName.vb: ULong
+  name.vb: ULong
+- uid: MFramework.MRandomState.#ctor*
+  commentId: Overload:MFramework.MRandomState.#ctor
+  href: MFramework.MRandomState.html#MFramework_MRandomState__ctor_System_String_System_Int32_System_UInt64_System_UInt64_
+  name: MRandomState
+  nameWithType: MRandomState.MRandomState
+  fullName: MFramework.MRandomState.MRandomState
+  nameWithType.vb: MRandomState.New
+  fullName.vb: MFramework.MRandomState.New
+  name.vb: New

@@ -1,0 +1,494 @@
+### YamlMime:ManagedReference
+items:
+- uid: MFramework.MPlatformInitializationResult
+  commentId: T:MFramework.MPlatformInitializationResult
+  id: MPlatformInitializationResult
+  parent: MFramework
+  children:
+  - MFramework.MPlatformInitializationResult.#ctor(System.Boolean,System.String)
+  - MFramework.MPlatformInitializationResult.ErrorMessage
+  - MFramework.MPlatformInitializationResult.Failure(System.String)
+  - MFramework.MPlatformInitializationResult.Succeeded
+  - MFramework.MPlatformInitializationResult.Success
+  - MFramework.MPlatformInitializationResult.ToString
+  langs:
+  - csharp
+  - vb
+  name: MPlatformInitializationResult
+  nameWithType: MPlatformInitializationResult
+  fullName: MFramework.MPlatformInitializationResult
+  type: Struct
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 描述平台桥接初始化是否成功完成。
+  example: []
+  syntax:
+    content: public readonly struct MPlatformInitializationResult
+    content.vb: Public Structure MPlatformInitializationResult
+  inheritedMembers:
+  - System.ValueType.Equals(System.Object)
+  - System.ValueType.GetHashCode
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+- uid: MFramework.MPlatformInitializationResult.#ctor(System.Boolean,System.String)
+  commentId: M:MFramework.MPlatformInitializationResult.#ctor(System.Boolean,System.String)
+  id: '#ctor(System.Boolean,System.String)'
+  parent: MFramework.MPlatformInitializationResult
+  langs:
+  - csharp
+  - vb
+  name: MPlatformInitializationResult(bool, string)
+  nameWithType: MPlatformInitializationResult.MPlatformInitializationResult(bool, string)
+  fullName: MFramework.MPlatformInitializationResult.MPlatformInitializationResult(bool, string)
+  type: Constructor
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 创建一个平台初始化结果。
+  example: []
+  syntax:
+    content: public MPlatformInitializationResult(bool succeeded, string errorMessage)
+    parameters:
+    - id: succeeded
+      type: System.Boolean
+      description: 初始化是否成功。
+    - id: errorMessage
+      type: System.String
+      description: 可用于定位问题的失败说明；成功结果始终保存空字符串。
+    content.vb: Public Sub New(succeeded As Boolean, errorMessage As String)
+  overload: MFramework.MPlatformInitializationResult.#ctor*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: 当失败结果未提供错误说明时抛出。
+  nameWithType.vb: MPlatformInitializationResult.New(Boolean, String)
+  fullName.vb: MFramework.MPlatformInitializationResult.New(Boolean, String)
+  name.vb: New(Boolean, String)
+- uid: MFramework.MPlatformInitializationResult.Succeeded
+  commentId: P:MFramework.MPlatformInitializationResult.Succeeded
+  id: Succeeded
+  parent: MFramework.MPlatformInitializationResult
+  langs:
+  - csharp
+  - vb
+  name: Succeeded
+  nameWithType: MPlatformInitializationResult.Succeeded
+  fullName: MFramework.MPlatformInitializationResult.Succeeded
+  type: Property
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 获取平台初始化是否成功。
+  example: []
+  syntax:
+    content: public bool Succeeded { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property Succeeded As Boolean
+  overload: MFramework.MPlatformInitializationResult.Succeeded*
+- uid: MFramework.MPlatformInitializationResult.ErrorMessage
+  commentId: P:MFramework.MPlatformInitializationResult.ErrorMessage
+  id: ErrorMessage
+  parent: MFramework.MPlatformInitializationResult
+  langs:
+  - csharp
+  - vb
+  name: ErrorMessage
+  nameWithType: MPlatformInitializationResult.ErrorMessage
+  fullName: MFramework.MPlatformInitializationResult.ErrorMessage
+  type: Property
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 获取失败说明；初始化成功时返回空字符串。
+  example: []
+  syntax:
+    content: public string ErrorMessage { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property ErrorMessage As String
+  overload: MFramework.MPlatformInitializationResult.ErrorMessage*
+- uid: MFramework.MPlatformInitializationResult.Success
+  commentId: M:MFramework.MPlatformInitializationResult.Success
+  id: Success
+  parent: MFramework.MPlatformInitializationResult
+  langs:
+  - csharp
+  - vb
+  name: Success()
+  nameWithType: MPlatformInitializationResult.Success()
+  fullName: MFramework.MPlatformInitializationResult.Success()
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 创建一个成功的初始化结果。
+  example: []
+  syntax:
+    content: public static MPlatformInitializationResult Success()
+    return:
+      type: MFramework.MPlatformInitializationResult
+      description: <xref href="MFramework.MPlatformInitializationResult.Succeeded" data-throw-if-not-resolved="false"></xref> 为 <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> 的结果。
+    content.vb: Public Shared Function Success() As MPlatformInitializationResult
+  overload: MFramework.MPlatformInitializationResult.Success*
+- uid: MFramework.MPlatformInitializationResult.Failure(System.String)
+  commentId: M:MFramework.MPlatformInitializationResult.Failure(System.String)
+  id: Failure(System.String)
+  parent: MFramework.MPlatformInitializationResult
+  langs:
+  - csharp
+  - vb
+  name: Failure(string)
+  nameWithType: MPlatformInitializationResult.Failure(string)
+  fullName: MFramework.MPlatformInitializationResult.Failure(string)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 创建一个失败的初始化结果。
+  example: []
+  syntax:
+    content: public static MPlatformInitializationResult Failure(string errorMessage)
+    parameters:
+    - id: errorMessage
+      type: System.String
+      description: 适合写入日志或降级 UI 的非空说明。
+    return:
+      type: MFramework.MPlatformInitializationResult
+      description: <xref href="MFramework.MPlatformInitializationResult.Succeeded" data-throw-if-not-resolved="false"></xref> 为 <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a> 的结果。
+    content.vb: Public Shared Function Failure(errorMessage As String) As MPlatformInitializationResult
+  overload: MFramework.MPlatformInitializationResult.Failure*
+  nameWithType.vb: MPlatformInitializationResult.Failure(String)
+  fullName.vb: MFramework.MPlatformInitializationResult.Failure(String)
+  name.vb: Failure(String)
+- uid: MFramework.MPlatformInitializationResult.ToString
+  commentId: M:MFramework.MPlatformInitializationResult.ToString
+  id: ToString
+  parent: MFramework.MPlatformInitializationResult
+  langs:
+  - csharp
+  - vb
+  name: ToString()
+  nameWithType: MPlatformInitializationResult.ToString()
+  fullName: MFramework.MPlatformInitializationResult.ToString()
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  example: []
+  syntax:
+    content: public override string ToString()
+    return:
+      type: System.String
+    content.vb: Public Overrides Function ToString() As String
+  overridden: System.ValueType.ToString
+  overload: MFramework.MPlatformInitializationResult.ToString*
+references:
+- uid: MFramework
+  commentId: N:MFramework
+  href: MFramework.html
+  name: MFramework
+  nameWithType: MFramework
+  fullName: MFramework
+- uid: System.ValueType.Equals(System.Object)
+  commentId: M:System.ValueType.Equals(System.Object)
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  name: Equals(object)
+  nameWithType: ValueType.Equals(object)
+  fullName: System.ValueType.Equals(object)
+  nameWithType.vb: ValueType.Equals(Object)
+  fullName.vb: System.ValueType.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType.GetHashCode
+  commentId: M:System.ValueType.GetHashCode
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  name: GetHashCode()
+  nameWithType: ValueType.GetHashCode()
+  fullName: System.ValueType.GetHashCode()
+  spec.csharp:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType
+  commentId: T:System.ValueType
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype
+  name: ValueType
+  nameWithType: ValueType
+  fullName: System.ValueType
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.ArgumentException
+  commentId: T:System.ArgumentException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.argumentexception
+  name: ArgumentException
+  nameWithType: ArgumentException
+  fullName: System.ArgumentException
+- uid: MFramework.MPlatformInitializationResult.#ctor*
+  commentId: Overload:MFramework.MPlatformInitializationResult.#ctor
+  href: MFramework.MPlatformInitializationResult.html#MFramework_MPlatformInitializationResult__ctor_System_Boolean_System_String_
+  name: MPlatformInitializationResult
+  nameWithType: MPlatformInitializationResult.MPlatformInitializationResult
+  fullName: MFramework.MPlatformInitializationResult.MPlatformInitializationResult
+  nameWithType.vb: MPlatformInitializationResult.New
+  fullName.vb: MFramework.MPlatformInitializationResult.New
+  name.vb: New
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: MFramework.MPlatformInitializationResult.Succeeded*
+  commentId: Overload:MFramework.MPlatformInitializationResult.Succeeded
+  href: MFramework.MPlatformInitializationResult.html#MFramework_MPlatformInitializationResult_Succeeded
+  name: Succeeded
+  nameWithType: MPlatformInitializationResult.Succeeded
+  fullName: MFramework.MPlatformInitializationResult.Succeeded
+- uid: MFramework.MPlatformInitializationResult.ErrorMessage*
+  commentId: Overload:MFramework.MPlatformInitializationResult.ErrorMessage
+  href: MFramework.MPlatformInitializationResult.html#MFramework_MPlatformInitializationResult_ErrorMessage
+  name: ErrorMessage
+  nameWithType: MPlatformInitializationResult.ErrorMessage
+  fullName: MFramework.MPlatformInitializationResult.ErrorMessage
+- uid: MFramework.MPlatformInitializationResult.Succeeded
+  commentId: P:MFramework.MPlatformInitializationResult.Succeeded
+  href: MFramework.MPlatformInitializationResult.html#MFramework_MPlatformInitializationResult_Succeeded
+  name: Succeeded
+  nameWithType: MPlatformInitializationResult.Succeeded
+  fullName: MFramework.MPlatformInitializationResult.Succeeded
+- uid: MFramework.MPlatformInitializationResult.Success*
+  commentId: Overload:MFramework.MPlatformInitializationResult.Success
+  href: MFramework.MPlatformInitializationResult.html#MFramework_MPlatformInitializationResult_Success
+  name: Success
+  nameWithType: MPlatformInitializationResult.Success
+  fullName: MFramework.MPlatformInitializationResult.Success
+- uid: MFramework.MPlatformInitializationResult
+  commentId: T:MFramework.MPlatformInitializationResult
+  parent: MFramework
+  href: MFramework.MPlatformInitializationResult.html
+  name: MPlatformInitializationResult
+  nameWithType: MPlatformInitializationResult
+  fullName: MFramework.MPlatformInitializationResult
+- uid: MFramework.MPlatformInitializationResult.Failure*
+  commentId: Overload:MFramework.MPlatformInitializationResult.Failure
+  href: MFramework.MPlatformInitializationResult.html#MFramework_MPlatformInitializationResult_Failure_System_String_
+  name: Failure
+  nameWithType: MPlatformInitializationResult.Failure
+  fullName: MFramework.MPlatformInitializationResult.Failure
+- uid: System.ValueType.ToString
+  commentId: M:System.ValueType.ToString
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  name: ToString()
+  nameWithType: ValueType.ToString()
+  fullName: System.ValueType.ToString()
+  spec.csharp:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+- uid: MFramework.MPlatformInitializationResult.ToString*
+  commentId: Overload:MFramework.MPlatformInitializationResult.ToString
+  href: MFramework.MPlatformInitializationResult.html#MFramework_MPlatformInitializationResult_ToString
+  name: ToString
+  nameWithType: MPlatformInitializationResult.ToString
+  fullName: MFramework.MPlatformInitializationResult.ToString

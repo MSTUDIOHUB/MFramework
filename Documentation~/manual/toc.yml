@@ -1,0 +1,34 @@
+- name: 手册导览
+  href: index.md
+- name: 生成 DocFX 手册
+  href: build-docfx.md
+- name: Core
+  href: core.md
+- name: Event
+  href: event.md
+- name: Action
+  href: action.md
+- name: FSM
+  href: state-machine.md
+- name: Pool
+  href: pool.md
+- name: Audio
+  href: audio.md
+- name: Config
+  href: config.md
+- name: Save 可靠本地存档
+  href: save.md
+- name: Random 可恢复随机源
+  href: random.md
+- name: Addressables
+  href: addressables.md
+- name: SceneFlow
+  href: scene-flow.md
+- name: UGUI
+  href: ugui.md
+- name: Platform
+  href: platform.md
+- name: Extensions
+  href: extensions.md
+- name: IL2CPP / AOT 接入注意事项
+  href: reflection-aot.md

@@ -1,0 +1,597 @@
+### YamlMime:ManagedReference
+items:
+- uid: MFramework.MAddressablesSceneFlowBackend
+  commentId: T:MFramework.MAddressablesSceneFlowBackend
+  id: MAddressablesSceneFlowBackend
+  parent: MFramework
+  children:
+  - MFramework.MAddressablesSceneFlowBackend.#ctor
+  - MFramework.MAddressablesSceneFlowBackend.ActivateAsync(MFramework.IMSceneFlowScene)
+  - MFramework.MAddressablesSceneFlowBackend.LoadAsync(System.Object,System.Int32)
+  - MFramework.MAddressablesSceneFlowBackend.SetActiveScene(MFramework.IMSceneFlowScene)
+  - MFramework.MAddressablesSceneFlowBackend.UnloadAsync(MFramework.IMSceneFlowScene)
+  langs:
+  - csharp
+  - vb
+  name: MAddressablesSceneFlowBackend
+  nameWithType: MAddressablesSceneFlowBackend
+  fullName: MFramework.MAddressablesSceneFlowBackend
+  type: Class
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 使用 MAddressables、Additive 加载和显式激活实现的默认 MSceneFlow 后端。
+  example: []
+  syntax:
+    content: 'public sealed class MAddressablesSceneFlowBackend : IMSceneFlowBackend'
+    content.vb: Public NotInheritable Class MAddressablesSceneFlowBackend Implements IMSceneFlowBackend
+  inheritance:
+  - System.Object
+  implements:
+  - MFramework.IMSceneFlowBackend
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MFramework.MAddressablesSceneFlowBackend.#ctor
+  commentId: M:MFramework.MAddressablesSceneFlowBackend.#ctor
+  id: '#ctor'
+  parent: MFramework.MAddressablesSceneFlowBackend
+  langs:
+  - csharp
+  - vb
+  name: MAddressablesSceneFlowBackend()
+  nameWithType: MAddressablesSceneFlowBackend.MAddressablesSceneFlowBackend()
+  fullName: MFramework.MAddressablesSceneFlowBackend.MAddressablesSceneFlowBackend()
+  type: Constructor
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 创建后端，并把创建当下的 Active Scene 记作优先 Bootstrap 候选。
+  example: []
+  syntax:
+    content: public MAddressablesSceneFlowBackend()
+    content.vb: Public Sub New()
+  overload: MFramework.MAddressablesSceneFlowBackend.#ctor*
+  nameWithType.vb: MAddressablesSceneFlowBackend.New()
+  fullName.vb: MFramework.MAddressablesSceneFlowBackend.New()
+  name.vb: New()
+- uid: MFramework.MAddressablesSceneFlowBackend.LoadAsync(System.Object,System.Int32)
+  commentId: M:MFramework.MAddressablesSceneFlowBackend.LoadAsync(System.Object,System.Int32)
+  id: LoadAsync(System.Object,System.Int32)
+  parent: MFramework.MAddressablesSceneFlowBackend
+  langs:
+  - csharp
+  - vb
+  name: LoadAsync(object, int)
+  nameWithType: MAddressablesSceneFlowBackend.LoadAsync(object, int)
+  fullName: MFramework.MAddressablesSceneFlowBackend.LoadAsync(object, int)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 以 Additive 且暂不激活的方式开始加载目标内容场景。
+  remarks: >-
+    返回的操作必须遵守 <xref href="MFramework.IMSceneFlowLoadOperation" data-throw-if-not-resolved="false"></xref> 的放弃契约：在场景所有权
+
+    转移前被释放时，后端负责处理并最终释放任何迟到的成功结果。
+  example: []
+  syntax:
+    content: public IMSceneFlowLoadOperation LoadAsync(object key, int priority)
+    parameters:
+    - id: key
+      type: System.Object
+    - id: priority
+      type: System.Int32
+    return:
+      type: MFramework.IMSceneFlowLoadOperation
+    content.vb: Public Function LoadAsync(key As Object, priority As Integer) As IMSceneFlowLoadOperation
+  overload: MFramework.MAddressablesSceneFlowBackend.LoadAsync*
+  implements:
+  - MFramework.IMSceneFlowBackend.LoadAsync(System.Object,System.Int32)
+  nameWithType.vb: MAddressablesSceneFlowBackend.LoadAsync(Object, Integer)
+  fullName.vb: MFramework.MAddressablesSceneFlowBackend.LoadAsync(Object, Integer)
+  name.vb: LoadAsync(Object, Integer)
+- uid: MFramework.MAddressablesSceneFlowBackend.ActivateAsync(MFramework.IMSceneFlowScene)
+  commentId: M:MFramework.MAddressablesSceneFlowBackend.ActivateAsync(MFramework.IMSceneFlowScene)
+  id: ActivateAsync(MFramework.IMSceneFlowScene)
+  parent: MFramework.MAddressablesSceneFlowBackend
+  langs:
+  - csharp
+  - vb
+  name: ActivateAsync(IMSceneFlowScene)
+  nameWithType: MAddressablesSceneFlowBackend.ActivateAsync(IMSceneFlowScene)
+  fullName: MFramework.MAddressablesSceneFlowBackend.ActivateAsync(MFramework.IMSceneFlowScene)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 开始激活一个已经加载但尚未激活的目标场景。
+  example: []
+  syntax:
+    content: public IMSceneFlowOperation ActivateAsync(IMSceneFlowScene scene)
+    parameters:
+    - id: scene
+      type: MFramework.IMSceneFlowScene
+    return:
+      type: MFramework.IMSceneFlowOperation
+    content.vb: Public Function ActivateAsync(scene As IMSceneFlowScene) As IMSceneFlowOperation
+  overload: MFramework.MAddressablesSceneFlowBackend.ActivateAsync*
+  implements:
+  - MFramework.IMSceneFlowBackend.ActivateAsync(MFramework.IMSceneFlowScene)
+- uid: MFramework.MAddressablesSceneFlowBackend.UnloadAsync(MFramework.IMSceneFlowScene)
+  commentId: M:MFramework.MAddressablesSceneFlowBackend.UnloadAsync(MFramework.IMSceneFlowScene)
+  id: UnloadAsync(MFramework.IMSceneFlowScene)
+  parent: MFramework.MAddressablesSceneFlowBackend
+  langs:
+  - csharp
+  - vb
+  name: UnloadAsync(IMSceneFlowScene)
+  nameWithType: MAddressablesSceneFlowBackend.UnloadAsync(IMSceneFlowScene)
+  fullName: MFramework.MAddressablesSceneFlowBackend.UnloadAsync(MFramework.IMSceneFlowScene)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: >-
+    开始卸载场景。操作运行期间调用方不得释放场景；成功后后端完成所有权交还，
+
+    失败时场景仍归调用方持有，可再次释放或重试。
+  remarks: >-
+    若运行中的操作被 Dispose，后端仍必须负责让已经发起的底层卸载安全收口；此时场景
+
+    不会归还给调用方。只有可观察操作以 Failed 终态完成时，所有权才归还调用方。
+
+    本方法还必须以返回值作为原子所有权边界：抛出异常或返回 null 时不得已经发起卸载，
+
+    场景仍归调用方；一旦返回非 null 操作，运行期间及操作被提前释放后的收口均归后端。
+  example: []
+  syntax:
+    content: public IMSceneFlowOperation UnloadAsync(IMSceneFlowScene scene)
+    parameters:
+    - id: scene
+      type: MFramework.IMSceneFlowScene
+    return:
+      type: MFramework.IMSceneFlowOperation
+    content.vb: Public Function UnloadAsync(scene As IMSceneFlowScene) As IMSceneFlowOperation
+  overload: MFramework.MAddressablesSceneFlowBackend.UnloadAsync*
+  implements:
+  - MFramework.IMSceneFlowBackend.UnloadAsync(MFramework.IMSceneFlowScene)
+- uid: MFramework.MAddressablesSceneFlowBackend.SetActiveScene(MFramework.IMSceneFlowScene)
+  commentId: M:MFramework.MAddressablesSceneFlowBackend.SetActiveScene(MFramework.IMSceneFlowScene)
+  id: SetActiveScene(MFramework.IMSceneFlowScene)
+  parent: MFramework.MAddressablesSceneFlowBackend
+  langs:
+  - csharp
+  - vb
+  name: SetActiveScene(IMSceneFlowScene)
+  nameWithType: MAddressablesSceneFlowBackend.SetActiveScene(IMSceneFlowScene)
+  fullName: MFramework.MAddressablesSceneFlowBackend.SetActiveScene(MFramework.IMSceneFlowScene)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 把场景设置为 Unity Active Scene；失败时应抛出异常。
+  example: []
+  syntax:
+    content: public void SetActiveScene(IMSceneFlowScene scene)
+    parameters:
+    - id: scene
+      type: MFramework.IMSceneFlowScene
+    content.vb: Public Sub SetActiveScene(scene As IMSceneFlowScene)
+  overload: MFramework.MAddressablesSceneFlowBackend.SetActiveScene*
+  implements:
+  - MFramework.IMSceneFlowBackend.SetActiveScene(MFramework.IMSceneFlowScene)
+references:
+- uid: MFramework
+  commentId: N:MFramework
+  href: MFramework.html
+  name: MFramework
+  nameWithType: MFramework
+  fullName: MFramework
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: MFramework.IMSceneFlowBackend
+  commentId: T:MFramework.IMSceneFlowBackend
+  parent: MFramework
+  href: MFramework.IMSceneFlowBackend.html
+  name: IMSceneFlowBackend
+  nameWithType: IMSceneFlowBackend
+  fullName: MFramework.IMSceneFlowBackend
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MFramework.MAddressablesSceneFlowBackend.#ctor*
+  commentId: Overload:MFramework.MAddressablesSceneFlowBackend.#ctor
+  href: MFramework.MAddressablesSceneFlowBackend.html#MFramework_MAddressablesSceneFlowBackend__ctor
+  name: MAddressablesSceneFlowBackend
+  nameWithType: MAddressablesSceneFlowBackend.MAddressablesSceneFlowBackend
+  fullName: MFramework.MAddressablesSceneFlowBackend.MAddressablesSceneFlowBackend
+  nameWithType.vb: MAddressablesSceneFlowBackend.New
+  fullName.vb: MFramework.MAddressablesSceneFlowBackend.New
+  name.vb: New
+- uid: MFramework.IMSceneFlowLoadOperation
+  commentId: T:MFramework.IMSceneFlowLoadOperation
+  parent: MFramework
+  href: MFramework.IMSceneFlowLoadOperation.html
+  name: IMSceneFlowLoadOperation
+  nameWithType: IMSceneFlowLoadOperation
+  fullName: MFramework.IMSceneFlowLoadOperation
+- uid: MFramework.MAddressablesSceneFlowBackend.LoadAsync*
+  commentId: Overload:MFramework.MAddressablesSceneFlowBackend.LoadAsync
+  href: MFramework.MAddressablesSceneFlowBackend.html#MFramework_MAddressablesSceneFlowBackend_LoadAsync_System_Object_System_Int32_
+  name: LoadAsync
+  nameWithType: MAddressablesSceneFlowBackend.LoadAsync
+  fullName: MFramework.MAddressablesSceneFlowBackend.LoadAsync
+- uid: MFramework.IMSceneFlowBackend.LoadAsync(System.Object,System.Int32)
+  commentId: M:MFramework.IMSceneFlowBackend.LoadAsync(System.Object,System.Int32)
+  parent: MFramework.IMSceneFlowBackend
+  isExternal: true
+  href: MFramework.IMSceneFlowBackend.html#MFramework_IMSceneFlowBackend_LoadAsync_System_Object_System_Int32_
+  name: LoadAsync(object, int)
+  nameWithType: IMSceneFlowBackend.LoadAsync(object, int)
+  fullName: MFramework.IMSceneFlowBackend.LoadAsync(object, int)
+  nameWithType.vb: IMSceneFlowBackend.LoadAsync(Object, Integer)
+  fullName.vb: MFramework.IMSceneFlowBackend.LoadAsync(Object, Integer)
+  name.vb: LoadAsync(Object, Integer)
+  spec.csharp:
+  - uid: MFramework.IMSceneFlowBackend.LoadAsync(System.Object,System.Int32)
+    name: LoadAsync
+    href: MFramework.IMSceneFlowBackend.html#MFramework_IMSceneFlowBackend_LoadAsync_System_Object_System_Int32_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: MFramework.IMSceneFlowBackend.LoadAsync(System.Object,System.Int32)
+    name: LoadAsync
+    href: MFramework.IMSceneFlowBackend.html#MFramework_IMSceneFlowBackend_LoadAsync_System_Object_System_Int32_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: MFramework.MAddressablesSceneFlowBackend.ActivateAsync*
+  commentId: Overload:MFramework.MAddressablesSceneFlowBackend.ActivateAsync
+  href: MFramework.MAddressablesSceneFlowBackend.html#MFramework_MAddressablesSceneFlowBackend_ActivateAsync_MFramework_IMSceneFlowScene_
+  name: ActivateAsync
+  nameWithType: MAddressablesSceneFlowBackend.ActivateAsync
+  fullName: MFramework.MAddressablesSceneFlowBackend.ActivateAsync
+- uid: MFramework.IMSceneFlowBackend.ActivateAsync(MFramework.IMSceneFlowScene)
+  commentId: M:MFramework.IMSceneFlowBackend.ActivateAsync(MFramework.IMSceneFlowScene)
+  parent: MFramework.IMSceneFlowBackend
+  href: MFramework.IMSceneFlowBackend.html#MFramework_IMSceneFlowBackend_ActivateAsync_MFramework_IMSceneFlowScene_
+  name: ActivateAsync(IMSceneFlowScene)
+  nameWithType: IMSceneFlowBackend.ActivateAsync(IMSceneFlowScene)
+  fullName: MFramework.IMSceneFlowBackend.ActivateAsync(MFramework.IMSceneFlowScene)
+  spec.csharp:
+  - uid: MFramework.IMSceneFlowBackend.ActivateAsync(MFramework.IMSceneFlowScene)
+    name: ActivateAsync
+    href: MFramework.IMSceneFlowBackend.html#MFramework_IMSceneFlowBackend_ActivateAsync_MFramework_IMSceneFlowScene_
+  - name: (
+  - uid: MFramework.IMSceneFlowScene
+    name: IMSceneFlowScene
+    href: MFramework.IMSceneFlowScene.html
+  - name: )
+  spec.vb:
+  - uid: MFramework.IMSceneFlowBackend.ActivateAsync(MFramework.IMSceneFlowScene)
+    name: ActivateAsync
+    href: MFramework.IMSceneFlowBackend.html#MFramework_IMSceneFlowBackend_ActivateAsync_MFramework_IMSceneFlowScene_
+  - name: (
+  - uid: MFramework.IMSceneFlowScene
+    name: IMSceneFlowScene
+    href: MFramework.IMSceneFlowScene.html
+  - name: )
+- uid: MFramework.IMSceneFlowScene
+  commentId: T:MFramework.IMSceneFlowScene
+  parent: MFramework
+  href: MFramework.IMSceneFlowScene.html
+  name: IMSceneFlowScene
+  nameWithType: IMSceneFlowScene
+  fullName: MFramework.IMSceneFlowScene
+- uid: MFramework.IMSceneFlowOperation
+  commentId: T:MFramework.IMSceneFlowOperation
+  parent: MFramework
+  href: MFramework.IMSceneFlowOperation.html
+  name: IMSceneFlowOperation
+  nameWithType: IMSceneFlowOperation
+  fullName: MFramework.IMSceneFlowOperation
+- uid: MFramework.MAddressablesSceneFlowBackend.UnloadAsync*
+  commentId: Overload:MFramework.MAddressablesSceneFlowBackend.UnloadAsync
+  href: MFramework.MAddressablesSceneFlowBackend.html#MFramework_MAddressablesSceneFlowBackend_UnloadAsync_MFramework_IMSceneFlowScene_
+  name: UnloadAsync
+  nameWithType: MAddressablesSceneFlowBackend.UnloadAsync
+  fullName: MFramework.MAddressablesSceneFlowBackend.UnloadAsync
+- uid: MFramework.IMSceneFlowBackend.UnloadAsync(MFramework.IMSceneFlowScene)
+  commentId: M:MFramework.IMSceneFlowBackend.UnloadAsync(MFramework.IMSceneFlowScene)
+  parent: MFramework.IMSceneFlowBackend
+  href: MFramework.IMSceneFlowBackend.html#MFramework_IMSceneFlowBackend_UnloadAsync_MFramework_IMSceneFlowScene_
+  name: UnloadAsync(IMSceneFlowScene)
+  nameWithType: IMSceneFlowBackend.UnloadAsync(IMSceneFlowScene)
+  fullName: MFramework.IMSceneFlowBackend.UnloadAsync(MFramework.IMSceneFlowScene)
+  spec.csharp:
+  - uid: MFramework.IMSceneFlowBackend.UnloadAsync(MFramework.IMSceneFlowScene)
+    name: UnloadAsync
+    href: MFramework.IMSceneFlowBackend.html#MFramework_IMSceneFlowBackend_UnloadAsync_MFramework_IMSceneFlowScene_
+  - name: (
+  - uid: MFramework.IMSceneFlowScene
+    name: IMSceneFlowScene
+    href: MFramework.IMSceneFlowScene.html
+  - name: )
+  spec.vb:
+  - uid: MFramework.IMSceneFlowBackend.UnloadAsync(MFramework.IMSceneFlowScene)
+    name: UnloadAsync
+    href: MFramework.IMSceneFlowBackend.html#MFramework_IMSceneFlowBackend_UnloadAsync_MFramework_IMSceneFlowScene_
+  - name: (
+  - uid: MFramework.IMSceneFlowScene
+    name: IMSceneFlowScene
+    href: MFramework.IMSceneFlowScene.html
+  - name: )
+- uid: MFramework.MAddressablesSceneFlowBackend.SetActiveScene*
+  commentId: Overload:MFramework.MAddressablesSceneFlowBackend.SetActiveScene
+  href: MFramework.MAddressablesSceneFlowBackend.html#MFramework_MAddressablesSceneFlowBackend_SetActiveScene_MFramework_IMSceneFlowScene_
+  name: SetActiveScene
+  nameWithType: MAddressablesSceneFlowBackend.SetActiveScene
+  fullName: MFramework.MAddressablesSceneFlowBackend.SetActiveScene
+- uid: MFramework.IMSceneFlowBackend.SetActiveScene(MFramework.IMSceneFlowScene)
+  commentId: M:MFramework.IMSceneFlowBackend.SetActiveScene(MFramework.IMSceneFlowScene)
+  parent: MFramework.IMSceneFlowBackend
+  href: MFramework.IMSceneFlowBackend.html#MFramework_IMSceneFlowBackend_SetActiveScene_MFramework_IMSceneFlowScene_
+  name: SetActiveScene(IMSceneFlowScene)
+  nameWithType: IMSceneFlowBackend.SetActiveScene(IMSceneFlowScene)
+  fullName: MFramework.IMSceneFlowBackend.SetActiveScene(MFramework.IMSceneFlowScene)
+  spec.csharp:
+  - uid: MFramework.IMSceneFlowBackend.SetActiveScene(MFramework.IMSceneFlowScene)
+    name: SetActiveScene
+    href: MFramework.IMSceneFlowBackend.html#MFramework_IMSceneFlowBackend_SetActiveScene_MFramework_IMSceneFlowScene_
+  - name: (
+  - uid: MFramework.IMSceneFlowScene
+    name: IMSceneFlowScene
+    href: MFramework.IMSceneFlowScene.html
+  - name: )
+  spec.vb:
+  - uid: MFramework.IMSceneFlowBackend.SetActiveScene(MFramework.IMSceneFlowScene)
+    name: SetActiveScene
+    href: MFramework.IMSceneFlowBackend.html#MFramework_IMSceneFlowBackend_SetActiveScene_MFramework_IMSceneFlowScene_
+  - name: (
+  - uid: MFramework.IMSceneFlowScene
+    name: IMSceneFlowScene
+    href: MFramework.IMSceneFlowScene.html
+  - name: )

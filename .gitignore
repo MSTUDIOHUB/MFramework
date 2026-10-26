@@ -1,0 +1,38 @@
+# Operating system files
+.DS_Store
+._*
+Thumbs.db
+
+# Unity package source folders use ~, which some global ignore files exclude.
+!/Documentation~/
+!/Tools~/
+!/ThirdParty~/
+
+# Standalone Foundation build output
+/Tools~/bin/
+/Tools~/obj/
+
+# DocFX generated site and metadata caches
+/Documentation~/_site/
+/Documentation~/api/.manifest
+/Documentation~/api/grouped-toc.yml
+/Documentation~/obj/
+/Documentation~/.cache/
+/Documentation~/.docfx/
+/Documentation~/.api-build-*/
+/Documentation~/__pycache__/
+/Documentation~/.docfx-*.json
+/Documentation~/docfx.*.tmp.json
+/Documentation~/docfx.*.generated.json
+/Documentation~/api/*.tmp
+/Documentation~/api/*.bak
+
+# Local-only authoring material must never enter the public package.
+/Documentation~/tutorial/
+/Documentation~/advanced/
+/Teaching/
+/Teaching~/
+/LocalOnly/
+/LocalOnly~/
+/PrivateDocs/
+/PrivateDocs~/

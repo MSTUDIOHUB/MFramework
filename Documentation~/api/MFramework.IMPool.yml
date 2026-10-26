@@ -1,0 +1,437 @@
+### YamlMime:ManagedReference
+items:
+- uid: MFramework.IMPool
+  commentId: T:MFramework.IMPool
+  id: IMPool
+  parent: MFramework
+  children:
+  - MFramework.IMPool.Clear(MFramework.MPoolKey)
+  - MFramework.IMPool.ClearAll
+  - MFramework.IMPool.Despawn(UnityEngine.GameObject)
+  - MFramework.IMPool.IsRegistered(MFramework.MPoolKey)
+  - MFramework.IMPool.Prewarm(MFramework.MPoolKey,System.Int32)
+  - MFramework.IMPool.Register(MFramework.MPoolKey,UnityEngine.GameObject,System.Int32)
+  - MFramework.IMPool.RegisteredCount
+  - MFramework.IMPool.Spawn(MFramework.MPoolKey,UnityEngine.Vector3,UnityEngine.Quaternion,UnityEngine.Transform)
+  langs:
+  - csharp
+  - vb
+  name: IMPool
+  nameWithType: IMPool
+  fullName: MFramework.IMPool
+  type: Interface
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 定义 GameObject 对象池的显式注册与生命周期操作。
+  example: []
+  syntax:
+    content: public interface IMPool
+    content.vb: Public Interface IMPool
+  derivedClasses:
+  - MFramework.MPool
+- uid: MFramework.IMPool.RegisteredCount
+  commentId: P:MFramework.IMPool.RegisteredCount
+  id: RegisteredCount
+  parent: MFramework.IMPool
+  langs:
+  - csharp
+  - vb
+  name: RegisteredCount
+  nameWithType: IMPool.RegisteredCount
+  fullName: MFramework.IMPool.RegisteredCount
+  type: Property
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 获取对象池当前持有的预制体注册数量。
+  example: []
+  syntax:
+    content: int RegisteredCount { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: ReadOnly Property RegisteredCount As Integer
+  overload: MFramework.IMPool.RegisteredCount*
+- uid: MFramework.IMPool.Register(MFramework.MPoolKey,UnityEngine.GameObject,System.Int32)
+  commentId: M:MFramework.IMPool.Register(MFramework.MPoolKey,UnityEngine.GameObject,System.Int32)
+  id: Register(MFramework.MPoolKey,UnityEngine.GameObject,System.Int32)
+  parent: MFramework.IMPool
+  langs:
+  - csharp
+  - vb
+  name: Register(MPoolKey, GameObject, int)
+  nameWithType: IMPool.Register(MPoolKey, GameObject, int)
+  fullName: MFramework.IMPool.Register(MFramework.MPoolKey, UnityEngine.GameObject, int)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 注册预制体。预制体必须先注册，之后才能预热或生成。
+  example: []
+  syntax:
+    content: void Register(MPoolKey key, GameObject prefab, int maxInactive = 0)
+    parameters:
+    - id: key
+      type: MFramework.MPoolKey
+      description: 后续操作使用的稳定 Key。
+    - id: prefab
+      type: UnityEngine.GameObject
+      description: 需要实例化的 GameObject 预制体。
+    - id: maxInactive
+      type: System.Int32
+      description: 最多保留的闲置实例数量；零表示不限制闲置数量。
+    content.vb: Sub Register(key As MPoolKey, prefab As GameObject, maxInactive As Integer = 0)
+  overload: MFramework.IMPool.Register*
+  nameWithType.vb: IMPool.Register(MPoolKey, GameObject, Integer)
+  fullName.vb: MFramework.IMPool.Register(MFramework.MPoolKey, UnityEngine.GameObject, Integer)
+  name.vb: Register(MPoolKey, GameObject, Integer)
+- uid: MFramework.IMPool.IsRegistered(MFramework.MPoolKey)
+  commentId: M:MFramework.IMPool.IsRegistered(MFramework.MPoolKey)
+  id: IsRegistered(MFramework.MPoolKey)
+  parent: MFramework.IMPool
+  langs:
+  - csharp
+  - vb
+  name: IsRegistered(MPoolKey)
+  nameWithType: IMPool.IsRegistered(MPoolKey)
+  fullName: MFramework.IMPool.IsRegistered(MFramework.MPoolKey)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 获取指定 Key 是否已经注册预制体。
+  example: []
+  syntax:
+    content: bool IsRegistered(MPoolKey key)
+    parameters:
+    - id: key
+      type: MFramework.MPoolKey
+      description: 需要查询的 Key。
+    return:
+      type: System.Boolean
+      description: Key 已注册时返回 <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>。
+    content.vb: Function IsRegistered(key As MPoolKey) As Boolean
+  overload: MFramework.IMPool.IsRegistered*
+- uid: MFramework.IMPool.Prewarm(MFramework.MPoolKey,System.Int32)
+  commentId: M:MFramework.IMPool.Prewarm(MFramework.MPoolKey,System.Int32)
+  id: Prewarm(MFramework.MPoolKey,System.Int32)
+  parent: MFramework.IMPool
+  langs:
+  - csharp
+  - vb
+  name: Prewarm(MPoolKey, int)
+  nameWithType: IMPool.Prewarm(MPoolKey, int)
+  fullName: MFramework.IMPool.Prewarm(MFramework.MPoolKey, int)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 确保至少准备好 <code class="paramref">count</code> 个闲置实例。
+  example: []
+  syntax:
+    content: void Prewarm(MPoolKey key, int count)
+    parameters:
+    - id: key
+      type: MFramework.MPoolKey
+      description: 已注册预制体的 Key。
+    - id: count
+      type: System.Int32
+      description: 目标闲置实例数量。
+    content.vb: Sub Prewarm(key As MPoolKey, count As Integer)
+  overload: MFramework.IMPool.Prewarm*
+  nameWithType.vb: IMPool.Prewarm(MPoolKey, Integer)
+  fullName.vb: MFramework.IMPool.Prewarm(MFramework.MPoolKey, Integer)
+  name.vb: Prewarm(MPoolKey, Integer)
+- uid: MFramework.IMPool.Spawn(MFramework.MPoolKey,UnityEngine.Vector3,UnityEngine.Quaternion,UnityEngine.Transform)
+  commentId: M:MFramework.IMPool.Spawn(MFramework.MPoolKey,UnityEngine.Vector3,UnityEngine.Quaternion,UnityEngine.Transform)
+  id: Spawn(MFramework.MPoolKey,UnityEngine.Vector3,UnityEngine.Quaternion,UnityEngine.Transform)
+  parent: MFramework.IMPool
+  langs:
+  - csharp
+  - vb
+  name: Spawn(MPoolKey, Vector3, Quaternion, Transform)
+  nameWithType: IMPool.Spawn(MPoolKey, Vector3, Quaternion, Transform)
+  fullName: MFramework.IMPool.Spawn(MFramework.MPoolKey, UnityEngine.Vector3, UnityEngine.Quaternion, UnityEngine.Transform)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 获取并激活一个已注册预制体的实例。
+  example: []
+  syntax:
+    content: GameObject Spawn(MPoolKey key, Vector3 position, Quaternion rotation, Transform parent = null)
+    parameters:
+    - id: key
+      type: MFramework.MPoolKey
+      description: 已注册预制体的 Key。
+    - id: position
+      type: UnityEngine.Vector3
+      description: 生命周期回调执行前设置的世界坐标。
+    - id: rotation
+      type: UnityEngine.Quaternion
+      description: 生命周期回调执行前设置的世界旋转。
+    - id: parent
+      type: UnityEngine.Transform
+      description: 为实例设置的可选父级。
+    return:
+      type: UnityEngine.GameObject
+      description: 已激活的对象池 GameObject。
+    content.vb: Function Spawn(key As MPoolKey, position As Vector3, rotation As Quaternion, parent As Transform = Nothing) As GameObject
+  overload: MFramework.IMPool.Spawn*
+- uid: MFramework.IMPool.Despawn(UnityEngine.GameObject)
+  commentId: M:MFramework.IMPool.Despawn(UnityEngine.GameObject)
+  id: Despawn(UnityEngine.GameObject)
+  parent: MFramework.IMPool
+  langs:
+  - csharp
+  - vb
+  name: Despawn(GameObject)
+  nameWithType: IMPool.Despawn(GameObject)
+  fullName: MFramework.IMPool.Despawn(UnityEngine.GameObject)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 将活跃实例归还给它所属的对象池。
+  example: []
+  syntax:
+    content: void Despawn(GameObject instance)
+    parameters:
+    - id: instance
+      type: UnityEngine.GameObject
+      description: 之前由 <xref href="MFramework.IMPool.Spawn(MFramework.MPoolKey%2cUnityEngine.Vector3%2cUnityEngine.Quaternion%2cUnityEngine.Transform)" data-throw-if-not-resolved="false"></xref> 返回的实例。
+    content.vb: Sub Despawn(instance As GameObject)
+  overload: MFramework.IMPool.Despawn*
+- uid: MFramework.IMPool.Clear(MFramework.MPoolKey)
+  commentId: M:MFramework.IMPool.Clear(MFramework.MPoolKey)
+  id: Clear(MFramework.MPoolKey)
+  parent: MFramework.IMPool
+  langs:
+  - csharp
+  - vb
+  name: Clear(MPoolKey)
+  nameWithType: IMPool.Clear(MPoolKey)
+  fullName: MFramework.IMPool.Clear(MFramework.MPoolKey)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 销毁指定 Key 的全部实例，并移除对应的预制体注册。
+  example: []
+  syntax:
+    content: void Clear(MPoolKey key)
+    parameters:
+    - id: key
+      type: MFramework.MPoolKey
+      description: 需要清理的已注册 Key。
+    content.vb: Sub Clear(key As MPoolKey)
+  overload: MFramework.IMPool.Clear*
+- uid: MFramework.IMPool.ClearAll
+  commentId: M:MFramework.IMPool.ClearAll
+  id: ClearAll
+  parent: MFramework.IMPool
+  langs:
+  - csharp
+  - vb
+  name: ClearAll()
+  nameWithType: IMPool.ClearAll()
+  fullName: MFramework.IMPool.ClearAll()
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 销毁全部受管理实例，并移除所有预制体注册。
+  example: []
+  syntax:
+    content: void ClearAll()
+    content.vb: Sub ClearAll()
+  overload: MFramework.IMPool.ClearAll*
+references:
+- uid: MFramework
+  commentId: N:MFramework
+  href: MFramework.html
+  name: MFramework
+  nameWithType: MFramework
+  fullName: MFramework
+- uid: MFramework.IMPool.RegisteredCount*
+  commentId: Overload:MFramework.IMPool.RegisteredCount
+  href: MFramework.IMPool.html#MFramework_IMPool_RegisteredCount
+  name: RegisteredCount
+  nameWithType: IMPool.RegisteredCount
+  fullName: MFramework.IMPool.RegisteredCount
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MFramework.IMPool.Register*
+  commentId: Overload:MFramework.IMPool.Register
+  href: MFramework.IMPool.html#MFramework_IMPool_Register_MFramework_MPoolKey_UnityEngine_GameObject_System_Int32_
+  name: Register
+  nameWithType: IMPool.Register
+  fullName: MFramework.IMPool.Register
+- uid: MFramework.MPoolKey
+  commentId: T:MFramework.MPoolKey
+  parent: MFramework
+  href: MFramework.MPoolKey.html
+  name: MPoolKey
+  nameWithType: MPoolKey
+  fullName: MFramework.MPoolKey
+- uid: UnityEngine.GameObject
+  commentId: T:UnityEngine.GameObject
+  parent: UnityEngine
+  isExternal: true
+  name: GameObject
+  nameWithType: GameObject
+  fullName: UnityEngine.GameObject
+- uid: UnityEngine
+  commentId: N:UnityEngine
+  isExternal: true
+  name: UnityEngine
+  nameWithType: UnityEngine
+  fullName: UnityEngine
+- uid: MFramework.IMPool.IsRegistered*
+  commentId: Overload:MFramework.IMPool.IsRegistered
+  href: MFramework.IMPool.html#MFramework_IMPool_IsRegistered_MFramework_MPoolKey_
+  name: IsRegistered
+  nameWithType: IMPool.IsRegistered
+  fullName: MFramework.IMPool.IsRegistered
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: MFramework.IMPool.Prewarm*
+  commentId: Overload:MFramework.IMPool.Prewarm
+  href: MFramework.IMPool.html#MFramework_IMPool_Prewarm_MFramework_MPoolKey_System_Int32_
+  name: Prewarm
+  nameWithType: IMPool.Prewarm
+  fullName: MFramework.IMPool.Prewarm
+- uid: MFramework.IMPool.Spawn*
+  commentId: Overload:MFramework.IMPool.Spawn
+  href: MFramework.IMPool.html#MFramework_IMPool_Spawn_MFramework_MPoolKey_UnityEngine_Vector3_UnityEngine_Quaternion_UnityEngine_Transform_
+  name: Spawn
+  nameWithType: IMPool.Spawn
+  fullName: MFramework.IMPool.Spawn
+- uid: UnityEngine.Vector3
+  commentId: T:UnityEngine.Vector3
+  parent: UnityEngine
+  isExternal: true
+  name: Vector3
+  nameWithType: Vector3
+  fullName: UnityEngine.Vector3
+- uid: UnityEngine.Quaternion
+  commentId: T:UnityEngine.Quaternion
+  parent: UnityEngine
+  isExternal: true
+  name: Quaternion
+  nameWithType: Quaternion
+  fullName: UnityEngine.Quaternion
+- uid: UnityEngine.Transform
+  commentId: T:UnityEngine.Transform
+  parent: UnityEngine
+  isExternal: true
+  name: Transform
+  nameWithType: Transform
+  fullName: UnityEngine.Transform
+- uid: MFramework.IMPool.Spawn(MFramework.MPoolKey,UnityEngine.Vector3,UnityEngine.Quaternion,UnityEngine.Transform)
+  commentId: M:MFramework.IMPool.Spawn(MFramework.MPoolKey,UnityEngine.Vector3,UnityEngine.Quaternion,UnityEngine.Transform)
+  parent: MFramework.IMPool
+  isExternal: true
+  href: MFramework.IMPool.html#MFramework_IMPool_Spawn_MFramework_MPoolKey_UnityEngine_Vector3_UnityEngine_Quaternion_UnityEngine_Transform_
+  name: Spawn(MPoolKey, Vector3, Quaternion, Transform)
+  nameWithType: IMPool.Spawn(MPoolKey, Vector3, Quaternion, Transform)
+  fullName: MFramework.IMPool.Spawn(MFramework.MPoolKey, UnityEngine.Vector3, UnityEngine.Quaternion, UnityEngine.Transform)
+  spec.csharp:
+  - uid: MFramework.IMPool.Spawn(MFramework.MPoolKey,UnityEngine.Vector3,UnityEngine.Quaternion,UnityEngine.Transform)
+    name: Spawn
+    href: MFramework.IMPool.html#MFramework_IMPool_Spawn_MFramework_MPoolKey_UnityEngine_Vector3_UnityEngine_Quaternion_UnityEngine_Transform_
+  - name: (
+  - uid: MFramework.MPoolKey
+    name: MPoolKey
+    href: MFramework.MPoolKey.html
+  - name: ','
+  - name: " "
+  - uid: UnityEngine.Vector3
+    name: Vector3
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: UnityEngine.Quaternion
+    name: Quaternion
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: UnityEngine.Transform
+    name: Transform
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: MFramework.IMPool.Spawn(MFramework.MPoolKey,UnityEngine.Vector3,UnityEngine.Quaternion,UnityEngine.Transform)
+    name: Spawn
+    href: MFramework.IMPool.html#MFramework_IMPool_Spawn_MFramework_MPoolKey_UnityEngine_Vector3_UnityEngine_Quaternion_UnityEngine_Transform_
+  - name: (
+  - uid: MFramework.MPoolKey
+    name: MPoolKey
+    href: MFramework.MPoolKey.html
+  - name: ','
+  - name: " "
+  - uid: UnityEngine.Vector3
+    name: Vector3
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: UnityEngine.Quaternion
+    name: Quaternion
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: UnityEngine.Transform
+    name: Transform
+    isExternal: true
+  - name: )
+- uid: MFramework.IMPool.Despawn*
+  commentId: Overload:MFramework.IMPool.Despawn
+  href: MFramework.IMPool.html#MFramework_IMPool_Despawn_UnityEngine_GameObject_
+  name: Despawn
+  nameWithType: IMPool.Despawn
+  fullName: MFramework.IMPool.Despawn
+- uid: MFramework.IMPool
+  commentId: T:MFramework.IMPool
+  parent: MFramework
+  href: MFramework.IMPool.html
+  name: IMPool
+  nameWithType: IMPool
+  fullName: MFramework.IMPool
+- uid: MFramework.IMPool.Clear*
+  commentId: Overload:MFramework.IMPool.Clear
+  href: MFramework.IMPool.html#MFramework_IMPool_Clear_MFramework_MPoolKey_
+  name: Clear
+  nameWithType: IMPool.Clear
+  fullName: MFramework.IMPool.Clear
+- uid: MFramework.IMPool.ClearAll*
+  commentId: Overload:MFramework.IMPool.ClearAll
+  href: MFramework.IMPool.html#MFramework_IMPool_ClearAll
+  name: ClearAll
+  nameWithType: IMPool.ClearAll
+  fullName: MFramework.IMPool.ClearAll

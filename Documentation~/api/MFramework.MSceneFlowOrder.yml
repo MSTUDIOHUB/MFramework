@@ -1,0 +1,78 @@
+### YamlMime:ManagedReference
+items:
+- uid: MFramework.MSceneFlowOrder
+  commentId: T:MFramework.MSceneFlowOrder
+  id: MSceneFlowOrder
+  parent: MFramework
+  children:
+  - MFramework.MSceneFlowOrder.LoadThenUnload
+  - MFramework.MSceneFlowOrder.UnloadThenLoad
+  langs:
+  - csharp
+  - vb
+  name: MSceneFlowOrder
+  nameWithType: MSceneFlowOrder
+  fullName: MFramework.MSceneFlowOrder
+  type: Enum
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 选择一次内容场景切换中加载目标与卸载旧场景的先后顺序。
+  example: []
+  syntax:
+    content: public enum MSceneFlowOrder
+    content.vb: Public Enum MSceneFlowOrder
+- uid: MFramework.MSceneFlowOrder.LoadThenUnload
+  commentId: F:MFramework.MSceneFlowOrder.LoadThenUnload
+  id: LoadThenUnload
+  parent: MFramework.MSceneFlowOrder
+  langs:
+  - csharp
+  - vb
+  name: LoadThenUnload
+  nameWithType: MSceneFlowOrder.LoadThenUnload
+  fullName: MFramework.MSceneFlowOrder.LoadThenUnload
+  type: Field
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 先加载、激活并验证目标，再卸载旧场景。失败时最有机会保留旧场景，但内存峰值较高。
+  example: []
+  syntax:
+    content: LoadThenUnload = 0
+    return:
+      type: MFramework.MSceneFlowOrder
+- uid: MFramework.MSceneFlowOrder.UnloadThenLoad
+  commentId: F:MFramework.MSceneFlowOrder.UnloadThenLoad
+  id: UnloadThenLoad
+  parent: MFramework.MSceneFlowOrder
+  langs:
+  - csharp
+  - vb
+  name: UnloadThenLoad
+  nameWithType: MSceneFlowOrder.UnloadThenLoad
+  fullName: MFramework.MSceneFlowOrder.UnloadThenLoad
+  type: Field
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 先卸载旧场景，再加载目标。内存峰值较低，但卸载开始后无法零成本恢复旧场景。
+  example: []
+  syntax:
+    content: UnloadThenLoad = 1
+    return:
+      type: MFramework.MSceneFlowOrder
+references:
+- uid: MFramework
+  commentId: N:MFramework
+  href: MFramework.html
+  name: MFramework
+  nameWithType: MFramework
+  fullName: MFramework
+- uid: MFramework.MSceneFlowOrder
+  commentId: T:MFramework.MSceneFlowOrder
+  parent: MFramework
+  href: MFramework.MSceneFlowOrder.html
+  name: MSceneFlowOrder
+  nameWithType: MSceneFlowOrder
+  fullName: MFramework.MSceneFlowOrder

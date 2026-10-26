@@ -1,0 +1,67 @@
+### YamlMime:ManagedReference
+items:
+- uid: MFramework.IMFrameworkLateTickable
+  commentId: T:MFramework.IMFrameworkLateTickable
+  id: IMFrameworkLateTickable
+  parent: MFramework
+  children:
+  - MFramework.IMFrameworkLateTickable.LateTick(MFramework.MFrameTime)
+  langs:
+  - csharp
+  - vb
+  name: IMFrameworkLateTickable
+  nameWithType: IMFrameworkLateTickable
+  fullName: MFramework.IMFrameworkLateTickable
+  type: Interface
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 定义帧末更新回调。
+  example: []
+  syntax:
+    content: public interface IMFrameworkLateTickable
+    content.vb: Public Interface IMFrameworkLateTickable
+- uid: MFramework.IMFrameworkLateTickable.LateTick(MFramework.MFrameTime)
+  commentId: M:MFramework.IMFrameworkLateTickable.LateTick(MFramework.MFrameTime)
+  id: LateTick(MFramework.MFrameTime)
+  parent: MFramework.IMFrameworkLateTickable
+  langs:
+  - csharp
+  - vb
+  name: LateTick(MFrameTime)
+  nameWithType: IMFrameworkLateTickable.LateTick(MFrameTime)
+  fullName: MFramework.IMFrameworkLateTickable.LateTick(MFramework.MFrameTime)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 在常规帧更新完成后推进对象。
+  example: []
+  syntax:
+    content: void LateTick(MFrameTime time)
+    parameters:
+    - id: time
+      type: MFramework.MFrameTime
+      description: 缩放与非缩放的帧时间。
+    content.vb: Sub LateTick(time As MFrameTime)
+  overload: MFramework.IMFrameworkLateTickable.LateTick*
+references:
+- uid: MFramework
+  commentId: N:MFramework
+  href: MFramework.html
+  name: MFramework
+  nameWithType: MFramework
+  fullName: MFramework
+- uid: MFramework.IMFrameworkLateTickable.LateTick*
+  commentId: Overload:MFramework.IMFrameworkLateTickable.LateTick
+  href: MFramework.IMFrameworkLateTickable.html#MFramework_IMFrameworkLateTickable_LateTick_MFramework_MFrameTime_
+  name: LateTick
+  nameWithType: IMFrameworkLateTickable.LateTick
+  fullName: MFramework.IMFrameworkLateTickable.LateTick
+- uid: MFramework.MFrameTime
+  commentId: T:MFramework.MFrameTime
+  parent: MFramework
+  href: MFramework.MFrameTime.html
+  name: MFrameTime
+  nameWithType: MFrameTime
+  fullName: MFramework.MFrameTime

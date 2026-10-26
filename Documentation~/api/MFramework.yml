@@ -1,0 +1,895 @@
+### YamlMime:ManagedReference
+items:
+- uid: MFramework
+  commentId: N:MFramework
+  id: MFramework
+  children:
+  - MFramework.IMActionNode
+  - MFramework.IMAddressablesRequest
+  - MFramework.IMEventBus
+  - MFramework.IMFrameworkFixedTickable
+  - MFramework.IMFrameworkLateTickable
+  - MFramework.IMFrameworkModule
+  - MFramework.IMFrameworkTickable
+  - MFramework.IMPlatformBridge
+  - MFramework.IMPool
+  - MFramework.IMPooledGameObject
+  - MFramework.IMRandomSource
+  - MFramework.IMSaveMigration
+  - MFramework.IMSaveSerializer`1
+  - MFramework.IMSaveStorage
+  - MFramework.IMSceneFlowBackend
+  - MFramework.IMSceneFlowLoadOperation
+  - MFramework.IMSceneFlowOperation
+  - MFramework.IMSceneFlowScene
+  - MFramework.IMState`1
+  - MFramework.MAction
+  - MFramework.MActionHandle
+  - MFramework.MActionNode
+  - MFramework.MActionRunner
+  - MFramework.MActionStatus
+  - MFramework.MActionTickResult
+  - MFramework.MAddressables
+  - MFramework.MAddressablesError
+  - MFramework.MAddressablesRequestState
+  - MFramework.MAddressablesSceneFlowBackend
+  - MFramework.MAssetDownloadRequest
+  - MFramework.MAssetLease`1
+  - MFramework.MAssetLoadRequest`1
+  - MFramework.MAssetScope
+  - MFramework.MAudio
+  - MFramework.MAudioId
+  - MFramework.MConfig
+  - MFramework.MConfigAsset
+  - MFramework.MConfigRegistrationException
+  - MFramework.MConfigValidationContext
+  - MFramework.MConfigValidationError
+  - MFramework.MDisposableBag
+  - MFramework.MDisposableExtensions
+  - MFramework.MEditorPlatformBridge
+  - MFramework.MEventBus
+  - MFramework.MEventDispatchException
+  - MFramework.MFileSaveStorage
+  - MFramework.MFrameTime
+  - MFramework.MFrameworkApp
+  - MFramework.MFrameworkAppState
+  - MFramework.MFrameworkInitializationException
+  - MFramework.MFrameworkShutdownException
+  - MFramework.MGameEntry
+  - MFramework.MGameObjectExtensions
+  - MFramework.MGameObjectInstanceLease
+  - MFramework.MGameObjectInstantiateRequest
+  - MFramework.MJsonUtilitySaveSerializer`1
+  - MFramework.MPlatformInitializationResult
+  - MFramework.MPlatformService
+  - MFramework.MPool
+  - MFramework.MPoolKey
+  - MFramework.MRandom
+  - MFramework.MRandomState
+  - MFramework.MRectTransformExtensions
+  - MFramework.MSaveMetadata
+  - MFramework.MSaveRecoveryToken
+  - MFramework.MSaveResult`1
+  - MFramework.MSaveSource
+  - MFramework.MSaveStatus
+  - MFramework.MSaveStorageException
+  - MFramework.MSave`1
+  - MFramework.MSceneFlow
+  - MFramework.MSceneFlowContext
+  - MFramework.MSceneFlowOrder
+  - MFramework.MSceneFlowPlan
+  - MFramework.MSceneFlowRequest
+  - MFramework.MSceneFlowStage
+  - MFramework.MSceneFlowState
+  - MFramework.MSceneLease
+  - MFramework.MSceneLoadRequest
+  - MFramework.MSceneUnloadRequest
+  - MFramework.MStateMachine`1
+  - MFramework.MTimeMode
+  - MFramework.MUIAction
+  - MFramework.MUIActionButton
+  - MFramework.MUIActionResult
+  - MFramework.MUIActionResultType
+  - MFramework.MUIOverlay
+  - MFramework.MUIPage
+  - MFramework.MUIPopup
+  - MFramework.MUIPopupResult
+  - MFramework.MUIRoot
+  - MFramework.MUIRouter
+  - MFramework.MUIService
+  - MFramework.MUIView
+  - MFramework.MVectorExtensions
+  langs:
+  - csharp
+  - vb
+  name: MFramework
+  nameWithType: MFramework
+  fullName: MFramework
+  type: Namespace
+  assemblies:
+  - MStudio.MFramework.Runtime
+references:
+- uid: MFramework.MAssetLease`1
+  commentId: T:MFramework.MAssetLease`1
+  href: MFramework.MAssetLease-1.html
+  name: MAssetLease<TAsset>
+  nameWithType: MAssetLease<TAsset>
+  fullName: MFramework.MAssetLease<TAsset>
+  nameWithType.vb: MAssetLease(Of TAsset)
+  fullName.vb: MFramework.MAssetLease(Of TAsset)
+  name.vb: MAssetLease(Of TAsset)
+  spec.csharp:
+  - uid: MFramework.MAssetLease`1
+    name: MAssetLease
+    href: MFramework.MAssetLease-1.html
+  - name: <
+  - name: TAsset
+  - name: '>'
+  spec.vb:
+  - uid: MFramework.MAssetLease`1
+    name: MAssetLease
+    href: MFramework.MAssetLease-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TAsset
+  - name: )
+- uid: MFramework.MGameObjectInstanceLease
+  commentId: T:MFramework.MGameObjectInstanceLease
+  parent: MFramework
+  href: MFramework.MGameObjectInstanceLease.html
+  name: MGameObjectInstanceLease
+  nameWithType: MGameObjectInstanceLease
+  fullName: MFramework.MGameObjectInstanceLease
+- uid: MFramework.MSceneLease
+  commentId: T:MFramework.MSceneLease
+  parent: MFramework
+  href: MFramework.MSceneLease.html
+  name: MSceneLease
+  nameWithType: MSceneLease
+  fullName: MFramework.MSceneLease
+- uid: MFramework.IMPool
+  commentId: T:MFramework.IMPool
+  parent: MFramework
+  href: MFramework.IMPool.html
+  name: IMPool
+  nameWithType: IMPool
+  fullName: MFramework.IMPool
+- uid: MFramework.MPool
+  commentId: T:MFramework.MPool
+  href: MFramework.MPool.html
+  name: MPool
+  nameWithType: MPool
+  fullName: MFramework.MPool
+- uid: MFramework.MUIAction
+  commentId: T:MFramework.MUIAction
+  parent: MFramework
+  href: MFramework.MUIAction.html
+  name: MUIAction
+  nameWithType: MUIAction
+  fullName: MFramework.MUIAction
+- uid: MFramework.MUIActionResultType
+  commentId: T:MFramework.MUIActionResultType
+  parent: MFramework
+  href: MFramework.MUIActionResultType.html
+  name: MUIActionResultType
+  nameWithType: MUIActionResultType
+  fullName: MFramework.MUIActionResultType
+- uid: MFramework.MUIActionResult
+  commentId: T:MFramework.MUIActionResult
+  parent: MFramework
+  href: MFramework.MUIActionResult.html
+  name: MUIActionResult
+  nameWithType: MUIActionResult
+  fullName: MFramework.MUIActionResult
+- uid: MFramework.MUIPopupResult
+  commentId: T:MFramework.MUIPopupResult
+  parent: MFramework
+  href: MFramework.MUIPopupResult.html
+  name: MUIPopupResult
+  nameWithType: MUIPopupResult
+  fullName: MFramework.MUIPopupResult
+- uid: MFramework.MSceneUnloadRequest
+  commentId: T:MFramework.MSceneUnloadRequest
+  parent: MFramework
+  href: MFramework.MSceneUnloadRequest.html
+  name: MSceneUnloadRequest
+  nameWithType: MSceneUnloadRequest
+  fullName: MFramework.MSceneUnloadRequest
+- uid: MFramework.MAddressablesSceneFlowBackend
+  commentId: T:MFramework.MAddressablesSceneFlowBackend
+  href: MFramework.MAddressablesSceneFlowBackend.html
+  name: MAddressablesSceneFlowBackend
+  nameWithType: MAddressablesSceneFlowBackend
+  fullName: MFramework.MAddressablesSceneFlowBackend
+- uid: MFramework.IMEventBus
+  commentId: T:MFramework.IMEventBus
+  parent: MFramework
+  href: MFramework.IMEventBus.html
+  name: IMEventBus
+  nameWithType: IMEventBus
+  fullName: MFramework.IMEventBus
+- uid: MFramework.IMAddressablesRequest
+  commentId: T:MFramework.IMAddressablesRequest
+  parent: MFramework
+  href: MFramework.IMAddressablesRequest.html
+  name: IMAddressablesRequest
+  nameWithType: IMAddressablesRequest
+  fullName: MFramework.IMAddressablesRequest
+- uid: MFramework.MAddressablesRequestState
+  commentId: T:MFramework.MAddressablesRequestState
+  parent: MFramework
+  href: MFramework.MAddressablesRequestState.html
+  name: MAddressablesRequestState
+  nameWithType: MAddressablesRequestState
+  fullName: MFramework.MAddressablesRequestState
+- uid: MFramework.MAddressablesError
+  commentId: T:MFramework.MAddressablesError
+  parent: MFramework
+  href: MFramework.MAddressablesError.html
+  name: MAddressablesError
+  nameWithType: MAddressablesError
+  fullName: MFramework.MAddressablesError
+- uid: MFramework.MAudio
+  commentId: T:MFramework.MAudio
+  href: MFramework.MAudio.html
+  name: MAudio
+  nameWithType: MAudio
+  fullName: MFramework.MAudio
+- uid: MFramework.MJsonUtilitySaveSerializer`1
+  commentId: T:MFramework.MJsonUtilitySaveSerializer`1
+  href: MFramework.MJsonUtilitySaveSerializer-1.html
+  name: MJsonUtilitySaveSerializer<T>
+  nameWithType: MJsonUtilitySaveSerializer<T>
+  fullName: MFramework.MJsonUtilitySaveSerializer<T>
+  nameWithType.vb: MJsonUtilitySaveSerializer(Of T)
+  fullName.vb: MFramework.MJsonUtilitySaveSerializer(Of T)
+  name.vb: MJsonUtilitySaveSerializer(Of T)
+  spec.csharp:
+  - uid: MFramework.MJsonUtilitySaveSerializer`1
+    name: MJsonUtilitySaveSerializer
+    href: MFramework.MJsonUtilitySaveSerializer-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: MFramework.MJsonUtilitySaveSerializer`1
+    name: MJsonUtilitySaveSerializer
+    href: MFramework.MJsonUtilitySaveSerializer-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MFramework.MUIRoot
+  commentId: T:MFramework.MUIRoot
+  href: MFramework.MUIRoot.html
+  name: MUIRoot
+  nameWithType: MUIRoot
+  fullName: MFramework.MUIRoot
+- uid: MFramework.MDisposableBag
+  commentId: T:MFramework.MDisposableBag
+  parent: MFramework
+  href: MFramework.MDisposableBag.html
+  name: MDisposableBag
+  nameWithType: MDisposableBag
+  fullName: MFramework.MDisposableBag
+- uid: MFramework.MPlatformService
+  commentId: T:MFramework.MPlatformService
+  href: MFramework.MPlatformService.html
+  name: MPlatformService
+  nameWithType: MPlatformService
+  fullName: MFramework.MPlatformService
+- uid: MFramework.MUIRouter
+  commentId: T:MFramework.MUIRouter
+  href: MFramework.MUIRouter.html
+  name: MUIRouter
+  nameWithType: MUIRouter
+  fullName: MFramework.MUIRouter
+- uid: MFramework.MActionRunner
+  commentId: T:MFramework.MActionRunner
+  href: MFramework.MActionRunner.html
+  name: MActionRunner
+  nameWithType: MActionRunner
+  fullName: MFramework.MActionRunner
+- uid: MFramework.MActionHandle
+  commentId: T:MFramework.MActionHandle
+  parent: MFramework
+  href: MFramework.MActionHandle.html
+  name: MActionHandle
+  nameWithType: MActionHandle
+  fullName: MFramework.MActionHandle
+- uid: MFramework.MConfigAsset
+  commentId: T:MFramework.MConfigAsset
+  parent: MFramework
+  href: MFramework.MConfigAsset.html
+  name: MConfigAsset
+  nameWithType: MConfigAsset
+  fullName: MFramework.MConfigAsset
+- uid: MFramework.MFrameworkInitializationException
+  commentId: T:MFramework.MFrameworkInitializationException
+  href: MFramework.MFrameworkInitializationException.html
+  name: MFrameworkInitializationException
+  nameWithType: MFrameworkInitializationException
+  fullName: MFramework.MFrameworkInitializationException
+- uid: MFramework.MFrameworkShutdownException
+  commentId: T:MFramework.MFrameworkShutdownException
+  href: MFramework.MFrameworkShutdownException.html
+  name: MFrameworkShutdownException
+  nameWithType: MFrameworkShutdownException
+  fullName: MFramework.MFrameworkShutdownException
+- uid: MFramework.MUIView
+  commentId: T:MFramework.MUIView
+  parent: MFramework
+  href: MFramework.MUIView.html
+  name: MUIView
+  nameWithType: MUIView
+  fullName: MFramework.MUIView
+- uid: MFramework.MUIPage
+  commentId: T:MFramework.MUIPage
+  parent: MFramework
+  href: MFramework.MUIPage.html
+  name: MUIPage
+  nameWithType: MUIPage
+  fullName: MFramework.MUIPage
+- uid: MFramework.MUIPopup
+  commentId: T:MFramework.MUIPopup
+  parent: MFramework
+  href: MFramework.MUIPopup.html
+  name: MUIPopup
+  nameWithType: MUIPopup
+  fullName: MFramework.MUIPopup
+- uid: MFramework.MUIOverlay
+  commentId: T:MFramework.MUIOverlay
+  href: MFramework.MUIOverlay.html
+  name: MUIOverlay
+  nameWithType: MUIOverlay
+  fullName: MFramework.MUIOverlay
+- uid: MFramework.MDisposableExtensions
+  commentId: T:MFramework.MDisposableExtensions
+  parent: MFramework
+  href: MFramework.MDisposableExtensions.html
+  name: MDisposableExtensions
+  nameWithType: MDisposableExtensions
+  fullName: MFramework.MDisposableExtensions
+- uid: MFramework.MGameObjectInstantiateRequest
+  commentId: T:MFramework.MGameObjectInstantiateRequest
+  parent: MFramework
+  href: MFramework.MGameObjectInstantiateRequest.html
+  name: MGameObjectInstantiateRequest
+  nameWithType: MGameObjectInstantiateRequest
+  fullName: MFramework.MGameObjectInstantiateRequest
+- uid: MFramework.MPlatformInitializationResult
+  commentId: T:MFramework.MPlatformInitializationResult
+  parent: MFramework
+  href: MFramework.MPlatformInitializationResult.html
+  name: MPlatformInitializationResult
+  nameWithType: MPlatformInitializationResult
+  fullName: MFramework.MPlatformInitializationResult
+- uid: MFramework.MEditorPlatformBridge
+  commentId: T:MFramework.MEditorPlatformBridge
+  href: MFramework.MEditorPlatformBridge.html
+  name: MEditorPlatformBridge
+  nameWithType: MEditorPlatformBridge
+  fullName: MFramework.MEditorPlatformBridge
+- uid: MFramework.MActionStatus
+  commentId: T:MFramework.MActionStatus
+  parent: MFramework
+  href: MFramework.MActionStatus.html
+  name: MActionStatus
+  nameWithType: MActionStatus
+  fullName: MFramework.MActionStatus
+- uid: MFramework.MTimeMode
+  commentId: T:MFramework.MTimeMode
+  parent: MFramework
+  href: MFramework.MTimeMode.html
+  name: MTimeMode
+  nameWithType: MTimeMode
+  fullName: MFramework.MTimeMode
+- uid: MFramework.MActionTickResult
+  commentId: T:MFramework.MActionTickResult
+  parent: MFramework
+  href: MFramework.MActionTickResult.html
+  name: MActionTickResult
+  nameWithType: MActionTickResult
+  fullName: MFramework.MActionTickResult
+- uid: MFramework.IMActionNode
+  commentId: T:MFramework.IMActionNode
+  parent: MFramework
+  href: MFramework.IMActionNode.html
+  name: IMActionNode
+  nameWithType: IMActionNode
+  fullName: MFramework.IMActionNode
+- uid: MFramework.MActionNode
+  commentId: T:MFramework.MActionNode
+  href: MFramework.MActionNode.html
+  name: MActionNode
+  nameWithType: MActionNode
+  fullName: MFramework.MActionNode
+- uid: MFramework.MSceneFlow
+  commentId: T:MFramework.MSceneFlow
+  href: MFramework.MSceneFlow.html
+  name: MSceneFlow
+  nameWithType: MSceneFlow
+  fullName: MFramework.MSceneFlow
+- uid: MFramework.MStateMachine`1
+  commentId: T:MFramework.MStateMachine`1
+  parent: MFramework
+  href: MFramework.MStateMachine-1.html
+  name: MStateMachine<TContext>
+  nameWithType: MStateMachine<TContext>
+  fullName: MFramework.MStateMachine<TContext>
+  nameWithType.vb: MStateMachine(Of TContext)
+  fullName.vb: MFramework.MStateMachine(Of TContext)
+  name.vb: MStateMachine(Of TContext)
+  spec.csharp:
+  - uid: MFramework.MStateMachine`1
+    name: MStateMachine
+    href: MFramework.MStateMachine-1.html
+  - name: <
+  - name: TContext
+  - name: '>'
+  spec.vb:
+  - uid: MFramework.MStateMachine`1
+    name: MStateMachine
+    href: MFramework.MStateMachine-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TContext
+  - name: )
+- uid: MFramework.MSceneFlowPlan
+  commentId: T:MFramework.MSceneFlowPlan
+  parent: MFramework
+  href: MFramework.MSceneFlowPlan.html
+  name: MSceneFlowPlan
+  nameWithType: MSceneFlowPlan
+  fullName: MFramework.MSceneFlowPlan
+- uid: MFramework.MSceneFlowRequest
+  commentId: T:MFramework.MSceneFlowRequest
+  parent: MFramework
+  href: MFramework.MSceneFlowRequest.html
+  name: MSceneFlowRequest
+  nameWithType: MSceneFlowRequest
+  fullName: MFramework.MSceneFlowRequest
+- uid: MFramework.MAudioId
+  commentId: T:MFramework.MAudioId
+  parent: MFramework
+  href: MFramework.MAudioId.html
+  name: MAudioId
+  nameWithType: MAudioId
+  fullName: MFramework.MAudioId
+- uid: MFramework.MConfigValidationError
+  commentId: T:MFramework.MConfigValidationError
+  href: MFramework.MConfigValidationError.html
+  name: MConfigValidationError
+  nameWithType: MConfigValidationError
+  fullName: MFramework.MConfigValidationError
+- uid: MFramework.MConfigValidationContext
+  commentId: T:MFramework.MConfigValidationContext
+  parent: MFramework
+  href: MFramework.MConfigValidationContext.html
+  name: MConfigValidationContext
+  nameWithType: MConfigValidationContext
+  fullName: MFramework.MConfigValidationContext
+- uid: MFramework.MConfigRegistrationException
+  commentId: T:MFramework.MConfigRegistrationException
+  href: MFramework.MConfigRegistrationException.html
+  name: MConfigRegistrationException
+  nameWithType: MConfigRegistrationException
+  fullName: MFramework.MConfigRegistrationException
+- uid: MFramework.MAssetScope
+  commentId: T:MFramework.MAssetScope
+  parent: MFramework
+  href: MFramework.MAssetScope.html
+  name: MAssetScope
+  nameWithType: MAssetScope
+  fullName: MFramework.MAssetScope
+- uid: MFramework.MUIActionButton
+  commentId: T:MFramework.MUIActionButton
+  href: MFramework.MUIActionButton.html
+  name: MUIActionButton
+  nameWithType: MUIActionButton
+  fullName: MFramework.MUIActionButton
+- uid: MFramework.MAddressables
+  commentId: T:MFramework.MAddressables
+  href: MFramework.MAddressables.html
+  name: MAddressables
+  nameWithType: MAddressables
+  fullName: MFramework.MAddressables
+- uid: MFramework.MSceneFlowOrder
+  commentId: T:MFramework.MSceneFlowOrder
+  parent: MFramework
+  href: MFramework.MSceneFlowOrder.html
+  name: MSceneFlowOrder
+  nameWithType: MSceneFlowOrder
+  fullName: MFramework.MSceneFlowOrder
+- uid: MFramework.MSceneFlowStage
+  commentId: T:MFramework.MSceneFlowStage
+  parent: MFramework
+  href: MFramework.MSceneFlowStage.html
+  name: MSceneFlowStage
+  nameWithType: MSceneFlowStage
+  fullName: MFramework.MSceneFlowStage
+- uid: MFramework.MSceneFlowState
+  commentId: T:MFramework.MSceneFlowState
+  parent: MFramework
+  href: MFramework.MSceneFlowState.html
+  name: MSceneFlowState
+  nameWithType: MSceneFlowState
+  fullName: MFramework.MSceneFlowState
+- uid: MFramework.IMSceneFlowScene
+  commentId: T:MFramework.IMSceneFlowScene
+  parent: MFramework
+  href: MFramework.IMSceneFlowScene.html
+  name: IMSceneFlowScene
+  nameWithType: IMSceneFlowScene
+  fullName: MFramework.IMSceneFlowScene
+- uid: MFramework.IMSceneFlowOperation
+  commentId: T:MFramework.IMSceneFlowOperation
+  parent: MFramework
+  href: MFramework.IMSceneFlowOperation.html
+  name: IMSceneFlowOperation
+  nameWithType: IMSceneFlowOperation
+  fullName: MFramework.IMSceneFlowOperation
+- uid: MFramework.IMSceneFlowLoadOperation
+  commentId: T:MFramework.IMSceneFlowLoadOperation
+  parent: MFramework
+  href: MFramework.IMSceneFlowLoadOperation.html
+  name: IMSceneFlowLoadOperation
+  nameWithType: IMSceneFlowLoadOperation
+  fullName: MFramework.IMSceneFlowLoadOperation
+- uid: MFramework.IMSceneFlowBackend
+  commentId: T:MFramework.IMSceneFlowBackend
+  parent: MFramework
+  href: MFramework.IMSceneFlowBackend.html
+  name: IMSceneFlowBackend
+  nameWithType: IMSceneFlowBackend
+  fullName: MFramework.IMSceneFlowBackend
+- uid: MFramework.MSceneFlowContext
+  commentId: T:MFramework.MSceneFlowContext
+  href: MFramework.MSceneFlowContext.html
+  name: MSceneFlowContext
+  nameWithType: MSceneFlowContext
+  fullName: MFramework.MSceneFlowContext
+- uid: MFramework.MVectorExtensions
+  commentId: T:MFramework.MVectorExtensions
+  href: MFramework.MVectorExtensions.html
+  name: MVectorExtensions
+  nameWithType: MVectorExtensions
+  fullName: MFramework.MVectorExtensions
+- uid: MFramework.MAssetLoadRequest`1
+  commentId: T:MFramework.MAssetLoadRequest`1
+  href: MFramework.MAssetLoadRequest-1.html
+  name: MAssetLoadRequest<TAsset>
+  nameWithType: MAssetLoadRequest<TAsset>
+  fullName: MFramework.MAssetLoadRequest<TAsset>
+  nameWithType.vb: MAssetLoadRequest(Of TAsset)
+  fullName.vb: MFramework.MAssetLoadRequest(Of TAsset)
+  name.vb: MAssetLoadRequest(Of TAsset)
+  spec.csharp:
+  - uid: MFramework.MAssetLoadRequest`1
+    name: MAssetLoadRequest
+    href: MFramework.MAssetLoadRequest-1.html
+  - name: <
+  - name: TAsset
+  - name: '>'
+  spec.vb:
+  - uid: MFramework.MAssetLoadRequest`1
+    name: MAssetLoadRequest
+    href: MFramework.MAssetLoadRequest-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TAsset
+  - name: )
+- uid: MFramework.MUIService
+  commentId: T:MFramework.MUIService
+  parent: MFramework
+  href: MFramework.MUIService.html
+  name: MUIService
+  nameWithType: MUIService
+  fullName: MFramework.MUIService
+- uid: MFramework.MRectTransformExtensions
+  commentId: T:MFramework.MRectTransformExtensions
+  href: MFramework.MRectTransformExtensions.html
+  name: MRectTransformExtensions
+  nameWithType: MRectTransformExtensions
+  fullName: MFramework.MRectTransformExtensions
+- uid: MFramework.MGameEntry
+  commentId: T:MFramework.MGameEntry
+  href: MFramework.MGameEntry.html
+  name: MGameEntry
+  nameWithType: MGameEntry
+  fullName: MFramework.MGameEntry
+- uid: MFramework.MAssetDownloadRequest
+  commentId: T:MFramework.MAssetDownloadRequest
+  parent: MFramework
+  href: MFramework.MAssetDownloadRequest.html
+  name: MAssetDownloadRequest
+  nameWithType: MAssetDownloadRequest
+  fullName: MFramework.MAssetDownloadRequest
+- uid: MFramework.MAction
+  commentId: T:MFramework.MAction
+  href: MFramework.MAction.html
+  name: MAction
+  nameWithType: MAction
+  fullName: MFramework.MAction
+- uid: MFramework.MPoolKey
+  commentId: T:MFramework.MPoolKey
+  parent: MFramework
+  href: MFramework.MPoolKey.html
+  name: MPoolKey
+  nameWithType: MPoolKey
+  fullName: MFramework.MPoolKey
+- uid: MFramework.IMState`1
+  commentId: T:MFramework.IMState`1
+  href: MFramework.IMState-1.html
+  name: IMState<TContext>
+  nameWithType: IMState<TContext>
+  fullName: MFramework.IMState<TContext>
+  nameWithType.vb: IMState(Of TContext)
+  fullName.vb: MFramework.IMState(Of TContext)
+  name.vb: IMState(Of TContext)
+  spec.csharp:
+  - uid: MFramework.IMState`1
+    name: IMState
+    href: MFramework.IMState-1.html
+  - name: <
+  - name: TContext
+  - name: '>'
+  spec.vb:
+  - uid: MFramework.IMState`1
+    name: IMState
+    href: MFramework.IMState-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TContext
+  - name: )
+- uid: MFramework.MConfig
+  commentId: T:MFramework.MConfig
+  href: MFramework.MConfig.html
+  name: MConfig
+  nameWithType: MConfig
+  fullName: MFramework.MConfig
+- uid: MFramework.MEventDispatchException
+  commentId: T:MFramework.MEventDispatchException
+  href: MFramework.MEventDispatchException.html
+  name: MEventDispatchException
+  nameWithType: MEventDispatchException
+  fullName: MFramework.MEventDispatchException
+- uid: MFramework.MSceneLoadRequest
+  commentId: T:MFramework.MSceneLoadRequest
+  parent: MFramework
+  href: MFramework.MSceneLoadRequest.html
+  name: MSceneLoadRequest
+  nameWithType: MSceneLoadRequest
+  fullName: MFramework.MSceneLoadRequest
+- uid: MFramework.IMPlatformBridge
+  commentId: T:MFramework.IMPlatformBridge
+  parent: MFramework
+  href: MFramework.IMPlatformBridge.html
+  name: IMPlatformBridge
+  nameWithType: IMPlatformBridge
+  fullName: MFramework.IMPlatformBridge
+- uid: MFramework.MFrameTime
+  commentId: T:MFramework.MFrameTime
+  parent: MFramework
+  href: MFramework.MFrameTime.html
+  name: MFrameTime
+  nameWithType: MFrameTime
+  fullName: MFramework.MFrameTime
+- uid: MFramework.MGameObjectExtensions
+  commentId: T:MFramework.MGameObjectExtensions
+  href: MFramework.MGameObjectExtensions.html
+  name: MGameObjectExtensions
+  nameWithType: MGameObjectExtensions
+  fullName: MFramework.MGameObjectExtensions
+- uid: MFramework.MFrameworkApp
+  commentId: T:MFramework.MFrameworkApp
+  parent: MFramework
+  href: MFramework.MFrameworkApp.html
+  name: MFrameworkApp
+  nameWithType: MFrameworkApp
+  fullName: MFramework.MFrameworkApp
+- uid: MFramework.IMFrameworkModule
+  commentId: T:MFramework.IMFrameworkModule
+  parent: MFramework
+  href: MFramework.IMFrameworkModule.html
+  name: IMFrameworkModule
+  nameWithType: IMFrameworkModule
+  fullName: MFramework.IMFrameworkModule
+- uid: MFramework.IMFrameworkTickable
+  commentId: T:MFramework.IMFrameworkTickable
+  parent: MFramework
+  href: MFramework.IMFrameworkTickable.html
+  name: IMFrameworkTickable
+  nameWithType: IMFrameworkTickable
+  fullName: MFramework.IMFrameworkTickable
+- uid: MFramework.IMFrameworkFixedTickable
+  commentId: T:MFramework.IMFrameworkFixedTickable
+  href: MFramework.IMFrameworkFixedTickable.html
+  name: IMFrameworkFixedTickable
+  nameWithType: IMFrameworkFixedTickable
+  fullName: MFramework.IMFrameworkFixedTickable
+- uid: MFramework.IMFrameworkLateTickable
+  commentId: T:MFramework.IMFrameworkLateTickable
+  href: MFramework.IMFrameworkLateTickable.html
+  name: IMFrameworkLateTickable
+  nameWithType: IMFrameworkLateTickable
+  fullName: MFramework.IMFrameworkLateTickable
+- uid: MFramework.MFrameworkAppState
+  commentId: T:MFramework.MFrameworkAppState
+  parent: MFramework
+  href: MFramework.MFrameworkAppState.html
+  name: MFrameworkAppState
+  nameWithType: MFrameworkAppState
+  fullName: MFramework.MFrameworkAppState
+- uid: MFramework.MEventBus
+  commentId: T:MFramework.MEventBus
+  href: MFramework.MEventBus.html
+  name: MEventBus
+  nameWithType: MEventBus
+  fullName: MFramework.MEventBus
+- uid: MFramework.IMPooledGameObject
+  commentId: T:MFramework.IMPooledGameObject
+  href: MFramework.IMPooledGameObject.html
+  name: IMPooledGameObject
+  nameWithType: IMPooledGameObject
+  fullName: MFramework.IMPooledGameObject
+- uid: MFramework.MRandom
+  commentId: T:MFramework.MRandom
+  parent: MFramework
+  href: MFramework.MRandom.html
+  name: MRandom
+  nameWithType: MRandom
+  fullName: MFramework.MRandom
+- uid: MFramework.MFileSaveStorage
+  commentId: T:MFramework.MFileSaveStorage
+  href: MFramework.MFileSaveStorage.html
+  name: MFileSaveStorage
+  nameWithType: MFileSaveStorage
+  fullName: MFramework.MFileSaveStorage
+- uid: MFramework.MSaveStatus
+  commentId: T:MFramework.MSaveStatus
+  parent: MFramework
+  href: MFramework.MSaveStatus.html
+  name: MSaveStatus
+  nameWithType: MSaveStatus
+  fullName: MFramework.MSaveStatus
+- uid: MFramework.MSaveSource
+  commentId: T:MFramework.MSaveSource
+  parent: MFramework
+  href: MFramework.MSaveSource.html
+  name: MSaveSource
+  nameWithType: MSaveSource
+  fullName: MFramework.MSaveSource
+- uid: MFramework.MSaveMetadata
+  commentId: T:MFramework.MSaveMetadata
+  parent: MFramework
+  href: MFramework.MSaveMetadata.html
+  name: MSaveMetadata
+  nameWithType: MSaveMetadata
+  fullName: MFramework.MSaveMetadata
+- uid: MFramework.MSaveRecoveryToken
+  commentId: T:MFramework.MSaveRecoveryToken
+  parent: MFramework
+  href: MFramework.MSaveRecoveryToken.html
+  name: MSaveRecoveryToken
+  nameWithType: MSaveRecoveryToken
+  fullName: MFramework.MSaveRecoveryToken
+- uid: MFramework.MSaveResult`1
+  commentId: T:MFramework.MSaveResult`1
+  href: MFramework.MSaveResult-1.html
+  name: MSaveResult<T>
+  nameWithType: MSaveResult<T>
+  fullName: MFramework.MSaveResult<T>
+  nameWithType.vb: MSaveResult(Of T)
+  fullName.vb: MFramework.MSaveResult(Of T)
+  name.vb: MSaveResult(Of T)
+  spec.csharp:
+  - uid: MFramework.MSaveResult`1
+    name: MSaveResult
+    href: MFramework.MSaveResult-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: MFramework.MSaveResult`1
+    name: MSaveResult
+    href: MFramework.MSaveResult-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MFramework.MSaveStorageException
+  commentId: T:MFramework.MSaveStorageException
+  href: MFramework.MSaveStorageException.html
+  name: MSaveStorageException
+  nameWithType: MSaveStorageException
+  fullName: MFramework.MSaveStorageException
+- uid: MFramework.IMRandomSource
+  commentId: T:MFramework.IMRandomSource
+  parent: MFramework
+  href: MFramework.IMRandomSource.html
+  name: IMRandomSource
+  nameWithType: IMRandomSource
+  fullName: MFramework.IMRandomSource
+- uid: MFramework.MSave`1
+  commentId: T:MFramework.MSave`1
+  href: MFramework.MSave-1.html
+  name: MSave<T>
+  nameWithType: MSave<T>
+  fullName: MFramework.MSave<T>
+  nameWithType.vb: MSave(Of T)
+  fullName.vb: MFramework.MSave(Of T)
+  name.vb: MSave(Of T)
+  spec.csharp:
+  - uid: MFramework.MSave`1
+    name: MSave
+    href: MFramework.MSave-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: MFramework.MSave`1
+    name: MSave
+    href: MFramework.MSave-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MFramework.IMSaveStorage
+  commentId: T:MFramework.IMSaveStorage
+  parent: MFramework
+  href: MFramework.IMSaveStorage.html
+  name: IMSaveStorage
+  nameWithType: IMSaveStorage
+  fullName: MFramework.IMSaveStorage
+- uid: MFramework.IMSaveSerializer`1
+  commentId: T:MFramework.IMSaveSerializer`1
+  href: MFramework.IMSaveSerializer-1.html
+  name: IMSaveSerializer<T>
+  nameWithType: IMSaveSerializer<T>
+  fullName: MFramework.IMSaveSerializer<T>
+  nameWithType.vb: IMSaveSerializer(Of T)
+  fullName.vb: MFramework.IMSaveSerializer(Of T)
+  name.vb: IMSaveSerializer(Of T)
+  spec.csharp:
+  - uid: MFramework.IMSaveSerializer`1
+    name: IMSaveSerializer
+    href: MFramework.IMSaveSerializer-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: MFramework.IMSaveSerializer`1
+    name: IMSaveSerializer
+    href: MFramework.IMSaveSerializer-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MFramework.IMSaveMigration
+  commentId: T:MFramework.IMSaveMigration
+  href: MFramework.IMSaveMigration.html
+  name: IMSaveMigration
+  nameWithType: IMSaveMigration
+  fullName: MFramework.IMSaveMigration
+- uid: MFramework.MRandomState
+  commentId: T:MFramework.MRandomState
+  parent: MFramework
+  href: MFramework.MRandomState.html
+  name: MRandomState
+  nameWithType: MRandomState
+  fullName: MFramework.MRandomState
+- uid: MFramework
+  commentId: N:MFramework
+  href: MFramework.html
+  name: MFramework
+  nameWithType: MFramework
+  fullName: MFramework

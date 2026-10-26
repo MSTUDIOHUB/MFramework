@@ -1,0 +1,221 @@
+### YamlMime:ManagedReference
+items:
+- uid: MFramework.IMRandomSource
+  commentId: T:MFramework.IMRandomSource
+  id: IMRandomSource
+  parent: MFramework
+  children:
+  - MFramework.IMRandomSource.NextDouble
+  - MFramework.IMRandomSource.NextInt(System.Int32)
+  - MFramework.IMRandomSource.NextInt(System.Int32,System.Int32)
+  - MFramework.IMRandomSource.NextUInt
+  langs:
+  - csharp
+  - vb
+  name: IMRandomSource
+  nameWithType: IMRandomSource
+  fullName: MFramework.IMRandomSource
+  type: Interface
+  assemblies:
+  - MStudio.MFramework.Foundation
+  namespace: MFramework
+  summary: 定义可由游戏规则显式注入的非密码学随机来源。
+  remarks: >-
+    调用会推进该来源的内部状态。玩法与表现应持有不同实例；不要依赖全局随机状态。
+
+    接口不要求具体算法，也不承诺任意两个实现产生相同序列。
+  example: []
+  syntax:
+    content: public interface IMRandomSource
+    content.vb: Public Interface IMRandomSource
+  derivedClasses:
+  - MFramework.MRandom
+- uid: MFramework.IMRandomSource.NextUInt
+  commentId: M:MFramework.IMRandomSource.NextUInt
+  id: NextUInt
+  parent: MFramework.IMRandomSource
+  langs:
+  - csharp
+  - vb
+  name: NextUInt()
+  nameWithType: IMRandomSource.NextUInt()
+  fullName: MFramework.IMRandomSource.NextUInt()
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Foundation
+  namespace: MFramework
+  summary: 取得一个覆盖全部 32 位取值的无符号整数。
+  example: []
+  syntax:
+    content: uint NextUInt()
+    return:
+      type: System.UInt32
+      description: 范围为 [0, 4294967295]，两端均可能取得。
+    content.vb: Function NextUInt() As UInteger
+  overload: MFramework.IMRandomSource.NextUInt*
+- uid: MFramework.IMRandomSource.NextInt(System.Int32)
+  commentId: M:MFramework.IMRandomSource.NextInt(System.Int32)
+  id: NextInt(System.Int32)
+  parent: MFramework.IMRandomSource
+  langs:
+  - csharp
+  - vb
+  name: NextInt(int)
+  nameWithType: IMRandomSource.NextInt(int)
+  fullName: MFramework.IMRandomSource.NextInt(int)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Foundation
+  namespace: MFramework
+  summary: 取得从零开始、均匀分布的有界整数。
+  example: []
+  syntax:
+    content: int NextInt(int maxExclusive)
+    parameters:
+    - id: maxExclusive
+      type: System.Int32
+      description: 不包含的上界，必须大于零。
+    return:
+      type: System.Int32
+      description: 范围为 [0, <code class="paramref">maxExclusive</code>) 的整数。
+    content.vb: Function NextInt(maxExclusive As Integer) As Integer
+  overload: MFramework.IMRandomSource.NextInt*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: 上界不大于零。
+  nameWithType.vb: IMRandomSource.NextInt(Integer)
+  fullName.vb: MFramework.IMRandomSource.NextInt(Integer)
+  name.vb: NextInt(Integer)
+- uid: MFramework.IMRandomSource.NextInt(System.Int32,System.Int32)
+  commentId: M:MFramework.IMRandomSource.NextInt(System.Int32,System.Int32)
+  id: NextInt(System.Int32,System.Int32)
+  parent: MFramework.IMRandomSource
+  langs:
+  - csharp
+  - vb
+  name: NextInt(int, int)
+  nameWithType: IMRandomSource.NextInt(int, int)
+  fullName: MFramework.IMRandomSource.NextInt(int, int)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Foundation
+  namespace: MFramework
+  summary: 取得指定区间内均匀分布的整数。
+  example: []
+  syntax:
+    content: int NextInt(int minInclusive, int maxExclusive)
+    parameters:
+    - id: minInclusive
+      type: System.Int32
+      description: 包含的下界。
+    - id: maxExclusive
+      type: System.Int32
+      description: 不包含的上界，必须严格大于下界。
+    return:
+      type: System.Int32
+      description: 范围为 [<code class="paramref">minInclusive</code>, <code class="paramref">maxExclusive</code>) 的整数。
+    content.vb: Function NextInt(minInclusive As Integer, maxExclusive As Integer) As Integer
+  overload: MFramework.IMRandomSource.NextInt*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: 上界不大于下界。
+  nameWithType.vb: IMRandomSource.NextInt(Integer, Integer)
+  fullName.vb: MFramework.IMRandomSource.NextInt(Integer, Integer)
+  name.vb: NextInt(Integer, Integer)
+- uid: MFramework.IMRandomSource.NextDouble
+  commentId: M:MFramework.IMRandomSource.NextDouble
+  id: NextDouble
+  parent: MFramework.IMRandomSource
+  langs:
+  - csharp
+  - vb
+  name: NextDouble()
+  nameWithType: IMRandomSource.NextDouble()
+  fullName: MFramework.IMRandomSource.NextDouble()
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Foundation
+  namespace: MFramework
+  summary: 取得大于或等于零、小于一的双精度随机数。
+  example: []
+  syntax:
+    content: double NextDouble()
+    return:
+      type: System.Double
+      description: 范围为 [0, 1)，不会返回 1、NaN 或无穷大。
+    content.vb: Function NextDouble() As Double
+  overload: MFramework.IMRandomSource.NextDouble*
+references:
+- uid: MFramework
+  commentId: N:MFramework
+  href: MFramework.html
+  name: MFramework
+  nameWithType: MFramework
+  fullName: MFramework
+- uid: MFramework.IMRandomSource.NextUInt*
+  commentId: Overload:MFramework.IMRandomSource.NextUInt
+  href: MFramework.IMRandomSource.html#MFramework_IMRandomSource_NextUInt
+  name: NextUInt
+  nameWithType: IMRandomSource.NextUInt
+  fullName: MFramework.IMRandomSource.NextUInt
+- uid: System.UInt32
+  commentId: T:System.UInt32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.uint32
+  name: uint
+  nameWithType: uint
+  fullName: uint
+  nameWithType.vb: UInteger
+  fullName.vb: UInteger
+  name.vb: UInteger
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.ArgumentOutOfRangeException
+  commentId: T:System.ArgumentOutOfRangeException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.argumentoutofrangeexception
+  name: ArgumentOutOfRangeException
+  nameWithType: ArgumentOutOfRangeException
+  fullName: System.ArgumentOutOfRangeException
+- uid: MFramework.IMRandomSource.NextInt*
+  commentId: Overload:MFramework.IMRandomSource.NextInt
+  href: MFramework.IMRandomSource.html#MFramework_IMRandomSource_NextInt_System_Int32_
+  name: NextInt
+  nameWithType: IMRandomSource.NextInt
+  fullName: MFramework.IMRandomSource.NextInt
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: MFramework.IMRandomSource.NextDouble*
+  commentId: Overload:MFramework.IMRandomSource.NextDouble
+  href: MFramework.IMRandomSource.html#MFramework_IMRandomSource_NextDouble
+  name: NextDouble
+  nameWithType: IMRandomSource.NextDouble
+  fullName: MFramework.IMRandomSource.NextDouble
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.double
+  name: double
+  nameWithType: double
+  fullName: double
+  nameWithType.vb: Double
+  fullName.vb: Double
+  name.vb: Double

@@ -1,0 +1,81 @@
+### YamlMime:ManagedReference
+items:
+- uid: MFramework.IMFrameworkFixedTickable
+  commentId: T:MFramework.IMFrameworkFixedTickable
+  id: IMFrameworkFixedTickable
+  parent: MFramework
+  children:
+  - MFramework.IMFrameworkFixedTickable.FixedTick(System.Single)
+  langs:
+  - csharp
+  - vb
+  name: IMFrameworkFixedTickable
+  nameWithType: IMFrameworkFixedTickable
+  fullName: MFramework.IMFrameworkFixedTickable
+  type: Interface
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 定义固定时间步长的更新回调。
+  example: []
+  syntax:
+    content: public interface IMFrameworkFixedTickable
+    content.vb: Public Interface IMFrameworkFixedTickable
+- uid: MFramework.IMFrameworkFixedTickable.FixedTick(System.Single)
+  commentId: M:MFramework.IMFrameworkFixedTickable.FixedTick(System.Single)
+  id: FixedTick(System.Single)
+  parent: MFramework.IMFrameworkFixedTickable
+  langs:
+  - csharp
+  - vb
+  name: FixedTick(float)
+  nameWithType: IMFrameworkFixedTickable.FixedTick(float)
+  fullName: MFramework.IMFrameworkFixedTickable.FixedTick(float)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 让对象向前运行一个固定时间步长。
+  example: []
+  syntax:
+    content: void FixedTick(float fixedDeltaTime)
+    parameters:
+    - id: fixedDeltaTime
+      type: System.Single
+      description: 固定时间步长，单位为秒。
+    content.vb: Sub FixedTick(fixedDeltaTime As Single)
+  overload: MFramework.IMFrameworkFixedTickable.FixedTick*
+  nameWithType.vb: IMFrameworkFixedTickable.FixedTick(Single)
+  fullName.vb: MFramework.IMFrameworkFixedTickable.FixedTick(Single)
+  name.vb: FixedTick(Single)
+references:
+- uid: MFramework
+  commentId: N:MFramework
+  href: MFramework.html
+  name: MFramework
+  nameWithType: MFramework
+  fullName: MFramework
+- uid: MFramework.IMFrameworkFixedTickable.FixedTick*
+  commentId: Overload:MFramework.IMFrameworkFixedTickable.FixedTick
+  href: MFramework.IMFrameworkFixedTickable.html#MFramework_IMFrameworkFixedTickable_FixedTick_System_Single_
+  name: FixedTick
+  nameWithType: IMFrameworkFixedTickable.FixedTick
+  fullName: MFramework.IMFrameworkFixedTickable.FixedTick
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System

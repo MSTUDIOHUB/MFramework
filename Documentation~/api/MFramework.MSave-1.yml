@@ -1,0 +1,952 @@
+### YamlMime:ManagedReference
+items:
+- uid: MFramework.MSave`1
+  commentId: T:MFramework.MSave`1
+  id: MSave`1
+  parent: MFramework
+  children:
+  - MFramework.MSave`1.#ctor(MFramework.IMSaveStorage,MFramework.IMSaveSerializer{`0},System.Int32,System.String,System.Collections.Generic.IEnumerable{MFramework.IMSaveMigration})
+  - MFramework.MSave`1.ContentVersion
+  - MFramework.MSave`1.Load(System.String)
+  - MFramework.MSave`1.LoadBackup(System.String)
+  - MFramework.MSave`1.RestoreBackup(MFramework.MSaveRecoveryToken)
+  - MFramework.MSave`1.RestoreBackup(System.String)
+  - MFramework.MSave`1.Save(System.String,`0,MFramework.MSaveMetadata)
+  - MFramework.MSave`1.SaveOrOverwrite(System.String,`0)
+  - MFramework.MSave`1.SchemaVersion
+  langs:
+  - csharp
+  - vb
+  name: MSave<T>
+  nameWithType: MSave<T>
+  fullName: MFramework.MSave<T>
+  type: Class
+  assemblies:
+  - MStudio.MFramework.Foundation
+  namespace: MFramework
+  summary: 同步完整快照存档服务，提供 SHA-256 完整性校验、结构迁移、备份恢复与可选的并发版本保护（CAS）。
+  example: []
+  syntax:
+    content: public sealed class MSave<T>
+    typeParameters:
+    - id: T
+      description: 包含业务数据及随机状态等内容的完整快照类型。
+    content.vb: Public NotInheritable Class MSave(Of T)
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  nameWithType.vb: MSave(Of T)
+  fullName.vb: MFramework.MSave(Of T)
+  name.vb: MSave(Of T)
+- uid: MFramework.MSave`1.#ctor(MFramework.IMSaveStorage,MFramework.IMSaveSerializer{`0},System.Int32,System.String,System.Collections.Generic.IEnumerable{MFramework.IMSaveMigration})
+  commentId: M:MFramework.MSave`1.#ctor(MFramework.IMSaveStorage,MFramework.IMSaveSerializer{`0},System.Int32,System.String,System.Collections.Generic.IEnumerable{MFramework.IMSaveMigration})
+  id: '#ctor(MFramework.IMSaveStorage,MFramework.IMSaveSerializer{`0},System.Int32,System.String,System.Collections.Generic.IEnumerable{MFramework.IMSaveMigration})'
+  parent: MFramework.MSave`1
+  langs:
+  - csharp
+  - vb
+  name: MSave(IMSaveStorage, IMSaveSerializer<T>, int, string, IEnumerable<IMSaveMigration>)
+  nameWithType: MSave<T>.MSave(IMSaveStorage, IMSaveSerializer<T>, int, string, IEnumerable<IMSaveMigration>)
+  fullName: MFramework.MSave<T>.MSave(MFramework.IMSaveStorage, MFramework.IMSaveSerializer<T>, int, string, System.Collections.Generic.IEnumerable<MFramework.IMSaveMigration>)
+  type: Constructor
+  assemblies:
+  - MStudio.MFramework.Foundation
+  namespace: MFramework
+  summary: 创建存档服务；不会立即读取磁盘，也不会自动注册为全局框架模块。
+  example: []
+  syntax:
+    content: public MSave(IMSaveStorage storage, IMSaveSerializer<T> serializer, int schemaVersion = 1, string contentVersion = "", IEnumerable<IMSaveMigration> migrations = null)
+    parameters:
+    - id: storage
+      type: MFramework.IMSaveStorage
+      description: 持久化后端，不能为 null。
+    - id: serializer
+      type: MFramework.IMSaveSerializer{{T}}
+      description: 当前结构版本的序列化策略，不能为 null。
+    - id: schemaVersion
+      type: System.Int32
+      description: 当前业务结构版本，必须大于零。
+    - id: contentVersion
+      type: System.String
+      description: 内容版本元数据，例如配置表版本。
+    - id: migrations
+      type: System.Collections.Generic.IEnumerable{MFramework.IMSaveMigration}
+      description: 可选的逐版本迁移步骤；同一起始版本不能重复。
+    content.vb: Public Sub New(storage As IMSaveStorage, serializer As IMSaveSerializer(Of T), schemaVersion As Integer = 1, contentVersion As String = "", migrations As IEnumerable(Of IMSaveMigration) = Nothing)
+  overload: MFramework.MSave`1.#ctor*
+  nameWithType.vb: MSave(Of T).New(IMSaveStorage, IMSaveSerializer(Of T), Integer, String, IEnumerable(Of IMSaveMigration))
+  fullName.vb: MFramework.MSave(Of T).New(MFramework.IMSaveStorage, MFramework.IMSaveSerializer(Of T), Integer, String, System.Collections.Generic.IEnumerable(Of MFramework.IMSaveMigration))
+  name.vb: New(IMSaveStorage, IMSaveSerializer(Of T), Integer, String, IEnumerable(Of IMSaveMigration))
+- uid: MFramework.MSave`1.SchemaVersion
+  commentId: P:MFramework.MSave`1.SchemaVersion
+  id: SchemaVersion
+  parent: MFramework.MSave`1
+  langs:
+  - csharp
+  - vb
+  name: SchemaVersion
+  nameWithType: MSave<T>.SchemaVersion
+  fullName: MFramework.MSave<T>.SchemaVersion
+  type: Property
+  assemblies:
+  - MStudio.MFramework.Foundation
+  namespace: MFramework
+  summary: 当前业务结构版本；读取到更高版本时拒绝覆盖。
+  example: []
+  syntax:
+    content: public int SchemaVersion { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property SchemaVersion As Integer
+  overload: MFramework.MSave`1.SchemaVersion*
+  nameWithType.vb: MSave(Of T).SchemaVersion
+  fullName.vb: MFramework.MSave(Of T).SchemaVersion
+- uid: MFramework.MSave`1.ContentVersion
+  commentId: P:MFramework.MSave`1.ContentVersion
+  id: ContentVersion
+  parent: MFramework.MSave`1
+  langs:
+  - csharp
+  - vb
+  name: ContentVersion
+  nameWithType: MSave<T>.ContentVersion
+  fullName: MFramework.MSave<T>.ContentVersion
+  type: Property
+  assemblies:
+  - MStudio.MFramework.Foundation
+  namespace: MFramework
+  summary: 后续 Save 使用的内容版本。
+  example: []
+  syntax:
+    content: public string ContentVersion { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property ContentVersion As String
+  overload: MFramework.MSave`1.ContentVersion*
+  nameWithType.vb: MSave(Of T).ContentVersion
+  fullName.vb: MFramework.MSave(Of T).ContentVersion
+- uid: MFramework.MSave`1.Load(System.String)
+  commentId: M:MFramework.MSave`1.Load(System.String)
+  id: Load(System.String)
+  parent: MFramework.MSave`1
+  langs:
+  - csharp
+  - vb
+  name: Load(string)
+  nameWithType: MSave<T>.Load(string)
+  fullName: MFramework.MSave<T>.Load(string)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Foundation
+  namespace: MFramework
+  summary: 读取主档并在内存副本上按需执行版本迁移。
+  example: []
+  syntax:
+    content: public MSaveResult<T> Load(string slot)
+    parameters:
+    - id: slot
+      type: System.String
+      description: 1 至 64 个 ASCII 字母、数字、下划线或短横线组成的槽名。
+    return:
+      type: MFramework.MSaveResult{{T}}
+      description: 包含数据、元数据或明确故障状态的回执；主档缺失而备份存在时返回 RecoveryRequired。
+    content.vb: Public Function Load(slot As String) As MSaveResult(Of T)
+  overload: MFramework.MSave`1.Load*
+  nameWithType.vb: MSave(Of T).Load(String)
+  fullName.vb: MFramework.MSave(Of T).Load(String)
+  name.vb: Load(String)
+- uid: MFramework.MSave`1.LoadBackup(System.String)
+  commentId: M:MFramework.MSave`1.LoadBackup(System.String)
+  id: LoadBackup(System.String)
+  parent: MFramework.MSave`1
+  langs:
+  - csharp
+  - vb
+  name: LoadBackup(string)
+  nameWithType: MSave<T>.LoadBackup(string)
+  fullName: MFramework.MSave<T>.LoadBackup(string)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Foundation
+  namespace: MFramework
+  summary: 显式读取备份并签发恢复凭据，不修改任何磁盘文件。
+  example: []
+  syntax:
+    content: public MSaveResult<T> LoadBackup(string slot)
+    parameters:
+    - id: slot
+      type: System.String
+      description: 合法槽名。
+    return:
+      type: MFramework.MSaveResult{{T}}
+      description: Source 为 Backup 的回执；成功时可调用 <xref href="MFramework.MSave%601.RestoreBackup(System.String)" data-throw-if-not-resolved="false"></xref> 或 <xref href="MFramework.MSave%601.RestoreBackup(MFramework.MSaveRecoveryToken)" data-throw-if-not-resolved="false"></xref> 恢复。
+    content.vb: Public Function LoadBackup(slot As String) As MSaveResult(Of T)
+  overload: MFramework.MSave`1.LoadBackup*
+  nameWithType.vb: MSave(Of T).LoadBackup(String)
+  fullName.vb: MFramework.MSave(Of T).LoadBackup(String)
+  name.vb: LoadBackup(String)
+- uid: MFramework.MSave`1.SaveOrOverwrite(System.String,`0)
+  commentId: M:MFramework.MSave`1.SaveOrOverwrite(System.String,`0)
+  id: SaveOrOverwrite(System.String,`0)
+  parent: MFramework.MSave`1
+  langs:
+  - csharp
+  - vb
+  name: SaveOrOverwrite(string, T)
+  nameWithType: MSave<T>.SaveOrOverwrite(string, T)
+  fullName: MFramework.MSave<T>.SaveOrOverwrite(string, T)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Foundation
+  namespace: MFramework
+  summary: 直接保存或覆盖指定槽位的完整快照（适合单人独立游戏的便捷保存入口，无需手动传递上一版本的 Metadata）。
+  example: []
+  syntax:
+    content: public MSaveResult<T> SaveOrOverwrite(string slot, T value)
+    parameters:
+    - id: slot
+      type: System.String
+      description: 合法槽名。
+    - id: value
+      type: '{T}'
+      description: 要保存的完整快照。
+    return:
+      type: MFramework.MSaveResult{{T}}
+      description: 保存结果回执。
+    content.vb: Public Function SaveOrOverwrite(slot As String, value As T) As MSaveResult(Of T)
+  overload: MFramework.MSave`1.SaveOrOverwrite*
+  nameWithType.vb: MSave(Of T).SaveOrOverwrite(String, T)
+  fullName.vb: MFramework.MSave(Of T).SaveOrOverwrite(String, T)
+  name.vb: SaveOrOverwrite(String, T)
+- uid: MFramework.MSave`1.Save(System.String,`0,MFramework.MSaveMetadata)
+  commentId: M:MFramework.MSave`1.Save(System.String,`0,MFramework.MSaveMetadata)
+  id: Save(System.String,`0,MFramework.MSaveMetadata)
+  parent: MFramework.MSave`1
+  langs:
+  - csharp
+  - vb
+  name: Save(string, T, MSaveMetadata)
+  nameWithType: MSave<T>.Save(string, T, MSaveMetadata)
+  fullName: MFramework.MSave<T>.Save(string, T, MFramework.MSaveMetadata)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Foundation
+  namespace: MFramework
+  summary: >-
+    将完整快照作为下一修订发布。默认 expected=null 仅允许创建全新槽；
+
+    更新已有存档时传入最近一次 Load 或 Save 成功结果的 Metadata（乐观并发控制）。
+  example: []
+  syntax:
+    content: public MSaveResult<T> Save(string slot, T value, MSaveMetadata expected = null)
+    parameters:
+    - id: slot
+      type: System.String
+      description: 合法槽名。
+    - id: value
+      type: '{T}'
+      description: 应用已经构造完成的完整快照。
+    - id: expected
+      type: MFramework.MSaveMetadata
+      description: 预期主档的元数据凭据；null 表示创建新槽。
+    return:
+      type: MFramework.MSaveResult{{T}}
+      description: 成功、冲突或明确失败回执。
+    content.vb: Public Function Save(slot As String, value As T, expected As MSaveMetadata = Nothing) As MSaveResult(Of T)
+  overload: MFramework.MSave`1.Save*
+  nameWithType.vb: MSave(Of T).Save(String, T, MSaveMetadata)
+  fullName.vb: MFramework.MSave(Of T).Save(String, T, MFramework.MSaveMetadata)
+  name.vb: Save(String, T, MSaveMetadata)
+- uid: MFramework.MSave`1.RestoreBackup(System.String)
+  commentId: M:MFramework.MSave`1.RestoreBackup(System.String)
+  id: RestoreBackup(System.String)
+  parent: MFramework.MSave`1
+  langs:
+  - csharp
+  - vb
+  name: RestoreBackup(string)
+  nameWithType: MSave<T>.RestoreBackup(string)
+  fullName: MFramework.MSave<T>.RestoreBackup(string)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Foundation
+  namespace: MFramework
+  summary: 便捷方法：直接读取指定槽位的备份并将其恢复为主档（适合无需两步确认的独立游戏流程）。
+  example: []
+  syntax:
+    content: public MSaveResult<T> RestoreBackup(string slot)
+    parameters:
+    - id: slot
+      type: System.String
+      description: 合法槽名。
+    return:
+      type: MFramework.MSaveResult{{T}}
+      description: 恢复结果回执。
+    content.vb: Public Function RestoreBackup(slot As String) As MSaveResult(Of T)
+  overload: MFramework.MSave`1.RestoreBackup*
+  nameWithType.vb: MSave(Of T).RestoreBackup(String)
+  fullName.vb: MFramework.MSave(Of T).RestoreBackup(String)
+  name.vb: RestoreBackup(String)
+- uid: MFramework.MSave`1.RestoreBackup(MFramework.MSaveRecoveryToken)
+  commentId: M:MFramework.MSave`1.RestoreBackup(MFramework.MSaveRecoveryToken)
+  id: RestoreBackup(MFramework.MSaveRecoveryToken)
+  parent: MFramework.MSave`1
+  langs:
+  - csharp
+  - vb
+  name: RestoreBackup(MSaveRecoveryToken)
+  nameWithType: MSave<T>.RestoreBackup(MSaveRecoveryToken)
+  fullName: MFramework.MSave<T>.RestoreBackup(MFramework.MSaveRecoveryToken)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Foundation
+  namespace: MFramework
+  summary: 使用 <xref href="MFramework.MSave%601.LoadBackup(System.String)" data-throw-if-not-resolved="false"></xref> 签发的恢复凭据，将已检查的备份恢复为新的主档修订，同时保留该有效备份。
+  example: []
+  syntax:
+    content: public MSaveResult<T> RestoreBackup(MSaveRecoveryToken token)
+    parameters:
+    - id: token
+      type: MFramework.MSaveRecoveryToken
+      description: 本实例最近一次 LoadBackup 成功结果提供的恢复凭据。
+    return:
+      type: MFramework.MSaveResult{{T}}
+      description: 恢复成功或明确故障。
+    content.vb: Public Function RestoreBackup(token As MSaveRecoveryToken) As MSaveResult(Of T)
+  overload: MFramework.MSave`1.RestoreBackup*
+  nameWithType.vb: MSave(Of T).RestoreBackup(MSaveRecoveryToken)
+  fullName.vb: MFramework.MSave(Of T).RestoreBackup(MFramework.MSaveRecoveryToken)
+references:
+- uid: MFramework
+  commentId: N:MFramework
+  href: MFramework.html
+  name: MFramework
+  nameWithType: MFramework
+  fullName: MFramework
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MFramework.MSave`1.#ctor*
+  commentId: Overload:MFramework.MSave`1.#ctor
+  href: MFramework.MSave-1.html#MFramework_MSave_1__ctor_MFramework_IMSaveStorage_MFramework_IMSaveSerializer__0__System_Int32_System_String_System_Collections_Generic_IEnumerable_MFramework_IMSaveMigration__
+  name: MSave
+  nameWithType: MSave<T>.MSave
+  fullName: MFramework.MSave<T>.MSave
+  nameWithType.vb: MSave(Of T).New
+  fullName.vb: MFramework.MSave(Of T).New
+  name.vb: New
+- uid: MFramework.IMSaveStorage
+  commentId: T:MFramework.IMSaveStorage
+  parent: MFramework
+  href: MFramework.IMSaveStorage.html
+  name: IMSaveStorage
+  nameWithType: IMSaveStorage
+  fullName: MFramework.IMSaveStorage
+- uid: MFramework.IMSaveSerializer{{T}}
+  commentId: T:MFramework.IMSaveSerializer{`0}
+  parent: MFramework
+  definition: MFramework.IMSaveSerializer`1
+  href: MFramework.IMSaveSerializer-1.html
+  name: IMSaveSerializer<T>
+  nameWithType: IMSaveSerializer<T>
+  fullName: MFramework.IMSaveSerializer<T>
+  nameWithType.vb: IMSaveSerializer(Of T)
+  fullName.vb: MFramework.IMSaveSerializer(Of T)
+  name.vb: IMSaveSerializer(Of T)
+  spec.csharp:
+  - uid: MFramework.IMSaveSerializer`1
+    name: IMSaveSerializer
+    href: MFramework.IMSaveSerializer-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: MFramework.IMSaveSerializer`1
+    name: IMSaveSerializer
+    href: MFramework.IMSaveSerializer-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Collections.Generic.IEnumerable{MFramework.IMSaveMigration}
+  commentId: T:System.Collections.Generic.IEnumerable{MFramework.IMSaveMigration}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<IMSaveMigration>
+  nameWithType: IEnumerable<IMSaveMigration>
+  fullName: System.Collections.Generic.IEnumerable<MFramework.IMSaveMigration>
+  nameWithType.vb: IEnumerable(Of IMSaveMigration)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of MFramework.IMSaveMigration)
+  name.vb: IEnumerable(Of IMSaveMigration)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: MFramework.IMSaveMigration
+    name: IMSaveMigration
+    href: MFramework.IMSaveMigration.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MFramework.IMSaveMigration
+    name: IMSaveMigration
+    href: MFramework.IMSaveMigration.html
+  - name: )
+- uid: MFramework.IMSaveSerializer`1
+  commentId: T:MFramework.IMSaveSerializer`1
+  href: MFramework.IMSaveSerializer-1.html
+  name: IMSaveSerializer<T>
+  nameWithType: IMSaveSerializer<T>
+  fullName: MFramework.IMSaveSerializer<T>
+  nameWithType.vb: IMSaveSerializer(Of T)
+  fullName.vb: MFramework.IMSaveSerializer(Of T)
+  name.vb: IMSaveSerializer(Of T)
+  spec.csharp:
+  - uid: MFramework.IMSaveSerializer`1
+    name: IMSaveSerializer
+    href: MFramework.IMSaveSerializer-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: MFramework.IMSaveSerializer`1
+    name: IMSaveSerializer
+    href: MFramework.IMSaveSerializer-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: MFramework.MSave`1.SchemaVersion*
+  commentId: Overload:MFramework.MSave`1.SchemaVersion
+  href: MFramework.MSave-1.html#MFramework_MSave_1_SchemaVersion
+  name: SchemaVersion
+  nameWithType: MSave<T>.SchemaVersion
+  fullName: MFramework.MSave<T>.SchemaVersion
+  nameWithType.vb: MSave(Of T).SchemaVersion
+  fullName.vb: MFramework.MSave(Of T).SchemaVersion
+- uid: MFramework.MSave`1.ContentVersion*
+  commentId: Overload:MFramework.MSave`1.ContentVersion
+  href: MFramework.MSave-1.html#MFramework_MSave_1_ContentVersion
+  name: ContentVersion
+  nameWithType: MSave<T>.ContentVersion
+  fullName: MFramework.MSave<T>.ContentVersion
+  nameWithType.vb: MSave(Of T).ContentVersion
+  fullName.vb: MFramework.MSave(Of T).ContentVersion
+- uid: MFramework.MSave`1.Load*
+  commentId: Overload:MFramework.MSave`1.Load
+  href: MFramework.MSave-1.html#MFramework_MSave_1_Load_System_String_
+  name: Load
+  nameWithType: MSave<T>.Load
+  fullName: MFramework.MSave<T>.Load
+  nameWithType.vb: MSave(Of T).Load
+  fullName.vb: MFramework.MSave(Of T).Load
+- uid: MFramework.MSaveResult{{T}}
+  commentId: T:MFramework.MSaveResult{`0}
+  parent: MFramework
+  definition: MFramework.MSaveResult`1
+  href: MFramework.MSaveResult-1.html
+  name: MSaveResult<T>
+  nameWithType: MSaveResult<T>
+  fullName: MFramework.MSaveResult<T>
+  nameWithType.vb: MSaveResult(Of T)
+  fullName.vb: MFramework.MSaveResult(Of T)
+  name.vb: MSaveResult(Of T)
+  spec.csharp:
+  - uid: MFramework.MSaveResult`1
+    name: MSaveResult
+    href: MFramework.MSaveResult-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: MFramework.MSaveResult`1
+    name: MSaveResult
+    href: MFramework.MSaveResult-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MFramework.MSaveResult`1
+  commentId: T:MFramework.MSaveResult`1
+  href: MFramework.MSaveResult-1.html
+  name: MSaveResult<T>
+  nameWithType: MSaveResult<T>
+  fullName: MFramework.MSaveResult<T>
+  nameWithType.vb: MSaveResult(Of T)
+  fullName.vb: MFramework.MSaveResult(Of T)
+  name.vb: MSaveResult(Of T)
+  spec.csharp:
+  - uid: MFramework.MSaveResult`1
+    name: MSaveResult
+    href: MFramework.MSaveResult-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: MFramework.MSaveResult`1
+    name: MSaveResult
+    href: MFramework.MSaveResult-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MFramework.MSave`1.RestoreBackup(System.String)
+  commentId: M:MFramework.MSave`1.RestoreBackup(System.String)
+  isExternal: true
+  href: MFramework.MSave-1.html#MFramework_MSave_1_RestoreBackup_System_String_
+  name: RestoreBackup(string)
+  nameWithType: MSave<T>.RestoreBackup(string)
+  fullName: MFramework.MSave<T>.RestoreBackup(string)
+  nameWithType.vb: MSave(Of T).RestoreBackup(String)
+  fullName.vb: MFramework.MSave(Of T).RestoreBackup(String)
+  name.vb: RestoreBackup(String)
+  spec.csharp:
+  - uid: MFramework.MSave`1.RestoreBackup(System.String)
+    name: RestoreBackup
+    href: MFramework.MSave-1.html#MFramework_MSave_1_RestoreBackup_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: MFramework.MSave`1.RestoreBackup(System.String)
+    name: RestoreBackup
+    href: MFramework.MSave-1.html#MFramework_MSave_1_RestoreBackup_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: MFramework.MSave`1.RestoreBackup(MFramework.MSaveRecoveryToken)
+  commentId: M:MFramework.MSave`1.RestoreBackup(MFramework.MSaveRecoveryToken)
+  href: MFramework.MSave-1.html#MFramework_MSave_1_RestoreBackup_MFramework_MSaveRecoveryToken_
+  name: RestoreBackup(MSaveRecoveryToken)
+  nameWithType: MSave<T>.RestoreBackup(MSaveRecoveryToken)
+  fullName: MFramework.MSave<T>.RestoreBackup(MFramework.MSaveRecoveryToken)
+  nameWithType.vb: MSave(Of T).RestoreBackup(MSaveRecoveryToken)
+  fullName.vb: MFramework.MSave(Of T).RestoreBackup(MFramework.MSaveRecoveryToken)
+  spec.csharp:
+  - uid: MFramework.MSave`1.RestoreBackup(MFramework.MSaveRecoveryToken)
+    name: RestoreBackup
+    href: MFramework.MSave-1.html#MFramework_MSave_1_RestoreBackup_MFramework_MSaveRecoveryToken_
+  - name: (
+  - uid: MFramework.MSaveRecoveryToken
+    name: MSaveRecoveryToken
+    href: MFramework.MSaveRecoveryToken.html
+  - name: )
+  spec.vb:
+  - uid: MFramework.MSave`1.RestoreBackup(MFramework.MSaveRecoveryToken)
+    name: RestoreBackup
+    href: MFramework.MSave-1.html#MFramework_MSave_1_RestoreBackup_MFramework_MSaveRecoveryToken_
+  - name: (
+  - uid: MFramework.MSaveRecoveryToken
+    name: MSaveRecoveryToken
+    href: MFramework.MSaveRecoveryToken.html
+  - name: )
+- uid: MFramework.MSave`1.LoadBackup*
+  commentId: Overload:MFramework.MSave`1.LoadBackup
+  href: MFramework.MSave-1.html#MFramework_MSave_1_LoadBackup_System_String_
+  name: LoadBackup
+  nameWithType: MSave<T>.LoadBackup
+  fullName: MFramework.MSave<T>.LoadBackup
+  nameWithType.vb: MSave(Of T).LoadBackup
+  fullName.vb: MFramework.MSave(Of T).LoadBackup
+- uid: MFramework.MSave`1.SaveOrOverwrite*
+  commentId: Overload:MFramework.MSave`1.SaveOrOverwrite
+  href: MFramework.MSave-1.html#MFramework_MSave_1_SaveOrOverwrite_System_String__0_
+  name: SaveOrOverwrite
+  nameWithType: MSave<T>.SaveOrOverwrite
+  fullName: MFramework.MSave<T>.SaveOrOverwrite
+  nameWithType.vb: MSave(Of T).SaveOrOverwrite
+  fullName.vb: MFramework.MSave(Of T).SaveOrOverwrite
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: MFramework.MSave`1.Save*
+  commentId: Overload:MFramework.MSave`1.Save
+  href: MFramework.MSave-1.html#MFramework_MSave_1_Save_System_String__0_MFramework_MSaveMetadata_
+  name: Save
+  nameWithType: MSave<T>.Save
+  fullName: MFramework.MSave<T>.Save
+  nameWithType.vb: MSave(Of T).Save
+  fullName.vb: MFramework.MSave(Of T).Save
+- uid: MFramework.MSaveMetadata
+  commentId: T:MFramework.MSaveMetadata
+  parent: MFramework
+  href: MFramework.MSaveMetadata.html
+  name: MSaveMetadata
+  nameWithType: MSaveMetadata
+  fullName: MFramework.MSaveMetadata
+- uid: MFramework.MSave`1.RestoreBackup*
+  commentId: Overload:MFramework.MSave`1.RestoreBackup
+  href: MFramework.MSave-1.html#MFramework_MSave_1_RestoreBackup_System_String_
+  name: RestoreBackup
+  nameWithType: MSave<T>.RestoreBackup
+  fullName: MFramework.MSave<T>.RestoreBackup
+  nameWithType.vb: MSave(Of T).RestoreBackup
+  fullName.vb: MFramework.MSave(Of T).RestoreBackup
+- uid: MFramework.MSave`1.LoadBackup(System.String)
+  commentId: M:MFramework.MSave`1.LoadBackup(System.String)
+  isExternal: true
+  href: MFramework.MSave-1.html#MFramework_MSave_1_LoadBackup_System_String_
+  name: LoadBackup(string)
+  nameWithType: MSave<T>.LoadBackup(string)
+  fullName: MFramework.MSave<T>.LoadBackup(string)
+  nameWithType.vb: MSave(Of T).LoadBackup(String)
+  fullName.vb: MFramework.MSave(Of T).LoadBackup(String)
+  name.vb: LoadBackup(String)
+  spec.csharp:
+  - uid: MFramework.MSave`1.LoadBackup(System.String)
+    name: LoadBackup
+    href: MFramework.MSave-1.html#MFramework_MSave_1_LoadBackup_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: MFramework.MSave`1.LoadBackup(System.String)
+    name: LoadBackup
+    href: MFramework.MSave-1.html#MFramework_MSave_1_LoadBackup_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: MFramework.MSaveRecoveryToken
+  commentId: T:MFramework.MSaveRecoveryToken
+  parent: MFramework
+  href: MFramework.MSaveRecoveryToken.html
+  name: MSaveRecoveryToken
+  nameWithType: MSaveRecoveryToken
+  fullName: MFramework.MSaveRecoveryToken

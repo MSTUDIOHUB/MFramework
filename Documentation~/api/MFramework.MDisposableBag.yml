@@ -1,0 +1,677 @@
+### YamlMime:ManagedReference
+items:
+- uid: MFramework.MDisposableBag
+  commentId: T:MFramework.MDisposableBag
+  id: MDisposableBag
+  parent: MFramework
+  children:
+  - MFramework.MDisposableBag.Add``1(``0)
+  - MFramework.MDisposableBag.Clear
+  - MFramework.MDisposableBag.Count
+  - MFramework.MDisposableBag.Dispose
+  - MFramework.MDisposableBag.IsDisposed
+  langs:
+  - csharp
+  - vb
+  name: MDisposableBag
+  nameWithType: MDisposableBag
+  fullName: MFramework.MDisposableBag
+  type: Class
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 持有一组可释放对象，并按照加入顺序的反向顺序释放它们。
+  example: []
+  syntax:
+    content: 'public sealed class MDisposableBag : IDisposable'
+    content.vb: Public NotInheritable Class MDisposableBag Implements IDisposable
+  inheritance:
+  - System.Object
+  implements:
+  - System.IDisposable
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - MFramework.MDisposableBag.MFramework.MDisposableExtensions.AddTo``1(MFramework.MAssetScope)
+  - MFramework.MDisposableBag.MFramework.MDisposableExtensions.AddTo``1(MFramework.MDisposableBag)
+- uid: MFramework.MDisposableBag.IsDisposed
+  commentId: P:MFramework.MDisposableBag.IsDisposed
+  id: IsDisposed
+  parent: MFramework.MDisposableBag
+  langs:
+  - csharp
+  - vb
+  name: IsDisposed
+  nameWithType: MDisposableBag.IsDisposed
+  fullName: MFramework.MDisposableBag.IsDisposed
+  type: Property
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 获取该容器是否已经释放。
+  example: []
+  syntax:
+    content: public bool IsDisposed { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property IsDisposed As Boolean
+  overload: MFramework.MDisposableBag.IsDisposed*
+- uid: MFramework.MDisposableBag.Count
+  commentId: P:MFramework.MDisposableBag.Count
+  id: Count
+  parent: MFramework.MDisposableBag
+  langs:
+  - csharp
+  - vb
+  name: Count
+  nameWithType: MDisposableBag.Count
+  fullName: MFramework.MDisposableBag.Count
+  type: Property
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 获取该容器当前持有的对象数量。
+  example: []
+  syntax:
+    content: public int Count { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property Count As Integer
+  overload: MFramework.MDisposableBag.Count*
+- uid: MFramework.MDisposableBag.Add``1(``0)
+  commentId: M:MFramework.MDisposableBag.Add``1(``0)
+  id: Add``1(``0)
+  parent: MFramework.MDisposableBag
+  langs:
+  - csharp
+  - vb
+  name: Add<T>(T)
+  nameWithType: MDisposableBag.Add<T>(T)
+  fullName: MFramework.MDisposableBag.Add<T>(T)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 向容器中加入一个可释放对象。
+  remarks: 如果该容器已经释放，传入的对象会被立即释放。
+  example: []
+  syntax:
+    content: 'public T Add<T>(T item) where T : IDisposable'
+    parameters:
+    - id: item
+      type: '{T}'
+      description: 要由该容器持有的对象。
+    typeParameters:
+    - id: T
+      description: 可释放对象的类型。
+    return:
+      type: '{T}'
+      description: 传入的同一个对象，便于链式注册。
+    content.vb: Public Function Add(Of T As IDisposable)(item As T) As T
+  overload: MFramework.MDisposableBag.Add*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code class="paramref">item</code> 为 null。
+  nameWithType.vb: MDisposableBag.Add(Of T)(T)
+  fullName.vb: MFramework.MDisposableBag.Add(Of T)(T)
+  name.vb: Add(Of T)(T)
+- uid: MFramework.MDisposableBag.Clear
+  commentId: M:MFramework.MDisposableBag.Clear
+  id: Clear
+  parent: MFramework.MDisposableBag
+  langs:
+  - csharp
+  - vb
+  name: Clear()
+  nameWithType: MDisposableBag.Clear()
+  fullName: MFramework.MDisposableBag.Clear()
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 释放当前持有的全部对象，但允许该容器继续使用。
+  example: []
+  syntax:
+    content: public void Clear()
+    content.vb: Public Sub Clear()
+  overload: MFramework.MDisposableBag.Clear*
+- uid: MFramework.MDisposableBag.Dispose
+  commentId: M:MFramework.MDisposableBag.Dispose
+  id: Dispose
+  parent: MFramework.MDisposableBag
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: MDisposableBag.Dispose()
+  fullName: MFramework.MDisposableBag.Dispose()
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 释放全部对象，并阻止该容器继续持有后续加入的对象。
+  example: []
+  syntax:
+    content: public void Dispose()
+    content.vb: Public Sub Dispose()
+  overload: MFramework.MDisposableBag.Dispose*
+  implements:
+  - System.IDisposable.Dispose
+references:
+- uid: MFramework
+  commentId: N:MFramework
+  href: MFramework.html
+  name: MFramework
+  nameWithType: MFramework
+  fullName: MFramework
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: MFramework.MDisposableBag.MFramework.MDisposableExtensions.AddTo``1(MFramework.MAssetScope)
+  commentId: M:MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MAssetScope)
+  parent: MFramework.MDisposableExtensions
+  definition: MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MAssetScope)
+  href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MAssetScope_
+  name: AddTo<MDisposableBag>(MDisposableBag, MAssetScope)
+  nameWithType: MDisposableExtensions.AddTo<MDisposableBag>(MDisposableBag, MAssetScope)
+  fullName: MFramework.MDisposableExtensions.AddTo<MFramework.MDisposableBag>(MFramework.MDisposableBag, MFramework.MAssetScope)
+  nameWithType.vb: MDisposableExtensions.AddTo(Of MDisposableBag)(MDisposableBag, MAssetScope)
+  fullName.vb: MFramework.MDisposableExtensions.AddTo(Of MFramework.MDisposableBag)(MFramework.MDisposableBag, MFramework.MAssetScope)
+  name.vb: AddTo(Of MDisposableBag)(MDisposableBag, MAssetScope)
+  spec.csharp:
+  - uid: MFramework.MDisposableExtensions.AddTo``1(MFramework.MDisposableBag,MFramework.MAssetScope)
+    name: AddTo
+    href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MAssetScope_
+  - name: <
+  - uid: MFramework.MDisposableBag
+    name: MDisposableBag
+    href: MFramework.MDisposableBag.html
+  - name: '>'
+  - name: (
+  - uid: MFramework.MDisposableBag
+    name: MDisposableBag
+    href: MFramework.MDisposableBag.html
+  - name: ','
+  - name: " "
+  - uid: MFramework.MAssetScope
+    name: MAssetScope
+    href: MFramework.MAssetScope.html
+  - name: )
+  spec.vb:
+  - uid: MFramework.MDisposableExtensions.AddTo``1(MFramework.MDisposableBag,MFramework.MAssetScope)
+    name: AddTo
+    href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MAssetScope_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MFramework.MDisposableBag
+    name: MDisposableBag
+    href: MFramework.MDisposableBag.html
+  - name: )
+  - name: (
+  - uid: MFramework.MDisposableBag
+    name: MDisposableBag
+    href: MFramework.MDisposableBag.html
+  - name: ','
+  - name: " "
+  - uid: MFramework.MAssetScope
+    name: MAssetScope
+    href: MFramework.MAssetScope.html
+  - name: )
+- uid: MFramework.MDisposableBag.MFramework.MDisposableExtensions.AddTo``1(MFramework.MDisposableBag)
+  commentId: M:MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MDisposableBag)
+  parent: MFramework.MDisposableExtensions
+  definition: MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MDisposableBag)
+  href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MDisposableBag_
+  name: AddTo<MDisposableBag>(MDisposableBag, MDisposableBag)
+  nameWithType: MDisposableExtensions.AddTo<MDisposableBag>(MDisposableBag, MDisposableBag)
+  fullName: MFramework.MDisposableExtensions.AddTo<MFramework.MDisposableBag>(MFramework.MDisposableBag, MFramework.MDisposableBag)
+  nameWithType.vb: MDisposableExtensions.AddTo(Of MDisposableBag)(MDisposableBag, MDisposableBag)
+  fullName.vb: MFramework.MDisposableExtensions.AddTo(Of MFramework.MDisposableBag)(MFramework.MDisposableBag, MFramework.MDisposableBag)
+  name.vb: AddTo(Of MDisposableBag)(MDisposableBag, MDisposableBag)
+  spec.csharp:
+  - uid: MFramework.MDisposableExtensions.AddTo``1(MFramework.MDisposableBag,MFramework.MDisposableBag)
+    name: AddTo
+    href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MDisposableBag_
+  - name: <
+  - uid: MFramework.MDisposableBag
+    name: MDisposableBag
+    href: MFramework.MDisposableBag.html
+  - name: '>'
+  - name: (
+  - uid: MFramework.MDisposableBag
+    name: MDisposableBag
+    href: MFramework.MDisposableBag.html
+  - name: ','
+  - name: " "
+  - uid: MFramework.MDisposableBag
+    name: MDisposableBag
+    href: MFramework.MDisposableBag.html
+  - name: )
+  spec.vb:
+  - uid: MFramework.MDisposableExtensions.AddTo``1(MFramework.MDisposableBag,MFramework.MDisposableBag)
+    name: AddTo
+    href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MDisposableBag_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MFramework.MDisposableBag
+    name: MDisposableBag
+    href: MFramework.MDisposableBag.html
+  - name: )
+  - name: (
+  - uid: MFramework.MDisposableBag
+    name: MDisposableBag
+    href: MFramework.MDisposableBag.html
+  - name: ','
+  - name: " "
+  - uid: MFramework.MDisposableBag
+    name: MDisposableBag
+    href: MFramework.MDisposableBag.html
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MAssetScope)
+  commentId: M:MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MAssetScope)
+  href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MAssetScope_
+  name: AddTo<T>(T, MAssetScope)
+  nameWithType: MDisposableExtensions.AddTo<T>(T, MAssetScope)
+  fullName: MFramework.MDisposableExtensions.AddTo<T>(T, MFramework.MAssetScope)
+  nameWithType.vb: MDisposableExtensions.AddTo(Of T)(T, MAssetScope)
+  fullName.vb: MFramework.MDisposableExtensions.AddTo(Of T)(T, MFramework.MAssetScope)
+  name.vb: AddTo(Of T)(T, MAssetScope)
+  spec.csharp:
+  - uid: MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MAssetScope)
+    name: AddTo
+    href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MAssetScope_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: MFramework.MAssetScope
+    name: MAssetScope
+    href: MFramework.MAssetScope.html
+  - name: )
+  spec.vb:
+  - uid: MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MAssetScope)
+    name: AddTo
+    href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MAssetScope_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: MFramework.MAssetScope
+    name: MAssetScope
+    href: MFramework.MAssetScope.html
+  - name: )
+- uid: MFramework.MDisposableExtensions
+  commentId: T:MFramework.MDisposableExtensions
+  parent: MFramework
+  href: MFramework.MDisposableExtensions.html
+  name: MDisposableExtensions
+  nameWithType: MDisposableExtensions
+  fullName: MFramework.MDisposableExtensions
+- uid: MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MDisposableBag)
+  commentId: M:MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MDisposableBag)
+  href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MDisposableBag_
+  name: AddTo<T>(T, MDisposableBag)
+  nameWithType: MDisposableExtensions.AddTo<T>(T, MDisposableBag)
+  fullName: MFramework.MDisposableExtensions.AddTo<T>(T, MFramework.MDisposableBag)
+  nameWithType.vb: MDisposableExtensions.AddTo(Of T)(T, MDisposableBag)
+  fullName.vb: MFramework.MDisposableExtensions.AddTo(Of T)(T, MFramework.MDisposableBag)
+  name.vb: AddTo(Of T)(T, MDisposableBag)
+  spec.csharp:
+  - uid: MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MDisposableBag)
+    name: AddTo
+    href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MDisposableBag_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: MFramework.MDisposableBag
+    name: MDisposableBag
+    href: MFramework.MDisposableBag.html
+  - name: )
+  spec.vb:
+  - uid: MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MDisposableBag)
+    name: AddTo
+    href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MDisposableBag_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: MFramework.MDisposableBag
+    name: MDisposableBag
+    href: MFramework.MDisposableBag.html
+  - name: )
+- uid: MFramework.MDisposableBag.IsDisposed*
+  commentId: Overload:MFramework.MDisposableBag.IsDisposed
+  href: MFramework.MDisposableBag.html#MFramework_MDisposableBag_IsDisposed
+  name: IsDisposed
+  nameWithType: MDisposableBag.IsDisposed
+  fullName: MFramework.MDisposableBag.IsDisposed
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: MFramework.MDisposableBag.Count*
+  commentId: Overload:MFramework.MDisposableBag.Count
+  href: MFramework.MDisposableBag.html#MFramework_MDisposableBag_Count
+  name: Count
+  nameWithType: MDisposableBag.Count
+  fullName: MFramework.MDisposableBag.Count
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.ArgumentNullException
+  commentId: T:System.ArgumentNullException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.argumentnullexception
+  name: ArgumentNullException
+  nameWithType: ArgumentNullException
+  fullName: System.ArgumentNullException
+- uid: MFramework.MDisposableBag.Add*
+  commentId: Overload:MFramework.MDisposableBag.Add
+  href: MFramework.MDisposableBag.html#MFramework_MDisposableBag_Add__1___0_
+  name: Add
+  nameWithType: MDisposableBag.Add
+  fullName: MFramework.MDisposableBag.Add
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: MFramework.MDisposableBag.Clear*
+  commentId: Overload:MFramework.MDisposableBag.Clear
+  href: MFramework.MDisposableBag.html#MFramework_MDisposableBag_Clear
+  name: Clear
+  nameWithType: MDisposableBag.Clear
+  fullName: MFramework.MDisposableBag.Clear
+- uid: MFramework.MDisposableBag.Dispose*
+  commentId: Overload:MFramework.MDisposableBag.Dispose
+  href: MFramework.MDisposableBag.html#MFramework_MDisposableBag_Dispose
+  name: Dispose
+  nameWithType: MDisposableBag.Dispose
+  fullName: MFramework.MDisposableBag.Dispose
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )

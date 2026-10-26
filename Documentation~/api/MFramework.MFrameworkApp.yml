@@ -1,0 +1,950 @@
+### YamlMime:ManagedReference
+items:
+- uid: MFramework.MFrameworkApp
+  commentId: T:MFramework.MFrameworkApp
+  id: MFrameworkApp
+  parent: MFramework
+  children:
+  - MFramework.MFrameworkApp.Dispose
+  - MFramework.MFrameworkApp.FixedTick(System.Single)
+  - MFramework.MFrameworkApp.Get``1
+  - MFramework.MFrameworkApp.Has``1
+  - MFramework.MFrameworkApp.Initialize
+  - MFramework.MFrameworkApp.LateTick(MFramework.MFrameTime)
+  - MFramework.MFrameworkApp.Register``1(``0)
+  - MFramework.MFrameworkApp.Shutdown
+  - MFramework.MFrameworkApp.State
+  - MFramework.MFrameworkApp.Tick(MFramework.MFrameTime)
+  - MFramework.MFrameworkApp.TryGet``1(``0@)
+  langs:
+  - csharp
+  - vb
+  name: MFrameworkApp
+  nameWithType: MFrameworkApp
+  fullName: MFramework.MFrameworkApp
+  type: Class
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 持有框架服务，并驱动它们的显式生命周期。
+  remarks: >-
+    服务按照注册顺序初始化，并按照相反顺序关闭。
+
+    所有注册均为显式操作；该类型不会扫描程序集，也不会通过反射创建服务。
+  example: []
+  syntax:
+    content: 'public sealed class MFrameworkApp : IDisposable'
+    content.vb: Public NotInheritable Class MFrameworkApp Implements IDisposable
+  inheritance:
+  - System.Object
+  implements:
+  - System.IDisposable
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - MFramework.MFrameworkApp.MFramework.MDisposableExtensions.AddTo``1(MFramework.MAssetScope)
+  - MFramework.MFrameworkApp.MFramework.MDisposableExtensions.AddTo``1(MFramework.MDisposableBag)
+- uid: MFramework.MFrameworkApp.State
+  commentId: P:MFramework.MFrameworkApp.State
+  id: State
+  parent: MFramework.MFrameworkApp
+  langs:
+  - csharp
+  - vb
+  name: State
+  nameWithType: MFrameworkApp.State
+  fullName: MFramework.MFrameworkApp.State
+  type: Property
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 获取框架应用当前的生命周期状态。
+  example: []
+  syntax:
+    content: public MFrameworkAppState State { get; }
+    parameters: []
+    return:
+      type: MFramework.MFrameworkAppState
+    content.vb: Public Property State As MFrameworkAppState
+  overload: MFramework.MFrameworkApp.State*
+- uid: MFramework.MFrameworkApp.Register``1(``0)
+  commentId: M:MFramework.MFrameworkApp.Register``1(``0)
+  id: Register``1(``0)
+  parent: MFramework.MFrameworkApp
+  langs:
+  - csharp
+  - vb
+  name: Register<TService>(TService)
+  nameWithType: MFrameworkApp.Register<TService>(TService)
+  fullName: MFramework.MFrameworkApp.Register<TService>(TService)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 使用接口或具体服务类型作为键注册一个服务。
+  example: []
+  syntax:
+    content: 'public MFrameworkApp Register<TService>(TService service) where TService : class'
+    parameters:
+    - id: service
+      type: '{TService}'
+      description: 要注册的服务实例，不能为 null。
+    typeParameters:
+    - id: TService
+      description: 调用方获取服务时使用的类型键。
+    return:
+      type: MFramework.MFrameworkApp
+      description: 当前框架应用，便于在启动代码中链式注册。
+    content.vb: Public Function Register(Of TService As Class)(service As TService) As MFrameworkApp
+  overload: MFramework.MFrameworkApp.Register*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code class="paramref">service</code> 为 null。
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: 注册阶段已经结束，或该类型键已经注册。
+  nameWithType.vb: MFrameworkApp.Register(Of TService)(TService)
+  fullName.vb: MFramework.MFrameworkApp.Register(Of TService)(TService)
+  name.vb: Register(Of TService)(TService)
+- uid: MFramework.MFrameworkApp.Has``1
+  commentId: M:MFramework.MFrameworkApp.Has``1
+  id: Has``1
+  parent: MFramework.MFrameworkApp
+  langs:
+  - csharp
+  - vb
+  name: Has<TService>()
+  nameWithType: MFrameworkApp.Has<TService>()
+  fullName: MFramework.MFrameworkApp.Has<TService>()
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 检查指定类型键的服务是否已经注册。
+  example: []
+  syntax:
+    content: 'public bool Has<TService>() where TService : class'
+    typeParameters:
+    - id: TService
+      description: 注册服务时使用的类型键。
+    return:
+      type: System.Boolean
+      description: 已注册时返回 <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>。
+    content.vb: Public Function Has(Of TService As Class)() As Boolean
+  overload: MFramework.MFrameworkApp.Has*
+  nameWithType.vb: MFrameworkApp.Has(Of TService)()
+  fullName.vb: MFramework.MFrameworkApp.Has(Of TService)()
+  name.vb: Has(Of TService)()
+- uid: MFramework.MFrameworkApp.Get``1
+  commentId: M:MFramework.MFrameworkApp.Get``1
+  id: Get``1
+  parent: MFramework.MFrameworkApp
+  langs:
+  - csharp
+  - vb
+  name: Get<TService>()
+  nameWithType: MFrameworkApp.Get<TService>()
+  fullName: MFramework.MFrameworkApp.Get<TService>()
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 获取一个必须存在的已注册服务。
+  example: []
+  syntax:
+    content: 'public TService Get<TService>() where TService : class'
+    typeParameters:
+    - id: TService
+      description: 注册服务时使用的类型键。
+    return:
+      type: '{TService}'
+      description: 已经注册的服务。
+    content.vb: Public Function [Get](Of TService As Class)() As TService
+  overload: MFramework.MFrameworkApp.Get*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: 请求的类型键没有对应的已注册服务。
+  nameWithType.vb: MFrameworkApp.Get(Of TService)()
+  fullName.vb: MFramework.MFrameworkApp.Get(Of TService)()
+  name.vb: Get(Of TService)()
+- uid: MFramework.MFrameworkApp.TryGet``1(``0@)
+  commentId: M:MFramework.MFrameworkApp.TryGet``1(``0@)
+  id: TryGet``1(``0@)
+  parent: MFramework.MFrameworkApp
+  langs:
+  - csharp
+  - vb
+  name: TryGet<TService>(out TService)
+  nameWithType: MFrameworkApp.TryGet<TService>(out TService)
+  fullName: MFramework.MFrameworkApp.TryGet<TService>(out TService)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 尝试获取一个已注册服务。
+  example: []
+  syntax:
+    content: 'public bool TryGet<TService>(out TService service) where TService : class'
+    parameters:
+    - id: service
+      type: '{TService}'
+      description: 找到服务时，接收对应的服务实例。
+    typeParameters:
+    - id: TService
+      description: 注册服务时使用的类型键。
+    return:
+      type: System.Boolean
+      description: 找到服务时返回 <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>。
+    content.vb: Public Function TryGet(Of TService As Class)(service As TService) As Boolean
+  overload: MFramework.MFrameworkApp.TryGet*
+  nameWithType.vb: MFrameworkApp.TryGet(Of TService)(TService)
+  fullName.vb: MFramework.MFrameworkApp.TryGet(Of TService)(TService)
+  name.vb: TryGet(Of TService)(TService)
+- uid: MFramework.MFrameworkApp.Initialize
+  commentId: M:MFramework.MFrameworkApp.Initialize
+  id: Initialize
+  parent: MFramework.MFrameworkApp
+  langs:
+  - csharp
+  - vb
+  name: Initialize()
+  nameWithType: MFrameworkApp.Initialize()
+  fullName: MFramework.MFrameworkApp.Initialize()
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 初始化所有已经注册的 <xref href="MFramework.IMFrameworkModule" data-throw-if-not-resolved="false"></xref>。
+  example: []
+  syntax:
+    content: public void Initialize()
+    content.vb: Public Sub Initialize()
+  overload: MFramework.MFrameworkApp.Initialize*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: 框架应用当前不在 Created 状态。
+  - type: MFramework.MFrameworkInitializationException
+    commentId: T:MFramework.MFrameworkInitializationException
+    description: 某个模块初始化失败。
+- uid: MFramework.MFrameworkApp.Tick(MFramework.MFrameTime)
+  commentId: M:MFramework.MFrameworkApp.Tick(MFramework.MFrameTime)
+  id: Tick(MFramework.MFrameTime)
+  parent: MFramework.MFrameworkApp
+  langs:
+  - csharp
+  - vb
+  name: Tick(MFrameTime)
+  nameWithType: MFrameworkApp.Tick(MFrameTime)
+  fullName: MFramework.MFrameworkApp.Tick(MFramework.MFrameTime)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 按照注册顺序 Tick 所有帧更新服务。
+  example: []
+  syntax:
+    content: public void Tick(MFrameTime time)
+    parameters:
+    - id: time
+      type: MFramework.MFrameTime
+      description: 缩放与非缩放的帧时间。
+    content.vb: Public Sub Tick(time As MFrameTime)
+  overload: MFramework.MFrameworkApp.Tick*
+- uid: MFramework.MFrameworkApp.FixedTick(System.Single)
+  commentId: M:MFramework.MFrameworkApp.FixedTick(System.Single)
+  id: FixedTick(System.Single)
+  parent: MFramework.MFrameworkApp
+  langs:
+  - csharp
+  - vb
+  name: FixedTick(float)
+  nameWithType: MFrameworkApp.FixedTick(float)
+  fullName: MFramework.MFrameworkApp.FixedTick(float)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 按照注册顺序 Tick 所有固定时间步长服务。
+  example: []
+  syntax:
+    content: public void FixedTick(float fixedDeltaTime)
+    parameters:
+    - id: fixedDeltaTime
+      type: System.Single
+      description: 固定时间步长，单位为秒。
+    content.vb: Public Sub FixedTick(fixedDeltaTime As Single)
+  overload: MFramework.MFrameworkApp.FixedTick*
+  nameWithType.vb: MFrameworkApp.FixedTick(Single)
+  fullName.vb: MFramework.MFrameworkApp.FixedTick(Single)
+  name.vb: FixedTick(Single)
+- uid: MFramework.MFrameworkApp.LateTick(MFramework.MFrameTime)
+  commentId: M:MFramework.MFrameworkApp.LateTick(MFramework.MFrameTime)
+  id: LateTick(MFramework.MFrameTime)
+  parent: MFramework.MFrameworkApp
+  langs:
+  - csharp
+  - vb
+  name: LateTick(MFrameTime)
+  nameWithType: MFrameworkApp.LateTick(MFrameTime)
+  fullName: MFramework.MFrameworkApp.LateTick(MFramework.MFrameTime)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 按照注册顺序 Tick 所有帧末更新服务。
+  example: []
+  syntax:
+    content: public void LateTick(MFrameTime time)
+    parameters:
+    - id: time
+      type: MFramework.MFrameTime
+      description: 缩放与非缩放的帧时间。
+    content.vb: Public Sub LateTick(time As MFrameTime)
+  overload: MFramework.MFrameworkApp.LateTick*
+- uid: MFramework.MFrameworkApp.Shutdown
+  commentId: M:MFramework.MFrameworkApp.Shutdown
+  id: Shutdown
+  parent: MFramework.MFrameworkApp
+  langs:
+  - csharp
+  - vb
+  name: Shutdown()
+  nameWithType: MFrameworkApp.Shutdown()
+  fullName: MFramework.MFrameworkApp.Shutdown()
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 按照初始化顺序的反向顺序，关闭所有已经初始化的模块。
+  example: []
+  syntax:
+    content: public void Shutdown()
+    content.vb: Public Sub Shutdown()
+  overload: MFramework.MFrameworkApp.Shutdown*
+  exceptions:
+  - type: MFramework.MFrameworkShutdownException
+    commentId: T:MFramework.MFrameworkShutdownException
+    description: 一个或多个模块关闭失败。
+- uid: MFramework.MFrameworkApp.Dispose
+  commentId: M:MFramework.MFrameworkApp.Dispose
+  id: Dispose
+  parent: MFramework.MFrameworkApp
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: MFrameworkApp.Dispose()
+  fullName: MFramework.MFrameworkApp.Dispose()
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 关闭框架应用。
+  example: []
+  syntax:
+    content: public void Dispose()
+    content.vb: Public Sub Dispose()
+  overload: MFramework.MFrameworkApp.Dispose*
+  implements:
+  - System.IDisposable.Dispose
+references:
+- uid: MFramework
+  commentId: N:MFramework
+  href: MFramework.html
+  name: MFramework
+  nameWithType: MFramework
+  fullName: MFramework
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: MFramework.MFrameworkApp.MFramework.MDisposableExtensions.AddTo``1(MFramework.MAssetScope)
+  commentId: M:MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MAssetScope)
+  parent: MFramework.MDisposableExtensions
+  definition: MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MAssetScope)
+  href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MAssetScope_
+  name: AddTo<MFrameworkApp>(MFrameworkApp, MAssetScope)
+  nameWithType: MDisposableExtensions.AddTo<MFrameworkApp>(MFrameworkApp, MAssetScope)
+  fullName: MFramework.MDisposableExtensions.AddTo<MFramework.MFrameworkApp>(MFramework.MFrameworkApp, MFramework.MAssetScope)
+  nameWithType.vb: MDisposableExtensions.AddTo(Of MFrameworkApp)(MFrameworkApp, MAssetScope)
+  fullName.vb: MFramework.MDisposableExtensions.AddTo(Of MFramework.MFrameworkApp)(MFramework.MFrameworkApp, MFramework.MAssetScope)
+  name.vb: AddTo(Of MFrameworkApp)(MFrameworkApp, MAssetScope)
+  spec.csharp:
+  - uid: MFramework.MDisposableExtensions.AddTo``1(MFramework.MFrameworkApp,MFramework.MAssetScope)
+    name: AddTo
+    href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MAssetScope_
+  - name: <
+  - uid: MFramework.MFrameworkApp
+    name: MFrameworkApp
+    href: MFramework.MFrameworkApp.html
+  - name: '>'
+  - name: (
+  - uid: MFramework.MFrameworkApp
+    name: MFrameworkApp
+    href: MFramework.MFrameworkApp.html
+  - name: ','
+  - name: " "
+  - uid: MFramework.MAssetScope
+    name: MAssetScope
+    href: MFramework.MAssetScope.html
+  - name: )
+  spec.vb:
+  - uid: MFramework.MDisposableExtensions.AddTo``1(MFramework.MFrameworkApp,MFramework.MAssetScope)
+    name: AddTo
+    href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MAssetScope_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MFramework.MFrameworkApp
+    name: MFrameworkApp
+    href: MFramework.MFrameworkApp.html
+  - name: )
+  - name: (
+  - uid: MFramework.MFrameworkApp
+    name: MFrameworkApp
+    href: MFramework.MFrameworkApp.html
+  - name: ','
+  - name: " "
+  - uid: MFramework.MAssetScope
+    name: MAssetScope
+    href: MFramework.MAssetScope.html
+  - name: )
+- uid: MFramework.MFrameworkApp.MFramework.MDisposableExtensions.AddTo``1(MFramework.MDisposableBag)
+  commentId: M:MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MDisposableBag)
+  parent: MFramework.MDisposableExtensions
+  definition: MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MDisposableBag)
+  href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MDisposableBag_
+  name: AddTo<MFrameworkApp>(MFrameworkApp, MDisposableBag)
+  nameWithType: MDisposableExtensions.AddTo<MFrameworkApp>(MFrameworkApp, MDisposableBag)
+  fullName: MFramework.MDisposableExtensions.AddTo<MFramework.MFrameworkApp>(MFramework.MFrameworkApp, MFramework.MDisposableBag)
+  nameWithType.vb: MDisposableExtensions.AddTo(Of MFrameworkApp)(MFrameworkApp, MDisposableBag)
+  fullName.vb: MFramework.MDisposableExtensions.AddTo(Of MFramework.MFrameworkApp)(MFramework.MFrameworkApp, MFramework.MDisposableBag)
+  name.vb: AddTo(Of MFrameworkApp)(MFrameworkApp, MDisposableBag)
+  spec.csharp:
+  - uid: MFramework.MDisposableExtensions.AddTo``1(MFramework.MFrameworkApp,MFramework.MDisposableBag)
+    name: AddTo
+    href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MDisposableBag_
+  - name: <
+  - uid: MFramework.MFrameworkApp
+    name: MFrameworkApp
+    href: MFramework.MFrameworkApp.html
+  - name: '>'
+  - name: (
+  - uid: MFramework.MFrameworkApp
+    name: MFrameworkApp
+    href: MFramework.MFrameworkApp.html
+  - name: ','
+  - name: " "
+  - uid: MFramework.MDisposableBag
+    name: MDisposableBag
+    href: MFramework.MDisposableBag.html
+  - name: )
+  spec.vb:
+  - uid: MFramework.MDisposableExtensions.AddTo``1(MFramework.MFrameworkApp,MFramework.MDisposableBag)
+    name: AddTo
+    href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MDisposableBag_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MFramework.MFrameworkApp
+    name: MFrameworkApp
+    href: MFramework.MFrameworkApp.html
+  - name: )
+  - name: (
+  - uid: MFramework.MFrameworkApp
+    name: MFrameworkApp
+    href: MFramework.MFrameworkApp.html
+  - name: ','
+  - name: " "
+  - uid: MFramework.MDisposableBag
+    name: MDisposableBag
+    href: MFramework.MDisposableBag.html
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MAssetScope)
+  commentId: M:MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MAssetScope)
+  href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MAssetScope_
+  name: AddTo<T>(T, MAssetScope)
+  nameWithType: MDisposableExtensions.AddTo<T>(T, MAssetScope)
+  fullName: MFramework.MDisposableExtensions.AddTo<T>(T, MFramework.MAssetScope)
+  nameWithType.vb: MDisposableExtensions.AddTo(Of T)(T, MAssetScope)
+  fullName.vb: MFramework.MDisposableExtensions.AddTo(Of T)(T, MFramework.MAssetScope)
+  name.vb: AddTo(Of T)(T, MAssetScope)
+  spec.csharp:
+  - uid: MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MAssetScope)
+    name: AddTo
+    href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MAssetScope_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: MFramework.MAssetScope
+    name: MAssetScope
+    href: MFramework.MAssetScope.html
+  - name: )
+  spec.vb:
+  - uid: MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MAssetScope)
+    name: AddTo
+    href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MAssetScope_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: MFramework.MAssetScope
+    name: MAssetScope
+    href: MFramework.MAssetScope.html
+  - name: )
+- uid: MFramework.MDisposableExtensions
+  commentId: T:MFramework.MDisposableExtensions
+  parent: MFramework
+  href: MFramework.MDisposableExtensions.html
+  name: MDisposableExtensions
+  nameWithType: MDisposableExtensions
+  fullName: MFramework.MDisposableExtensions
+- uid: MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MDisposableBag)
+  commentId: M:MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MDisposableBag)
+  href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MDisposableBag_
+  name: AddTo<T>(T, MDisposableBag)
+  nameWithType: MDisposableExtensions.AddTo<T>(T, MDisposableBag)
+  fullName: MFramework.MDisposableExtensions.AddTo<T>(T, MFramework.MDisposableBag)
+  nameWithType.vb: MDisposableExtensions.AddTo(Of T)(T, MDisposableBag)
+  fullName.vb: MFramework.MDisposableExtensions.AddTo(Of T)(T, MFramework.MDisposableBag)
+  name.vb: AddTo(Of T)(T, MDisposableBag)
+  spec.csharp:
+  - uid: MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MDisposableBag)
+    name: AddTo
+    href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MDisposableBag_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: MFramework.MDisposableBag
+    name: MDisposableBag
+    href: MFramework.MDisposableBag.html
+  - name: )
+  spec.vb:
+  - uid: MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MDisposableBag)
+    name: AddTo
+    href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MDisposableBag_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: MFramework.MDisposableBag
+    name: MDisposableBag
+    href: MFramework.MDisposableBag.html
+  - name: )
+- uid: MFramework.MFrameworkApp.State*
+  commentId: Overload:MFramework.MFrameworkApp.State
+  href: MFramework.MFrameworkApp.html#MFramework_MFrameworkApp_State
+  name: State
+  nameWithType: MFrameworkApp.State
+  fullName: MFramework.MFrameworkApp.State
+- uid: MFramework.MFrameworkAppState
+  commentId: T:MFramework.MFrameworkAppState
+  parent: MFramework
+  href: MFramework.MFrameworkAppState.html
+  name: MFrameworkAppState
+  nameWithType: MFrameworkAppState
+  fullName: MFramework.MFrameworkAppState
+- uid: System.ArgumentNullException
+  commentId: T:System.ArgumentNullException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.argumentnullexception
+  name: ArgumentNullException
+  nameWithType: ArgumentNullException
+  fullName: System.ArgumentNullException
+- uid: System.InvalidOperationException
+  commentId: T:System.InvalidOperationException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.invalidoperationexception
+  name: InvalidOperationException
+  nameWithType: InvalidOperationException
+  fullName: System.InvalidOperationException
+- uid: MFramework.MFrameworkApp.Register*
+  commentId: Overload:MFramework.MFrameworkApp.Register
+  href: MFramework.MFrameworkApp.html#MFramework_MFrameworkApp_Register__1___0_
+  name: Register
+  nameWithType: MFrameworkApp.Register
+  fullName: MFramework.MFrameworkApp.Register
+- uid: '{TService}'
+  commentId: '!:TService'
+  definition: TService
+  name: TService
+  nameWithType: TService
+  fullName: TService
+- uid: MFramework.MFrameworkApp
+  commentId: T:MFramework.MFrameworkApp
+  parent: MFramework
+  href: MFramework.MFrameworkApp.html
+  name: MFrameworkApp
+  nameWithType: MFrameworkApp
+  fullName: MFramework.MFrameworkApp
+- uid: TService
+  name: TService
+  nameWithType: TService
+  fullName: TService
+- uid: MFramework.MFrameworkApp.Has*
+  commentId: Overload:MFramework.MFrameworkApp.Has
+  href: MFramework.MFrameworkApp.html#MFramework_MFrameworkApp_Has__1
+  name: Has
+  nameWithType: MFrameworkApp.Has
+  fullName: MFramework.MFrameworkApp.Has
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: MFramework.MFrameworkApp.Get*
+  commentId: Overload:MFramework.MFrameworkApp.Get
+  href: MFramework.MFrameworkApp.html#MFramework_MFrameworkApp_Get__1
+  name: Get
+  nameWithType: MFrameworkApp.Get
+  fullName: MFramework.MFrameworkApp.Get
+- uid: MFramework.MFrameworkApp.TryGet*
+  commentId: Overload:MFramework.MFrameworkApp.TryGet
+  href: MFramework.MFrameworkApp.html#MFramework_MFrameworkApp_TryGet__1___0__
+  name: TryGet
+  nameWithType: MFrameworkApp.TryGet
+  fullName: MFramework.MFrameworkApp.TryGet
+- uid: MFramework.IMFrameworkModule
+  commentId: T:MFramework.IMFrameworkModule
+  parent: MFramework
+  href: MFramework.IMFrameworkModule.html
+  name: IMFrameworkModule
+  nameWithType: IMFrameworkModule
+  fullName: MFramework.IMFrameworkModule
+- uid: MFramework.MFrameworkInitializationException
+  commentId: T:MFramework.MFrameworkInitializationException
+  href: MFramework.MFrameworkInitializationException.html
+  name: MFrameworkInitializationException
+  nameWithType: MFrameworkInitializationException
+  fullName: MFramework.MFrameworkInitializationException
+- uid: MFramework.MFrameworkApp.Initialize*
+  commentId: Overload:MFramework.MFrameworkApp.Initialize
+  href: MFramework.MFrameworkApp.html#MFramework_MFrameworkApp_Initialize
+  name: Initialize
+  nameWithType: MFrameworkApp.Initialize
+  fullName: MFramework.MFrameworkApp.Initialize
+- uid: MFramework.MFrameworkApp.Tick*
+  commentId: Overload:MFramework.MFrameworkApp.Tick
+  href: MFramework.MFrameworkApp.html#MFramework_MFrameworkApp_Tick_MFramework_MFrameTime_
+  name: Tick
+  nameWithType: MFrameworkApp.Tick
+  fullName: MFramework.MFrameworkApp.Tick
+- uid: MFramework.MFrameTime
+  commentId: T:MFramework.MFrameTime
+  parent: MFramework
+  href: MFramework.MFrameTime.html
+  name: MFrameTime
+  nameWithType: MFrameTime
+  fullName: MFramework.MFrameTime
+- uid: MFramework.MFrameworkApp.FixedTick*
+  commentId: Overload:MFramework.MFrameworkApp.FixedTick
+  href: MFramework.MFrameworkApp.html#MFramework_MFrameworkApp_FixedTick_System_Single_
+  name: FixedTick
+  nameWithType: MFrameworkApp.FixedTick
+  fullName: MFramework.MFrameworkApp.FixedTick
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: MFramework.MFrameworkApp.LateTick*
+  commentId: Overload:MFramework.MFrameworkApp.LateTick
+  href: MFramework.MFrameworkApp.html#MFramework_MFrameworkApp_LateTick_MFramework_MFrameTime_
+  name: LateTick
+  nameWithType: MFrameworkApp.LateTick
+  fullName: MFramework.MFrameworkApp.LateTick
+- uid: MFramework.MFrameworkShutdownException
+  commentId: T:MFramework.MFrameworkShutdownException
+  href: MFramework.MFrameworkShutdownException.html
+  name: MFrameworkShutdownException
+  nameWithType: MFrameworkShutdownException
+  fullName: MFramework.MFrameworkShutdownException
+- uid: MFramework.MFrameworkApp.Shutdown*
+  commentId: Overload:MFramework.MFrameworkApp.Shutdown
+  href: MFramework.MFrameworkApp.html#MFramework_MFrameworkApp_Shutdown
+  name: Shutdown
+  nameWithType: MFrameworkApp.Shutdown
+  fullName: MFramework.MFrameworkApp.Shutdown
+- uid: MFramework.MFrameworkApp.Dispose*
+  commentId: Overload:MFramework.MFrameworkApp.Dispose
+  href: MFramework.MFrameworkApp.html#MFramework_MFrameworkApp_Dispose
+  name: Dispose
+  nameWithType: MFrameworkApp.Dispose
+  fullName: MFramework.MFrameworkApp.Dispose
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )

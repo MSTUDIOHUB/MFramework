@@ -1,0 +1,720 @@
+### YamlMime:ManagedReference
+items:
+- uid: MFramework.MFileSaveStorage
+  commentId: T:MFramework.MFileSaveStorage
+  id: MFileSaveStorage
+  parent: MFramework
+  children:
+  - MFramework.MFileSaveStorage.#ctor(System.String,System.Int32)
+  - MFramework.MFileSaveStorage.Commit(System.String,System.Byte[],System.Boolean,System.Boolean)
+  - MFramework.MFileSaveStorage.GetSynchronizationRoot(System.String)
+  - MFramework.MFileSaveStorage.MaximumSnapshotBytes
+  - MFramework.MFileSaveStorage.Read(System.String,MFramework.MSaveSource)
+  - MFramework.MFileSaveStorage.RootDirectory
+  langs:
+  - csharp
+  - vb
+  name: MFileSaveStorage
+  nameWithType: MFileSaveStorage
+  fullName: MFramework.MFileSaveStorage
+  type: Class
+  assemblies:
+  - MStudio.MFramework.Foundation
+  namespace: MFramework
+  summary: 本地文件快照后端：写入同目录临时文件并刷新到磁盘后，通过原子替换（Replace/Move）发布为主档。
+  example: []
+  syntax:
+    content: 'public sealed class MFileSaveStorage : IMSaveStorage'
+    content.vb: Public NotInheritable Class MFileSaveStorage Implements IMSaveStorage
+  inheritance:
+  - System.Object
+  implements:
+  - MFramework.IMSaveStorage
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MFramework.MFileSaveStorage.#ctor(System.String,System.Int32)
+  commentId: M:MFramework.MFileSaveStorage.#ctor(System.String,System.Int32)
+  id: '#ctor(System.String,System.Int32)'
+  parent: MFramework.MFileSaveStorage
+  langs:
+  - csharp
+  - vb
+  name: MFileSaveStorage(string, int)
+  nameWithType: MFileSaveStorage.MFileSaveStorage(string, int)
+  fullName: MFramework.MFileSaveStorage.MFileSaveStorage(string, int)
+  type: Constructor
+  assemblies:
+  - MStudio.MFramework.Foundation
+  namespace: MFramework
+  summary: 创建文件后端；此时仅校验路径，不创建目录或文件。
+  example: []
+  syntax:
+    content: public MFileSaveStorage(string rootDirectory, int maximumSnapshotBytes = 16777216)
+    parameters:
+    - id: rootDirectory
+      type: System.String
+      description: 由应用提供的可信根目录，Unity 中通常位于 persistentDataPath 下。
+    - id: maximumSnapshotBytes
+      type: System.Int32
+      description: 单个完整快照的最大字节数，默认 16 MiB，至少 80 字节。
+    content.vb: Public Sub New(rootDirectory As String, maximumSnapshotBytes As Integer = 16777216)
+  overload: MFramework.MFileSaveStorage.#ctor*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: 根路径为空或大小限制过小。
+  nameWithType.vb: MFileSaveStorage.New(String, Integer)
+  fullName.vb: MFramework.MFileSaveStorage.New(String, Integer)
+  name.vb: New(String, Integer)
+- uid: MFramework.MFileSaveStorage.RootDirectory
+  commentId: P:MFramework.MFileSaveStorage.RootDirectory
+  id: RootDirectory
+  parent: MFramework.MFileSaveStorage
+  langs:
+  - csharp
+  - vb
+  name: RootDirectory
+  nameWithType: MFileSaveStorage.RootDirectory
+  fullName: MFramework.MFileSaveStorage.RootDirectory
+  type: Property
+  assemblies:
+  - MStudio.MFramework.Foundation
+  namespace: MFramework
+  summary: 规范化后的存档根目录绝对路径。
+  example: []
+  syntax:
+    content: public string RootDirectory { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property RootDirectory As String
+  overload: MFramework.MFileSaveStorage.RootDirectory*
+- uid: MFramework.MFileSaveStorage.MaximumSnapshotBytes
+  commentId: P:MFramework.MFileSaveStorage.MaximumSnapshotBytes
+  id: MaximumSnapshotBytes
+  parent: MFramework.MFileSaveStorage
+  langs:
+  - csharp
+  - vb
+  name: MaximumSnapshotBytes
+  nameWithType: MFileSaveStorage.MaximumSnapshotBytes
+  fullName: MFramework.MFileSaveStorage.MaximumSnapshotBytes
+  type: Property
+  assemblies:
+  - MStudio.MFramework.Foundation
+  namespace: MFramework
+  summary: 完整快照大小上限；超限返回 IoFailure，并保留已有文件。
+  example: []
+  syntax:
+    content: public int MaximumSnapshotBytes { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property MaximumSnapshotBytes As Integer
+  overload: MFramework.MFileSaveStorage.MaximumSnapshotBytes*
+- uid: MFramework.MFileSaveStorage.GetSynchronizationRoot(System.String)
+  commentId: M:MFramework.MFileSaveStorage.GetSynchronizationRoot(System.String)
+  id: GetSynchronizationRoot(System.String)
+  parent: MFramework.MFileSaveStorage
+  langs:
+  - csharp
+  - vb
+  name: GetSynchronizationRoot(string)
+  nameWithType: MFileSaveStorage.GetSynchronizationRoot(string)
+  fullName: MFramework.MFileSaveStorage.GetSynchronizationRoot(string)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Foundation
+  namespace: MFramework
+  summary: 获取稳定的进程内槽锁；访问同一物理槽的所有后端实例必须返回同一对象。
+  example: []
+  syntax:
+    content: public object GetSynchronizationRoot(string slot)
+    parameters:
+    - id: slot
+      type: System.String
+      description: 经过 MSave 验证的槽名。
+    return:
+      type: System.Object
+      description: 非 null 的锁对象，其生命周期必须覆盖同槽所有操作。
+    content.vb: Public Function GetSynchronizationRoot(slot As String) As Object
+  overload: MFramework.MFileSaveStorage.GetSynchronizationRoot*
+  implements:
+  - MFramework.IMSaveStorage.GetSynchronizationRoot(System.String)
+  nameWithType.vb: MFileSaveStorage.GetSynchronizationRoot(String)
+  fullName.vb: MFramework.MFileSaveStorage.GetSynchronizationRoot(String)
+  name.vb: GetSynchronizationRoot(String)
+- uid: MFramework.MFileSaveStorage.Read(System.String,MFramework.MSaveSource)
+  commentId: M:MFramework.MFileSaveStorage.Read(System.String,MFramework.MSaveSource)
+  id: Read(System.String,MFramework.MSaveSource)
+  parent: MFramework.MFileSaveStorage
+  langs:
+  - csharp
+  - vb
+  name: Read(string, MSaveSource)
+  nameWithType: MFileSaveStorage.Read(string, MSaveSource)
+  fullName: MFramework.MFileSaveStorage.Read(string, MFramework.MSaveSource)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Foundation
+  namespace: MFramework
+  summary: 读取已发布快照的完整字节；只在目标确实不存在时返回 null。
+  example: []
+  syntax:
+    content: public byte[] Read(string slot, MSaveSource source)
+    parameters:
+    - id: slot
+      type: System.String
+      description: 槽名。
+    - id: source
+      type: MFramework.MSaveSource
+      description: 显式选择主档或备份。
+    return:
+      type: System.Byte[]
+      description: 独立字节数组，或代表不存在的 null；不得返回内部可变缓冲区。
+    content.vb: Public Function Read(slot As String, source As MSaveSource) As Byte()
+  overload: MFramework.MFileSaveStorage.Read*
+  exceptions:
+  - type: MFramework.MSaveStorageException
+    commentId: T:MFramework.MSaveStorageException
+    description: 存储读取失败，不能伪装成不存在。
+  implements:
+  - MFramework.IMSaveStorage.Read(System.String,MFramework.MSaveSource)
+  nameWithType.vb: MFileSaveStorage.Read(String, MSaveSource)
+  fullName.vb: MFramework.MFileSaveStorage.Read(String, MFramework.MSaveSource)
+  name.vb: Read(String, MSaveSource)
+- uid: MFramework.MFileSaveStorage.Commit(System.String,System.Byte[],System.Boolean,System.Boolean)
+  commentId: M:MFramework.MFileSaveStorage.Commit(System.String,System.Byte[],System.Boolean,System.Boolean)
+  id: Commit(System.String,System.Byte[],System.Boolean,System.Boolean)
+  parent: MFramework.MFileSaveStorage
+  langs:
+  - csharp
+  - vb
+  name: Commit(string, byte[], bool, bool)
+  nameWithType: MFileSaveStorage.Commit(string, byte[], bool, bool)
+  fullName: MFramework.MFileSaveStorage.Commit(string, byte[], bool, bool)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Foundation
+  namespace: MFramework
+  summary: >-
+    持久化并验证完整临时快照后一次性发布。调用方持有槽锁，且已经校验待替换主档。
+
+    正常返回代表确定发布成功；不确定是否发布必须抛出 CommitUnknown。
+  example: []
+  syntax:
+    content: public void Commit(string slot, byte[] snapshot, bool replaceExisting, bool preservePrevious)
+    parameters:
+    - id: slot
+      type: System.String
+      description: 槽名。
+    - id: snapshot
+      type: System.Byte[]
+      description: 包含摘要的完整快照字节；实现不得修改此数组。
+    - id: replaceExisting
+      type: System.Boolean
+      description: true 时必须替换现有主档，false 时必须仅创建不存在的主档。
+    - id: preservePrevious
+      type: System.Boolean
+      description: true 时保留原有效主档为备份；恢复损坏主档时必须为 false，以保留有效备份。
+    content.vb: Public Sub Commit(slot As String, snapshot As Byte(), replaceExisting As Boolean, preservePrevious As Boolean)
+  overload: MFramework.MFileSaveStorage.Commit*
+  exceptions:
+  - type: MFramework.MSaveStorageException
+    commentId: T:MFramework.MSaveStorageException
+    description: 发布前故障、平台不支持或提交结果未知。
+  implements:
+  - MFramework.IMSaveStorage.Commit(System.String,System.Byte[],System.Boolean,System.Boolean)
+  nameWithType.vb: MFileSaveStorage.Commit(String, Byte(), Boolean, Boolean)
+  fullName.vb: MFramework.MFileSaveStorage.Commit(String, Byte(), Boolean, Boolean)
+  name.vb: Commit(String, Byte(), Boolean, Boolean)
+references:
+- uid: MFramework
+  commentId: N:MFramework
+  href: MFramework.html
+  name: MFramework
+  nameWithType: MFramework
+  fullName: MFramework
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: MFramework.IMSaveStorage
+  commentId: T:MFramework.IMSaveStorage
+  parent: MFramework
+  href: MFramework.IMSaveStorage.html
+  name: IMSaveStorage
+  nameWithType: IMSaveStorage
+  fullName: MFramework.IMSaveStorage
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.ArgumentException
+  commentId: T:System.ArgumentException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.argumentexception
+  name: ArgumentException
+  nameWithType: ArgumentException
+  fullName: System.ArgumentException
+- uid: MFramework.MFileSaveStorage.#ctor*
+  commentId: Overload:MFramework.MFileSaveStorage.#ctor
+  href: MFramework.MFileSaveStorage.html#MFramework_MFileSaveStorage__ctor_System_String_System_Int32_
+  name: MFileSaveStorage
+  nameWithType: MFileSaveStorage.MFileSaveStorage
+  fullName: MFramework.MFileSaveStorage.MFileSaveStorage
+  nameWithType.vb: MFileSaveStorage.New
+  fullName.vb: MFramework.MFileSaveStorage.New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: MFramework.MFileSaveStorage.RootDirectory*
+  commentId: Overload:MFramework.MFileSaveStorage.RootDirectory
+  href: MFramework.MFileSaveStorage.html#MFramework_MFileSaveStorage_RootDirectory
+  name: RootDirectory
+  nameWithType: MFileSaveStorage.RootDirectory
+  fullName: MFramework.MFileSaveStorage.RootDirectory
+- uid: MFramework.MFileSaveStorage.MaximumSnapshotBytes*
+  commentId: Overload:MFramework.MFileSaveStorage.MaximumSnapshotBytes
+  href: MFramework.MFileSaveStorage.html#MFramework_MFileSaveStorage_MaximumSnapshotBytes
+  name: MaximumSnapshotBytes
+  nameWithType: MFileSaveStorage.MaximumSnapshotBytes
+  fullName: MFramework.MFileSaveStorage.MaximumSnapshotBytes
+- uid: MFramework.MFileSaveStorage.GetSynchronizationRoot*
+  commentId: Overload:MFramework.MFileSaveStorage.GetSynchronizationRoot
+  href: MFramework.MFileSaveStorage.html#MFramework_MFileSaveStorage_GetSynchronizationRoot_System_String_
+  name: GetSynchronizationRoot
+  nameWithType: MFileSaveStorage.GetSynchronizationRoot
+  fullName: MFramework.MFileSaveStorage.GetSynchronizationRoot
+- uid: MFramework.IMSaveStorage.GetSynchronizationRoot(System.String)
+  commentId: M:MFramework.IMSaveStorage.GetSynchronizationRoot(System.String)
+  parent: MFramework.IMSaveStorage
+  isExternal: true
+  href: MFramework.IMSaveStorage.html#MFramework_IMSaveStorage_GetSynchronizationRoot_System_String_
+  name: GetSynchronizationRoot(string)
+  nameWithType: IMSaveStorage.GetSynchronizationRoot(string)
+  fullName: MFramework.IMSaveStorage.GetSynchronizationRoot(string)
+  nameWithType.vb: IMSaveStorage.GetSynchronizationRoot(String)
+  fullName.vb: MFramework.IMSaveStorage.GetSynchronizationRoot(String)
+  name.vb: GetSynchronizationRoot(String)
+  spec.csharp:
+  - uid: MFramework.IMSaveStorage.GetSynchronizationRoot(System.String)
+    name: GetSynchronizationRoot
+    href: MFramework.IMSaveStorage.html#MFramework_IMSaveStorage_GetSynchronizationRoot_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: MFramework.IMSaveStorage.GetSynchronizationRoot(System.String)
+    name: GetSynchronizationRoot
+    href: MFramework.IMSaveStorage.html#MFramework_IMSaveStorage_GetSynchronizationRoot_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: MFramework.MSaveStorageException
+  commentId: T:MFramework.MSaveStorageException
+  href: MFramework.MSaveStorageException.html
+  name: MSaveStorageException
+  nameWithType: MSaveStorageException
+  fullName: MFramework.MSaveStorageException
+- uid: MFramework.MFileSaveStorage.Read*
+  commentId: Overload:MFramework.MFileSaveStorage.Read
+  href: MFramework.MFileSaveStorage.html#MFramework_MFileSaveStorage_Read_System_String_MFramework_MSaveSource_
+  name: Read
+  nameWithType: MFileSaveStorage.Read
+  fullName: MFramework.MFileSaveStorage.Read
+- uid: MFramework.IMSaveStorage.Read(System.String,MFramework.MSaveSource)
+  commentId: M:MFramework.IMSaveStorage.Read(System.String,MFramework.MSaveSource)
+  parent: MFramework.IMSaveStorage
+  isExternal: true
+  href: MFramework.IMSaveStorage.html#MFramework_IMSaveStorage_Read_System_String_MFramework_MSaveSource_
+  name: Read(string, MSaveSource)
+  nameWithType: IMSaveStorage.Read(string, MSaveSource)
+  fullName: MFramework.IMSaveStorage.Read(string, MFramework.MSaveSource)
+  nameWithType.vb: IMSaveStorage.Read(String, MSaveSource)
+  fullName.vb: MFramework.IMSaveStorage.Read(String, MFramework.MSaveSource)
+  name.vb: Read(String, MSaveSource)
+  spec.csharp:
+  - uid: MFramework.IMSaveStorage.Read(System.String,MFramework.MSaveSource)
+    name: Read
+    href: MFramework.IMSaveStorage.html#MFramework_IMSaveStorage_Read_System_String_MFramework_MSaveSource_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: MFramework.MSaveSource
+    name: MSaveSource
+    href: MFramework.MSaveSource.html
+  - name: )
+  spec.vb:
+  - uid: MFramework.IMSaveStorage.Read(System.String,MFramework.MSaveSource)
+    name: Read
+    href: MFramework.IMSaveStorage.html#MFramework_IMSaveStorage_Read_System_String_MFramework_MSaveSource_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: MFramework.MSaveSource
+    name: MSaveSource
+    href: MFramework.MSaveSource.html
+  - name: )
+- uid: MFramework.MSaveSource
+  commentId: T:MFramework.MSaveSource
+  parent: MFramework
+  href: MFramework.MSaveSource.html
+  name: MSaveSource
+  nameWithType: MSaveSource
+  fullName: MFramework.MSaveSource
+- uid: System.Byte[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.byte
+  name: byte[]
+  nameWithType: byte[]
+  fullName: byte[]
+  nameWithType.vb: Byte()
+  fullName.vb: Byte()
+  name.vb: Byte()
+  spec.csharp:
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: (
+  - name: )
+- uid: MFramework.MFileSaveStorage.Commit*
+  commentId: Overload:MFramework.MFileSaveStorage.Commit
+  href: MFramework.MFileSaveStorage.html#MFramework_MFileSaveStorage_Commit_System_String_System_Byte___System_Boolean_System_Boolean_
+  name: Commit
+  nameWithType: MFileSaveStorage.Commit
+  fullName: MFramework.MFileSaveStorage.Commit
+- uid: MFramework.IMSaveStorage.Commit(System.String,System.Byte[],System.Boolean,System.Boolean)
+  commentId: M:MFramework.IMSaveStorage.Commit(System.String,System.Byte[],System.Boolean,System.Boolean)
+  parent: MFramework.IMSaveStorage
+  isExternal: true
+  href: MFramework.IMSaveStorage.html#MFramework_IMSaveStorage_Commit_System_String_System_Byte___System_Boolean_System_Boolean_
+  name: Commit(string, byte[], bool, bool)
+  nameWithType: IMSaveStorage.Commit(string, byte[], bool, bool)
+  fullName: MFramework.IMSaveStorage.Commit(string, byte[], bool, bool)
+  nameWithType.vb: IMSaveStorage.Commit(String, Byte(), Boolean, Boolean)
+  fullName.vb: MFramework.IMSaveStorage.Commit(String, Byte(), Boolean, Boolean)
+  name.vb: Commit(String, Byte(), Boolean, Boolean)
+  spec.csharp:
+  - uid: MFramework.IMSaveStorage.Commit(System.String,System.Byte[],System.Boolean,System.Boolean)
+    name: Commit
+    href: MFramework.IMSaveStorage.html#MFramework_IMSaveStorage_Commit_System_String_System_Byte___System_Boolean_System_Boolean_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: '['
+  - name: ']'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: MFramework.IMSaveStorage.Commit(System.String,System.Byte[],System.Boolean,System.Boolean)
+    name: Commit
+    href: MFramework.IMSaveStorage.html#MFramework_IMSaveStorage_Commit_System_String_System_Byte___System_Boolean_System_Boolean_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: (
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean

@@ -1,0 +1,147 @@
+### YamlMime:ManagedReference
+items:
+- uid: MFramework.IMSaveSerializer`1
+  commentId: T:MFramework.IMSaveSerializer`1
+  id: IMSaveSerializer`1
+  parent: MFramework
+  children:
+  - MFramework.IMSaveSerializer`1.Deserialize(System.Byte[])
+  - MFramework.IMSaveSerializer`1.Serialize(`0)
+  langs:
+  - csharp
+  - vb
+  name: IMSaveSerializer<T>
+  nameWithType: IMSaveSerializer<T>
+  fullName: MFramework.IMSaveSerializer<T>
+  type: Interface
+  assemblies:
+  - MStudio.MFramework.Foundation
+  namespace: MFramework
+  summary: 业务快照序列化策略；实现应验证业务所要求的数据形状，不能静默忽略损坏数据。
+  example: []
+  syntax:
+    content: public interface IMSaveSerializer<T>
+    typeParameters:
+    - id: T
+      description: 完整业务快照类型。
+    content.vb: Public Interface IMSaveSerializer(Of T)
+  derivedClasses:
+  - MFramework.MJsonUtilitySaveSerializer`1
+  nameWithType.vb: IMSaveSerializer(Of T)
+  fullName.vb: MFramework.IMSaveSerializer(Of T)
+  name.vb: IMSaveSerializer(Of T)
+- uid: MFramework.IMSaveSerializer`1.Serialize(`0)
+  commentId: M:MFramework.IMSaveSerializer`1.Serialize(`0)
+  id: Serialize(`0)
+  parent: MFramework.IMSaveSerializer`1
+  langs:
+  - csharp
+  - vb
+  name: Serialize(T)
+  nameWithType: IMSaveSerializer<T>.Serialize(T)
+  fullName: MFramework.IMSaveSerializer<T>.Serialize(T)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Foundation
+  namespace: MFramework
+  summary: 序列化完整快照；返回 null 会作为序列化失败处理。
+  example: []
+  syntax:
+    content: byte[] Serialize(T value)
+    parameters:
+    - id: value
+      type: '{T}'
+      description: 业务快照；是否允许 null 由序列化器决定。
+    return:
+      type: System.Byte[]
+      description: 独立的序列化数据。
+    content.vb: Function Serialize(value As T) As Byte()
+  overload: MFramework.IMSaveSerializer`1.Serialize*
+  nameWithType.vb: IMSaveSerializer(Of T).Serialize(T)
+  fullName.vb: MFramework.IMSaveSerializer(Of T).Serialize(T)
+- uid: MFramework.IMSaveSerializer`1.Deserialize(System.Byte[])
+  commentId: M:MFramework.IMSaveSerializer`1.Deserialize(System.Byte[])
+  id: Deserialize(System.Byte[])
+  parent: MFramework.IMSaveSerializer`1
+  langs:
+  - csharp
+  - vb
+  name: Deserialize(byte[])
+  nameWithType: IMSaveSerializer<T>.Deserialize(byte[])
+  fullName: MFramework.IMSaveSerializer<T>.Deserialize(byte[])
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Foundation
+  namespace: MFramework
+  summary: 反序列化并验证当前结构版本的数据；损坏时应抛出异常。
+  example: []
+  syntax:
+    content: T Deserialize(byte[] payload)
+    parameters:
+    - id: payload
+      type: System.Byte[]
+      description: 只属于本次调用的数据副本，可以修改而不影响磁盘快照。
+    return:
+      type: '{T}'
+      description: 业务快照。
+    content.vb: Function Deserialize(payload As Byte()) As T
+  overload: MFramework.IMSaveSerializer`1.Deserialize*
+  nameWithType.vb: IMSaveSerializer(Of T).Deserialize(Byte())
+  fullName.vb: MFramework.IMSaveSerializer(Of T).Deserialize(Byte())
+  name.vb: Deserialize(Byte())
+references:
+- uid: MFramework
+  commentId: N:MFramework
+  href: MFramework.html
+  name: MFramework
+  nameWithType: MFramework
+  fullName: MFramework
+- uid: MFramework.IMSaveSerializer`1.Serialize*
+  commentId: Overload:MFramework.IMSaveSerializer`1.Serialize
+  href: MFramework.IMSaveSerializer-1.html#MFramework_IMSaveSerializer_1_Serialize__0_
+  name: Serialize
+  nameWithType: IMSaveSerializer<T>.Serialize
+  fullName: MFramework.IMSaveSerializer<T>.Serialize
+  nameWithType.vb: IMSaveSerializer(Of T).Serialize
+  fullName.vb: MFramework.IMSaveSerializer(Of T).Serialize
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: System.Byte[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.byte
+  name: byte[]
+  nameWithType: byte[]
+  fullName: byte[]
+  nameWithType.vb: Byte()
+  fullName.vb: Byte()
+  name.vb: Byte()
+  spec.csharp:
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: (
+  - name: )
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: MFramework.IMSaveSerializer`1.Deserialize*
+  commentId: Overload:MFramework.IMSaveSerializer`1.Deserialize
+  href: MFramework.IMSaveSerializer-1.html#MFramework_IMSaveSerializer_1_Deserialize_System_Byte___
+  name: Deserialize
+  nameWithType: IMSaveSerializer<T>.Deserialize
+  fullName: MFramework.IMSaveSerializer<T>.Deserialize
+  nameWithType.vb: IMSaveSerializer(Of T).Deserialize
+  fullName.vb: MFramework.IMSaveSerializer(Of T).Deserialize

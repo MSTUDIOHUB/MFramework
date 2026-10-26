@@ -1,0 +1,1335 @@
+### YamlMime:ManagedReference
+items:
+- uid: MFramework.MPool
+  commentId: T:MFramework.MPool
+  id: MPool
+  parent: MFramework
+  children:
+  - MFramework.MPool.#ctor(UnityEngine.Transform)
+  - MFramework.MPool.Clear(MFramework.MPoolKey)
+  - MFramework.MPool.ClearAll
+  - MFramework.MPool.Despawn(UnityEngine.GameObject)
+  - MFramework.MPool.Dispose
+  - MFramework.MPool.Initialize(MFramework.MFrameworkApp)
+  - MFramework.MPool.IsRegistered(MFramework.MPoolKey)
+  - MFramework.MPool.Prewarm(MFramework.MPoolKey,System.Int32)
+  - MFramework.MPool.Register(MFramework.MPoolKey,UnityEngine.GameObject,System.Int32)
+  - MFramework.MPool.RegisteredCount
+  - MFramework.MPool.Shutdown
+  - MFramework.MPool.Spawn(MFramework.MPoolKey,UnityEngine.Vector3,UnityEngine.Quaternion,UnityEngine.Transform)
+  langs:
+  - csharp
+  - vb
+  name: MPool
+  nameWithType: MPool
+  fullName: MFramework.MPool
+  type: Class
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 复用显式注册的 GameObject 预制体，减少重复 Instantiate 与 Destroy 的开销。
+  remarks: >-
+    每项注册的闲置实例由 Unity 官方 <xref href="UnityEngine.Pool.ObjectPool%601" data-throw-if-not-resolved="false"></xref> 保存；MFramework 只补充预制体注册、
+
+    实例归属校验和缓存的 <xref href="MFramework.IMPooledGameObject" data-throw-if-not-resolved="false"></xref> 生命周期回调。此类不池化任意 C# 对象。
+
+    释放持有已注册预制体的 Addressables Lease 前，必须先调用 <xref href="MFramework.MPool.Clear(MFramework.MPoolKey)" data-throw-if-not-resolved="false"></xref>。
+  example: []
+  syntax:
+    content: 'public sealed class MPool : IMPool, IMFrameworkModule, IDisposable'
+    content.vb: Public NotInheritable Class MPool Implements IMPool, IMFrameworkModule, IDisposable
+  inheritance:
+  - System.Object
+  implements:
+  - MFramework.IMPool
+  - MFramework.IMFrameworkModule
+  - System.IDisposable
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - MFramework.MPool.MFramework.MDisposableExtensions.AddTo``1(MFramework.MAssetScope)
+  - MFramework.MPool.MFramework.MDisposableExtensions.AddTo``1(MFramework.MDisposableBag)
+- uid: MFramework.MPool.#ctor(UnityEngine.Transform)
+  commentId: M:MFramework.MPool.#ctor(UnityEngine.Transform)
+  id: '#ctor(UnityEngine.Transform)'
+  parent: MFramework.MPool
+  langs:
+  - csharp
+  - vb
+  name: MPool(Transform)
+  nameWithType: MPool.MPool(Transform)
+  fullName: MFramework.MPool.MPool(UnityEngine.Transform)
+  type: Constructor
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 创建一个 GameObject 对象池。
+  example: []
+  syntax:
+    content: public MPool(Transform inactiveParent = null)
+    parameters:
+    - id: inactiveParent
+      type: UnityEngine.Transform
+      description: 用于在 Hierarchy 中整理闲置实例的可选父级；对象池不会销毁该父级。
+    content.vb: Public Sub New(inactiveParent As Transform = Nothing)
+  overload: MFramework.MPool.#ctor*
+  nameWithType.vb: MPool.New(Transform)
+  fullName.vb: MFramework.MPool.New(UnityEngine.Transform)
+  name.vb: New(Transform)
+- uid: MFramework.MPool.RegisteredCount
+  commentId: P:MFramework.MPool.RegisteredCount
+  id: RegisteredCount
+  parent: MFramework.MPool
+  langs:
+  - csharp
+  - vb
+  name: RegisteredCount
+  nameWithType: MPool.RegisteredCount
+  fullName: MFramework.MPool.RegisteredCount
+  type: Property
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 获取对象池当前持有的预制体注册数量。
+  example: []
+  syntax:
+    content: public int RegisteredCount { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property RegisteredCount As Integer
+  overload: MFramework.MPool.RegisteredCount*
+  implements:
+  - MFramework.IMPool.RegisteredCount
+- uid: MFramework.MPool.Register(MFramework.MPoolKey,UnityEngine.GameObject,System.Int32)
+  commentId: M:MFramework.MPool.Register(MFramework.MPoolKey,UnityEngine.GameObject,System.Int32)
+  id: Register(MFramework.MPoolKey,UnityEngine.GameObject,System.Int32)
+  parent: MFramework.MPool
+  langs:
+  - csharp
+  - vb
+  name: Register(MPoolKey, GameObject, int)
+  nameWithType: MPool.Register(MPoolKey, GameObject, int)
+  fullName: MFramework.MPool.Register(MFramework.MPoolKey, UnityEngine.GameObject, int)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 注册预制体。预制体必须先注册，之后才能预热或生成。
+  example: []
+  syntax:
+    content: public void Register(MPoolKey key, GameObject prefab, int maxInactive = 0)
+    parameters:
+    - id: key
+      type: MFramework.MPoolKey
+      description: 后续操作使用的稳定 Key。
+    - id: prefab
+      type: UnityEngine.GameObject
+      description: 需要实例化的 GameObject 预制体。
+    - id: maxInactive
+      type: System.Int32
+      description: 最多保留的闲置实例数量；零表示不限制闲置数量。
+    content.vb: Public Sub Register(key As MPoolKey, prefab As GameObject, maxInactive As Integer = 0)
+  overload: MFramework.MPool.Register*
+  implements:
+  - MFramework.IMPool.Register(MFramework.MPoolKey,UnityEngine.GameObject,System.Int32)
+  nameWithType.vb: MPool.Register(MPoolKey, GameObject, Integer)
+  fullName.vb: MFramework.MPool.Register(MFramework.MPoolKey, UnityEngine.GameObject, Integer)
+  name.vb: Register(MPoolKey, GameObject, Integer)
+- uid: MFramework.MPool.IsRegistered(MFramework.MPoolKey)
+  commentId: M:MFramework.MPool.IsRegistered(MFramework.MPoolKey)
+  id: IsRegistered(MFramework.MPoolKey)
+  parent: MFramework.MPool
+  langs:
+  - csharp
+  - vb
+  name: IsRegistered(MPoolKey)
+  nameWithType: MPool.IsRegistered(MPoolKey)
+  fullName: MFramework.MPool.IsRegistered(MFramework.MPoolKey)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 获取指定 Key 是否已经注册预制体。
+  example: []
+  syntax:
+    content: public bool IsRegistered(MPoolKey key)
+    parameters:
+    - id: key
+      type: MFramework.MPoolKey
+      description: 需要查询的 Key。
+    return:
+      type: System.Boolean
+      description: Key 已注册时返回 <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>。
+    content.vb: Public Function IsRegistered(key As MPoolKey) As Boolean
+  overload: MFramework.MPool.IsRegistered*
+  implements:
+  - MFramework.IMPool.IsRegistered(MFramework.MPoolKey)
+- uid: MFramework.MPool.Prewarm(MFramework.MPoolKey,System.Int32)
+  commentId: M:MFramework.MPool.Prewarm(MFramework.MPoolKey,System.Int32)
+  id: Prewarm(MFramework.MPoolKey,System.Int32)
+  parent: MFramework.MPool
+  langs:
+  - csharp
+  - vb
+  name: Prewarm(MPoolKey, int)
+  nameWithType: MPool.Prewarm(MPoolKey, int)
+  fullName: MFramework.MPool.Prewarm(MFramework.MPoolKey, int)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 确保至少准备好 <code class="paramref">count</code> 个闲置实例。
+  example: []
+  syntax:
+    content: public void Prewarm(MPoolKey key, int count)
+    parameters:
+    - id: key
+      type: MFramework.MPoolKey
+      description: 已注册预制体的 Key。
+    - id: count
+      type: System.Int32
+      description: 目标闲置实例数量。
+    content.vb: Public Sub Prewarm(key As MPoolKey, count As Integer)
+  overload: MFramework.MPool.Prewarm*
+  implements:
+  - MFramework.IMPool.Prewarm(MFramework.MPoolKey,System.Int32)
+  nameWithType.vb: MPool.Prewarm(MPoolKey, Integer)
+  fullName.vb: MFramework.MPool.Prewarm(MFramework.MPoolKey, Integer)
+  name.vb: Prewarm(MPoolKey, Integer)
+- uid: MFramework.MPool.Spawn(MFramework.MPoolKey,UnityEngine.Vector3,UnityEngine.Quaternion,UnityEngine.Transform)
+  commentId: M:MFramework.MPool.Spawn(MFramework.MPoolKey,UnityEngine.Vector3,UnityEngine.Quaternion,UnityEngine.Transform)
+  id: Spawn(MFramework.MPoolKey,UnityEngine.Vector3,UnityEngine.Quaternion,UnityEngine.Transform)
+  parent: MFramework.MPool
+  langs:
+  - csharp
+  - vb
+  name: Spawn(MPoolKey, Vector3, Quaternion, Transform)
+  nameWithType: MPool.Spawn(MPoolKey, Vector3, Quaternion, Transform)
+  fullName: MFramework.MPool.Spawn(MFramework.MPoolKey, UnityEngine.Vector3, UnityEngine.Quaternion, UnityEngine.Transform)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 获取并激活一个已注册预制体的实例。
+  example: []
+  syntax:
+    content: public GameObject Spawn(MPoolKey key, Vector3 position, Quaternion rotation, Transform parent = null)
+    parameters:
+    - id: key
+      type: MFramework.MPoolKey
+      description: 已注册预制体的 Key。
+    - id: position
+      type: UnityEngine.Vector3
+      description: 生命周期回调执行前设置的世界坐标。
+    - id: rotation
+      type: UnityEngine.Quaternion
+      description: 生命周期回调执行前设置的世界旋转。
+    - id: parent
+      type: UnityEngine.Transform
+      description: 为实例设置的可选父级。
+    return:
+      type: UnityEngine.GameObject
+      description: 已激活的对象池 GameObject。
+    content.vb: Public Function Spawn(key As MPoolKey, position As Vector3, rotation As Quaternion, parent As Transform = Nothing) As GameObject
+  overload: MFramework.MPool.Spawn*
+  implements:
+  - MFramework.IMPool.Spawn(MFramework.MPoolKey,UnityEngine.Vector3,UnityEngine.Quaternion,UnityEngine.Transform)
+- uid: MFramework.MPool.Despawn(UnityEngine.GameObject)
+  commentId: M:MFramework.MPool.Despawn(UnityEngine.GameObject)
+  id: Despawn(UnityEngine.GameObject)
+  parent: MFramework.MPool
+  langs:
+  - csharp
+  - vb
+  name: Despawn(GameObject)
+  nameWithType: MPool.Despawn(GameObject)
+  fullName: MFramework.MPool.Despawn(UnityEngine.GameObject)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 将活跃实例归还给它所属的对象池。
+  example: []
+  syntax:
+    content: public void Despawn(GameObject instance)
+    parameters:
+    - id: instance
+      type: UnityEngine.GameObject
+      description: 之前由 <xref href="MFramework.IMPool.Spawn(MFramework.MPoolKey%2cUnityEngine.Vector3%2cUnityEngine.Quaternion%2cUnityEngine.Transform)" data-throw-if-not-resolved="false"></xref> 返回的实例。
+    content.vb: Public Sub Despawn(instance As GameObject)
+  overload: MFramework.MPool.Despawn*
+  implements:
+  - MFramework.IMPool.Despawn(UnityEngine.GameObject)
+- uid: MFramework.MPool.Clear(MFramework.MPoolKey)
+  commentId: M:MFramework.MPool.Clear(MFramework.MPoolKey)
+  id: Clear(MFramework.MPoolKey)
+  parent: MFramework.MPool
+  langs:
+  - csharp
+  - vb
+  name: Clear(MPoolKey)
+  nameWithType: MPool.Clear(MPoolKey)
+  fullName: MFramework.MPool.Clear(MFramework.MPoolKey)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 销毁指定 Key 的全部实例，并移除对应的预制体注册。
+  example: []
+  syntax:
+    content: public void Clear(MPoolKey key)
+    parameters:
+    - id: key
+      type: MFramework.MPoolKey
+      description: 需要清理的已注册 Key。
+    content.vb: Public Sub Clear(key As MPoolKey)
+  overload: MFramework.MPool.Clear*
+  implements:
+  - MFramework.IMPool.Clear(MFramework.MPoolKey)
+- uid: MFramework.MPool.ClearAll
+  commentId: M:MFramework.MPool.ClearAll
+  id: ClearAll
+  parent: MFramework.MPool
+  langs:
+  - csharp
+  - vb
+  name: ClearAll()
+  nameWithType: MPool.ClearAll()
+  fullName: MFramework.MPool.ClearAll()
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 销毁全部受管理实例，并移除所有预制体注册。
+  example: []
+  syntax:
+    content: public void ClearAll()
+    content.vb: Public Sub ClearAll()
+  overload: MFramework.MPool.ClearAll*
+  implements:
+  - MFramework.IMPool.ClearAll
+- uid: MFramework.MPool.Initialize(MFramework.MFrameworkApp)
+  commentId: M:MFramework.MPool.Initialize(MFramework.MFrameworkApp)
+  id: Initialize(MFramework.MFrameworkApp)
+  parent: MFramework.MPool
+  langs:
+  - csharp
+  - vb
+  name: Initialize(MFrameworkApp)
+  nameWithType: MPool.Initialize(MFrameworkApp)
+  fullName: MFramework.MPool.Initialize(MFramework.MFrameworkApp)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 对象池在构造和显式注册时即已可用，因此初始化阶段无需额外工作。
+  example: []
+  syntax:
+    content: public void Initialize(MFrameworkApp app)
+    parameters:
+    - id: app
+      type: MFramework.MFrameworkApp
+      description: 持有此对象池的框架应用。
+    content.vb: Public Sub Initialize(app As MFrameworkApp)
+  overload: MFramework.MPool.Initialize*
+  implements:
+  - MFramework.IMFrameworkModule.Initialize(MFramework.MFrameworkApp)
+- uid: MFramework.MPool.Shutdown
+  commentId: M:MFramework.MPool.Shutdown
+  id: Shutdown
+  parent: MFramework.MPool
+  langs:
+  - csharp
+  - vb
+  name: Shutdown()
+  nameWithType: MPool.Shutdown()
+  fullName: MFramework.MPool.Shutdown()
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 关闭模块并清理全部池实例与注册。
+  example: []
+  syntax:
+    content: public void Shutdown()
+    content.vb: Public Sub Shutdown()
+  overload: MFramework.MPool.Shutdown*
+  implements:
+  - MFramework.IMFrameworkModule.Shutdown
+- uid: MFramework.MPool.Dispose
+  commentId: M:MFramework.MPool.Dispose
+  id: Dispose
+  parent: MFramework.MPool
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: MPool.Dispose()
+  fullName: MFramework.MPool.Dispose()
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 清理全部对象池实例和注册；可以安全地重复调用。
+  example: []
+  syntax:
+    content: public void Dispose()
+    content.vb: Public Sub Dispose()
+  overload: MFramework.MPool.Dispose*
+  implements:
+  - System.IDisposable.Dispose
+references:
+- uid: UnityEngine.Pool.ObjectPool`1
+  commentId: T:UnityEngine.Pool.ObjectPool`1
+  isExternal: true
+  name: ObjectPool<T>
+  nameWithType: ObjectPool<T>
+  fullName: UnityEngine.Pool.ObjectPool<T>
+  nameWithType.vb: ObjectPool(Of T)
+  fullName.vb: UnityEngine.Pool.ObjectPool(Of T)
+  name.vb: ObjectPool(Of T)
+  spec.csharp:
+  - uid: UnityEngine.Pool.ObjectPool`1
+    name: ObjectPool
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: UnityEngine.Pool.ObjectPool`1
+    name: ObjectPool
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MFramework.IMPooledGameObject
+  commentId: T:MFramework.IMPooledGameObject
+  href: MFramework.IMPooledGameObject.html
+  name: IMPooledGameObject
+  nameWithType: IMPooledGameObject
+  fullName: MFramework.IMPooledGameObject
+- uid: MFramework.MPool.Clear(MFramework.MPoolKey)
+  commentId: M:MFramework.MPool.Clear(MFramework.MPoolKey)
+  href: MFramework.MPool.html#MFramework_MPool_Clear_MFramework_MPoolKey_
+  name: Clear(MPoolKey)
+  nameWithType: MPool.Clear(MPoolKey)
+  fullName: MFramework.MPool.Clear(MFramework.MPoolKey)
+  spec.csharp:
+  - uid: MFramework.MPool.Clear(MFramework.MPoolKey)
+    name: Clear
+    href: MFramework.MPool.html#MFramework_MPool_Clear_MFramework_MPoolKey_
+  - name: (
+  - uid: MFramework.MPoolKey
+    name: MPoolKey
+    href: MFramework.MPoolKey.html
+  - name: )
+  spec.vb:
+  - uid: MFramework.MPool.Clear(MFramework.MPoolKey)
+    name: Clear
+    href: MFramework.MPool.html#MFramework_MPool_Clear_MFramework_MPoolKey_
+  - name: (
+  - uid: MFramework.MPoolKey
+    name: MPoolKey
+    href: MFramework.MPoolKey.html
+  - name: )
+- uid: MFramework
+  commentId: N:MFramework
+  href: MFramework.html
+  name: MFramework
+  nameWithType: MFramework
+  fullName: MFramework
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: MFramework.IMPool
+  commentId: T:MFramework.IMPool
+  parent: MFramework
+  href: MFramework.IMPool.html
+  name: IMPool
+  nameWithType: IMPool
+  fullName: MFramework.IMPool
+- uid: MFramework.IMFrameworkModule
+  commentId: T:MFramework.IMFrameworkModule
+  parent: MFramework
+  href: MFramework.IMFrameworkModule.html
+  name: IMFrameworkModule
+  nameWithType: IMFrameworkModule
+  fullName: MFramework.IMFrameworkModule
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: MFramework.MPool.MFramework.MDisposableExtensions.AddTo``1(MFramework.MAssetScope)
+  commentId: M:MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MAssetScope)
+  parent: MFramework.MDisposableExtensions
+  definition: MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MAssetScope)
+  href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MAssetScope_
+  name: AddTo<MPool>(MPool, MAssetScope)
+  nameWithType: MDisposableExtensions.AddTo<MPool>(MPool, MAssetScope)
+  fullName: MFramework.MDisposableExtensions.AddTo<MFramework.MPool>(MFramework.MPool, MFramework.MAssetScope)
+  nameWithType.vb: MDisposableExtensions.AddTo(Of MPool)(MPool, MAssetScope)
+  fullName.vb: MFramework.MDisposableExtensions.AddTo(Of MFramework.MPool)(MFramework.MPool, MFramework.MAssetScope)
+  name.vb: AddTo(Of MPool)(MPool, MAssetScope)
+  spec.csharp:
+  - uid: MFramework.MDisposableExtensions.AddTo``1(MFramework.MPool,MFramework.MAssetScope)
+    name: AddTo
+    href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MAssetScope_
+  - name: <
+  - uid: MFramework.MPool
+    name: MPool
+    href: MFramework.MPool.html
+  - name: '>'
+  - name: (
+  - uid: MFramework.MPool
+    name: MPool
+    href: MFramework.MPool.html
+  - name: ','
+  - name: " "
+  - uid: MFramework.MAssetScope
+    name: MAssetScope
+    href: MFramework.MAssetScope.html
+  - name: )
+  spec.vb:
+  - uid: MFramework.MDisposableExtensions.AddTo``1(MFramework.MPool,MFramework.MAssetScope)
+    name: AddTo
+    href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MAssetScope_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MFramework.MPool
+    name: MPool
+    href: MFramework.MPool.html
+  - name: )
+  - name: (
+  - uid: MFramework.MPool
+    name: MPool
+    href: MFramework.MPool.html
+  - name: ','
+  - name: " "
+  - uid: MFramework.MAssetScope
+    name: MAssetScope
+    href: MFramework.MAssetScope.html
+  - name: )
+- uid: MFramework.MPool.MFramework.MDisposableExtensions.AddTo``1(MFramework.MDisposableBag)
+  commentId: M:MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MDisposableBag)
+  parent: MFramework.MDisposableExtensions
+  definition: MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MDisposableBag)
+  href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MDisposableBag_
+  name: AddTo<MPool>(MPool, MDisposableBag)
+  nameWithType: MDisposableExtensions.AddTo<MPool>(MPool, MDisposableBag)
+  fullName: MFramework.MDisposableExtensions.AddTo<MFramework.MPool>(MFramework.MPool, MFramework.MDisposableBag)
+  nameWithType.vb: MDisposableExtensions.AddTo(Of MPool)(MPool, MDisposableBag)
+  fullName.vb: MFramework.MDisposableExtensions.AddTo(Of MFramework.MPool)(MFramework.MPool, MFramework.MDisposableBag)
+  name.vb: AddTo(Of MPool)(MPool, MDisposableBag)
+  spec.csharp:
+  - uid: MFramework.MDisposableExtensions.AddTo``1(MFramework.MPool,MFramework.MDisposableBag)
+    name: AddTo
+    href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MDisposableBag_
+  - name: <
+  - uid: MFramework.MPool
+    name: MPool
+    href: MFramework.MPool.html
+  - name: '>'
+  - name: (
+  - uid: MFramework.MPool
+    name: MPool
+    href: MFramework.MPool.html
+  - name: ','
+  - name: " "
+  - uid: MFramework.MDisposableBag
+    name: MDisposableBag
+    href: MFramework.MDisposableBag.html
+  - name: )
+  spec.vb:
+  - uid: MFramework.MDisposableExtensions.AddTo``1(MFramework.MPool,MFramework.MDisposableBag)
+    name: AddTo
+    href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MDisposableBag_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MFramework.MPool
+    name: MPool
+    href: MFramework.MPool.html
+  - name: )
+  - name: (
+  - uid: MFramework.MPool
+    name: MPool
+    href: MFramework.MPool.html
+  - name: ','
+  - name: " "
+  - uid: MFramework.MDisposableBag
+    name: MDisposableBag
+    href: MFramework.MDisposableBag.html
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MAssetScope)
+  commentId: M:MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MAssetScope)
+  href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MAssetScope_
+  name: AddTo<T>(T, MAssetScope)
+  nameWithType: MDisposableExtensions.AddTo<T>(T, MAssetScope)
+  fullName: MFramework.MDisposableExtensions.AddTo<T>(T, MFramework.MAssetScope)
+  nameWithType.vb: MDisposableExtensions.AddTo(Of T)(T, MAssetScope)
+  fullName.vb: MFramework.MDisposableExtensions.AddTo(Of T)(T, MFramework.MAssetScope)
+  name.vb: AddTo(Of T)(T, MAssetScope)
+  spec.csharp:
+  - uid: MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MAssetScope)
+    name: AddTo
+    href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MAssetScope_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: MFramework.MAssetScope
+    name: MAssetScope
+    href: MFramework.MAssetScope.html
+  - name: )
+  spec.vb:
+  - uid: MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MAssetScope)
+    name: AddTo
+    href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MAssetScope_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: MFramework.MAssetScope
+    name: MAssetScope
+    href: MFramework.MAssetScope.html
+  - name: )
+- uid: MFramework.MDisposableExtensions
+  commentId: T:MFramework.MDisposableExtensions
+  parent: MFramework
+  href: MFramework.MDisposableExtensions.html
+  name: MDisposableExtensions
+  nameWithType: MDisposableExtensions
+  fullName: MFramework.MDisposableExtensions
+- uid: MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MDisposableBag)
+  commentId: M:MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MDisposableBag)
+  href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MDisposableBag_
+  name: AddTo<T>(T, MDisposableBag)
+  nameWithType: MDisposableExtensions.AddTo<T>(T, MDisposableBag)
+  fullName: MFramework.MDisposableExtensions.AddTo<T>(T, MFramework.MDisposableBag)
+  nameWithType.vb: MDisposableExtensions.AddTo(Of T)(T, MDisposableBag)
+  fullName.vb: MFramework.MDisposableExtensions.AddTo(Of T)(T, MFramework.MDisposableBag)
+  name.vb: AddTo(Of T)(T, MDisposableBag)
+  spec.csharp:
+  - uid: MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MDisposableBag)
+    name: AddTo
+    href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MDisposableBag_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: MFramework.MDisposableBag
+    name: MDisposableBag
+    href: MFramework.MDisposableBag.html
+  - name: )
+  spec.vb:
+  - uid: MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MDisposableBag)
+    name: AddTo
+    href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MDisposableBag_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: MFramework.MDisposableBag
+    name: MDisposableBag
+    href: MFramework.MDisposableBag.html
+  - name: )
+- uid: MFramework.MPool.#ctor*
+  commentId: Overload:MFramework.MPool.#ctor
+  href: MFramework.MPool.html#MFramework_MPool__ctor_UnityEngine_Transform_
+  name: MPool
+  nameWithType: MPool.MPool
+  fullName: MFramework.MPool.MPool
+  nameWithType.vb: MPool.New
+  fullName.vb: MFramework.MPool.New
+  name.vb: New
+- uid: UnityEngine.Transform
+  commentId: T:UnityEngine.Transform
+  parent: UnityEngine
+  isExternal: true
+  name: Transform
+  nameWithType: Transform
+  fullName: UnityEngine.Transform
+- uid: UnityEngine
+  commentId: N:UnityEngine
+  isExternal: true
+  name: UnityEngine
+  nameWithType: UnityEngine
+  fullName: UnityEngine
+- uid: MFramework.MPool.RegisteredCount*
+  commentId: Overload:MFramework.MPool.RegisteredCount
+  href: MFramework.MPool.html#MFramework_MPool_RegisteredCount
+  name: RegisteredCount
+  nameWithType: MPool.RegisteredCount
+  fullName: MFramework.MPool.RegisteredCount
+- uid: MFramework.IMPool.RegisteredCount
+  commentId: P:MFramework.IMPool.RegisteredCount
+  parent: MFramework.IMPool
+  href: MFramework.IMPool.html#MFramework_IMPool_RegisteredCount
+  name: RegisteredCount
+  nameWithType: IMPool.RegisteredCount
+  fullName: MFramework.IMPool.RegisteredCount
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: MFramework.MPool.Register*
+  commentId: Overload:MFramework.MPool.Register
+  href: MFramework.MPool.html#MFramework_MPool_Register_MFramework_MPoolKey_UnityEngine_GameObject_System_Int32_
+  name: Register
+  nameWithType: MPool.Register
+  fullName: MFramework.MPool.Register
+- uid: MFramework.IMPool.Register(MFramework.MPoolKey,UnityEngine.GameObject,System.Int32)
+  commentId: M:MFramework.IMPool.Register(MFramework.MPoolKey,UnityEngine.GameObject,System.Int32)
+  parent: MFramework.IMPool
+  isExternal: true
+  href: MFramework.IMPool.html#MFramework_IMPool_Register_MFramework_MPoolKey_UnityEngine_GameObject_System_Int32_
+  name: Register(MPoolKey, GameObject, int)
+  nameWithType: IMPool.Register(MPoolKey, GameObject, int)
+  fullName: MFramework.IMPool.Register(MFramework.MPoolKey, UnityEngine.GameObject, int)
+  nameWithType.vb: IMPool.Register(MPoolKey, GameObject, Integer)
+  fullName.vb: MFramework.IMPool.Register(MFramework.MPoolKey, UnityEngine.GameObject, Integer)
+  name.vb: Register(MPoolKey, GameObject, Integer)
+  spec.csharp:
+  - uid: MFramework.IMPool.Register(MFramework.MPoolKey,UnityEngine.GameObject,System.Int32)
+    name: Register
+    href: MFramework.IMPool.html#MFramework_IMPool_Register_MFramework_MPoolKey_UnityEngine_GameObject_System_Int32_
+  - name: (
+  - uid: MFramework.MPoolKey
+    name: MPoolKey
+    href: MFramework.MPoolKey.html
+  - name: ','
+  - name: " "
+  - uid: UnityEngine.GameObject
+    name: GameObject
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: MFramework.IMPool.Register(MFramework.MPoolKey,UnityEngine.GameObject,System.Int32)
+    name: Register
+    href: MFramework.IMPool.html#MFramework_IMPool_Register_MFramework_MPoolKey_UnityEngine_GameObject_System_Int32_
+  - name: (
+  - uid: MFramework.MPoolKey
+    name: MPoolKey
+    href: MFramework.MPoolKey.html
+  - name: ','
+  - name: " "
+  - uid: UnityEngine.GameObject
+    name: GameObject
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: MFramework.MPoolKey
+  commentId: T:MFramework.MPoolKey
+  parent: MFramework
+  href: MFramework.MPoolKey.html
+  name: MPoolKey
+  nameWithType: MPoolKey
+  fullName: MFramework.MPoolKey
+- uid: UnityEngine.GameObject
+  commentId: T:UnityEngine.GameObject
+  parent: UnityEngine
+  isExternal: true
+  name: GameObject
+  nameWithType: GameObject
+  fullName: UnityEngine.GameObject
+- uid: MFramework.MPool.IsRegistered*
+  commentId: Overload:MFramework.MPool.IsRegistered
+  href: MFramework.MPool.html#MFramework_MPool_IsRegistered_MFramework_MPoolKey_
+  name: IsRegistered
+  nameWithType: MPool.IsRegistered
+  fullName: MFramework.MPool.IsRegistered
+- uid: MFramework.IMPool.IsRegistered(MFramework.MPoolKey)
+  commentId: M:MFramework.IMPool.IsRegistered(MFramework.MPoolKey)
+  parent: MFramework.IMPool
+  href: MFramework.IMPool.html#MFramework_IMPool_IsRegistered_MFramework_MPoolKey_
+  name: IsRegistered(MPoolKey)
+  nameWithType: IMPool.IsRegistered(MPoolKey)
+  fullName: MFramework.IMPool.IsRegistered(MFramework.MPoolKey)
+  spec.csharp:
+  - uid: MFramework.IMPool.IsRegistered(MFramework.MPoolKey)
+    name: IsRegistered
+    href: MFramework.IMPool.html#MFramework_IMPool_IsRegistered_MFramework_MPoolKey_
+  - name: (
+  - uid: MFramework.MPoolKey
+    name: MPoolKey
+    href: MFramework.MPoolKey.html
+  - name: )
+  spec.vb:
+  - uid: MFramework.IMPool.IsRegistered(MFramework.MPoolKey)
+    name: IsRegistered
+    href: MFramework.IMPool.html#MFramework_IMPool_IsRegistered_MFramework_MPoolKey_
+  - name: (
+  - uid: MFramework.MPoolKey
+    name: MPoolKey
+    href: MFramework.MPoolKey.html
+  - name: )
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: MFramework.MPool.Prewarm*
+  commentId: Overload:MFramework.MPool.Prewarm
+  href: MFramework.MPool.html#MFramework_MPool_Prewarm_MFramework_MPoolKey_System_Int32_
+  name: Prewarm
+  nameWithType: MPool.Prewarm
+  fullName: MFramework.MPool.Prewarm
+- uid: MFramework.IMPool.Prewarm(MFramework.MPoolKey,System.Int32)
+  commentId: M:MFramework.IMPool.Prewarm(MFramework.MPoolKey,System.Int32)
+  parent: MFramework.IMPool
+  isExternal: true
+  href: MFramework.IMPool.html#MFramework_IMPool_Prewarm_MFramework_MPoolKey_System_Int32_
+  name: Prewarm(MPoolKey, int)
+  nameWithType: IMPool.Prewarm(MPoolKey, int)
+  fullName: MFramework.IMPool.Prewarm(MFramework.MPoolKey, int)
+  nameWithType.vb: IMPool.Prewarm(MPoolKey, Integer)
+  fullName.vb: MFramework.IMPool.Prewarm(MFramework.MPoolKey, Integer)
+  name.vb: Prewarm(MPoolKey, Integer)
+  spec.csharp:
+  - uid: MFramework.IMPool.Prewarm(MFramework.MPoolKey,System.Int32)
+    name: Prewarm
+    href: MFramework.IMPool.html#MFramework_IMPool_Prewarm_MFramework_MPoolKey_System_Int32_
+  - name: (
+  - uid: MFramework.MPoolKey
+    name: MPoolKey
+    href: MFramework.MPoolKey.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: MFramework.IMPool.Prewarm(MFramework.MPoolKey,System.Int32)
+    name: Prewarm
+    href: MFramework.IMPool.html#MFramework_IMPool_Prewarm_MFramework_MPoolKey_System_Int32_
+  - name: (
+  - uid: MFramework.MPoolKey
+    name: MPoolKey
+    href: MFramework.MPoolKey.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: MFramework.MPool.Spawn*
+  commentId: Overload:MFramework.MPool.Spawn
+  href: MFramework.MPool.html#MFramework_MPool_Spawn_MFramework_MPoolKey_UnityEngine_Vector3_UnityEngine_Quaternion_UnityEngine_Transform_
+  name: Spawn
+  nameWithType: MPool.Spawn
+  fullName: MFramework.MPool.Spawn
+- uid: MFramework.IMPool.Spawn(MFramework.MPoolKey,UnityEngine.Vector3,UnityEngine.Quaternion,UnityEngine.Transform)
+  commentId: M:MFramework.IMPool.Spawn(MFramework.MPoolKey,UnityEngine.Vector3,UnityEngine.Quaternion,UnityEngine.Transform)
+  parent: MFramework.IMPool
+  isExternal: true
+  href: MFramework.IMPool.html#MFramework_IMPool_Spawn_MFramework_MPoolKey_UnityEngine_Vector3_UnityEngine_Quaternion_UnityEngine_Transform_
+  name: Spawn(MPoolKey, Vector3, Quaternion, Transform)
+  nameWithType: IMPool.Spawn(MPoolKey, Vector3, Quaternion, Transform)
+  fullName: MFramework.IMPool.Spawn(MFramework.MPoolKey, UnityEngine.Vector3, UnityEngine.Quaternion, UnityEngine.Transform)
+  spec.csharp:
+  - uid: MFramework.IMPool.Spawn(MFramework.MPoolKey,UnityEngine.Vector3,UnityEngine.Quaternion,UnityEngine.Transform)
+    name: Spawn
+    href: MFramework.IMPool.html#MFramework_IMPool_Spawn_MFramework_MPoolKey_UnityEngine_Vector3_UnityEngine_Quaternion_UnityEngine_Transform_
+  - name: (
+  - uid: MFramework.MPoolKey
+    name: MPoolKey
+    href: MFramework.MPoolKey.html
+  - name: ','
+  - name: " "
+  - uid: UnityEngine.Vector3
+    name: Vector3
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: UnityEngine.Quaternion
+    name: Quaternion
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: UnityEngine.Transform
+    name: Transform
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: MFramework.IMPool.Spawn(MFramework.MPoolKey,UnityEngine.Vector3,UnityEngine.Quaternion,UnityEngine.Transform)
+    name: Spawn
+    href: MFramework.IMPool.html#MFramework_IMPool_Spawn_MFramework_MPoolKey_UnityEngine_Vector3_UnityEngine_Quaternion_UnityEngine_Transform_
+  - name: (
+  - uid: MFramework.MPoolKey
+    name: MPoolKey
+    href: MFramework.MPoolKey.html
+  - name: ','
+  - name: " "
+  - uid: UnityEngine.Vector3
+    name: Vector3
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: UnityEngine.Quaternion
+    name: Quaternion
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: UnityEngine.Transform
+    name: Transform
+    isExternal: true
+  - name: )
+- uid: UnityEngine.Vector3
+  commentId: T:UnityEngine.Vector3
+  parent: UnityEngine
+  isExternal: true
+  name: Vector3
+  nameWithType: Vector3
+  fullName: UnityEngine.Vector3
+- uid: UnityEngine.Quaternion
+  commentId: T:UnityEngine.Quaternion
+  parent: UnityEngine
+  isExternal: true
+  name: Quaternion
+  nameWithType: Quaternion
+  fullName: UnityEngine.Quaternion
+- uid: MFramework.MPool.Despawn*
+  commentId: Overload:MFramework.MPool.Despawn
+  href: MFramework.MPool.html#MFramework_MPool_Despawn_UnityEngine_GameObject_
+  name: Despawn
+  nameWithType: MPool.Despawn
+  fullName: MFramework.MPool.Despawn
+- uid: MFramework.IMPool.Despawn(UnityEngine.GameObject)
+  commentId: M:MFramework.IMPool.Despawn(UnityEngine.GameObject)
+  parent: MFramework.IMPool
+  isExternal: true
+  href: MFramework.IMPool.html#MFramework_IMPool_Despawn_UnityEngine_GameObject_
+  name: Despawn(GameObject)
+  nameWithType: IMPool.Despawn(GameObject)
+  fullName: MFramework.IMPool.Despawn(UnityEngine.GameObject)
+  spec.csharp:
+  - uid: MFramework.IMPool.Despawn(UnityEngine.GameObject)
+    name: Despawn
+    href: MFramework.IMPool.html#MFramework_IMPool_Despawn_UnityEngine_GameObject_
+  - name: (
+  - uid: UnityEngine.GameObject
+    name: GameObject
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: MFramework.IMPool.Despawn(UnityEngine.GameObject)
+    name: Despawn
+    href: MFramework.IMPool.html#MFramework_IMPool_Despawn_UnityEngine_GameObject_
+  - name: (
+  - uid: UnityEngine.GameObject
+    name: GameObject
+    isExternal: true
+  - name: )
+- uid: MFramework.MPool.Clear*
+  commentId: Overload:MFramework.MPool.Clear
+  href: MFramework.MPool.html#MFramework_MPool_Clear_MFramework_MPoolKey_
+  name: Clear
+  nameWithType: MPool.Clear
+  fullName: MFramework.MPool.Clear
+- uid: MFramework.IMPool.Clear(MFramework.MPoolKey)
+  commentId: M:MFramework.IMPool.Clear(MFramework.MPoolKey)
+  parent: MFramework.IMPool
+  href: MFramework.IMPool.html#MFramework_IMPool_Clear_MFramework_MPoolKey_
+  name: Clear(MPoolKey)
+  nameWithType: IMPool.Clear(MPoolKey)
+  fullName: MFramework.IMPool.Clear(MFramework.MPoolKey)
+  spec.csharp:
+  - uid: MFramework.IMPool.Clear(MFramework.MPoolKey)
+    name: Clear
+    href: MFramework.IMPool.html#MFramework_IMPool_Clear_MFramework_MPoolKey_
+  - name: (
+  - uid: MFramework.MPoolKey
+    name: MPoolKey
+    href: MFramework.MPoolKey.html
+  - name: )
+  spec.vb:
+  - uid: MFramework.IMPool.Clear(MFramework.MPoolKey)
+    name: Clear
+    href: MFramework.IMPool.html#MFramework_IMPool_Clear_MFramework_MPoolKey_
+  - name: (
+  - uid: MFramework.MPoolKey
+    name: MPoolKey
+    href: MFramework.MPoolKey.html
+  - name: )
+- uid: MFramework.MPool.ClearAll*
+  commentId: Overload:MFramework.MPool.ClearAll
+  href: MFramework.MPool.html#MFramework_MPool_ClearAll
+  name: ClearAll
+  nameWithType: MPool.ClearAll
+  fullName: MFramework.MPool.ClearAll
+- uid: MFramework.IMPool.ClearAll
+  commentId: M:MFramework.IMPool.ClearAll
+  parent: MFramework.IMPool
+  href: MFramework.IMPool.html#MFramework_IMPool_ClearAll
+  name: ClearAll()
+  nameWithType: IMPool.ClearAll()
+  fullName: MFramework.IMPool.ClearAll()
+  spec.csharp:
+  - uid: MFramework.IMPool.ClearAll
+    name: ClearAll
+    href: MFramework.IMPool.html#MFramework_IMPool_ClearAll
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: MFramework.IMPool.ClearAll
+    name: ClearAll
+    href: MFramework.IMPool.html#MFramework_IMPool_ClearAll
+  - name: (
+  - name: )
+- uid: MFramework.MPool.Initialize*
+  commentId: Overload:MFramework.MPool.Initialize
+  href: MFramework.MPool.html#MFramework_MPool_Initialize_MFramework_MFrameworkApp_
+  name: Initialize
+  nameWithType: MPool.Initialize
+  fullName: MFramework.MPool.Initialize
+- uid: MFramework.IMFrameworkModule.Initialize(MFramework.MFrameworkApp)
+  commentId: M:MFramework.IMFrameworkModule.Initialize(MFramework.MFrameworkApp)
+  parent: MFramework.IMFrameworkModule
+  href: MFramework.IMFrameworkModule.html#MFramework_IMFrameworkModule_Initialize_MFramework_MFrameworkApp_
+  name: Initialize(MFrameworkApp)
+  nameWithType: IMFrameworkModule.Initialize(MFrameworkApp)
+  fullName: MFramework.IMFrameworkModule.Initialize(MFramework.MFrameworkApp)
+  spec.csharp:
+  - uid: MFramework.IMFrameworkModule.Initialize(MFramework.MFrameworkApp)
+    name: Initialize
+    href: MFramework.IMFrameworkModule.html#MFramework_IMFrameworkModule_Initialize_MFramework_MFrameworkApp_
+  - name: (
+  - uid: MFramework.MFrameworkApp
+    name: MFrameworkApp
+    href: MFramework.MFrameworkApp.html
+  - name: )
+  spec.vb:
+  - uid: MFramework.IMFrameworkModule.Initialize(MFramework.MFrameworkApp)
+    name: Initialize
+    href: MFramework.IMFrameworkModule.html#MFramework_IMFrameworkModule_Initialize_MFramework_MFrameworkApp_
+  - name: (
+  - uid: MFramework.MFrameworkApp
+    name: MFrameworkApp
+    href: MFramework.MFrameworkApp.html
+  - name: )
+- uid: MFramework.MFrameworkApp
+  commentId: T:MFramework.MFrameworkApp
+  parent: MFramework
+  href: MFramework.MFrameworkApp.html
+  name: MFrameworkApp
+  nameWithType: MFrameworkApp
+  fullName: MFramework.MFrameworkApp
+- uid: MFramework.MPool.Shutdown*
+  commentId: Overload:MFramework.MPool.Shutdown
+  href: MFramework.MPool.html#MFramework_MPool_Shutdown
+  name: Shutdown
+  nameWithType: MPool.Shutdown
+  fullName: MFramework.MPool.Shutdown
+- uid: MFramework.IMFrameworkModule.Shutdown
+  commentId: M:MFramework.IMFrameworkModule.Shutdown
+  parent: MFramework.IMFrameworkModule
+  href: MFramework.IMFrameworkModule.html#MFramework_IMFrameworkModule_Shutdown
+  name: Shutdown()
+  nameWithType: IMFrameworkModule.Shutdown()
+  fullName: MFramework.IMFrameworkModule.Shutdown()
+  spec.csharp:
+  - uid: MFramework.IMFrameworkModule.Shutdown
+    name: Shutdown
+    href: MFramework.IMFrameworkModule.html#MFramework_IMFrameworkModule_Shutdown
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: MFramework.IMFrameworkModule.Shutdown
+    name: Shutdown
+    href: MFramework.IMFrameworkModule.html#MFramework_IMFrameworkModule_Shutdown
+  - name: (
+  - name: )
+- uid: MFramework.MPool.Dispose*
+  commentId: Overload:MFramework.MPool.Dispose
+  href: MFramework.MPool.html#MFramework_MPool_Dispose
+  name: Dispose
+  nameWithType: MPool.Dispose
+  fullName: MFramework.MPool.Dispose
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )

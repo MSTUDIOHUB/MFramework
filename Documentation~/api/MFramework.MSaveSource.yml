@@ -1,0 +1,78 @@
+### YamlMime:ManagedReference
+items:
+- uid: MFramework.MSaveSource
+  commentId: T:MFramework.MSaveSource
+  id: MSaveSource
+  parent: MFramework
+  children:
+  - MFramework.MSaveSource.Backup
+  - MFramework.MSaveSource.Main
+  langs:
+  - csharp
+  - vb
+  name: MSaveSource
+  nameWithType: MSaveSource
+  fullName: MFramework.MSaveSource
+  type: Enum
+  assemblies:
+  - MStudio.MFramework.Foundation
+  namespace: MFramework
+  summary: 明确选择本次读取的数据来源；备份永远不会自动替代主档。
+  example: []
+  syntax:
+    content: public enum MSaveSource
+    content.vb: Public Enum MSaveSource
+- uid: MFramework.MSaveSource.Main
+  commentId: F:MFramework.MSaveSource.Main
+  id: Main
+  parent: MFramework.MSaveSource
+  langs:
+  - csharp
+  - vb
+  name: Main
+  nameWithType: MSaveSource.Main
+  fullName: MFramework.MSaveSource.Main
+  type: Field
+  assemblies:
+  - MStudio.MFramework.Foundation
+  namespace: MFramework
+  summary: 读取当前已提交主档。
+  example: []
+  syntax:
+    content: Main = 0
+    return:
+      type: MFramework.MSaveSource
+- uid: MFramework.MSaveSource.Backup
+  commentId: F:MFramework.MSaveSource.Backup
+  id: Backup
+  parent: MFramework.MSaveSource
+  langs:
+  - csharp
+  - vb
+  name: Backup
+  nameWithType: MSaveSource.Backup
+  fullName: MFramework.MSaveSource.Backup
+  type: Field
+  assemblies:
+  - MStudio.MFramework.Foundation
+  namespace: MFramework
+  summary: 读取上一次有效主档的备份；不代表已经恢复为主档。
+  example: []
+  syntax:
+    content: Backup = 1
+    return:
+      type: MFramework.MSaveSource
+references:
+- uid: MFramework
+  commentId: N:MFramework
+  href: MFramework.html
+  name: MFramework
+  nameWithType: MFramework
+  fullName: MFramework
+- uid: MFramework.MSaveSource
+  commentId: T:MFramework.MSaveSource
+  parent: MFramework
+  href: MFramework.MSaveSource.html
+  name: MSaveSource
+  nameWithType: MSaveSource
+  fullName: MFramework.MSaveSource

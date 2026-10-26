@@ -1,0 +1,19 @@
+{
+  "name": "MStudio.MFramework.Runtime",
+  "rootNamespace": "MFramework",
+  "references": [
+    "MStudio.MFramework.Foundation",
+    "Unity.Addressables",
+    "Unity.ResourceManager",
+    "Unity.ugui"
+  ],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
+}

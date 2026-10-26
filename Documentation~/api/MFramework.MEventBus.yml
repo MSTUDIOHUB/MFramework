@@ -1,0 +1,816 @@
+### YamlMime:ManagedReference
+items:
+- uid: MFramework.MEventBus
+  commentId: T:MFramework.MEventBus
+  id: MEventBus
+  parent: MFramework
+  children:
+  - MFramework.MEventBus.Clear
+  - MFramework.MEventBus.Initialize(MFramework.MFrameworkApp)
+  - MFramework.MEventBus.Publish``1(``0)
+  - MFramework.MEventBus.Shutdown
+  - MFramework.MEventBus.Subscribe``1(System.Action{``0},UnityEngine.Object)
+  langs:
+  - csharp
+  - vb
+  name: MEventBus
+  nameWithType: MEventBus
+  fullName: MFramework.MEventBus
+  type: Class
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 实现一个同步、类型安全、零装箱，并支持释放订阅的事件总线。
+  remarks: >-
+    该实现只能在创建它的线程中使用，通常是 Unity 主线程。
+
+    发布事件时会遍历泛型通道的稳定快照，因此既消除了值类型事件装箱，也可以安全地在发布期间增删订阅。
+  example: []
+  syntax:
+    content: 'public sealed class MEventBus : IMEventBus, IMFrameworkModule'
+    content.vb: Public NotInheritable Class MEventBus Implements IMEventBus, IMFrameworkModule
+  inheritance:
+  - System.Object
+  implements:
+  - MFramework.IMEventBus
+  - MFramework.IMFrameworkModule
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MFramework.MEventBus.Subscribe``1(System.Action{``0},UnityEngine.Object)
+  commentId: M:MFramework.MEventBus.Subscribe``1(System.Action{``0},UnityEngine.Object)
+  id: Subscribe``1(System.Action{``0},UnityEngine.Object)
+  parent: MFramework.MEventBus
+  langs:
+  - csharp
+  - vb
+  name: Subscribe<TEvent>(Action<TEvent>, Object)
+  nameWithType: MEventBus.Subscribe<TEvent>(Action<TEvent>, Object)
+  fullName: MFramework.MEventBus.Subscribe<TEvent>(System.Action<TEvent>, UnityEngine.Object)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 为指定事件类型订阅一个处理器。
+  example: []
+  syntax:
+    content: public IDisposable Subscribe<TEvent>(Action<TEvent> handler, Object owner = null)
+    parameters:
+    - id: handler
+      type: System.Action{{TEvent}}
+      description: 发布事件时同步调用的回调。
+    - id: owner
+      type: UnityEngine.Object
+      description: 可选的 Unity 所有者。所有者销毁后，该订阅会失效。
+    typeParameters:
+    - id: TEvent
+      description: 事件载荷类型。
+    return:
+      type: System.IDisposable
+      description: 订阅句柄；释放该句柄时会移除订阅。
+    content.vb: Public Function Subscribe(Of TEvent)(handler As Action(Of TEvent), owner As [Object] = Nothing) As IDisposable
+  overload: MFramework.MEventBus.Subscribe*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code class="paramref">handler</code> 为 null。
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: 该方法由非创建线程调用。
+  implements:
+  - MFramework.IMEventBus.Subscribe``1(System.Action{{TEvent}},UnityEngine.Object)
+  nameWithType.vb: MEventBus.Subscribe(Of TEvent)(Action(Of TEvent), Object)
+  fullName.vb: MFramework.MEventBus.Subscribe(Of TEvent)(System.Action(Of TEvent), UnityEngine.Object)
+  name.vb: Subscribe(Of TEvent)(Action(Of TEvent), Object)
+- uid: MFramework.MEventBus.Publish``1(``0)
+  commentId: M:MFramework.MEventBus.Publish``1(``0)
+  id: Publish``1(``0)
+  parent: MFramework.MEventBus
+  langs:
+  - csharp
+  - vb
+  name: Publish<TEvent>(TEvent)
+  nameWithType: MEventBus.Publish<TEvent>(TEvent)
+  fullName: MFramework.MEventBus.Publish<TEvent>(TEvent)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 向当前订阅者快照同步发布一个事件。
+  example: []
+  syntax:
+    content: public void Publish<TEvent>(TEvent message)
+    parameters:
+    - id: message
+      type: '{TEvent}'
+      description: 要发布的事实事件。
+    typeParameters:
+    - id: TEvent
+      description: 事件载荷类型。
+    content.vb: Public Sub Publish(Of TEvent)(message As TEvent)
+  overload: MFramework.MEventBus.Publish*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: 该方法由非创建线程调用。
+  - type: MFramework.MEventDispatchException
+    commentId: T:MFramework.MEventDispatchException
+    description: 一个或多个订阅者执行失败。
+  implements:
+  - MFramework.IMEventBus.Publish``1({TEvent})
+  nameWithType.vb: MEventBus.Publish(Of TEvent)(TEvent)
+  fullName.vb: MFramework.MEventBus.Publish(Of TEvent)(TEvent)
+  name.vb: Publish(Of TEvent)(TEvent)
+- uid: MFramework.MEventBus.Clear
+  commentId: M:MFramework.MEventBus.Clear
+  id: Clear
+  parent: MFramework.MEventBus
+  langs:
+  - csharp
+  - vb
+  name: Clear()
+  nameWithType: MEventBus.Clear()
+  fullName: MFramework.MEventBus.Clear()
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 移除全部订阅。
+  example: []
+  syntax:
+    content: public void Clear()
+    content.vb: Public Sub Clear()
+  overload: MFramework.MEventBus.Clear*
+  implements:
+  - MFramework.IMEventBus.Clear
+- uid: MFramework.MEventBus.Initialize(MFramework.MFrameworkApp)
+  commentId: M:MFramework.MEventBus.Initialize(MFramework.MFrameworkApp)
+  id: Initialize(MFramework.MFrameworkApp)
+  parent: MFramework.MEventBus
+  langs:
+  - csharp
+  - vb
+  name: Initialize(MFrameworkApp)
+  nameWithType: MEventBus.Initialize(MFrameworkApp)
+  fullName: MFramework.MEventBus.Initialize(MFramework.MFrameworkApp)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 该模块无需启动订阅，因此初始化时不执行任何操作。
+  example: []
+  syntax:
+    content: public void Initialize(MFrameworkApp app)
+    parameters:
+    - id: app
+      type: MFramework.MFrameworkApp
+      description: 持有该模块的框架应用。
+    content.vb: Public Sub Initialize(app As MFrameworkApp)
+  overload: MFramework.MEventBus.Initialize*
+  implements:
+  - MFramework.IMFrameworkModule.Initialize(MFramework.MFrameworkApp)
+- uid: MFramework.MEventBus.Shutdown
+  commentId: M:MFramework.MEventBus.Shutdown
+  id: Shutdown
+  parent: MFramework.MEventBus
+  langs:
+  - csharp
+  - vb
+  name: Shutdown()
+  nameWithType: MEventBus.Shutdown()
+  fullName: MFramework.MEventBus.Shutdown()
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 清除全部订阅。
+  example: []
+  syntax:
+    content: public void Shutdown()
+    content.vb: Public Sub Shutdown()
+  overload: MFramework.MEventBus.Shutdown*
+  implements:
+  - MFramework.IMFrameworkModule.Shutdown
+references:
+- uid: MFramework
+  commentId: N:MFramework
+  href: MFramework.html
+  name: MFramework
+  nameWithType: MFramework
+  fullName: MFramework
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: MFramework.IMEventBus
+  commentId: T:MFramework.IMEventBus
+  parent: MFramework
+  href: MFramework.IMEventBus.html
+  name: IMEventBus
+  nameWithType: IMEventBus
+  fullName: MFramework.IMEventBus
+- uid: MFramework.IMFrameworkModule
+  commentId: T:MFramework.IMFrameworkModule
+  parent: MFramework
+  href: MFramework.IMFrameworkModule.html
+  name: IMFrameworkModule
+  nameWithType: IMFrameworkModule
+  fullName: MFramework.IMFrameworkModule
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.ArgumentNullException
+  commentId: T:System.ArgumentNullException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.argumentnullexception
+  name: ArgumentNullException
+  nameWithType: ArgumentNullException
+  fullName: System.ArgumentNullException
+- uid: System.InvalidOperationException
+  commentId: T:System.InvalidOperationException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.invalidoperationexception
+  name: InvalidOperationException
+  nameWithType: InvalidOperationException
+  fullName: System.InvalidOperationException
+- uid: MFramework.MEventBus.Subscribe*
+  commentId: Overload:MFramework.MEventBus.Subscribe
+  href: MFramework.MEventBus.html#MFramework_MEventBus_Subscribe__1_System_Action___0__UnityEngine_Object_
+  name: Subscribe
+  nameWithType: MEventBus.Subscribe
+  fullName: MFramework.MEventBus.Subscribe
+- uid: MFramework.IMEventBus.Subscribe``1(System.Action{{TEvent}},UnityEngine.Object)
+  commentId: M:MFramework.IMEventBus.Subscribe``1(System.Action{``0},UnityEngine.Object)
+  parent: MFramework.IMEventBus
+  definition: MFramework.IMEventBus.Subscribe``1(System.Action{``0},UnityEngine.Object)
+  href: MFramework.IMEventBus.html#MFramework_IMEventBus_Subscribe__1_System_Action___0__UnityEngine_Object_
+  name: Subscribe<TEvent>(Action<TEvent>, Object)
+  nameWithType: IMEventBus.Subscribe<TEvent>(Action<TEvent>, Object)
+  fullName: MFramework.IMEventBus.Subscribe<TEvent>(System.Action<TEvent>, UnityEngine.Object)
+  nameWithType.vb: IMEventBus.Subscribe(Of TEvent)(Action(Of TEvent), Object)
+  fullName.vb: MFramework.IMEventBus.Subscribe(Of TEvent)(System.Action(Of TEvent), UnityEngine.Object)
+  name.vb: Subscribe(Of TEvent)(Action(Of TEvent), Object)
+  spec.csharp:
+  - uid: MFramework.IMEventBus.Subscribe``1(System.Action{``0},UnityEngine.Object)
+    name: Subscribe
+    href: MFramework.IMEventBus.html#MFramework_IMEventBus_Subscribe__1_System_Action___0__UnityEngine_Object_
+  - name: <
+  - name: TEvent
+  - name: '>'
+  - name: (
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - name: TEvent
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: UnityEngine.Object
+    name: Object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: MFramework.IMEventBus.Subscribe``1(System.Action{``0},UnityEngine.Object)
+    name: Subscribe
+    href: MFramework.IMEventBus.html#MFramework_IMEventBus_Subscribe__1_System_Action___0__UnityEngine_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEvent
+  - name: )
+  - name: (
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEvent
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: UnityEngine.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Action{{TEvent}}
+  commentId: T:System.Action{``0}
+  parent: System
+  definition: System.Action`1
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<TEvent>
+  nameWithType: Action<TEvent>
+  fullName: System.Action<TEvent>
+  nameWithType.vb: Action(Of TEvent)
+  fullName.vb: System.Action(Of TEvent)
+  name.vb: Action(Of TEvent)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - name: TEvent
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEvent
+  - name: )
+- uid: UnityEngine.Object
+  commentId: T:UnityEngine.Object
+  parent: UnityEngine
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: UnityEngine.Object
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: MFramework.IMEventBus.Subscribe``1(System.Action{``0},UnityEngine.Object)
+  commentId: M:MFramework.IMEventBus.Subscribe``1(System.Action{``0},UnityEngine.Object)
+  isExternal: true
+  href: MFramework.IMEventBus.html#MFramework_IMEventBus_Subscribe__1_System_Action___0__UnityEngine_Object_
+  name: Subscribe<TEvent>(Action<TEvent>, Object)
+  nameWithType: IMEventBus.Subscribe<TEvent>(Action<TEvent>, Object)
+  fullName: MFramework.IMEventBus.Subscribe<TEvent>(System.Action<TEvent>, UnityEngine.Object)
+  nameWithType.vb: IMEventBus.Subscribe(Of TEvent)(Action(Of TEvent), Object)
+  fullName.vb: MFramework.IMEventBus.Subscribe(Of TEvent)(System.Action(Of TEvent), UnityEngine.Object)
+  name.vb: Subscribe(Of TEvent)(Action(Of TEvent), Object)
+  spec.csharp:
+  - uid: MFramework.IMEventBus.Subscribe``1(System.Action{``0},UnityEngine.Object)
+    name: Subscribe
+    href: MFramework.IMEventBus.html#MFramework_IMEventBus_Subscribe__1_System_Action___0__UnityEngine_Object_
+  - name: <
+  - name: TEvent
+  - name: '>'
+  - name: (
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - name: TEvent
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: UnityEngine.Object
+    name: Object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: MFramework.IMEventBus.Subscribe``1(System.Action{``0},UnityEngine.Object)
+    name: Subscribe
+    href: MFramework.IMEventBus.html#MFramework_IMEventBus_Subscribe__1_System_Action___0__UnityEngine_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEvent
+  - name: )
+  - name: (
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEvent
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: UnityEngine.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Action`1
+  commentId: T:System.Action`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<T>
+  nameWithType: Action<T>
+  fullName: System.Action<T>
+  nameWithType.vb: Action(Of T)
+  fullName.vb: System.Action(Of T)
+  name.vb: Action(Of T)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: UnityEngine
+  commentId: N:UnityEngine
+  isExternal: true
+  name: UnityEngine
+  nameWithType: UnityEngine
+  fullName: UnityEngine
+- uid: MFramework.MEventDispatchException
+  commentId: T:MFramework.MEventDispatchException
+  href: MFramework.MEventDispatchException.html
+  name: MEventDispatchException
+  nameWithType: MEventDispatchException
+  fullName: MFramework.MEventDispatchException
+- uid: MFramework.MEventBus.Publish*
+  commentId: Overload:MFramework.MEventBus.Publish
+  href: MFramework.MEventBus.html#MFramework_MEventBus_Publish__1___0_
+  name: Publish
+  nameWithType: MEventBus.Publish
+  fullName: MFramework.MEventBus.Publish
+- uid: MFramework.IMEventBus.Publish``1({TEvent})
+  commentId: M:MFramework.IMEventBus.Publish``1(``0)
+  parent: MFramework.IMEventBus
+  definition: MFramework.IMEventBus.Publish``1(``0)
+  href: MFramework.IMEventBus.html#MFramework_IMEventBus_Publish__1___0_
+  name: Publish<TEvent>(TEvent)
+  nameWithType: IMEventBus.Publish<TEvent>(TEvent)
+  fullName: MFramework.IMEventBus.Publish<TEvent>(TEvent)
+  nameWithType.vb: IMEventBus.Publish(Of TEvent)(TEvent)
+  fullName.vb: MFramework.IMEventBus.Publish(Of TEvent)(TEvent)
+  name.vb: Publish(Of TEvent)(TEvent)
+  spec.csharp:
+  - uid: MFramework.IMEventBus.Publish``1(``0)
+    name: Publish
+    href: MFramework.IMEventBus.html#MFramework_IMEventBus_Publish__1___0_
+  - name: <
+  - name: TEvent
+  - name: '>'
+  - name: (
+  - name: TEvent
+  - name: )
+  spec.vb:
+  - uid: MFramework.IMEventBus.Publish``1(``0)
+    name: Publish
+    href: MFramework.IMEventBus.html#MFramework_IMEventBus_Publish__1___0_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEvent
+  - name: )
+  - name: (
+  - name: TEvent
+  - name: )
+- uid: '{TEvent}'
+  commentId: '!:TEvent'
+  definition: TEvent
+  name: TEvent
+  nameWithType: TEvent
+  fullName: TEvent
+- uid: MFramework.IMEventBus.Publish``1(``0)
+  commentId: M:MFramework.IMEventBus.Publish``1(``0)
+  href: MFramework.IMEventBus.html#MFramework_IMEventBus_Publish__1___0_
+  name: Publish<TEvent>(TEvent)
+  nameWithType: IMEventBus.Publish<TEvent>(TEvent)
+  fullName: MFramework.IMEventBus.Publish<TEvent>(TEvent)
+  nameWithType.vb: IMEventBus.Publish(Of TEvent)(TEvent)
+  fullName.vb: MFramework.IMEventBus.Publish(Of TEvent)(TEvent)
+  name.vb: Publish(Of TEvent)(TEvent)
+  spec.csharp:
+  - uid: MFramework.IMEventBus.Publish``1(``0)
+    name: Publish
+    href: MFramework.IMEventBus.html#MFramework_IMEventBus_Publish__1___0_
+  - name: <
+  - name: TEvent
+  - name: '>'
+  - name: (
+  - name: TEvent
+  - name: )
+  spec.vb:
+  - uid: MFramework.IMEventBus.Publish``1(``0)
+    name: Publish
+    href: MFramework.IMEventBus.html#MFramework_IMEventBus_Publish__1___0_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEvent
+  - name: )
+  - name: (
+  - name: TEvent
+  - name: )
+- uid: TEvent
+  name: TEvent
+  nameWithType: TEvent
+  fullName: TEvent
+- uid: MFramework.MEventBus.Clear*
+  commentId: Overload:MFramework.MEventBus.Clear
+  href: MFramework.MEventBus.html#MFramework_MEventBus_Clear
+  name: Clear
+  nameWithType: MEventBus.Clear
+  fullName: MFramework.MEventBus.Clear
+- uid: MFramework.IMEventBus.Clear
+  commentId: M:MFramework.IMEventBus.Clear
+  parent: MFramework.IMEventBus
+  href: MFramework.IMEventBus.html#MFramework_IMEventBus_Clear
+  name: Clear()
+  nameWithType: IMEventBus.Clear()
+  fullName: MFramework.IMEventBus.Clear()
+  spec.csharp:
+  - uid: MFramework.IMEventBus.Clear
+    name: Clear
+    href: MFramework.IMEventBus.html#MFramework_IMEventBus_Clear
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: MFramework.IMEventBus.Clear
+    name: Clear
+    href: MFramework.IMEventBus.html#MFramework_IMEventBus_Clear
+  - name: (
+  - name: )
+- uid: MFramework.MEventBus.Initialize*
+  commentId: Overload:MFramework.MEventBus.Initialize
+  href: MFramework.MEventBus.html#MFramework_MEventBus_Initialize_MFramework_MFrameworkApp_
+  name: Initialize
+  nameWithType: MEventBus.Initialize
+  fullName: MFramework.MEventBus.Initialize
+- uid: MFramework.IMFrameworkModule.Initialize(MFramework.MFrameworkApp)
+  commentId: M:MFramework.IMFrameworkModule.Initialize(MFramework.MFrameworkApp)
+  parent: MFramework.IMFrameworkModule
+  href: MFramework.IMFrameworkModule.html#MFramework_IMFrameworkModule_Initialize_MFramework_MFrameworkApp_
+  name: Initialize(MFrameworkApp)
+  nameWithType: IMFrameworkModule.Initialize(MFrameworkApp)
+  fullName: MFramework.IMFrameworkModule.Initialize(MFramework.MFrameworkApp)
+  spec.csharp:
+  - uid: MFramework.IMFrameworkModule.Initialize(MFramework.MFrameworkApp)
+    name: Initialize
+    href: MFramework.IMFrameworkModule.html#MFramework_IMFrameworkModule_Initialize_MFramework_MFrameworkApp_
+  - name: (
+  - uid: MFramework.MFrameworkApp
+    name: MFrameworkApp
+    href: MFramework.MFrameworkApp.html
+  - name: )
+  spec.vb:
+  - uid: MFramework.IMFrameworkModule.Initialize(MFramework.MFrameworkApp)
+    name: Initialize
+    href: MFramework.IMFrameworkModule.html#MFramework_IMFrameworkModule_Initialize_MFramework_MFrameworkApp_
+  - name: (
+  - uid: MFramework.MFrameworkApp
+    name: MFrameworkApp
+    href: MFramework.MFrameworkApp.html
+  - name: )
+- uid: MFramework.MFrameworkApp
+  commentId: T:MFramework.MFrameworkApp
+  parent: MFramework
+  href: MFramework.MFrameworkApp.html
+  name: MFrameworkApp
+  nameWithType: MFrameworkApp
+  fullName: MFramework.MFrameworkApp
+- uid: MFramework.MEventBus.Shutdown*
+  commentId: Overload:MFramework.MEventBus.Shutdown
+  href: MFramework.MEventBus.html#MFramework_MEventBus_Shutdown
+  name: Shutdown
+  nameWithType: MEventBus.Shutdown
+  fullName: MFramework.MEventBus.Shutdown
+- uid: MFramework.IMFrameworkModule.Shutdown
+  commentId: M:MFramework.IMFrameworkModule.Shutdown
+  parent: MFramework.IMFrameworkModule
+  href: MFramework.IMFrameworkModule.html#MFramework_IMFrameworkModule_Shutdown
+  name: Shutdown()
+  nameWithType: IMFrameworkModule.Shutdown()
+  fullName: MFramework.IMFrameworkModule.Shutdown()
+  spec.csharp:
+  - uid: MFramework.IMFrameworkModule.Shutdown
+    name: Shutdown
+    href: MFramework.IMFrameworkModule.html#MFramework_IMFrameworkModule_Shutdown
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: MFramework.IMFrameworkModule.Shutdown
+    name: Shutdown
+    href: MFramework.IMFrameworkModule.html#MFramework_IMFrameworkModule_Shutdown
+  - name: (
+  - name: )

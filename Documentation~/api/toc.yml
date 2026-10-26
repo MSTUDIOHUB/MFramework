@@ -1,0 +1,321 @@
+### YamlMime:TableOfContent
+items:
+- name: API 导览与速查表
+  href: index.md
+- name: 01 Core（核心与生命周期）
+  items:
+  - uid: MFramework.MFrameworkApp
+    name: MFrameworkApp
+    type: Class
+  - uid: MFramework.MGameEntry
+    name: MGameEntry
+    type: Class
+  - uid: MFramework.IMFrameworkModule
+    name: IMFrameworkModule
+    type: Interface
+  - uid: MFramework.IMFrameworkTickable
+    name: IMFrameworkTickable
+    type: Interface
+  - uid: MFramework.IMFrameworkFixedTickable
+    name: IMFrameworkFixedTickable
+    type: Interface
+  - uid: MFramework.IMFrameworkLateTickable
+    name: IMFrameworkLateTickable
+    type: Interface
+  - uid: MFramework.MFrameTime
+    name: MFrameTime
+    type: Struct
+  - uid: MFramework.MDisposableBag
+    name: MDisposableBag
+    type: Class
+  - uid: MFramework.MFrameworkAppState
+    name: MFrameworkAppState
+    type: Enum
+  - uid: MFramework.MFrameworkInitializationException
+    name: MFrameworkInitializationException
+    type: Class
+  - uid: MFramework.MFrameworkShutdownException
+    name: MFrameworkShutdownException
+    type: Class
+- name: 02 Event（零装箱事件总线）
+  items:
+  - uid: MFramework.IMEventBus
+    name: IMEventBus
+    type: Interface
+  - uid: MFramework.MEventBus
+    name: MEventBus
+    type: Class
+  - uid: MFramework.MEventDispatchException
+    name: MEventDispatchException
+    type: Class
+- name: 03 Action（组合动作编排）
+  items:
+  - uid: MFramework.MAction
+    name: MAction
+    type: Class
+  - uid: MFramework.MActionRunner
+    name: MActionRunner
+    type: Class
+  - uid: MFramework.MActionHandle
+    name: MActionHandle
+    type: Class
+  - uid: MFramework.IMActionNode
+    name: IMActionNode
+    type: Interface
+  - uid: MFramework.MActionNode
+    name: MActionNode
+    type: Class
+  - uid: MFramework.MActionStatus
+    name: MActionStatus
+    type: Enum
+  - uid: MFramework.MActionTickResult
+    name: MActionTickResult
+    type: Enum
+  - uid: MFramework.MTimeMode
+    name: MTimeMode
+    type: Enum
+- name: 04 FSM（有限状态机）
+  items:
+  - uid: MFramework.MStateMachine`1
+    name: MStateMachine<TContext>
+    type: Class
+  - uid: MFramework.IMState`1
+    name: IMState<TContext>
+    type: Interface
+- name: 05 Pool（GameObject 对象池）
+  items:
+  - uid: MFramework.IMPool
+    name: IMPool
+    type: Interface
+  - uid: MFramework.MPool
+    name: MPool
+    type: Class
+  - uid: MFramework.MPoolKey
+    name: MPoolKey
+    type: Struct
+  - uid: MFramework.IMPooledGameObject
+    name: IMPooledGameObject
+    type: Interface
+- name: 06 Addressables（资源与租约）
+  items:
+  - uid: MFramework.MAddressables
+    name: MAddressables
+    type: Class
+  - uid: MFramework.MAssetScope
+    name: MAssetScope
+    type: Class
+  - uid: MFramework.IMAddressablesRequest
+    name: IMAddressablesRequest
+    type: Interface
+  - uid: MFramework.MAssetLoadRequest`1
+    name: MAssetLoadRequest<TAsset>
+    type: Class
+  - uid: MFramework.MGameObjectInstantiateRequest
+    name: MGameObjectInstantiateRequest
+    type: Class
+  - uid: MFramework.MAssetDownloadRequest
+    name: MAssetDownloadRequest
+    type: Class
+  - uid: MFramework.MSceneLoadRequest
+    name: MSceneLoadRequest
+    type: Class
+  - uid: MFramework.MSceneUnloadRequest
+    name: MSceneUnloadRequest
+    type: Class
+  - uid: MFramework.MAssetLease`1
+    name: MAssetLease<TAsset>
+    type: Class
+  - uid: MFramework.MGameObjectInstanceLease
+    name: MGameObjectInstanceLease
+    type: Class
+  - uid: MFramework.MSceneLease
+    name: MSceneLease
+    type: Class
+  - uid: MFramework.MAddressablesRequestState
+    name: MAddressablesRequestState
+    type: Enum
+  - uid: MFramework.MAddressablesError
+    name: MAddressablesError
+    type: Class
+- name: 07 SceneFlow（确定性场景切换流）
+  items:
+  - uid: MFramework.MSceneFlow
+    name: MSceneFlow
+    type: Class
+  - uid: MFramework.MSceneFlowPlan
+    name: MSceneFlowPlan
+    type: Class
+  - uid: MFramework.MSceneFlowRequest
+    name: MSceneFlowRequest
+    type: Class
+  - uid: MFramework.MSceneFlowContext
+    name: MSceneFlowContext
+    type: Class
+  - uid: MFramework.MAddressablesSceneFlowBackend
+    name: MAddressablesSceneFlowBackend
+    type: Class
+  - uid: MFramework.IMSceneFlowBackend
+    name: IMSceneFlowBackend
+    type: Interface
+  - uid: MFramework.IMSceneFlowScene
+    name: IMSceneFlowScene
+    type: Interface
+  - uid: MFramework.IMSceneFlowOperation
+    name: IMSceneFlowOperation
+    type: Interface
+  - uid: MFramework.IMSceneFlowLoadOperation
+    name: IMSceneFlowLoadOperation
+    type: Interface
+  - uid: MFramework.MSceneFlowOrder
+    name: MSceneFlowOrder
+    type: Enum
+  - uid: MFramework.MSceneFlowStage
+    name: MSceneFlowStage
+    type: Enum
+  - uid: MFramework.MSceneFlowState
+    name: MSceneFlowState
+    type: Enum
+- name: 08 UI（UGUI 分层与路由）
+  items:
+  - uid: MFramework.MUIRoot
+    name: MUIRoot
+    type: Class
+  - uid: MFramework.MUIService
+    name: MUIService
+    type: Class
+  - uid: MFramework.MUIRouter
+    name: MUIRouter
+    type: Class
+  - uid: MFramework.MUIView
+    name: MUIView
+    type: Class
+  - uid: MFramework.MUIPage
+    name: MUIPage
+    type: Class
+  - uid: MFramework.MUIPopup
+    name: MUIPopup
+    type: Class
+  - uid: MFramework.MUIOverlay
+    name: MUIOverlay
+    type: Class
+  - uid: MFramework.MUIActionButton
+    name: MUIActionButton
+    type: Class
+  - uid: MFramework.MUIAction
+    name: MUIAction
+    type: Enum
+  - uid: MFramework.MUIActionResult
+    name: MUIActionResult
+    type: Struct
+  - uid: MFramework.MUIActionResultType
+    name: MUIActionResultType
+    type: Enum
+  - uid: MFramework.MUIPopupResult
+    name: MUIPopupResult
+    type: Class
+- name: 09 Config（配置与引用校验）
+  items:
+  - uid: MFramework.MConfig
+    name: MConfig
+    type: Class
+  - uid: MFramework.MConfigAsset
+    name: MConfigAsset
+    type: Class
+  - uid: MFramework.MConfigValidationContext
+    name: MConfigValidationContext
+    type: Class
+  - uid: MFramework.MConfigValidationError
+    name: MConfigValidationError
+    type: Struct
+  - uid: MFramework.MConfigRegistrationException
+    name: MConfigRegistrationException
+    type: Class
+- name: 10 Audio（音频与声部池）
+  items:
+  - uid: MFramework.MAudio
+    name: MAudio
+    type: Class
+  - uid: MFramework.MAudioId
+    name: MAudioId
+    type: Struct
+- name: 11 Save（可靠完整快照存档）
+  items:
+  - uid: MFramework.MSave`1
+    name: MSave<T>
+    type: Class
+  - uid: MFramework.MFileSaveStorage
+    name: MFileSaveStorage
+    type: Class
+  - uid: MFramework.MJsonUtilitySaveSerializer`1
+    name: MJsonUtilitySaveSerializer<T>
+    type: Class
+  - uid: MFramework.IMSaveStorage
+    name: IMSaveStorage
+    type: Interface
+  - uid: MFramework.IMSaveSerializer`1
+    name: IMSaveSerializer<T>
+    type: Interface
+  - uid: MFramework.IMSaveMigration
+    name: IMSaveMigration
+    type: Interface
+  - uid: MFramework.MSaveResult`1
+    name: MSaveResult<T>
+    type: Class
+  - uid: MFramework.MSaveMetadata
+    name: MSaveMetadata
+    type: Class
+  - uid: MFramework.MSaveRecoveryToken
+    name: MSaveRecoveryToken
+    type: Class
+  - uid: MFramework.MSaveStatus
+    name: MSaveStatus
+    type: Enum
+  - uid: MFramework.MSaveSource
+    name: MSaveSource
+    type: Enum
+  - uid: MFramework.MSaveStorageException
+    name: MSaveStorageException
+    type: Class
+- name: 12 Random（可恢复确定性随机源）
+  items:
+  - uid: MFramework.MRandom
+    name: MRandom
+    type: Class
+  - uid: MFramework.IMRandomSource
+    name: IMRandomSource
+    type: Interface
+  - uid: MFramework.MRandomState
+    name: MRandomState
+    type: Struct
+- name: 13 Platform（宿主平台桥接）
+  items:
+  - uid: MFramework.MPlatformService
+    name: MPlatformService
+    type: Class
+  - uid: MFramework.IMPlatformBridge
+    name: IMPlatformBridge
+    type: Interface
+  - uid: MFramework.MEditorPlatformBridge
+    name: MEditorPlatformBridge
+    type: Class
+  - uid: MFramework.MPlatformInitializationResult
+    name: MPlatformInitializationResult
+    type: Struct
+- name: 14 Extensions（常用扩展）
+  items:
+  - uid: MFramework.MDisposableExtensions
+    name: MDisposableExtensions
+    type: Class
+  - uid: MFramework.MVectorExtensions
+    name: MVectorExtensions
+    type: Class
+  - uid: MFramework.MRectTransformExtensions
+    name: MRectTransformExtensions
+    type: Class
+  - uid: MFramework.MGameObjectExtensions
+    name: MGameObjectExtensions
+    type: Class
+- uid: MFramework
+  name: MFramework 命名空间总览
+  type: Namespace
+memberLayout: SamePage

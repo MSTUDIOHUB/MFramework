@@ -1,0 +1,844 @@
+### YamlMime:ManagedReference
+items:
+- uid: MFramework.MRandom
+  commentId: T:MFramework.MRandom
+  id: MRandom
+  parent: MFramework
+  children:
+  - MFramework.MRandom.#ctor(MFramework.MRandomState)
+  - MFramework.MRandom.#ctor(System.UInt64,System.UInt64)
+  - MFramework.MRandom.AlgorithmId
+  - MFramework.MRandom.CaptureState
+  - MFramework.MRandom.CreateStream(System.UInt64,System.String)
+  - MFramework.MRandom.NextDouble
+  - MFramework.MRandom.NextInt(System.Int32)
+  - MFramework.MRandom.NextInt(System.Int32,System.Int32)
+  - MFramework.MRandom.NextUInt
+  - MFramework.MRandom.RestoreState(MFramework.MRandomState)
+  - MFramework.MRandom.StateVersion
+  langs:
+  - csharp
+  - vb
+  name: MRandom
+  nameWithType: MRandom
+  fullName: MFramework.MRandom
+  type: Class
+  assemblies:
+  - MStudio.MFramework.Foundation
+  namespace: MFramework
+  summary: 使用固定 PCG-XSH-RR 64/32 算法提供可恢复的独立随机流。
+  remarks: >-
+    同一初始状态、同一调用顺序和同一版本产生相同结果；不同抽样方法消耗的输出数量可能不同。
+
+    本类型不是密码学随机数生成器，不提供防作弊、线程安全或持久化保证。
+
+    调用方负责串行访问，并把捕获状态与对应业务结果一同提交。
+  example: []
+  syntax:
+    content: 'public sealed class MRandom : IMRandomSource'
+    content.vb: Public NotInheritable Class MRandom Implements IMRandomSource
+  inheritance:
+  - System.Object
+  implements:
+  - MFramework.IMRandomSource
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MFramework.MRandom.AlgorithmId
+  commentId: F:MFramework.MRandom.AlgorithmId
+  id: AlgorithmId
+  parent: MFramework.MRandom
+  langs:
+  - csharp
+  - vb
+  name: AlgorithmId
+  nameWithType: MRandom.AlgorithmId
+  fullName: MFramework.MRandom.AlgorithmId
+  type: Field
+  assemblies:
+  - MStudio.MFramework.Foundation
+  namespace: MFramework
+  summary: 此实现接受的算法标识。
+  example: []
+  syntax:
+    content: public const string AlgorithmId = "pcg-xsh-rr-64-32"
+    return:
+      type: System.String
+    content.vb: Public Const AlgorithmId As String = "pcg-xsh-rr-64-32"
+- uid: MFramework.MRandom.StateVersion
+  commentId: F:MFramework.MRandom.StateVersion
+  id: StateVersion
+  parent: MFramework.MRandom
+  langs:
+  - csharp
+  - vb
+  name: StateVersion
+  nameWithType: MRandom.StateVersion
+  fullName: MFramework.MRandom.StateVersion
+  type: Field
+  assemblies:
+  - MStudio.MFramework.Foundation
+  namespace: MFramework
+  summary: 状态布局、播种、区间抽样、双精度抽样及命名流派生规则的当前版本。
+  example: []
+  syntax:
+    content: public const int StateVersion = 1
+    return:
+      type: System.Int32
+    content.vb: Public Const StateVersion As Integer = 1
+- uid: MFramework.MRandom.#ctor(System.UInt64,System.UInt64)
+  commentId: M:MFramework.MRandom.#ctor(System.UInt64,System.UInt64)
+  id: '#ctor(System.UInt64,System.UInt64)'
+  parent: MFramework.MRandom
+  langs:
+  - csharp
+  - vb
+  name: MRandom(ulong, ulong)
+  nameWithType: MRandom.MRandom(ulong, ulong)
+  fullName: MFramework.MRandom.MRandom(ulong, ulong)
+  type: Constructor
+  assemblies:
+  - MStudio.MFramework.Foundation
+  namespace: MFramework
+  summary: 按照 PCG 标准播种过程创建一个随机流。
+  remarks: 显式限制流编号，避免左移时丢弃最高位，导致两个输入悄悄映射到同一增量。
+  example: []
+  syntax:
+    content: public MRandom(ulong seed, ulong sequence = 54)
+    parameters:
+    - id: seed
+      type: System.UInt64
+      description: 初始种子，接受所有 64 位无符号整数。
+    - id: sequence
+      type: System.UInt64
+      description: 流编号，范围为 [0, 2^63 - 1]；默认值为 54。
+    content.vb: Public Sub New(seed As ULong, sequence As ULong = 54)
+  overload: MFramework.MRandom.#ctor*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: 流编号超出 63 位可表示范围。
+  nameWithType.vb: MRandom.New(ULong, ULong)
+  fullName.vb: MFramework.MRandom.New(ULong, ULong)
+  name.vb: New(ULong, ULong)
+- uid: MFramework.MRandom.#ctor(MFramework.MRandomState)
+  commentId: M:MFramework.MRandom.#ctor(MFramework.MRandomState)
+  id: '#ctor(MFramework.MRandomState)'
+  parent: MFramework.MRandom
+  langs:
+  - csharp
+  - vb
+  name: MRandom(MRandomState)
+  nameWithType: MRandom.MRandom(MRandomState)
+  fullName: MFramework.MRandom.MRandom(MFramework.MRandomState)
+  type: Constructor
+  assemblies:
+  - MStudio.MFramework.Foundation
+  namespace: MFramework
+  summary: 从先前捕获的有效状态恢复一个随机流，不额外消耗输出。
+  example: []
+  syntax:
+    content: public MRandom(MRandomState state)
+    parameters:
+    - id: state
+      type: MFramework.MRandomState
+      description: 包含算法、版本、内部状态及增量的完整记录。
+    content.vb: Public Sub New(state As MRandomState)
+  overload: MFramework.MRandom.#ctor*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: 算法或版本不受支持，或增量不是奇数。
+  nameWithType.vb: MRandom.New(MRandomState)
+  fullName.vb: MFramework.MRandom.New(MFramework.MRandomState)
+  name.vb: New(MRandomState)
+- uid: MFramework.MRandom.CreateStream(System.UInt64,System.String)
+  commentId: M:MFramework.MRandom.CreateStream(System.UInt64,System.String)
+  id: CreateStream(System.UInt64,System.String)
+  parent: MFramework.MRandom
+  langs:
+  - csharp
+  - vb
+  name: CreateStream(ulong, string)
+  nameWithType: MRandom.CreateStream(ulong, string)
+  fullName: MFramework.MRandom.CreateStream(ulong, string)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Foundation
+  namespace: MFramework
+  summary: 从主种子和稳定名称派生一个互不共享可变状态的随机流。
+  remarks: >-
+    派生不读取也不推进任何已有生成器。名称按 UTF-16 码元的小端字节使用 FNV-1a 64 位散列，
+
+    不使用运行时的 string.GetHashCode。散列不保证不同名称永不碰撞，也不保证流之间密码学独立。
+  example: []
+  syntax:
+    content: public static MRandom CreateStream(ulong seed, string streamName)
+    parameters:
+    - id: seed
+      type: System.UInt64
+      description: 由应用保存的主种子。
+    - id: streamName
+      type: System.String
+      description: 非空且非全空白的稳定名称，区分大小写，不进行 Unicode 规范化。
+    return:
+      type: MFramework.MRandom
+      description: 新生成器；相同种子、名称及版本得到相同序列。
+    content.vb: Public Shared Function CreateStream(seed As ULong, streamName As String) As MRandom
+  overload: MFramework.MRandom.CreateStream*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: 名称为 null、空字符串或全部为空白。
+  nameWithType.vb: MRandom.CreateStream(ULong, String)
+  fullName.vb: MFramework.MRandom.CreateStream(ULong, String)
+  name.vb: CreateStream(ULong, String)
+- uid: MFramework.MRandom.CaptureState
+  commentId: M:MFramework.MRandom.CaptureState
+  id: CaptureState
+  parent: MFramework.MRandom
+  langs:
+  - csharp
+  - vb
+  name: CaptureState()
+  nameWithType: MRandom.CaptureState()
+  fullName: MFramework.MRandom.CaptureState()
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Foundation
+  namespace: MFramework
+  summary: 捕获当前流的完整状态，不推进生成器。
+  example: []
+  syntax:
+    content: public MRandomState CaptureState()
+    return:
+      type: MFramework.MRandomState
+      description: 可以由应用与业务快照共同序列化的独立值副本。
+    content.vb: Public Function CaptureState() As MRandomState
+  overload: MFramework.MRandom.CaptureState*
+- uid: MFramework.MRandom.RestoreState(MFramework.MRandomState)
+  commentId: M:MFramework.MRandom.RestoreState(MFramework.MRandomState)
+  id: RestoreState(MFramework.MRandomState)
+  parent: MFramework.MRandom
+  langs:
+  - csharp
+  - vb
+  name: RestoreState(MRandomState)
+  nameWithType: MRandom.RestoreState(MRandomState)
+  fullName: MFramework.MRandom.RestoreState(MFramework.MRandomState)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Foundation
+  namespace: MFramework
+  summary: 校验并恢复状态；校验失败不会改变当前流。
+  remarks: 此方法不会自动迁移旧版本，也不会在无效状态时重新播种，以免静默改变游戏结果。
+  example: []
+  syntax:
+    content: public void RestoreState(MRandomState state)
+    parameters:
+    - id: state
+      type: MFramework.MRandomState
+      description: 先前捕获或无损反序列化得到的状态。
+    content.vb: Public Sub RestoreState(state As MRandomState)
+  overload: MFramework.MRandom.RestoreState*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: 算法或版本不受支持，或增量不是奇数。
+- uid: MFramework.MRandom.NextUInt
+  commentId: M:MFramework.MRandom.NextUInt
+  id: NextUInt
+  parent: MFramework.MRandom
+  langs:
+  - csharp
+  - vb
+  name: NextUInt()
+  nameWithType: MRandom.NextUInt()
+  fullName: MFramework.MRandom.NextUInt()
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Foundation
+  namespace: MFramework
+  summary: 取得一个覆盖全部 32 位取值的无符号整数。
+  example: []
+  syntax:
+    content: public uint NextUInt()
+    return:
+      type: System.UInt32
+      description: 范围为 [0, 4294967295]，两端均可能取得。
+    content.vb: Public Function NextUInt() As UInteger
+  overload: MFramework.MRandom.NextUInt*
+  implements:
+  - MFramework.IMRandomSource.NextUInt
+- uid: MFramework.MRandom.NextInt(System.Int32)
+  commentId: M:MFramework.MRandom.NextInt(System.Int32)
+  id: NextInt(System.Int32)
+  parent: MFramework.MRandom
+  langs:
+  - csharp
+  - vb
+  name: NextInt(int)
+  nameWithType: MRandom.NextInt(int)
+  fullName: MFramework.MRandom.NextInt(int)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Foundation
+  namespace: MFramework
+  summary: 取得从零开始、均匀分布的有界整数。
+  example: []
+  syntax:
+    content: public int NextInt(int maxExclusive)
+    parameters:
+    - id: maxExclusive
+      type: System.Int32
+      description: 不包含的上界，必须大于零。
+    return:
+      type: System.Int32
+      description: 范围为 [0, <code class="paramref">maxExclusive</code>) 的整数。
+    content.vb: Public Function NextInt(maxExclusive As Integer) As Integer
+  overload: MFramework.MRandom.NextInt*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: 上界不大于零。
+  implements:
+  - MFramework.IMRandomSource.NextInt(System.Int32)
+  nameWithType.vb: MRandom.NextInt(Integer)
+  fullName.vb: MFramework.MRandom.NextInt(Integer)
+  name.vb: NextInt(Integer)
+- uid: MFramework.MRandom.NextInt(System.Int32,System.Int32)
+  commentId: M:MFramework.MRandom.NextInt(System.Int32,System.Int32)
+  id: NextInt(System.Int32,System.Int32)
+  parent: MFramework.MRandom
+  langs:
+  - csharp
+  - vb
+  name: NextInt(int, int)
+  nameWithType: MRandom.NextInt(int, int)
+  fullName: MFramework.MRandom.NextInt(int, int)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Foundation
+  namespace: MFramework
+  summary: 取得指定区间内均匀分布的整数。
+  example: []
+  syntax:
+    content: public int NextInt(int minInclusive, int maxExclusive)
+    parameters:
+    - id: minInclusive
+      type: System.Int32
+      description: 包含的下界。
+    - id: maxExclusive
+      type: System.Int32
+      description: 不包含的上界，必须严格大于下界。
+    return:
+      type: System.Int32
+      description: 范围为 [<code class="paramref">minInclusive</code>, <code class="paramref">maxExclusive</code>) 的整数。
+    content.vb: Public Function NextInt(minInclusive As Integer, maxExclusive As Integer) As Integer
+  overload: MFramework.MRandom.NextInt*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: 上界不大于下界。
+  implements:
+  - MFramework.IMRandomSource.NextInt(System.Int32,System.Int32)
+  nameWithType.vb: MRandom.NextInt(Integer, Integer)
+  fullName.vb: MFramework.MRandom.NextInt(Integer, Integer)
+  name.vb: NextInt(Integer, Integer)
+- uid: MFramework.MRandom.NextDouble
+  commentId: M:MFramework.MRandom.NextDouble
+  id: NextDouble
+  parent: MFramework.MRandom
+  langs:
+  - csharp
+  - vb
+  name: NextDouble()
+  nameWithType: MRandom.NextDouble()
+  fullName: MFramework.MRandom.NextDouble()
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Foundation
+  namespace: MFramework
+  summary: 取得大于或等于零、小于一的双精度随机数。
+  remarks: 固定消耗两个 32 位输出，组合为 53 位有效数，再除以 2^53。
+  example: []
+  syntax:
+    content: public double NextDouble()
+    return:
+      type: System.Double
+      description: 范围为 [0, 1)，不会返回 1、NaN 或无穷大。
+    content.vb: Public Function NextDouble() As Double
+  overload: MFramework.MRandom.NextDouble*
+  implements:
+  - MFramework.IMRandomSource.NextDouble
+references:
+- uid: MFramework
+  commentId: N:MFramework
+  href: MFramework.html
+  name: MFramework
+  nameWithType: MFramework
+  fullName: MFramework
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: MFramework.IMRandomSource
+  commentId: T:MFramework.IMRandomSource
+  parent: MFramework
+  href: MFramework.IMRandomSource.html
+  name: IMRandomSource
+  nameWithType: IMRandomSource
+  fullName: MFramework.IMRandomSource
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.ArgumentOutOfRangeException
+  commentId: T:System.ArgumentOutOfRangeException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.argumentoutofrangeexception
+  name: ArgumentOutOfRangeException
+  nameWithType: ArgumentOutOfRangeException
+  fullName: System.ArgumentOutOfRangeException
+- uid: MFramework.MRandom.#ctor*
+  commentId: Overload:MFramework.MRandom.#ctor
+  href: MFramework.MRandom.html#MFramework_MRandom__ctor_System_UInt64_System_UInt64_
+  name: MRandom
+  nameWithType: MRandom.MRandom
+  fullName: MFramework.MRandom.MRandom
+  nameWithType.vb: MRandom.New
+  fullName.vb: MFramework.MRandom.New
+  name.vb: New
+- uid: System.UInt64
+  commentId: T:System.UInt64
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.uint64
+  name: ulong
+  nameWithType: ulong
+  fullName: ulong
+  nameWithType.vb: ULong
+  fullName.vb: ULong
+  name.vb: ULong
+- uid: System.ArgumentException
+  commentId: T:System.ArgumentException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.argumentexception
+  name: ArgumentException
+  nameWithType: ArgumentException
+  fullName: System.ArgumentException
+- uid: MFramework.MRandomState
+  commentId: T:MFramework.MRandomState
+  parent: MFramework
+  href: MFramework.MRandomState.html
+  name: MRandomState
+  nameWithType: MRandomState
+  fullName: MFramework.MRandomState
+- uid: MFramework.MRandom.CreateStream*
+  commentId: Overload:MFramework.MRandom.CreateStream
+  href: MFramework.MRandom.html#MFramework_MRandom_CreateStream_System_UInt64_System_String_
+  name: CreateStream
+  nameWithType: MRandom.CreateStream
+  fullName: MFramework.MRandom.CreateStream
+- uid: MFramework.MRandom
+  commentId: T:MFramework.MRandom
+  parent: MFramework
+  href: MFramework.MRandom.html
+  name: MRandom
+  nameWithType: MRandom
+  fullName: MFramework.MRandom
+- uid: MFramework.MRandom.CaptureState*
+  commentId: Overload:MFramework.MRandom.CaptureState
+  href: MFramework.MRandom.html#MFramework_MRandom_CaptureState
+  name: CaptureState
+  nameWithType: MRandom.CaptureState
+  fullName: MFramework.MRandom.CaptureState
+- uid: MFramework.MRandom.RestoreState*
+  commentId: Overload:MFramework.MRandom.RestoreState
+  href: MFramework.MRandom.html#MFramework_MRandom_RestoreState_MFramework_MRandomState_
+  name: RestoreState
+  nameWithType: MRandom.RestoreState
+  fullName: MFramework.MRandom.RestoreState
+- uid: MFramework.MRandom.NextUInt*
+  commentId: Overload:MFramework.MRandom.NextUInt
+  href: MFramework.MRandom.html#MFramework_MRandom_NextUInt
+  name: NextUInt
+  nameWithType: MRandom.NextUInt
+  fullName: MFramework.MRandom.NextUInt
+- uid: MFramework.IMRandomSource.NextUInt
+  commentId: M:MFramework.IMRandomSource.NextUInt
+  parent: MFramework.IMRandomSource
+  href: MFramework.IMRandomSource.html#MFramework_IMRandomSource_NextUInt
+  name: NextUInt()
+  nameWithType: IMRandomSource.NextUInt()
+  fullName: MFramework.IMRandomSource.NextUInt()
+  spec.csharp:
+  - uid: MFramework.IMRandomSource.NextUInt
+    name: NextUInt
+    href: MFramework.IMRandomSource.html#MFramework_IMRandomSource_NextUInt
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: MFramework.IMRandomSource.NextUInt
+    name: NextUInt
+    href: MFramework.IMRandomSource.html#MFramework_IMRandomSource_NextUInt
+  - name: (
+  - name: )
+- uid: System.UInt32
+  commentId: T:System.UInt32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.uint32
+  name: uint
+  nameWithType: uint
+  fullName: uint
+  nameWithType.vb: UInteger
+  fullName.vb: UInteger
+  name.vb: UInteger
+- uid: MFramework.MRandom.NextInt*
+  commentId: Overload:MFramework.MRandom.NextInt
+  href: MFramework.MRandom.html#MFramework_MRandom_NextInt_System_Int32_
+  name: NextInt
+  nameWithType: MRandom.NextInt
+  fullName: MFramework.MRandom.NextInt
+- uid: MFramework.IMRandomSource.NextInt(System.Int32)
+  commentId: M:MFramework.IMRandomSource.NextInt(System.Int32)
+  parent: MFramework.IMRandomSource
+  isExternal: true
+  href: MFramework.IMRandomSource.html#MFramework_IMRandomSource_NextInt_System_Int32_
+  name: NextInt(int)
+  nameWithType: IMRandomSource.NextInt(int)
+  fullName: MFramework.IMRandomSource.NextInt(int)
+  nameWithType.vb: IMRandomSource.NextInt(Integer)
+  fullName.vb: MFramework.IMRandomSource.NextInt(Integer)
+  name.vb: NextInt(Integer)
+  spec.csharp:
+  - uid: MFramework.IMRandomSource.NextInt(System.Int32)
+    name: NextInt
+    href: MFramework.IMRandomSource.html#MFramework_IMRandomSource_NextInt_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: MFramework.IMRandomSource.NextInt(System.Int32)
+    name: NextInt
+    href: MFramework.IMRandomSource.html#MFramework_IMRandomSource_NextInt_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: MFramework.IMRandomSource.NextInt(System.Int32,System.Int32)
+  commentId: M:MFramework.IMRandomSource.NextInt(System.Int32,System.Int32)
+  parent: MFramework.IMRandomSource
+  isExternal: true
+  href: MFramework.IMRandomSource.html#MFramework_IMRandomSource_NextInt_System_Int32_System_Int32_
+  name: NextInt(int, int)
+  nameWithType: IMRandomSource.NextInt(int, int)
+  fullName: MFramework.IMRandomSource.NextInt(int, int)
+  nameWithType.vb: IMRandomSource.NextInt(Integer, Integer)
+  fullName.vb: MFramework.IMRandomSource.NextInt(Integer, Integer)
+  name.vb: NextInt(Integer, Integer)
+  spec.csharp:
+  - uid: MFramework.IMRandomSource.NextInt(System.Int32,System.Int32)
+    name: NextInt
+    href: MFramework.IMRandomSource.html#MFramework_IMRandomSource_NextInt_System_Int32_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: MFramework.IMRandomSource.NextInt(System.Int32,System.Int32)
+    name: NextInt
+    href: MFramework.IMRandomSource.html#MFramework_IMRandomSource_NextInt_System_Int32_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: MFramework.MRandom.NextDouble*
+  commentId: Overload:MFramework.MRandom.NextDouble
+  href: MFramework.MRandom.html#MFramework_MRandom_NextDouble
+  name: NextDouble
+  nameWithType: MRandom.NextDouble
+  fullName: MFramework.MRandom.NextDouble
+- uid: MFramework.IMRandomSource.NextDouble
+  commentId: M:MFramework.IMRandomSource.NextDouble
+  parent: MFramework.IMRandomSource
+  href: MFramework.IMRandomSource.html#MFramework_IMRandomSource_NextDouble
+  name: NextDouble()
+  nameWithType: IMRandomSource.NextDouble()
+  fullName: MFramework.IMRandomSource.NextDouble()
+  spec.csharp:
+  - uid: MFramework.IMRandomSource.NextDouble
+    name: NextDouble
+    href: MFramework.IMRandomSource.html#MFramework_IMRandomSource_NextDouble
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: MFramework.IMRandomSource.NextDouble
+    name: NextDouble
+    href: MFramework.IMRandomSource.html#MFramework_IMRandomSource_NextDouble
+  - name: (
+  - name: )
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.double
+  name: double
+  nameWithType: double
+  fullName: double
+  nameWithType.vb: Double
+  fullName.vb: Double
+  name.vb: Double

@@ -1,0 +1,78 @@
+### YamlMime:ManagedReference
+items:
+- uid: MFramework.MTimeMode
+  commentId: T:MFramework.MTimeMode
+  id: MTimeMode
+  parent: MFramework
+  children:
+  - MFramework.MTimeMode.Scaled
+  - MFramework.MTimeMode.Unscaled
+  langs:
+  - csharp
+  - vb
+  name: MTimeMode
+  nameWithType: MTimeMode
+  fullName: MFramework.MTimeMode
+  type: Enum
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 选择使用哪一种 Unity 帧时间推进动作。
+  example: []
+  syntax:
+    content: public enum MTimeMode
+    content.vb: Public Enum MTimeMode
+- uid: MFramework.MTimeMode.Scaled
+  commentId: F:MFramework.MTimeMode.Scaled
+  id: Scaled
+  parent: MFramework.MTimeMode
+  langs:
+  - csharp
+  - vb
+  name: Scaled
+  nameWithType: MTimeMode.Scaled
+  fullName: MFramework.MTimeMode.Scaled
+  type: Field
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 使用缩放时间，因此会受到 <code>Time.timeScale</code> 影响。
+  example: []
+  syntax:
+    content: Scaled = 0
+    return:
+      type: MFramework.MTimeMode
+- uid: MFramework.MTimeMode.Unscaled
+  commentId: F:MFramework.MTimeMode.Unscaled
+  id: Unscaled
+  parent: MFramework.MTimeMode
+  langs:
+  - csharp
+  - vb
+  name: Unscaled
+  nameWithType: MTimeMode.Unscaled
+  fullName: MFramework.MTimeMode.Unscaled
+  type: Field
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 使用非缩放时间，因此游戏暂停时仍可继续运行。
+  example: []
+  syntax:
+    content: Unscaled = 1
+    return:
+      type: MFramework.MTimeMode
+references:
+- uid: MFramework
+  commentId: N:MFramework
+  href: MFramework.html
+  name: MFramework
+  nameWithType: MFramework
+  fullName: MFramework
+- uid: MFramework.MTimeMode
+  commentId: T:MFramework.MTimeMode
+  parent: MFramework
+  href: MFramework.MTimeMode.html
+  name: MTimeMode
+  nameWithType: MTimeMode
+  fullName: MFramework.MTimeMode

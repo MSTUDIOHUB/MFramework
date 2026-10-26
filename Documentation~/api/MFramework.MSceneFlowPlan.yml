@@ -1,0 +1,908 @@
+### YamlMime:ManagedReference
+items:
+- uid: MFramework.MSceneFlowPlan
+  commentId: T:MFramework.MSceneFlowPlan
+  id: MSceneFlowPlan
+  parent: MFramework
+  children:
+  - MFramework.MSceneFlowPlan.#ctor(System.Object)
+  - MFramework.MSceneFlowPlan.Arguments
+  - MFramework.MSceneFlowPlan.At(MFramework.MSceneFlowStage,System.Func{MFramework.IMActionNode},System.String)
+  - MFramework.MSceneFlowPlan.At(MFramework.MSceneFlowStage,System.Func{MFramework.MSceneFlowContext,MFramework.IMActionNode},System.String)
+  - MFramework.MSceneFlowPlan.CommandTimeMode
+  - MFramework.MSceneFlowPlan.Do(MFramework.MSceneFlowStage,System.Action{MFramework.MSceneFlowContext},System.String)
+  - MFramework.MSceneFlowPlan.IsFrozen
+  - MFramework.MSceneFlowPlan.Order
+  - MFramework.MSceneFlowPlan.Priority
+  - MFramework.MSceneFlowPlan.SetActiveScene
+  - MFramework.MSceneFlowPlan.TargetKey
+  langs:
+  - csharp
+  - vb
+  name: MSceneFlowPlan
+  nameWithType: MSceneFlowPlan
+  fullName: MFramework.MSceneFlowPlan
+  type: Class
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 配置一次可重复执行的内容场景切换，以及各确定性阶段要运行的命令。
+  remarks: >-
+    计划第一次交给 <xref href="MFramework.MSceneFlow.Transition(MFramework.MSceneFlowPlan)" data-throw-if-not-resolved="false"></xref> 时会被冻结。每个命令工厂必须在每次执行时
+
+    返回一个全新的 <xref href="MFramework.IMActionNode" data-throw-if-not-resolved="false"></xref>；同一阶段严格按注册顺序串行执行。
+  example: []
+  syntax:
+    content: public sealed class MSceneFlowPlan
+    content.vb: Public NotInheritable Class MSceneFlowPlan
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MFramework.MSceneFlowPlan.#ctor(System.Object)
+  commentId: M:MFramework.MSceneFlowPlan.#ctor(System.Object)
+  id: '#ctor(System.Object)'
+  parent: MFramework.MSceneFlowPlan
+  langs:
+  - csharp
+  - vb
+  name: MSceneFlowPlan(object)
+  nameWithType: MSceneFlowPlan.MSceneFlowPlan(object)
+  fullName: MFramework.MSceneFlowPlan.MSceneFlowPlan(object)
+  type: Constructor
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 创建一个以 Addressables 地址、AssetReference 或后端自定义键为目标的计划。
+  example: []
+  syntax:
+    content: public MSceneFlowPlan(object targetKey)
+    parameters:
+    - id: targetKey
+      type: System.Object
+      description: 目标场景键，不能为 null 或空字符串。
+    content.vb: Public Sub New(targetKey As Object)
+  overload: MFramework.MSceneFlowPlan.#ctor*
+  nameWithType.vb: MSceneFlowPlan.New(Object)
+  fullName.vb: MFramework.MSceneFlowPlan.New(Object)
+  name.vb: New(Object)
+- uid: MFramework.MSceneFlowPlan.TargetKey
+  commentId: P:MFramework.MSceneFlowPlan.TargetKey
+  id: TargetKey
+  parent: MFramework.MSceneFlowPlan
+  langs:
+  - csharp
+  - vb
+  name: TargetKey
+  nameWithType: MSceneFlowPlan.TargetKey
+  fullName: MFramework.MSceneFlowPlan.TargetKey
+  type: Property
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 获取目标场景键。
+  example: []
+  syntax:
+    content: public object TargetKey { get; }
+    parameters: []
+    return:
+      type: System.Object
+    content.vb: Public ReadOnly Property TargetKey As Object
+  overload: MFramework.MSceneFlowPlan.TargetKey*
+- uid: MFramework.MSceneFlowPlan.IsFrozen
+  commentId: P:MFramework.MSceneFlowPlan.IsFrozen
+  id: IsFrozen
+  parent: MFramework.MSceneFlowPlan
+  langs:
+  - csharp
+  - vb
+  name: IsFrozen
+  nameWithType: MSceneFlowPlan.IsFrozen
+  fullName: MFramework.MSceneFlowPlan.IsFrozen
+  type: Property
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 获取计划是否已经被冻结。
+  example: []
+  syntax:
+    content: public bool IsFrozen { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IsFrozen As Boolean
+  overload: MFramework.MSceneFlowPlan.IsFrozen*
+- uid: MFramework.MSceneFlowPlan.Order
+  commentId: P:MFramework.MSceneFlowPlan.Order
+  id: Order
+  parent: MFramework.MSceneFlowPlan
+  langs:
+  - csharp
+  - vb
+  name: Order
+  nameWithType: MSceneFlowPlan.Order
+  fullName: MFramework.MSceneFlowPlan.Order
+  type: Property
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 获取或设置加载与卸载顺序；默认先加载后卸载。
+  example: []
+  syntax:
+    content: public MSceneFlowOrder Order { get; set; }
+    parameters: []
+    return:
+      type: MFramework.MSceneFlowOrder
+    content.vb: Public Property Order As MSceneFlowOrder
+  overload: MFramework.MSceneFlowPlan.Order*
+- uid: MFramework.MSceneFlowPlan.CommandTimeMode
+  commentId: P:MFramework.MSceneFlowPlan.CommandTimeMode
+  id: CommandTimeMode
+  parent: MFramework.MSceneFlowPlan
+  langs:
+  - csharp
+  - vb
+  name: CommandTimeMode
+  nameWithType: MSceneFlowPlan.CommandTimeMode
+  fullName: MFramework.MSceneFlowPlan.CommandTimeMode
+  type: Property
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 获取或设置用户命令使用的时间域；默认使用非缩放时间。
+  example: []
+  syntax:
+    content: public MTimeMode CommandTimeMode { get; set; }
+    parameters: []
+    return:
+      type: MFramework.MTimeMode
+    content.vb: Public Property CommandTimeMode As MTimeMode
+  overload: MFramework.MSceneFlowPlan.CommandTimeMode*
+- uid: MFramework.MSceneFlowPlan.Priority
+  commentId: P:MFramework.MSceneFlowPlan.Priority
+  id: Priority
+  parent: MFramework.MSceneFlowPlan
+  langs:
+  - csharp
+  - vb
+  name: Priority
+  nameWithType: MSceneFlowPlan.Priority
+  fullName: MFramework.MSceneFlowPlan.Priority
+  type: Property
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 获取或设置底层场景加载优先级。
+  example: []
+  syntax:
+    content: public int Priority { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Priority As Integer
+  overload: MFramework.MSceneFlowPlan.Priority*
+- uid: MFramework.MSceneFlowPlan.SetActiveScene
+  commentId: P:MFramework.MSceneFlowPlan.SetActiveScene
+  id: SetActiveScene
+  parent: MFramework.MSceneFlowPlan
+  langs:
+  - csharp
+  - vb
+  name: SetActiveScene
+  nameWithType: MSceneFlowPlan.SetActiveScene
+  fullName: MFramework.MSceneFlowPlan.SetActiveScene
+  type: Property
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 获取或设置激活后是否把目标设为 Unity Active Scene；默认设置。
+  example: []
+  syntax:
+    content: public bool SetActiveScene { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property SetActiveScene As Boolean
+  overload: MFramework.MSceneFlowPlan.SetActiveScene*
+- uid: MFramework.MSceneFlowPlan.Arguments
+  commentId: P:MFramework.MSceneFlowPlan.Arguments
+  id: Arguments
+  parent: MFramework.MSceneFlowPlan
+  langs:
+  - csharp
+  - vb
+  name: Arguments
+  nameWithType: MSceneFlowPlan.Arguments
+  fullName: MFramework.MSceneFlowPlan.Arguments
+  type: Property
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 获取或设置传给所有阶段命令的项目自定义参数。
+  example: []
+  syntax:
+    content: public object Arguments { get; set; }
+    parameters: []
+    return:
+      type: System.Object
+    content.vb: Public Property Arguments As Object
+  overload: MFramework.MSceneFlowPlan.Arguments*
+- uid: MFramework.MSceneFlowPlan.At(MFramework.MSceneFlowStage,System.Func{MFramework.MSceneFlowContext,MFramework.IMActionNode},System.String)
+  commentId: M:MFramework.MSceneFlowPlan.At(MFramework.MSceneFlowStage,System.Func{MFramework.MSceneFlowContext,MFramework.IMActionNode},System.String)
+  id: At(MFramework.MSceneFlowStage,System.Func{MFramework.MSceneFlowContext,MFramework.IMActionNode},System.String)
+  parent: MFramework.MSceneFlowPlan
+  langs:
+  - csharp
+  - vb
+  name: At(MSceneFlowStage, Func<MSceneFlowContext, IMActionNode>, string)
+  nameWithType: MSceneFlowPlan.At(MSceneFlowStage, Func<MSceneFlowContext, IMActionNode>, string)
+  fullName: MFramework.MSceneFlowPlan.At(MFramework.MSceneFlowStage, System.Func<MFramework.MSceneFlowContext, MFramework.IMActionNode>, string)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 在一个可执行命令的阶段注册动作工厂。
+  example: []
+  syntax:
+    content: public MSceneFlowPlan At(MSceneFlowStage stage, Func<MSceneFlowContext, IMActionNode> commandFactory, string name = null)
+    parameters:
+    - id: stage
+      type: MFramework.MSceneFlowStage
+      description: Before/After 或 Finally 命令点。
+    - id: commandFactory
+      type: System.Func{MFramework.MSceneFlowContext,MFramework.IMActionNode}
+      description: 接收当前上下文并返回全新动作节点的工厂。
+    - id: name
+      type: System.String
+      description: 可选诊断名称；省略时使用注册序号。
+    return:
+      type: MFramework.MSceneFlowPlan
+      description: 当前计划，便于链式配置。
+    content.vb: Public Function At(stage As MSceneFlowStage, commandFactory As Func(Of MSceneFlowContext, IMActionNode), name As String = Nothing) As MSceneFlowPlan
+  overload: MFramework.MSceneFlowPlan.At*
+  nameWithType.vb: MSceneFlowPlan.At(MSceneFlowStage, Func(Of MSceneFlowContext, IMActionNode), String)
+  fullName.vb: MFramework.MSceneFlowPlan.At(MFramework.MSceneFlowStage, System.Func(Of MFramework.MSceneFlowContext, MFramework.IMActionNode), String)
+  name.vb: At(MSceneFlowStage, Func(Of MSceneFlowContext, IMActionNode), String)
+- uid: MFramework.MSceneFlowPlan.At(MFramework.MSceneFlowStage,System.Func{MFramework.IMActionNode},System.String)
+  commentId: M:MFramework.MSceneFlowPlan.At(MFramework.MSceneFlowStage,System.Func{MFramework.IMActionNode},System.String)
+  id: At(MFramework.MSceneFlowStage,System.Func{MFramework.IMActionNode},System.String)
+  parent: MFramework.MSceneFlowPlan
+  langs:
+  - csharp
+  - vb
+  name: At(MSceneFlowStage, Func<IMActionNode>, string)
+  nameWithType: MSceneFlowPlan.At(MSceneFlowStage, Func<IMActionNode>, string)
+  fullName: MFramework.MSceneFlowPlan.At(MFramework.MSceneFlowStage, System.Func<MFramework.IMActionNode>, string)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 注册不需要读取场景上下文的动作工厂。
+  example: []
+  syntax:
+    content: public MSceneFlowPlan At(MSceneFlowStage stage, Func<IMActionNode> commandFactory, string name = null)
+    parameters:
+    - id: stage
+      type: MFramework.MSceneFlowStage
+    - id: commandFactory
+      type: System.Func{MFramework.IMActionNode}
+    - id: name
+      type: System.String
+    return:
+      type: MFramework.MSceneFlowPlan
+    content.vb: Public Function At(stage As MSceneFlowStage, commandFactory As Func(Of IMActionNode), name As String = Nothing) As MSceneFlowPlan
+  overload: MFramework.MSceneFlowPlan.At*
+  nameWithType.vb: MSceneFlowPlan.At(MSceneFlowStage, Func(Of IMActionNode), String)
+  fullName.vb: MFramework.MSceneFlowPlan.At(MFramework.MSceneFlowStage, System.Func(Of MFramework.IMActionNode), String)
+  name.vb: At(MSceneFlowStage, Func(Of IMActionNode), String)
+- uid: MFramework.MSceneFlowPlan.Do(MFramework.MSceneFlowStage,System.Action{MFramework.MSceneFlowContext},System.String)
+  commentId: M:MFramework.MSceneFlowPlan.Do(MFramework.MSceneFlowStage,System.Action{MFramework.MSceneFlowContext},System.String)
+  id: Do(MFramework.MSceneFlowStage,System.Action{MFramework.MSceneFlowContext},System.String)
+  parent: MFramework.MSceneFlowPlan
+  langs:
+  - csharp
+  - vb
+  name: Do(MSceneFlowStage, Action<MSceneFlowContext>, string)
+  nameWithType: MSceneFlowPlan.Do(MSceneFlowStage, Action<MSceneFlowContext>, string)
+  fullName: MFramework.MSceneFlowPlan.Do(MFramework.MSceneFlowStage, System.Action<MFramework.MSceneFlowContext>, string)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 注册一个在指定阶段立即执行的同步回调。
+  example: []
+  syntax:
+    content: public MSceneFlowPlan Do(MSceneFlowStage stage, Action<MSceneFlowContext> command, string name = null)
+    parameters:
+    - id: stage
+      type: MFramework.MSceneFlowStage
+    - id: command
+      type: System.Action{MFramework.MSceneFlowContext}
+    - id: name
+      type: System.String
+    return:
+      type: MFramework.MSceneFlowPlan
+    content.vb: Public Function [Do](stage As MSceneFlowStage, command As Action(Of MSceneFlowContext), name As String = Nothing) As MSceneFlowPlan
+  overload: MFramework.MSceneFlowPlan.Do*
+  nameWithType.vb: MSceneFlowPlan.Do(MSceneFlowStage, Action(Of MSceneFlowContext), String)
+  fullName.vb: MFramework.MSceneFlowPlan.Do(MFramework.MSceneFlowStage, System.Action(Of MFramework.MSceneFlowContext), String)
+  name.vb: Do(MSceneFlowStage, Action(Of MSceneFlowContext), String)
+references:
+- uid: MFramework.MSceneFlow.Transition(MFramework.MSceneFlowPlan)
+  commentId: M:MFramework.MSceneFlow.Transition(MFramework.MSceneFlowPlan)
+  href: MFramework.MSceneFlow.html#MFramework_MSceneFlow_Transition_MFramework_MSceneFlowPlan_
+  name: Transition(MSceneFlowPlan)
+  nameWithType: MSceneFlow.Transition(MSceneFlowPlan)
+  fullName: MFramework.MSceneFlow.Transition(MFramework.MSceneFlowPlan)
+  spec.csharp:
+  - uid: MFramework.MSceneFlow.Transition(MFramework.MSceneFlowPlan)
+    name: Transition
+    href: MFramework.MSceneFlow.html#MFramework_MSceneFlow_Transition_MFramework_MSceneFlowPlan_
+  - name: (
+  - uid: MFramework.MSceneFlowPlan
+    name: MSceneFlowPlan
+    href: MFramework.MSceneFlowPlan.html
+  - name: )
+  spec.vb:
+  - uid: MFramework.MSceneFlow.Transition(MFramework.MSceneFlowPlan)
+    name: Transition
+    href: MFramework.MSceneFlow.html#MFramework_MSceneFlow_Transition_MFramework_MSceneFlowPlan_
+  - name: (
+  - uid: MFramework.MSceneFlowPlan
+    name: MSceneFlowPlan
+    href: MFramework.MSceneFlowPlan.html
+  - name: )
+- uid: MFramework.IMActionNode
+  commentId: T:MFramework.IMActionNode
+  parent: MFramework
+  href: MFramework.IMActionNode.html
+  name: IMActionNode
+  nameWithType: IMActionNode
+  fullName: MFramework.IMActionNode
+- uid: MFramework
+  commentId: N:MFramework
+  href: MFramework.html
+  name: MFramework
+  nameWithType: MFramework
+  fullName: MFramework
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MFramework.MSceneFlowPlan.#ctor*
+  commentId: Overload:MFramework.MSceneFlowPlan.#ctor
+  href: MFramework.MSceneFlowPlan.html#MFramework_MSceneFlowPlan__ctor_System_Object_
+  name: MSceneFlowPlan
+  nameWithType: MSceneFlowPlan.MSceneFlowPlan
+  fullName: MFramework.MSceneFlowPlan.MSceneFlowPlan
+  nameWithType.vb: MSceneFlowPlan.New
+  fullName.vb: MFramework.MSceneFlowPlan.New
+  name.vb: New
+- uid: MFramework.MSceneFlowPlan.TargetKey*
+  commentId: Overload:MFramework.MSceneFlowPlan.TargetKey
+  href: MFramework.MSceneFlowPlan.html#MFramework_MSceneFlowPlan_TargetKey
+  name: TargetKey
+  nameWithType: MSceneFlowPlan.TargetKey
+  fullName: MFramework.MSceneFlowPlan.TargetKey
+- uid: MFramework.MSceneFlowPlan.IsFrozen*
+  commentId: Overload:MFramework.MSceneFlowPlan.IsFrozen
+  href: MFramework.MSceneFlowPlan.html#MFramework_MSceneFlowPlan_IsFrozen
+  name: IsFrozen
+  nameWithType: MSceneFlowPlan.IsFrozen
+  fullName: MFramework.MSceneFlowPlan.IsFrozen
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: MFramework.MSceneFlowPlan.Order*
+  commentId: Overload:MFramework.MSceneFlowPlan.Order
+  href: MFramework.MSceneFlowPlan.html#MFramework_MSceneFlowPlan_Order
+  name: Order
+  nameWithType: MSceneFlowPlan.Order
+  fullName: MFramework.MSceneFlowPlan.Order
+- uid: MFramework.MSceneFlowOrder
+  commentId: T:MFramework.MSceneFlowOrder
+  parent: MFramework
+  href: MFramework.MSceneFlowOrder.html
+  name: MSceneFlowOrder
+  nameWithType: MSceneFlowOrder
+  fullName: MFramework.MSceneFlowOrder
+- uid: MFramework.MSceneFlowPlan.CommandTimeMode*
+  commentId: Overload:MFramework.MSceneFlowPlan.CommandTimeMode
+  href: MFramework.MSceneFlowPlan.html#MFramework_MSceneFlowPlan_CommandTimeMode
+  name: CommandTimeMode
+  nameWithType: MSceneFlowPlan.CommandTimeMode
+  fullName: MFramework.MSceneFlowPlan.CommandTimeMode
+- uid: MFramework.MTimeMode
+  commentId: T:MFramework.MTimeMode
+  parent: MFramework
+  href: MFramework.MTimeMode.html
+  name: MTimeMode
+  nameWithType: MTimeMode
+  fullName: MFramework.MTimeMode
+- uid: MFramework.MSceneFlowPlan.Priority*
+  commentId: Overload:MFramework.MSceneFlowPlan.Priority
+  href: MFramework.MSceneFlowPlan.html#MFramework_MSceneFlowPlan_Priority
+  name: Priority
+  nameWithType: MSceneFlowPlan.Priority
+  fullName: MFramework.MSceneFlowPlan.Priority
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: MFramework.MSceneFlowPlan.SetActiveScene*
+  commentId: Overload:MFramework.MSceneFlowPlan.SetActiveScene
+  href: MFramework.MSceneFlowPlan.html#MFramework_MSceneFlowPlan_SetActiveScene
+  name: SetActiveScene
+  nameWithType: MSceneFlowPlan.SetActiveScene
+  fullName: MFramework.MSceneFlowPlan.SetActiveScene
+- uid: MFramework.MSceneFlowPlan.Arguments*
+  commentId: Overload:MFramework.MSceneFlowPlan.Arguments
+  href: MFramework.MSceneFlowPlan.html#MFramework_MSceneFlowPlan_Arguments
+  name: Arguments
+  nameWithType: MSceneFlowPlan.Arguments
+  fullName: MFramework.MSceneFlowPlan.Arguments
+- uid: MFramework.MSceneFlowPlan.At*
+  commentId: Overload:MFramework.MSceneFlowPlan.At
+  href: MFramework.MSceneFlowPlan.html#MFramework_MSceneFlowPlan_At_MFramework_MSceneFlowStage_System_Func_MFramework_MSceneFlowContext_MFramework_IMActionNode__System_String_
+  name: At
+  nameWithType: MSceneFlowPlan.At
+  fullName: MFramework.MSceneFlowPlan.At
+- uid: MFramework.MSceneFlowStage
+  commentId: T:MFramework.MSceneFlowStage
+  parent: MFramework
+  href: MFramework.MSceneFlowStage.html
+  name: MSceneFlowStage
+  nameWithType: MSceneFlowStage
+  fullName: MFramework.MSceneFlowStage
+- uid: System.Func{MFramework.MSceneFlowContext,MFramework.IMActionNode}
+  commentId: T:System.Func{MFramework.MSceneFlowContext,MFramework.IMActionNode}
+  parent: System
+  definition: System.Func`2
+  href: https://learn.microsoft.com/dotnet/api/system.func-2
+  name: Func<MSceneFlowContext, IMActionNode>
+  nameWithType: Func<MSceneFlowContext, IMActionNode>
+  fullName: System.Func<MFramework.MSceneFlowContext, MFramework.IMActionNode>
+  nameWithType.vb: Func(Of MSceneFlowContext, IMActionNode)
+  fullName.vb: System.Func(Of MFramework.MSceneFlowContext, MFramework.IMActionNode)
+  name.vb: Func(Of MSceneFlowContext, IMActionNode)
+  spec.csharp:
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - uid: MFramework.MSceneFlowContext
+    name: MSceneFlowContext
+    href: MFramework.MSceneFlowContext.html
+  - name: ','
+  - name: " "
+  - uid: MFramework.IMActionNode
+    name: IMActionNode
+    href: MFramework.IMActionNode.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MFramework.MSceneFlowContext
+    name: MSceneFlowContext
+    href: MFramework.MSceneFlowContext.html
+  - name: ','
+  - name: " "
+  - uid: MFramework.IMActionNode
+    name: IMActionNode
+    href: MFramework.IMActionNode.html
+  - name: )
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: MFramework.MSceneFlowPlan
+  commentId: T:MFramework.MSceneFlowPlan
+  parent: MFramework
+  href: MFramework.MSceneFlowPlan.html
+  name: MSceneFlowPlan
+  nameWithType: MSceneFlowPlan
+  fullName: MFramework.MSceneFlowPlan
+- uid: System.Func`2
+  commentId: T:System.Func`2
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.func-2
+  name: Func<T, TResult>
+  nameWithType: Func<T, TResult>
+  fullName: System.Func<T, TResult>
+  nameWithType.vb: Func(Of T, TResult)
+  fullName.vb: System.Func(Of T, TResult)
+  name.vb: Func(Of T, TResult)
+  spec.csharp:
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Func{MFramework.IMActionNode}
+  commentId: T:System.Func{MFramework.IMActionNode}
+  parent: System
+  definition: System.Func`1
+  href: https://learn.microsoft.com/dotnet/api/system.func-1
+  name: Func<IMActionNode>
+  nameWithType: Func<IMActionNode>
+  fullName: System.Func<MFramework.IMActionNode>
+  nameWithType.vb: Func(Of IMActionNode)
+  fullName.vb: System.Func(Of MFramework.IMActionNode)
+  name.vb: Func(Of IMActionNode)
+  spec.csharp:
+  - uid: System.Func`1
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-1
+  - name: <
+  - uid: MFramework.IMActionNode
+    name: IMActionNode
+    href: MFramework.IMActionNode.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Func`1
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MFramework.IMActionNode
+    name: IMActionNode
+    href: MFramework.IMActionNode.html
+  - name: )
+- uid: System.Func`1
+  commentId: T:System.Func`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.func-1
+  name: Func<TResult>
+  nameWithType: Func<TResult>
+  fullName: System.Func<TResult>
+  nameWithType.vb: Func(Of TResult)
+  fullName.vb: System.Func(Of TResult)
+  name.vb: Func(Of TResult)
+  spec.csharp:
+  - uid: System.Func`1
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Func`1
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: MFramework.MSceneFlowPlan.Do*
+  commentId: Overload:MFramework.MSceneFlowPlan.Do
+  href: MFramework.MSceneFlowPlan.html#MFramework_MSceneFlowPlan_Do_MFramework_MSceneFlowStage_System_Action_MFramework_MSceneFlowContext__System_String_
+  name: Do
+  nameWithType: MSceneFlowPlan.Do
+  fullName: MFramework.MSceneFlowPlan.Do
+- uid: System.Action{MFramework.MSceneFlowContext}
+  commentId: T:System.Action{MFramework.MSceneFlowContext}
+  parent: System
+  definition: System.Action`1
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<MSceneFlowContext>
+  nameWithType: Action<MSceneFlowContext>
+  fullName: System.Action<MFramework.MSceneFlowContext>
+  nameWithType.vb: Action(Of MSceneFlowContext)
+  fullName.vb: System.Action(Of MFramework.MSceneFlowContext)
+  name.vb: Action(Of MSceneFlowContext)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - uid: MFramework.MSceneFlowContext
+    name: MSceneFlowContext
+    href: MFramework.MSceneFlowContext.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MFramework.MSceneFlowContext
+    name: MSceneFlowContext
+    href: MFramework.MSceneFlowContext.html
+  - name: )
+- uid: System.Action`1
+  commentId: T:System.Action`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<T>
+  nameWithType: Action<T>
+  fullName: System.Action<T>
+  nameWithType.vb: Action(Of T)
+  fullName.vb: System.Action(Of T)
+  name.vb: Action(Of T)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )

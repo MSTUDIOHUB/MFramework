@@ -1,0 +1,364 @@
+### YamlMime:ManagedReference
+items:
+- uid: MFramework.IMSceneFlowScene
+  commentId: T:MFramework.IMSceneFlowScene
+  id: IMSceneFlowScene
+  parent: MFramework
+  children:
+  - MFramework.IMSceneFlowScene.IsReleased
+  - MFramework.IMSceneFlowScene.Scene
+  langs:
+  - csharp
+  - vb
+  name: IMSceneFlowScene
+  nameWithType: IMSceneFlowScene
+  fullName: MFramework.IMSceneFlowScene
+  type: Interface
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 表示由场景后端创建、并由 MSceneFlow 持有的内容场景。
+  example: []
+  syntax:
+    content: 'public interface IMSceneFlowScene : IDisposable'
+    content.vb: Public Interface IMSceneFlowScene Inherits IDisposable
+  derivedClasses:
+  - MFramework.MSceneLease
+  inheritedMembers:
+  - System.IDisposable.Dispose
+  extensionMethods:
+  - MFramework.IMSceneFlowScene.MFramework.MDisposableExtensions.AddTo``1(MFramework.MAssetScope)
+  - MFramework.IMSceneFlowScene.MFramework.MDisposableExtensions.AddTo``1(MFramework.MDisposableBag)
+- uid: MFramework.IMSceneFlowScene.Scene
+  commentId: P:MFramework.IMSceneFlowScene.Scene
+  id: Scene
+  parent: MFramework.IMSceneFlowScene
+  langs:
+  - csharp
+  - vb
+  name: Scene
+  nameWithType: IMSceneFlowScene.Scene
+  fullName: MFramework.IMSceneFlowScene.Scene
+  type: Property
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 获取对应的 Unity 场景。
+  example: []
+  syntax:
+    content: Scene Scene { get; }
+    parameters: []
+    return:
+      type: UnityEngine.SceneManagement.Scene
+    content.vb: ReadOnly Property Scene As Scene
+  overload: MFramework.IMSceneFlowScene.Scene*
+- uid: MFramework.IMSceneFlowScene.IsReleased
+  commentId: P:MFramework.IMSceneFlowScene.IsReleased
+  id: IsReleased
+  parent: MFramework.IMSceneFlowScene
+  langs:
+  - csharp
+  - vb
+  name: IsReleased
+  nameWithType: IMSceneFlowScene.IsReleased
+  fullName: MFramework.IMSceneFlowScene.IsReleased
+  type: Property
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 获取场景所有权是否已经交还给后端。
+  example: []
+  syntax:
+    content: bool IsReleased { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: ReadOnly Property IsReleased As Boolean
+  overload: MFramework.IMSceneFlowScene.IsReleased*
+references:
+- uid: MFramework
+  commentId: N:MFramework
+  href: MFramework.html
+  name: MFramework
+  nameWithType: MFramework
+  fullName: MFramework
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+- uid: MFramework.IMSceneFlowScene.MFramework.MDisposableExtensions.AddTo``1(MFramework.MAssetScope)
+  commentId: M:MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MAssetScope)
+  parent: MFramework.MDisposableExtensions
+  definition: MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MAssetScope)
+  href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MAssetScope_
+  name: AddTo<IMSceneFlowScene>(IMSceneFlowScene, MAssetScope)
+  nameWithType: MDisposableExtensions.AddTo<IMSceneFlowScene>(IMSceneFlowScene, MAssetScope)
+  fullName: MFramework.MDisposableExtensions.AddTo<MFramework.IMSceneFlowScene>(MFramework.IMSceneFlowScene, MFramework.MAssetScope)
+  nameWithType.vb: MDisposableExtensions.AddTo(Of IMSceneFlowScene)(IMSceneFlowScene, MAssetScope)
+  fullName.vb: MFramework.MDisposableExtensions.AddTo(Of MFramework.IMSceneFlowScene)(MFramework.IMSceneFlowScene, MFramework.MAssetScope)
+  name.vb: AddTo(Of IMSceneFlowScene)(IMSceneFlowScene, MAssetScope)
+  spec.csharp:
+  - uid: MFramework.MDisposableExtensions.AddTo``1(MFramework.IMSceneFlowScene,MFramework.MAssetScope)
+    name: AddTo
+    href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MAssetScope_
+  - name: <
+  - uid: MFramework.IMSceneFlowScene
+    name: IMSceneFlowScene
+    href: MFramework.IMSceneFlowScene.html
+  - name: '>'
+  - name: (
+  - uid: MFramework.IMSceneFlowScene
+    name: IMSceneFlowScene
+    href: MFramework.IMSceneFlowScene.html
+  - name: ','
+  - name: " "
+  - uid: MFramework.MAssetScope
+    name: MAssetScope
+    href: MFramework.MAssetScope.html
+  - name: )
+  spec.vb:
+  - uid: MFramework.MDisposableExtensions.AddTo``1(MFramework.IMSceneFlowScene,MFramework.MAssetScope)
+    name: AddTo
+    href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MAssetScope_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MFramework.IMSceneFlowScene
+    name: IMSceneFlowScene
+    href: MFramework.IMSceneFlowScene.html
+  - name: )
+  - name: (
+  - uid: MFramework.IMSceneFlowScene
+    name: IMSceneFlowScene
+    href: MFramework.IMSceneFlowScene.html
+  - name: ','
+  - name: " "
+  - uid: MFramework.MAssetScope
+    name: MAssetScope
+    href: MFramework.MAssetScope.html
+  - name: )
+- uid: MFramework.IMSceneFlowScene.MFramework.MDisposableExtensions.AddTo``1(MFramework.MDisposableBag)
+  commentId: M:MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MDisposableBag)
+  parent: MFramework.MDisposableExtensions
+  definition: MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MDisposableBag)
+  href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MDisposableBag_
+  name: AddTo<IMSceneFlowScene>(IMSceneFlowScene, MDisposableBag)
+  nameWithType: MDisposableExtensions.AddTo<IMSceneFlowScene>(IMSceneFlowScene, MDisposableBag)
+  fullName: MFramework.MDisposableExtensions.AddTo<MFramework.IMSceneFlowScene>(MFramework.IMSceneFlowScene, MFramework.MDisposableBag)
+  nameWithType.vb: MDisposableExtensions.AddTo(Of IMSceneFlowScene)(IMSceneFlowScene, MDisposableBag)
+  fullName.vb: MFramework.MDisposableExtensions.AddTo(Of MFramework.IMSceneFlowScene)(MFramework.IMSceneFlowScene, MFramework.MDisposableBag)
+  name.vb: AddTo(Of IMSceneFlowScene)(IMSceneFlowScene, MDisposableBag)
+  spec.csharp:
+  - uid: MFramework.MDisposableExtensions.AddTo``1(MFramework.IMSceneFlowScene,MFramework.MDisposableBag)
+    name: AddTo
+    href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MDisposableBag_
+  - name: <
+  - uid: MFramework.IMSceneFlowScene
+    name: IMSceneFlowScene
+    href: MFramework.IMSceneFlowScene.html
+  - name: '>'
+  - name: (
+  - uid: MFramework.IMSceneFlowScene
+    name: IMSceneFlowScene
+    href: MFramework.IMSceneFlowScene.html
+  - name: ','
+  - name: " "
+  - uid: MFramework.MDisposableBag
+    name: MDisposableBag
+    href: MFramework.MDisposableBag.html
+  - name: )
+  spec.vb:
+  - uid: MFramework.MDisposableExtensions.AddTo``1(MFramework.IMSceneFlowScene,MFramework.MDisposableBag)
+    name: AddTo
+    href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MDisposableBag_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MFramework.IMSceneFlowScene
+    name: IMSceneFlowScene
+    href: MFramework.IMSceneFlowScene.html
+  - name: )
+  - name: (
+  - uid: MFramework.IMSceneFlowScene
+    name: IMSceneFlowScene
+    href: MFramework.IMSceneFlowScene.html
+  - name: ','
+  - name: " "
+  - uid: MFramework.MDisposableBag
+    name: MDisposableBag
+    href: MFramework.MDisposableBag.html
+  - name: )
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MAssetScope)
+  commentId: M:MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MAssetScope)
+  href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MAssetScope_
+  name: AddTo<T>(T, MAssetScope)
+  nameWithType: MDisposableExtensions.AddTo<T>(T, MAssetScope)
+  fullName: MFramework.MDisposableExtensions.AddTo<T>(T, MFramework.MAssetScope)
+  nameWithType.vb: MDisposableExtensions.AddTo(Of T)(T, MAssetScope)
+  fullName.vb: MFramework.MDisposableExtensions.AddTo(Of T)(T, MFramework.MAssetScope)
+  name.vb: AddTo(Of T)(T, MAssetScope)
+  spec.csharp:
+  - uid: MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MAssetScope)
+    name: AddTo
+    href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MAssetScope_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: MFramework.MAssetScope
+    name: MAssetScope
+    href: MFramework.MAssetScope.html
+  - name: )
+  spec.vb:
+  - uid: MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MAssetScope)
+    name: AddTo
+    href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MAssetScope_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: MFramework.MAssetScope
+    name: MAssetScope
+    href: MFramework.MAssetScope.html
+  - name: )
+- uid: MFramework.MDisposableExtensions
+  commentId: T:MFramework.MDisposableExtensions
+  parent: MFramework
+  href: MFramework.MDisposableExtensions.html
+  name: MDisposableExtensions
+  nameWithType: MDisposableExtensions
+  fullName: MFramework.MDisposableExtensions
+- uid: MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MDisposableBag)
+  commentId: M:MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MDisposableBag)
+  href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MDisposableBag_
+  name: AddTo<T>(T, MDisposableBag)
+  nameWithType: MDisposableExtensions.AddTo<T>(T, MDisposableBag)
+  fullName: MFramework.MDisposableExtensions.AddTo<T>(T, MFramework.MDisposableBag)
+  nameWithType.vb: MDisposableExtensions.AddTo(Of T)(T, MDisposableBag)
+  fullName.vb: MFramework.MDisposableExtensions.AddTo(Of T)(T, MFramework.MDisposableBag)
+  name.vb: AddTo(Of T)(T, MDisposableBag)
+  spec.csharp:
+  - uid: MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MDisposableBag)
+    name: AddTo
+    href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MDisposableBag_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: MFramework.MDisposableBag
+    name: MDisposableBag
+    href: MFramework.MDisposableBag.html
+  - name: )
+  spec.vb:
+  - uid: MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MDisposableBag)
+    name: AddTo
+    href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MDisposableBag_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: MFramework.MDisposableBag
+    name: MDisposableBag
+    href: MFramework.MDisposableBag.html
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MFramework.IMSceneFlowScene.Scene*
+  commentId: Overload:MFramework.IMSceneFlowScene.Scene
+  href: MFramework.IMSceneFlowScene.html#MFramework_IMSceneFlowScene_Scene
+  name: Scene
+  nameWithType: IMSceneFlowScene.Scene
+  fullName: MFramework.IMSceneFlowScene.Scene
+- uid: UnityEngine.SceneManagement.Scene
+  commentId: T:UnityEngine.SceneManagement.Scene
+  parent: UnityEngine.SceneManagement
+  isExternal: true
+  name: Scene
+  nameWithType: Scene
+  fullName: UnityEngine.SceneManagement.Scene
+- uid: UnityEngine.SceneManagement
+  commentId: N:UnityEngine.SceneManagement
+  isExternal: true
+  name: UnityEngine.SceneManagement
+  nameWithType: UnityEngine.SceneManagement
+  fullName: UnityEngine.SceneManagement
+  spec.csharp:
+  - uid: UnityEngine
+    name: UnityEngine
+    isExternal: true
+  - name: .
+  - uid: UnityEngine.SceneManagement
+    name: SceneManagement
+    isExternal: true
+  spec.vb:
+  - uid: UnityEngine
+    name: UnityEngine
+    isExternal: true
+  - name: .
+  - uid: UnityEngine.SceneManagement
+    name: SceneManagement
+    isExternal: true
+- uid: MFramework.IMSceneFlowScene.IsReleased*
+  commentId: Overload:MFramework.IMSceneFlowScene.IsReleased
+  href: MFramework.IMSceneFlowScene.html#MFramework_IMSceneFlowScene_IsReleased
+  name: IsReleased
+  nameWithType: IMSceneFlowScene.IsReleased
+  fullName: MFramework.IMSceneFlowScene.IsReleased
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean

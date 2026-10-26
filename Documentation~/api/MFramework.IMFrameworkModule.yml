@@ -1,0 +1,104 @@
+### YamlMime:ManagedReference
+items:
+- uid: MFramework.IMFrameworkModule
+  commentId: T:MFramework.IMFrameworkModule
+  id: IMFrameworkModule
+  parent: MFramework
+  children:
+  - MFramework.IMFrameworkModule.Initialize(MFramework.MFrameworkApp)
+  - MFramework.IMFrameworkModule.Shutdown
+  langs:
+  - csharp
+  - vb
+  name: IMFrameworkModule
+  nameWithType: IMFrameworkModule
+  fullName: MFramework.IMFrameworkModule
+  type: Interface
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 定义框架模块的初始化与关闭回调。
+  example: []
+  syntax:
+    content: public interface IMFrameworkModule
+    content.vb: Public Interface IMFrameworkModule
+  derivedClasses:
+  - MFramework.MActionRunner
+  - MFramework.MAudio
+  - MFramework.MConfig
+  - MFramework.MEventBus
+  - MFramework.MPlatformService
+  - MFramework.MPool
+  - MFramework.MSceneFlow
+  - MFramework.MUIRouter
+  - MFramework.MUIService
+- uid: MFramework.IMFrameworkModule.Initialize(MFramework.MFrameworkApp)
+  commentId: M:MFramework.IMFrameworkModule.Initialize(MFramework.MFrameworkApp)
+  id: Initialize(MFramework.MFrameworkApp)
+  parent: MFramework.IMFrameworkModule
+  langs:
+  - csharp
+  - vb
+  name: Initialize(MFrameworkApp)
+  nameWithType: IMFrameworkModule.Initialize(MFrameworkApp)
+  fullName: MFramework.IMFrameworkModule.Initialize(MFramework.MFrameworkApp)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 所有服务注册完成后，初始化该模块。
+  example: []
+  syntax:
+    content: void Initialize(MFrameworkApp app)
+    parameters:
+    - id: app
+      type: MFramework.MFrameworkApp
+      description: 持有该模块的框架应用。
+    content.vb: Sub Initialize(app As MFrameworkApp)
+  overload: MFramework.IMFrameworkModule.Initialize*
+- uid: MFramework.IMFrameworkModule.Shutdown
+  commentId: M:MFramework.IMFrameworkModule.Shutdown
+  id: Shutdown
+  parent: MFramework.IMFrameworkModule
+  langs:
+  - csharp
+  - vb
+  name: Shutdown()
+  nameWithType: IMFrameworkModule.Shutdown()
+  fullName: MFramework.IMFrameworkModule.Shutdown()
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 释放该模块持有的资源；即使尚未初始化或初始化中途失败，也必须能够安全调用。
+  example: []
+  syntax:
+    content: void Shutdown()
+    content.vb: Sub Shutdown()
+  overload: MFramework.IMFrameworkModule.Shutdown*
+references:
+- uid: MFramework
+  commentId: N:MFramework
+  href: MFramework.html
+  name: MFramework
+  nameWithType: MFramework
+  fullName: MFramework
+- uid: MFramework.IMFrameworkModule.Initialize*
+  commentId: Overload:MFramework.IMFrameworkModule.Initialize
+  href: MFramework.IMFrameworkModule.html#MFramework_IMFrameworkModule_Initialize_MFramework_MFrameworkApp_
+  name: Initialize
+  nameWithType: IMFrameworkModule.Initialize
+  fullName: MFramework.IMFrameworkModule.Initialize
+- uid: MFramework.MFrameworkApp
+  commentId: T:MFramework.MFrameworkApp
+  parent: MFramework
+  href: MFramework.MFrameworkApp.html
+  name: MFrameworkApp
+  nameWithType: MFrameworkApp
+  fullName: MFramework.MFrameworkApp
+- uid: MFramework.IMFrameworkModule.Shutdown*
+  commentId: Overload:MFramework.IMFrameworkModule.Shutdown
+  href: MFramework.IMFrameworkModule.html#MFramework_IMFrameworkModule_Shutdown
+  name: Shutdown
+  nameWithType: IMFrameworkModule.Shutdown
+  fullName: MFramework.IMFrameworkModule.Shutdown

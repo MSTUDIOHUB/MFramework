@@ -1,0 +1,198 @@
+### YamlMime:ManagedReference
+items:
+- uid: MFramework.IMState`1
+  commentId: T:MFramework.IMState`1
+  id: IMState`1
+  parent: MFramework
+  children:
+  - MFramework.IMState`1.Enter(`0)
+  - MFramework.IMState`1.Exit(`0)
+  - MFramework.IMState`1.Tick(`0,System.Single)
+  langs:
+  - csharp
+  - vb
+  name: IMState<TContext>
+  nameWithType: IMState<TContext>
+  fullName: MFramework.IMState<TContext>
+  type: Interface
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 定义一个显式注册到 <xref href="MFramework.MStateMachine%601" data-throw-if-not-resolved="false"></xref> 的状态。
+  example: []
+  syntax:
+    content: public interface IMState<TContext>
+    typeParameters:
+    - id: TContext
+      description: 各状态共用的数据与服务类型。
+    content.vb: Public Interface IMState(Of TContext)
+  nameWithType.vb: IMState(Of TContext)
+  fullName.vb: MFramework.IMState(Of TContext)
+  name.vb: IMState(Of TContext)
+- uid: MFramework.IMState`1.Enter(`0)
+  commentId: M:MFramework.IMState`1.Enter(`0)
+  id: Enter(`0)
+  parent: MFramework.IMState`1
+  langs:
+  - csharp
+  - vb
+  name: Enter(TContext)
+  nameWithType: IMState<TContext>.Enter(TContext)
+  fullName: MFramework.IMState<TContext>.Enter(TContext)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 该状态成为当前状态后调用。
+  example: []
+  syntax:
+    content: void Enter(TContext context)
+    parameters:
+    - id: context
+      type: '{TContext}'
+      description: 状态机上下文。
+    content.vb: Sub Enter(context As TContext)
+  overload: MFramework.IMState`1.Enter*
+  nameWithType.vb: IMState(Of TContext).Enter(TContext)
+  fullName.vb: MFramework.IMState(Of TContext).Enter(TContext)
+- uid: MFramework.IMState`1.Tick(`0,System.Single)
+  commentId: M:MFramework.IMState`1.Tick(`0,System.Single)
+  id: Tick(`0,System.Single)
+  parent: MFramework.IMState`1
+  langs:
+  - csharp
+  - vb
+  name: Tick(TContext, float)
+  nameWithType: IMState<TContext>.Tick(TContext, float)
+  fullName: MFramework.IMState<TContext>.Tick(TContext, float)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 让该状态向前运行一帧。
+  example: []
+  syntax:
+    content: void Tick(TContext context, float deltaTime)
+    parameters:
+    - id: context
+      type: '{TContext}'
+      description: 状态机上下文。
+    - id: deltaTime
+      type: System.Single
+      description: 自上一帧以来经过的时间，单位为秒。
+    content.vb: Sub Tick(context As TContext, deltaTime As Single)
+  overload: MFramework.IMState`1.Tick*
+  nameWithType.vb: IMState(Of TContext).Tick(TContext, Single)
+  fullName.vb: MFramework.IMState(Of TContext).Tick(TContext, Single)
+  name.vb: Tick(TContext, Single)
+- uid: MFramework.IMState`1.Exit(`0)
+  commentId: M:MFramework.IMState`1.Exit(`0)
+  id: Exit(`0)
+  parent: MFramework.IMState`1
+  langs:
+  - csharp
+  - vb
+  name: Exit(TContext)
+  nameWithType: IMState<TContext>.Exit(TContext)
+  fullName: MFramework.IMState<TContext>.Exit(TContext)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 该状态不再作为当前状态前调用。
+  example: []
+  syntax:
+    content: void Exit(TContext context)
+    parameters:
+    - id: context
+      type: '{TContext}'
+      description: 状态机上下文。
+    content.vb: Sub [Exit](context As TContext)
+  overload: MFramework.IMState`1.Exit*
+  nameWithType.vb: IMState(Of TContext).Exit(TContext)
+  fullName.vb: MFramework.IMState(Of TContext).Exit(TContext)
+references:
+- uid: MFramework.MStateMachine`1
+  commentId: T:MFramework.MStateMachine`1
+  parent: MFramework
+  href: MFramework.MStateMachine-1.html
+  name: MStateMachine<TContext>
+  nameWithType: MStateMachine<TContext>
+  fullName: MFramework.MStateMachine<TContext>
+  nameWithType.vb: MStateMachine(Of TContext)
+  fullName.vb: MFramework.MStateMachine(Of TContext)
+  name.vb: MStateMachine(Of TContext)
+  spec.csharp:
+  - uid: MFramework.MStateMachine`1
+    name: MStateMachine
+    href: MFramework.MStateMachine-1.html
+  - name: <
+  - name: TContext
+  - name: '>'
+  spec.vb:
+  - uid: MFramework.MStateMachine`1
+    name: MStateMachine
+    href: MFramework.MStateMachine-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TContext
+  - name: )
+- uid: MFramework
+  commentId: N:MFramework
+  href: MFramework.html
+  name: MFramework
+  nameWithType: MFramework
+  fullName: MFramework
+- uid: MFramework.IMState`1.Enter*
+  commentId: Overload:MFramework.IMState`1.Enter
+  href: MFramework.IMState-1.html#MFramework_IMState_1_Enter__0_
+  name: Enter
+  nameWithType: IMState<TContext>.Enter
+  fullName: MFramework.IMState<TContext>.Enter
+  nameWithType.vb: IMState(Of TContext).Enter
+  fullName.vb: MFramework.IMState(Of TContext).Enter
+- uid: '{TContext}'
+  commentId: '!:TContext'
+  definition: TContext
+  name: TContext
+  nameWithType: TContext
+  fullName: TContext
+- uid: TContext
+  name: TContext
+  nameWithType: TContext
+  fullName: TContext
+- uid: MFramework.IMState`1.Tick*
+  commentId: Overload:MFramework.IMState`1.Tick
+  href: MFramework.IMState-1.html#MFramework_IMState_1_Tick__0_System_Single_
+  name: Tick
+  nameWithType: IMState<TContext>.Tick
+  fullName: MFramework.IMState<TContext>.Tick
+  nameWithType.vb: IMState(Of TContext).Tick
+  fullName.vb: MFramework.IMState(Of TContext).Tick
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MFramework.IMState`1.Exit*
+  commentId: Overload:MFramework.IMState`1.Exit
+  href: MFramework.IMState-1.html#MFramework_IMState_1_Exit__0_
+  name: Exit
+  nameWithType: IMState<TContext>.Exit
+  fullName: MFramework.IMState<TContext>.Exit
+  nameWithType.vb: IMState(Of TContext).Exit
+  fullName.vb: MFramework.IMState(Of TContext).Exit

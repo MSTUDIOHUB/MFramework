@@ -1,0 +1,432 @@
+### YamlMime:ManagedReference
+items:
+- uid: MFramework.MAddressablesError
+  commentId: T:MFramework.MAddressablesError
+  id: MAddressablesError
+  parent: MFramework
+  children:
+  - MFramework.MAddressablesError.#ctor(System.Object,System.String,System.Exception)
+  - MFramework.MAddressablesError.Exception
+  - MFramework.MAddressablesError.Key
+  - MFramework.MAddressablesError.Message
+  - MFramework.MAddressablesError.ToString
+  langs:
+  - csharp
+  - vb
+  name: MAddressablesError
+  nameWithType: MAddressablesError
+  fullName: MFramework.MAddressablesError
+  type: Class
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 保存便于阅读的 Addressables 失败信息及其原始异常。
+  example: []
+  syntax:
+    content: public sealed class MAddressablesError
+    content.vb: Public NotInheritable Class MAddressablesError
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+- uid: MFramework.MAddressablesError.#ctor(System.Object,System.String,System.Exception)
+  commentId: M:MFramework.MAddressablesError.#ctor(System.Object,System.String,System.Exception)
+  id: '#ctor(System.Object,System.String,System.Exception)'
+  parent: MFramework.MAddressablesError
+  langs:
+  - csharp
+  - vb
+  name: MAddressablesError(object, string, Exception)
+  nameWithType: MAddressablesError.MAddressablesError(object, string, Exception)
+  fullName: MFramework.MAddressablesError.MAddressablesError(object, string, System.Exception)
+  type: Constructor
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 创建一条 Addressables 错误信息。
+  example: []
+  syntax:
+    content: public MAddressablesError(object key, string message, Exception exception = null)
+    parameters:
+    - id: key
+      type: System.Object
+      description: 本次操作使用的地址、标签或运行时键。
+    - id: message
+      type: System.String
+      description: 适合日志记录和问题诊断的消息。
+    - id: exception
+      type: System.Exception
+      description: Addressables 提供的原始异常；没有时为 null。
+    content.vb: Public Sub New(key As Object, message As String, exception As Exception = Nothing)
+  overload: MFramework.MAddressablesError.#ctor*
+  nameWithType.vb: MAddressablesError.New(Object, String, Exception)
+  fullName.vb: MFramework.MAddressablesError.New(Object, String, System.Exception)
+  name.vb: New(Object, String, Exception)
+- uid: MFramework.MAddressablesError.Key
+  commentId: P:MFramework.MAddressablesError.Key
+  id: Key
+  parent: MFramework.MAddressablesError
+  langs:
+  - csharp
+  - vb
+  name: Key
+  nameWithType: MAddressablesError.Key
+  fullName: MFramework.MAddressablesError.Key
+  type: Property
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 获取发生失败的地址、标签或运行时键。
+  example: []
+  syntax:
+    content: public object Key { get; }
+    parameters: []
+    return:
+      type: System.Object
+    content.vb: Public ReadOnly Property Key As Object
+  overload: MFramework.MAddressablesError.Key*
+- uid: MFramework.MAddressablesError.Message
+  commentId: P:MFramework.MAddressablesError.Message
+  id: Message
+  parent: MFramework.MAddressablesError
+  langs:
+  - csharp
+  - vb
+  name: Message
+  nameWithType: MAddressablesError.Message
+  fullName: MFramework.MAddressablesError.Message
+  type: Property
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 获取便于阅读的失败说明。
+  example: []
+  syntax:
+    content: public string Message { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property Message As String
+  overload: MFramework.MAddressablesError.Message*
+- uid: MFramework.MAddressablesError.Exception
+  commentId: P:MFramework.MAddressablesError.Exception
+  id: Exception
+  parent: MFramework.MAddressablesError
+  langs:
+  - csharp
+  - vb
+  name: Exception
+  nameWithType: MAddressablesError.Exception
+  fullName: MFramework.MAddressablesError.Exception
+  type: Property
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 获取底层报告的原始异常；没有时为 null。
+  example: []
+  syntax:
+    content: public Exception Exception { get; }
+    parameters: []
+    return:
+      type: System.Exception
+    content.vb: Public ReadOnly Property Exception As Exception
+  overload: MFramework.MAddressablesError.Exception*
+- uid: MFramework.MAddressablesError.ToString
+  commentId: M:MFramework.MAddressablesError.ToString
+  id: ToString
+  parent: MFramework.MAddressablesError
+  langs:
+  - csharp
+  - vb
+  name: ToString()
+  nameWithType: MAddressablesError.ToString()
+  fullName: MFramework.MAddressablesError.ToString()
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 返回简洁的诊断字符串。
+  example: []
+  syntax:
+    content: public override string ToString()
+    return:
+      type: System.String
+    content.vb: Public Overrides Function ToString() As String
+  overridden: System.Object.ToString
+  overload: MFramework.MAddressablesError.ToString*
+references:
+- uid: MFramework
+  commentId: N:MFramework
+  href: MFramework.html
+  name: MFramework
+  nameWithType: MFramework
+  fullName: MFramework
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MFramework.MAddressablesError.#ctor*
+  commentId: Overload:MFramework.MAddressablesError.#ctor
+  href: MFramework.MAddressablesError.html#MFramework_MAddressablesError__ctor_System_Object_System_String_System_Exception_
+  name: MAddressablesError
+  nameWithType: MAddressablesError.MAddressablesError
+  fullName: MFramework.MAddressablesError.MAddressablesError
+  nameWithType.vb: MAddressablesError.New
+  fullName.vb: MFramework.MAddressablesError.New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Exception
+  commentId: T:System.Exception
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception
+  name: Exception
+  nameWithType: Exception
+  fullName: System.Exception
+- uid: MFramework.MAddressablesError.Key*
+  commentId: Overload:MFramework.MAddressablesError.Key
+  href: MFramework.MAddressablesError.html#MFramework_MAddressablesError_Key
+  name: Key
+  nameWithType: MAddressablesError.Key
+  fullName: MFramework.MAddressablesError.Key
+- uid: MFramework.MAddressablesError.Message*
+  commentId: Overload:MFramework.MAddressablesError.Message
+  href: MFramework.MAddressablesError.html#MFramework_MAddressablesError_Message
+  name: Message
+  nameWithType: MAddressablesError.Message
+  fullName: MFramework.MAddressablesError.Message
+- uid: MFramework.MAddressablesError.Exception*
+  commentId: Overload:MFramework.MAddressablesError.Exception
+  href: MFramework.MAddressablesError.html#MFramework_MAddressablesError_Exception
+  name: Exception
+  nameWithType: MAddressablesError.Exception
+  fullName: MFramework.MAddressablesError.Exception
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: MFramework.MAddressablesError.ToString*
+  commentId: Overload:MFramework.MAddressablesError.ToString
+  href: MFramework.MAddressablesError.html#MFramework_MAddressablesError_ToString
+  name: ToString
+  nameWithType: MAddressablesError.ToString
+  fullName: MFramework.MAddressablesError.ToString

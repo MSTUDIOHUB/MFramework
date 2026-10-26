@@ -1,0 +1,825 @@
+### YamlMime:ManagedReference
+items:
+- uid: MFramework.MSceneUnloadRequest
+  commentId: T:MFramework.MSceneUnloadRequest
+  id: MSceneUnloadRequest
+  parent: MFramework
+  children:
+  - MFramework.MSceneUnloadRequest.Completed
+  - MFramework.MSceneUnloadRequest.Dispose
+  - MFramework.MSceneUnloadRequest.Error
+  - MFramework.MSceneUnloadRequest.IsDone
+  - MFramework.MSceneUnloadRequest.NeededActivation
+  - MFramework.MSceneUnloadRequest.Progress
+  - MFramework.MSceneUnloadRequest.State
+  langs:
+  - csharp
+  - vb
+  name: MSceneUnloadRequest
+  nameWithType: MSceneUnloadRequest
+  fullName: MFramework.MSceneUnloadRequest
+  type: Class
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 观察一次 Addressables 场景卸载；尚未激活的场景会先完成激活，再被可靠卸载。
+  example: []
+  syntax:
+    content: 'public sealed class MSceneUnloadRequest : IMAddressablesRequest, IDisposable'
+    content.vb: Public NotInheritable Class MSceneUnloadRequest Implements IMAddressablesRequest, IDisposable
+  inheritance:
+  - System.Object
+  implements:
+  - MFramework.IMAddressablesRequest
+  - System.IDisposable
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - MFramework.MSceneUnloadRequest.MFramework.MDisposableExtensions.AddTo``1(MFramework.MAssetScope)
+  - MFramework.MSceneUnloadRequest.MFramework.MDisposableExtensions.AddTo``1(MFramework.MDisposableBag)
+- uid: MFramework.MSceneUnloadRequest.Completed
+  commentId: E:MFramework.MSceneUnloadRequest.Completed
+  id: Completed
+  parent: MFramework.MSceneUnloadRequest
+  langs:
+  - csharp
+  - vb
+  name: Completed
+  nameWithType: MSceneUnloadRequest.Completed
+  fullName: MFramework.MSceneUnloadRequest.Completed
+  type: Event
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 物理卸载成功或失败后触发一次；请求已被放弃时不会触发。
+  example: []
+  syntax:
+    content: public event Action<MSceneUnloadRequest> Completed
+    return:
+      type: System.Action{MFramework.MSceneUnloadRequest}
+    content.vb: Public Event Completed As Action(Of MSceneUnloadRequest)
+- uid: MFramework.MSceneUnloadRequest.State
+  commentId: P:MFramework.MSceneUnloadRequest.State
+  id: State
+  parent: MFramework.MSceneUnloadRequest
+  langs:
+  - csharp
+  - vb
+  name: State
+  nameWithType: MSceneUnloadRequest.State
+  fullName: MFramework.MSceneUnloadRequest.State
+  type: Property
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 获取请求当前所处的状态。
+  example: []
+  syntax:
+    content: public MAddressablesRequestState State { get; }
+    parameters: []
+    return:
+      type: MFramework.MAddressablesRequestState
+    content.vb: Public Property State As MAddressablesRequestState
+  overload: MFramework.MSceneUnloadRequest.State*
+  implements:
+  - MFramework.IMAddressablesRequest.State
+- uid: MFramework.MSceneUnloadRequest.Progress
+  commentId: P:MFramework.MSceneUnloadRequest.Progress
+  id: Progress
+  parent: MFramework.MSceneUnloadRequest
+  langs:
+  - csharp
+  - vb
+  name: Progress
+  nameWithType: MSceneUnloadRequest.Progress
+  fullName: MFramework.MSceneUnloadRequest.Progress
+  type: Property
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 获取从 0 到 1 的近似完成进度。
+  example: []
+  syntax:
+    content: public float Progress { get; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public ReadOnly Property Progress As Single
+  overload: MFramework.MSceneUnloadRequest.Progress*
+  implements:
+  - MFramework.IMAddressablesRequest.Progress
+- uid: MFramework.MSceneUnloadRequest.Error
+  commentId: P:MFramework.MSceneUnloadRequest.Error
+  id: Error
+  parent: MFramework.MSceneUnloadRequest
+  langs:
+  - csharp
+  - vb
+  name: Error
+  nameWithType: MSceneUnloadRequest.Error
+  fullName: MFramework.MSceneUnloadRequest.Error
+  type: Property
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 请求进入 <xref href="MFramework.MAddressablesRequestState.Failed" data-throw-if-not-resolved="false"></xref> 后，获取失败详情。
+  example: []
+  syntax:
+    content: public MAddressablesError Error { get; }
+    parameters: []
+    return:
+      type: MFramework.MAddressablesError
+    content.vb: Public Property [Error] As MAddressablesError
+  overload: MFramework.MSceneUnloadRequest.Error*
+  implements:
+  - MFramework.IMAddressablesRequest.Error
+- uid: MFramework.MSceneUnloadRequest.IsDone
+  commentId: P:MFramework.MSceneUnloadRequest.IsDone
+  id: IsDone
+  parent: MFramework.MSceneUnloadRequest
+  langs:
+  - csharp
+  - vb
+  name: IsDone
+  nameWithType: MSceneUnloadRequest.IsDone
+  fullName: MFramework.MSceneUnloadRequest.IsDone
+  type: Property
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 获取调用方是否已经不必再等待此请求。
+  example: []
+  syntax:
+    content: public bool IsDone { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property IsDone As Boolean
+  overload: MFramework.MSceneUnloadRequest.IsDone*
+  implements:
+  - MFramework.IMAddressablesRequest.IsDone
+- uid: MFramework.MSceneUnloadRequest.NeededActivation
+  commentId: P:MFramework.MSceneUnloadRequest.NeededActivation
+  id: NeededActivation
+  parent: MFramework.MSceneUnloadRequest
+  langs:
+  - csharp
+  - vb
+  name: NeededActivation
+  nameWithType: MSceneUnloadRequest.NeededActivation
+  fullName: MFramework.MSceneUnloadRequest.NeededActivation
+  type: Property
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 获取此次请求是否必须先激活场景才能卸载。
+  example: []
+  syntax:
+    content: public bool NeededActivation { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property NeededActivation As Boolean
+  overload: MFramework.MSceneUnloadRequest.NeededActivation*
+- uid: MFramework.MSceneUnloadRequest.Dispose
+  commentId: M:MFramework.MSceneUnloadRequest.Dispose
+  id: Dispose
+  parent: MFramework.MSceneUnloadRequest
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: MSceneUnloadRequest.Dispose()
+  fullName: MFramework.MSceneUnloadRequest.Dispose()
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 停止业务侧观察，但不会中断必要的激活或卸载，也不会泄漏底层句柄。
+  example: []
+  syntax:
+    content: public void Dispose()
+    content.vb: Public Sub Dispose()
+  overload: MFramework.MSceneUnloadRequest.Dispose*
+  implements:
+  - System.IDisposable.Dispose
+references:
+- uid: MFramework
+  commentId: N:MFramework
+  href: MFramework.html
+  name: MFramework
+  nameWithType: MFramework
+  fullName: MFramework
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: MFramework.IMAddressablesRequest
+  commentId: T:MFramework.IMAddressablesRequest
+  parent: MFramework
+  href: MFramework.IMAddressablesRequest.html
+  name: IMAddressablesRequest
+  nameWithType: IMAddressablesRequest
+  fullName: MFramework.IMAddressablesRequest
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: MFramework.MSceneUnloadRequest.MFramework.MDisposableExtensions.AddTo``1(MFramework.MAssetScope)
+  commentId: M:MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MAssetScope)
+  parent: MFramework.MDisposableExtensions
+  definition: MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MAssetScope)
+  href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MAssetScope_
+  name: AddTo<MSceneUnloadRequest>(MSceneUnloadRequest, MAssetScope)
+  nameWithType: MDisposableExtensions.AddTo<MSceneUnloadRequest>(MSceneUnloadRequest, MAssetScope)
+  fullName: MFramework.MDisposableExtensions.AddTo<MFramework.MSceneUnloadRequest>(MFramework.MSceneUnloadRequest, MFramework.MAssetScope)
+  nameWithType.vb: MDisposableExtensions.AddTo(Of MSceneUnloadRequest)(MSceneUnloadRequest, MAssetScope)
+  fullName.vb: MFramework.MDisposableExtensions.AddTo(Of MFramework.MSceneUnloadRequest)(MFramework.MSceneUnloadRequest, MFramework.MAssetScope)
+  name.vb: AddTo(Of MSceneUnloadRequest)(MSceneUnloadRequest, MAssetScope)
+  spec.csharp:
+  - uid: MFramework.MDisposableExtensions.AddTo``1(MFramework.MSceneUnloadRequest,MFramework.MAssetScope)
+    name: AddTo
+    href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MAssetScope_
+  - name: <
+  - uid: MFramework.MSceneUnloadRequest
+    name: MSceneUnloadRequest
+    href: MFramework.MSceneUnloadRequest.html
+  - name: '>'
+  - name: (
+  - uid: MFramework.MSceneUnloadRequest
+    name: MSceneUnloadRequest
+    href: MFramework.MSceneUnloadRequest.html
+  - name: ','
+  - name: " "
+  - uid: MFramework.MAssetScope
+    name: MAssetScope
+    href: MFramework.MAssetScope.html
+  - name: )
+  spec.vb:
+  - uid: MFramework.MDisposableExtensions.AddTo``1(MFramework.MSceneUnloadRequest,MFramework.MAssetScope)
+    name: AddTo
+    href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MAssetScope_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MFramework.MSceneUnloadRequest
+    name: MSceneUnloadRequest
+    href: MFramework.MSceneUnloadRequest.html
+  - name: )
+  - name: (
+  - uid: MFramework.MSceneUnloadRequest
+    name: MSceneUnloadRequest
+    href: MFramework.MSceneUnloadRequest.html
+  - name: ','
+  - name: " "
+  - uid: MFramework.MAssetScope
+    name: MAssetScope
+    href: MFramework.MAssetScope.html
+  - name: )
+- uid: MFramework.MSceneUnloadRequest.MFramework.MDisposableExtensions.AddTo``1(MFramework.MDisposableBag)
+  commentId: M:MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MDisposableBag)
+  parent: MFramework.MDisposableExtensions
+  definition: MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MDisposableBag)
+  href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MDisposableBag_
+  name: AddTo<MSceneUnloadRequest>(MSceneUnloadRequest, MDisposableBag)
+  nameWithType: MDisposableExtensions.AddTo<MSceneUnloadRequest>(MSceneUnloadRequest, MDisposableBag)
+  fullName: MFramework.MDisposableExtensions.AddTo<MFramework.MSceneUnloadRequest>(MFramework.MSceneUnloadRequest, MFramework.MDisposableBag)
+  nameWithType.vb: MDisposableExtensions.AddTo(Of MSceneUnloadRequest)(MSceneUnloadRequest, MDisposableBag)
+  fullName.vb: MFramework.MDisposableExtensions.AddTo(Of MFramework.MSceneUnloadRequest)(MFramework.MSceneUnloadRequest, MFramework.MDisposableBag)
+  name.vb: AddTo(Of MSceneUnloadRequest)(MSceneUnloadRequest, MDisposableBag)
+  spec.csharp:
+  - uid: MFramework.MDisposableExtensions.AddTo``1(MFramework.MSceneUnloadRequest,MFramework.MDisposableBag)
+    name: AddTo
+    href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MDisposableBag_
+  - name: <
+  - uid: MFramework.MSceneUnloadRequest
+    name: MSceneUnloadRequest
+    href: MFramework.MSceneUnloadRequest.html
+  - name: '>'
+  - name: (
+  - uid: MFramework.MSceneUnloadRequest
+    name: MSceneUnloadRequest
+    href: MFramework.MSceneUnloadRequest.html
+  - name: ','
+  - name: " "
+  - uid: MFramework.MDisposableBag
+    name: MDisposableBag
+    href: MFramework.MDisposableBag.html
+  - name: )
+  spec.vb:
+  - uid: MFramework.MDisposableExtensions.AddTo``1(MFramework.MSceneUnloadRequest,MFramework.MDisposableBag)
+    name: AddTo
+    href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MDisposableBag_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MFramework.MSceneUnloadRequest
+    name: MSceneUnloadRequest
+    href: MFramework.MSceneUnloadRequest.html
+  - name: )
+  - name: (
+  - uid: MFramework.MSceneUnloadRequest
+    name: MSceneUnloadRequest
+    href: MFramework.MSceneUnloadRequest.html
+  - name: ','
+  - name: " "
+  - uid: MFramework.MDisposableBag
+    name: MDisposableBag
+    href: MFramework.MDisposableBag.html
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MAssetScope)
+  commentId: M:MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MAssetScope)
+  href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MAssetScope_
+  name: AddTo<T>(T, MAssetScope)
+  nameWithType: MDisposableExtensions.AddTo<T>(T, MAssetScope)
+  fullName: MFramework.MDisposableExtensions.AddTo<T>(T, MFramework.MAssetScope)
+  nameWithType.vb: MDisposableExtensions.AddTo(Of T)(T, MAssetScope)
+  fullName.vb: MFramework.MDisposableExtensions.AddTo(Of T)(T, MFramework.MAssetScope)
+  name.vb: AddTo(Of T)(T, MAssetScope)
+  spec.csharp:
+  - uid: MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MAssetScope)
+    name: AddTo
+    href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MAssetScope_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: MFramework.MAssetScope
+    name: MAssetScope
+    href: MFramework.MAssetScope.html
+  - name: )
+  spec.vb:
+  - uid: MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MAssetScope)
+    name: AddTo
+    href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MAssetScope_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: MFramework.MAssetScope
+    name: MAssetScope
+    href: MFramework.MAssetScope.html
+  - name: )
+- uid: MFramework.MDisposableExtensions
+  commentId: T:MFramework.MDisposableExtensions
+  parent: MFramework
+  href: MFramework.MDisposableExtensions.html
+  name: MDisposableExtensions
+  nameWithType: MDisposableExtensions
+  fullName: MFramework.MDisposableExtensions
+- uid: MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MDisposableBag)
+  commentId: M:MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MDisposableBag)
+  href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MDisposableBag_
+  name: AddTo<T>(T, MDisposableBag)
+  nameWithType: MDisposableExtensions.AddTo<T>(T, MDisposableBag)
+  fullName: MFramework.MDisposableExtensions.AddTo<T>(T, MFramework.MDisposableBag)
+  nameWithType.vb: MDisposableExtensions.AddTo(Of T)(T, MDisposableBag)
+  fullName.vb: MFramework.MDisposableExtensions.AddTo(Of T)(T, MFramework.MDisposableBag)
+  name.vb: AddTo(Of T)(T, MDisposableBag)
+  spec.csharp:
+  - uid: MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MDisposableBag)
+    name: AddTo
+    href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MDisposableBag_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: MFramework.MDisposableBag
+    name: MDisposableBag
+    href: MFramework.MDisposableBag.html
+  - name: )
+  spec.vb:
+  - uid: MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MDisposableBag)
+    name: AddTo
+    href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MDisposableBag_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: MFramework.MDisposableBag
+    name: MDisposableBag
+    href: MFramework.MDisposableBag.html
+  - name: )
+- uid: System.Action{MFramework.MSceneUnloadRequest}
+  commentId: T:System.Action{MFramework.MSceneUnloadRequest}
+  parent: System
+  definition: System.Action`1
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<MSceneUnloadRequest>
+  nameWithType: Action<MSceneUnloadRequest>
+  fullName: System.Action<MFramework.MSceneUnloadRequest>
+  nameWithType.vb: Action(Of MSceneUnloadRequest)
+  fullName.vb: System.Action(Of MFramework.MSceneUnloadRequest)
+  name.vb: Action(Of MSceneUnloadRequest)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - uid: MFramework.MSceneUnloadRequest
+    name: MSceneUnloadRequest
+    href: MFramework.MSceneUnloadRequest.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MFramework.MSceneUnloadRequest
+    name: MSceneUnloadRequest
+    href: MFramework.MSceneUnloadRequest.html
+  - name: )
+- uid: System.Action`1
+  commentId: T:System.Action`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<T>
+  nameWithType: Action<T>
+  fullName: System.Action<T>
+  nameWithType.vb: Action(Of T)
+  fullName.vb: System.Action(Of T)
+  name.vb: Action(Of T)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MFramework.MSceneUnloadRequest.State*
+  commentId: Overload:MFramework.MSceneUnloadRequest.State
+  href: MFramework.MSceneUnloadRequest.html#MFramework_MSceneUnloadRequest_State
+  name: State
+  nameWithType: MSceneUnloadRequest.State
+  fullName: MFramework.MSceneUnloadRequest.State
+- uid: MFramework.IMAddressablesRequest.State
+  commentId: P:MFramework.IMAddressablesRequest.State
+  parent: MFramework.IMAddressablesRequest
+  href: MFramework.IMAddressablesRequest.html#MFramework_IMAddressablesRequest_State
+  name: State
+  nameWithType: IMAddressablesRequest.State
+  fullName: MFramework.IMAddressablesRequest.State
+- uid: MFramework.MAddressablesRequestState
+  commentId: T:MFramework.MAddressablesRequestState
+  parent: MFramework
+  href: MFramework.MAddressablesRequestState.html
+  name: MAddressablesRequestState
+  nameWithType: MAddressablesRequestState
+  fullName: MFramework.MAddressablesRequestState
+- uid: MFramework.MSceneUnloadRequest.Progress*
+  commentId: Overload:MFramework.MSceneUnloadRequest.Progress
+  href: MFramework.MSceneUnloadRequest.html#MFramework_MSceneUnloadRequest_Progress
+  name: Progress
+  nameWithType: MSceneUnloadRequest.Progress
+  fullName: MFramework.MSceneUnloadRequest.Progress
+- uid: MFramework.IMAddressablesRequest.Progress
+  commentId: P:MFramework.IMAddressablesRequest.Progress
+  parent: MFramework.IMAddressablesRequest
+  href: MFramework.IMAddressablesRequest.html#MFramework_IMAddressablesRequest_Progress
+  name: Progress
+  nameWithType: IMAddressablesRequest.Progress
+  fullName: MFramework.IMAddressablesRequest.Progress
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: MFramework.MAddressablesRequestState.Failed
+  commentId: F:MFramework.MAddressablesRequestState.Failed
+  href: MFramework.MAddressablesRequestState.html#MFramework_MAddressablesRequestState_Failed
+  name: Failed
+  nameWithType: MAddressablesRequestState.Failed
+  fullName: MFramework.MAddressablesRequestState.Failed
+- uid: MFramework.MSceneUnloadRequest.Error*
+  commentId: Overload:MFramework.MSceneUnloadRequest.Error
+  href: MFramework.MSceneUnloadRequest.html#MFramework_MSceneUnloadRequest_Error
+  name: Error
+  nameWithType: MSceneUnloadRequest.Error
+  fullName: MFramework.MSceneUnloadRequest.Error
+- uid: MFramework.IMAddressablesRequest.Error
+  commentId: P:MFramework.IMAddressablesRequest.Error
+  parent: MFramework.IMAddressablesRequest
+  href: MFramework.IMAddressablesRequest.html#MFramework_IMAddressablesRequest_Error
+  name: Error
+  nameWithType: IMAddressablesRequest.Error
+  fullName: MFramework.IMAddressablesRequest.Error
+- uid: MFramework.MAddressablesError
+  commentId: T:MFramework.MAddressablesError
+  parent: MFramework
+  href: MFramework.MAddressablesError.html
+  name: MAddressablesError
+  nameWithType: MAddressablesError
+  fullName: MFramework.MAddressablesError
+- uid: MFramework.MSceneUnloadRequest.IsDone*
+  commentId: Overload:MFramework.MSceneUnloadRequest.IsDone
+  href: MFramework.MSceneUnloadRequest.html#MFramework_MSceneUnloadRequest_IsDone
+  name: IsDone
+  nameWithType: MSceneUnloadRequest.IsDone
+  fullName: MFramework.MSceneUnloadRequest.IsDone
+- uid: MFramework.IMAddressablesRequest.IsDone
+  commentId: P:MFramework.IMAddressablesRequest.IsDone
+  parent: MFramework.IMAddressablesRequest
+  href: MFramework.IMAddressablesRequest.html#MFramework_IMAddressablesRequest_IsDone
+  name: IsDone
+  nameWithType: IMAddressablesRequest.IsDone
+  fullName: MFramework.IMAddressablesRequest.IsDone
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: MFramework.MSceneUnloadRequest.NeededActivation*
+  commentId: Overload:MFramework.MSceneUnloadRequest.NeededActivation
+  href: MFramework.MSceneUnloadRequest.html#MFramework_MSceneUnloadRequest_NeededActivation
+  name: NeededActivation
+  nameWithType: MSceneUnloadRequest.NeededActivation
+  fullName: MFramework.MSceneUnloadRequest.NeededActivation
+- uid: MFramework.MSceneUnloadRequest.Dispose*
+  commentId: Overload:MFramework.MSceneUnloadRequest.Dispose
+  href: MFramework.MSceneUnloadRequest.html#MFramework_MSceneUnloadRequest_Dispose
+  name: Dispose
+  nameWithType: MSceneUnloadRequest.Dispose
+  fullName: MFramework.MSceneUnloadRequest.Dispose
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )

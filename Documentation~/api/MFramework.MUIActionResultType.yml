@@ -1,0 +1,169 @@
+### YamlMime:ManagedReference
+items:
+- uid: MFramework.MUIActionResultType
+  commentId: T:MFramework.MUIActionResultType
+  id: MUIActionResultType
+  parent: MFramework
+  children:
+  - MFramework.MUIActionResultType.Back
+  - MFramework.MUIActionResultType.ClosePopup
+  - MFramework.MUIActionResultType.Handled
+  - MFramework.MUIActionResultType.Navigate
+  - MFramework.MUIActionResultType.Rejected
+  - MFramework.MUIActionResultType.Unhandled
+  langs:
+  - csharp
+  - vb
+  name: MUIActionResultType
+  nameWithType: MUIActionResultType
+  fullName: MFramework.MUIActionResultType
+  type: Enum
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 描述视图处理 <xref href="MFramework.MUIAction" data-throw-if-not-resolved="false"></xref> 后，路由器应如何继续。
+  example: []
+  syntax:
+    content: public enum MUIActionResultType
+    content.vb: Public Enum MUIActionResultType
+- uid: MFramework.MUIActionResultType.Unhandled
+  commentId: F:MFramework.MUIActionResultType.Unhandled
+  id: Unhandled
+  parent: MFramework.MUIActionResultType
+  langs:
+  - csharp
+  - vb
+  name: Unhandled
+  nameWithType: MUIActionResultType.Unhandled
+  fullName: MFramework.MUIActionResultType.Unhandled
+  type: Field
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 视图未处理操作，因此路由器可以应用默认行为。
+  example: []
+  syntax:
+    content: Unhandled = 0
+    return:
+      type: MFramework.MUIActionResultType
+- uid: MFramework.MUIActionResultType.Handled
+  commentId: F:MFramework.MUIActionResultType.Handled
+  id: Handled
+  parent: MFramework.MUIActionResultType
+  langs:
+  - csharp
+  - vb
+  name: Handled
+  nameWithType: MUIActionResultType.Handled
+  fullName: MFramework.MUIActionResultType.Handled
+  type: Field
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 视图已经处理操作，导航应到此结束。
+  example: []
+  syntax:
+    content: Handled = 1
+    return:
+      type: MFramework.MUIActionResultType
+- uid: MFramework.MUIActionResultType.Navigate
+  commentId: F:MFramework.MUIActionResultType.Navigate
+  id: Navigate
+  parent: MFramework.MUIActionResultType
+  langs:
+  - csharp
+  - vb
+  name: Navigate
+  nameWithType: MUIActionResultType.Navigate
+  fullName: MFramework.MUIActionResultType.Navigate
+  type: Field
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 路由器应打开另一个页面。
+  example: []
+  syntax:
+    content: Navigate = 2
+    return:
+      type: MFramework.MUIActionResultType
+- uid: MFramework.MUIActionResultType.Back
+  commentId: F:MFramework.MUIActionResultType.Back
+  id: Back
+  parent: MFramework.MUIActionResultType
+  langs:
+  - csharp
+  - vb
+  name: Back
+  nameWithType: MUIActionResultType.Back
+  fullName: MFramework.MUIActionResultType.Back
+  type: Field
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 路由器应返回上一页面。
+  example: []
+  syntax:
+    content: Back = 3
+    return:
+      type: MFramework.MUIActionResultType
+- uid: MFramework.MUIActionResultType.ClosePopup
+  commentId: F:MFramework.MUIActionResultType.ClosePopup
+  id: ClosePopup
+  parent: MFramework.MUIActionResultType
+  langs:
+  - csharp
+  - vb
+  name: ClosePopup
+  nameWithType: MUIActionResultType.ClosePopup
+  fullName: MFramework.MUIActionResultType.ClosePopup
+  type: Field
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 路由器应关闭最上层弹窗。
+  example: []
+  syntax:
+    content: ClosePopup = 4
+    return:
+      type: MFramework.MUIActionResultType
+- uid: MFramework.MUIActionResultType.Rejected
+  commentId: F:MFramework.MUIActionResultType.Rejected
+  id: Rejected
+  parent: MFramework.MUIActionResultType
+  langs:
+  - csharp
+  - vb
+  name: Rejected
+  nameWithType: MUIActionResultType.Rejected
+  fullName: MFramework.MUIActionResultType.Rejected
+  type: Field
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 操作被拒绝，通常表示数据校验未通过。
+  example: []
+  syntax:
+    content: Rejected = 5
+    return:
+      type: MFramework.MUIActionResultType
+references:
+- uid: MFramework.MUIAction
+  commentId: T:MFramework.MUIAction
+  parent: MFramework
+  href: MFramework.MUIAction.html
+  name: MUIAction
+  nameWithType: MUIAction
+  fullName: MFramework.MUIAction
+- uid: MFramework
+  commentId: N:MFramework
+  href: MFramework.html
+  name: MFramework
+  nameWithType: MFramework
+  fullName: MFramework
+- uid: MFramework.MUIActionResultType
+  commentId: T:MFramework.MUIActionResultType
+  parent: MFramework
+  href: MFramework.MUIActionResultType.html
+  name: MUIActionResultType
+  nameWithType: MUIActionResultType
+  fullName: MFramework.MUIActionResultType

@@ -1,0 +1,70 @@
+### YamlMime:ManagedReference
+items:
+- uid: MFramework.IMFrameworkTickable
+  commentId: T:MFramework.IMFrameworkTickable
+  id: IMFrameworkTickable
+  parent: MFramework
+  children:
+  - MFramework.IMFrameworkTickable.Tick(MFramework.MFrameTime)
+  langs:
+  - csharp
+  - vb
+  name: IMFrameworkTickable
+  nameWithType: IMFrameworkTickable
+  fullName: MFramework.IMFrameworkTickable
+  type: Interface
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 定义每帧更新回调。
+  example: []
+  syntax:
+    content: public interface IMFrameworkTickable
+    content.vb: Public Interface IMFrameworkTickable
+  derivedClasses:
+  - MFramework.MActionRunner
+  - MFramework.MSceneFlow
+- uid: MFramework.IMFrameworkTickable.Tick(MFramework.MFrameTime)
+  commentId: M:MFramework.IMFrameworkTickable.Tick(MFramework.MFrameTime)
+  id: Tick(MFramework.MFrameTime)
+  parent: MFramework.IMFrameworkTickable
+  langs:
+  - csharp
+  - vb
+  name: Tick(MFrameTime)
+  nameWithType: IMFrameworkTickable.Tick(MFrameTime)
+  fullName: MFramework.IMFrameworkTickable.Tick(MFramework.MFrameTime)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 让对象向前运行一帧。
+  example: []
+  syntax:
+    content: void Tick(MFrameTime time)
+    parameters:
+    - id: time
+      type: MFramework.MFrameTime
+      description: 缩放与非缩放的帧时间。
+    content.vb: Sub Tick(time As MFrameTime)
+  overload: MFramework.IMFrameworkTickable.Tick*
+references:
+- uid: MFramework
+  commentId: N:MFramework
+  href: MFramework.html
+  name: MFramework
+  nameWithType: MFramework
+  fullName: MFramework
+- uid: MFramework.IMFrameworkTickable.Tick*
+  commentId: Overload:MFramework.IMFrameworkTickable.Tick
+  href: MFramework.IMFrameworkTickable.html#MFramework_IMFrameworkTickable_Tick_MFramework_MFrameTime_
+  name: Tick
+  nameWithType: IMFrameworkTickable.Tick
+  fullName: MFramework.IMFrameworkTickable.Tick
+- uid: MFramework.MFrameTime
+  commentId: T:MFramework.MFrameTime
+  parent: MFramework
+  href: MFramework.MFrameTime.html
+  name: MFrameTime
+  nameWithType: MFrameTime
+  fullName: MFramework.MFrameTime

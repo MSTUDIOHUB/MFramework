@@ -1,0 +1,650 @@
+### YamlMime:ManagedReference
+items:
+- uid: MFramework.MUIActionResult
+  commentId: T:MFramework.MUIActionResult
+  id: MUIActionResult
+  parent: MFramework
+  children:
+  - MFramework.MUIActionResult.Arguments
+  - MFramework.MUIActionResult.Back
+  - MFramework.MUIActionResult.ClosePopup(MFramework.MUIPopupResult)
+  - MFramework.MUIActionResult.DestinationPageType
+  - MFramework.MUIActionResult.Handled
+  - MFramework.MUIActionResult.NavigateTo``1(System.Object)
+  - MFramework.MUIActionResult.PopupResult
+  - MFramework.MUIActionResult.Reason
+  - MFramework.MUIActionResult.Rejected(System.String)
+  - MFramework.MUIActionResult.Type
+  - MFramework.MUIActionResult.Unhandled
+  langs:
+  - csharp
+  - vb
+  name: MUIActionResult
+  nameWithType: MUIActionResult
+  fullName: MFramework.MUIActionResult
+  type: Struct
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 表示 UGUI 视图收到通用操作请求后返回的处理结果。
+  example: []
+  syntax:
+    content: public readonly struct MUIActionResult
+    content.vb: Public Structure MUIActionResult
+  inheritedMembers:
+  - System.ValueType.Equals(System.Object)
+  - System.ValueType.GetHashCode
+  - System.ValueType.ToString
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+- uid: MFramework.MUIActionResult.Type
+  commentId: P:MFramework.MUIActionResult.Type
+  id: Type
+  parent: MFramework.MUIActionResult
+  langs:
+  - csharp
+  - vb
+  name: Type
+  nameWithType: MUIActionResult.Type
+  fullName: MFramework.MUIActionResult.Type
+  type: Property
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 获取请求路由器执行的行为。
+  example: []
+  syntax:
+    content: public MUIActionResultType Type { get; }
+    parameters: []
+    return:
+      type: MFramework.MUIActionResultType
+    content.vb: Public ReadOnly Property Type As MUIActionResultType
+  overload: MFramework.MUIActionResult.Type*
+- uid: MFramework.MUIActionResult.DestinationPageType
+  commentId: P:MFramework.MUIActionResult.DestinationPageType
+  id: DestinationPageType
+  parent: MFramework.MUIActionResult
+  langs:
+  - csharp
+  - vb
+  name: DestinationPageType
+  nameWithType: MUIActionResult.DestinationPageType
+  fullName: MFramework.MUIActionResult.DestinationPageType
+  type: Property
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 获取 <xref href="MFramework.MUIActionResultType.Navigate" data-throw-if-not-resolved="false"></xref> 使用的目标页面类型。
+  example: []
+  syntax:
+    content: public Type DestinationPageType { get; }
+    parameters: []
+    return:
+      type: System.Type
+    content.vb: Public ReadOnly Property DestinationPageType As Type
+  overload: MFramework.MUIActionResult.DestinationPageType*
+- uid: MFramework.MUIActionResult.Arguments
+  commentId: P:MFramework.MUIActionResult.Arguments
+  id: Arguments
+  parent: MFramework.MUIActionResult
+  langs:
+  - csharp
+  - vb
+  name: Arguments
+  nameWithType: MUIActionResult.Arguments
+  fullName: MFramework.MUIActionResult.Arguments
+  type: Property
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 获取传给目标页面的可选参数。
+  example: []
+  syntax:
+    content: public object Arguments { get; }
+    parameters: []
+    return:
+      type: System.Object
+    content.vb: Public ReadOnly Property Arguments As Object
+  overload: MFramework.MUIActionResult.Arguments*
+- uid: MFramework.MUIActionResult.PopupResult
+  commentId: P:MFramework.MUIActionResult.PopupResult
+  id: PopupResult
+  parent: MFramework.MUIActionResult
+  langs:
+  - csharp
+  - vb
+  name: PopupResult
+  nameWithType: MUIActionResult.PopupResult
+  fullName: MFramework.MUIActionResult.PopupResult
+  type: Property
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 获取关闭弹窗时传递的结果。
+  example: []
+  syntax:
+    content: public MUIPopupResult PopupResult { get; }
+    parameters: []
+    return:
+      type: MFramework.MUIPopupResult
+    content.vb: Public ReadOnly Property PopupResult As MUIPopupResult
+  overload: MFramework.MUIActionResult.PopupResult*
+- uid: MFramework.MUIActionResult.Reason
+  commentId: P:MFramework.MUIActionResult.Reason
+  id: Reason
+  parent: MFramework.MUIActionResult
+  langs:
+  - csharp
+  - vb
+  name: Reason
+  nameWithType: MUIActionResult.Reason
+  fullName: MFramework.MUIActionResult.Reason
+  type: Property
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 获取 <xref href="MFramework.MUIActionResultType.Rejected" data-throw-if-not-resolved="false"></xref> 的校验失败原因。
+  example: []
+  syntax:
+    content: public string Reason { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property Reason As String
+  overload: MFramework.MUIActionResult.Reason*
+- uid: MFramework.MUIActionResult.Unhandled
+  commentId: M:MFramework.MUIActionResult.Unhandled
+  id: Unhandled
+  parent: MFramework.MUIActionResult
+  langs:
+  - csharp
+  - vb
+  name: Unhandled()
+  nameWithType: MUIActionResult.Unhandled()
+  fullName: MFramework.MUIActionResult.Unhandled()
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 创建一个允许路由器应用默认行为的结果。
+  example: []
+  syntax:
+    content: public static MUIActionResult Unhandled()
+    return:
+      type: MFramework.MUIActionResult
+    content.vb: Public Shared Function Unhandled() As MUIActionResult
+  overload: MFramework.MUIActionResult.Unhandled*
+- uid: MFramework.MUIActionResult.Handled
+  commentId: M:MFramework.MUIActionResult.Handled
+  id: Handled
+  parent: MFramework.MUIActionResult
+  langs:
+  - csharp
+  - vb
+  name: Handled()
+  nameWithType: MUIActionResult.Handled()
+  fullName: MFramework.MUIActionResult.Handled()
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 创建一个消费操作但不继续导航的结果。
+  example: []
+  syntax:
+    content: public static MUIActionResult Handled()
+    return:
+      type: MFramework.MUIActionResult
+    content.vb: Public Shared Function Handled() As MUIActionResult
+  overload: MFramework.MUIActionResult.Handled*
+- uid: MFramework.MUIActionResult.NavigateTo``1(System.Object)
+  commentId: M:MFramework.MUIActionResult.NavigateTo``1(System.Object)
+  id: NavigateTo``1(System.Object)
+  parent: MFramework.MUIActionResult
+  langs:
+  - csharp
+  - vb
+  name: NavigateTo<TPage>(object)
+  nameWithType: MUIActionResult.NavigateTo<TPage>(object)
+  fullName: MFramework.MUIActionResult.NavigateTo<TPage>(object)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 创建一个将目标页面压入页面栈的结果。
+  example: []
+  syntax:
+    content: 'public static MUIActionResult NavigateTo<TPage>(object arguments = null) where TPage : MUIPage'
+    parameters:
+    - id: arguments
+      type: System.Object
+      description: 传给页面的可选参数。
+    typeParameters:
+    - id: TPage
+      description: 已注册的页面类型。
+    return:
+      type: MFramework.MUIActionResult
+    content.vb: Public Shared Function NavigateTo(Of TPage As MUIPage)(arguments As Object = Nothing) As MUIActionResult
+  overload: MFramework.MUIActionResult.NavigateTo*
+  nameWithType.vb: MUIActionResult.NavigateTo(Of TPage)(Object)
+  fullName.vb: MFramework.MUIActionResult.NavigateTo(Of TPage)(Object)
+  name.vb: NavigateTo(Of TPage)(Object)
+- uid: MFramework.MUIActionResult.Back
+  commentId: M:MFramework.MUIActionResult.Back
+  id: Back
+  parent: MFramework.MUIActionResult
+  langs:
+  - csharp
+  - vb
+  name: Back()
+  nameWithType: MUIActionResult.Back()
+  fullName: MFramework.MUIActionResult.Back()
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 创建一个返回上一页面的结果。
+  example: []
+  syntax:
+    content: public static MUIActionResult Back()
+    return:
+      type: MFramework.MUIActionResult
+    content.vb: Public Shared Function Back() As MUIActionResult
+  overload: MFramework.MUIActionResult.Back*
+- uid: MFramework.MUIActionResult.ClosePopup(MFramework.MUIPopupResult)
+  commentId: M:MFramework.MUIActionResult.ClosePopup(MFramework.MUIPopupResult)
+  id: ClosePopup(MFramework.MUIPopupResult)
+  parent: MFramework.MUIActionResult
+  langs:
+  - csharp
+  - vb
+  name: ClosePopup(MUIPopupResult)
+  nameWithType: MUIActionResult.ClosePopup(MUIPopupResult)
+  fullName: MFramework.MUIActionResult.ClosePopup(MFramework.MUIPopupResult)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 创建一个关闭最上层弹窗的结果。
+  example: []
+  syntax:
+    content: public static MUIActionResult ClosePopup(MUIPopupResult result = null)
+    parameters:
+    - id: result
+      type: MFramework.MUIPopupResult
+      description: 传给弹窗关闭回调的可选结果。
+    return:
+      type: MFramework.MUIActionResult
+    content.vb: Public Shared Function ClosePopup(result As MUIPopupResult = Nothing) As MUIActionResult
+  overload: MFramework.MUIActionResult.ClosePopup*
+- uid: MFramework.MUIActionResult.Rejected(System.String)
+  commentId: M:MFramework.MUIActionResult.Rejected(System.String)
+  id: Rejected(System.String)
+  parent: MFramework.MUIActionResult
+  langs:
+  - csharp
+  - vb
+  name: Rejected(string)
+  nameWithType: MUIActionResult.Rejected(string)
+  fullName: MFramework.MUIActionResult.Rejected(string)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 创建一个校验拒绝结果，并保持当前视图打开。
+  example: []
+  syntax:
+    content: public static MUIActionResult Rejected(string reason)
+    parameters:
+    - id: reason
+      type: System.String
+      description: 适合 Toast 或行内校验提示显示的可读原因。
+    return:
+      type: MFramework.MUIActionResult
+    content.vb: Public Shared Function Rejected(reason As String) As MUIActionResult
+  overload: MFramework.MUIActionResult.Rejected*
+  nameWithType.vb: MUIActionResult.Rejected(String)
+  fullName.vb: MFramework.MUIActionResult.Rejected(String)
+  name.vb: Rejected(String)
+references:
+- uid: MFramework
+  commentId: N:MFramework
+  href: MFramework.html
+  name: MFramework
+  nameWithType: MFramework
+  fullName: MFramework
+- uid: System.ValueType.Equals(System.Object)
+  commentId: M:System.ValueType.Equals(System.Object)
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  name: Equals(object)
+  nameWithType: ValueType.Equals(object)
+  fullName: System.ValueType.Equals(object)
+  nameWithType.vb: ValueType.Equals(Object)
+  fullName.vb: System.ValueType.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType.GetHashCode
+  commentId: M:System.ValueType.GetHashCode
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  name: GetHashCode()
+  nameWithType: ValueType.GetHashCode()
+  fullName: System.ValueType.GetHashCode()
+  spec.csharp:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+- uid: System.ValueType.ToString
+  commentId: M:System.ValueType.ToString
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  name: ToString()
+  nameWithType: ValueType.ToString()
+  fullName: System.ValueType.ToString()
+  spec.csharp:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType
+  commentId: T:System.ValueType
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype
+  name: ValueType
+  nameWithType: ValueType
+  fullName: System.ValueType
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MFramework.MUIActionResult.Type*
+  commentId: Overload:MFramework.MUIActionResult.Type
+  href: MFramework.MUIActionResult.html#MFramework_MUIActionResult_Type
+  name: Type
+  nameWithType: MUIActionResult.Type
+  fullName: MFramework.MUIActionResult.Type
+- uid: MFramework.MUIActionResultType
+  commentId: T:MFramework.MUIActionResultType
+  parent: MFramework
+  href: MFramework.MUIActionResultType.html
+  name: MUIActionResultType
+  nameWithType: MUIActionResultType
+  fullName: MFramework.MUIActionResultType
+- uid: MFramework.MUIActionResultType.Navigate
+  commentId: F:MFramework.MUIActionResultType.Navigate
+  href: MFramework.MUIActionResultType.html#MFramework_MUIActionResultType_Navigate
+  name: Navigate
+  nameWithType: MUIActionResultType.Navigate
+  fullName: MFramework.MUIActionResultType.Navigate
+- uid: MFramework.MUIActionResult.DestinationPageType*
+  commentId: Overload:MFramework.MUIActionResult.DestinationPageType
+  href: MFramework.MUIActionResult.html#MFramework_MUIActionResult_DestinationPageType
+  name: DestinationPageType
+  nameWithType: MUIActionResult.DestinationPageType
+  fullName: MFramework.MUIActionResult.DestinationPageType
+- uid: System.Type
+  commentId: T:System.Type
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.type
+  name: Type
+  nameWithType: Type
+  fullName: System.Type
+- uid: MFramework.MUIActionResult.Arguments*
+  commentId: Overload:MFramework.MUIActionResult.Arguments
+  href: MFramework.MUIActionResult.html#MFramework_MUIActionResult_Arguments
+  name: Arguments
+  nameWithType: MUIActionResult.Arguments
+  fullName: MFramework.MUIActionResult.Arguments
+- uid: MFramework.MUIActionResult.PopupResult*
+  commentId: Overload:MFramework.MUIActionResult.PopupResult
+  href: MFramework.MUIActionResult.html#MFramework_MUIActionResult_PopupResult
+  name: PopupResult
+  nameWithType: MUIActionResult.PopupResult
+  fullName: MFramework.MUIActionResult.PopupResult
+- uid: MFramework.MUIPopupResult
+  commentId: T:MFramework.MUIPopupResult
+  parent: MFramework
+  href: MFramework.MUIPopupResult.html
+  name: MUIPopupResult
+  nameWithType: MUIPopupResult
+  fullName: MFramework.MUIPopupResult
+- uid: MFramework.MUIActionResultType.Rejected
+  commentId: F:MFramework.MUIActionResultType.Rejected
+  href: MFramework.MUIActionResultType.html#MFramework_MUIActionResultType_Rejected
+  name: Rejected
+  nameWithType: MUIActionResultType.Rejected
+  fullName: MFramework.MUIActionResultType.Rejected
+- uid: MFramework.MUIActionResult.Reason*
+  commentId: Overload:MFramework.MUIActionResult.Reason
+  href: MFramework.MUIActionResult.html#MFramework_MUIActionResult_Reason
+  name: Reason
+  nameWithType: MUIActionResult.Reason
+  fullName: MFramework.MUIActionResult.Reason
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: MFramework.MUIActionResult.Unhandled*
+  commentId: Overload:MFramework.MUIActionResult.Unhandled
+  href: MFramework.MUIActionResult.html#MFramework_MUIActionResult_Unhandled
+  name: Unhandled
+  nameWithType: MUIActionResult.Unhandled
+  fullName: MFramework.MUIActionResult.Unhandled
+- uid: MFramework.MUIActionResult
+  commentId: T:MFramework.MUIActionResult
+  parent: MFramework
+  href: MFramework.MUIActionResult.html
+  name: MUIActionResult
+  nameWithType: MUIActionResult
+  fullName: MFramework.MUIActionResult
+- uid: MFramework.MUIActionResult.Handled*
+  commentId: Overload:MFramework.MUIActionResult.Handled
+  href: MFramework.MUIActionResult.html#MFramework_MUIActionResult_Handled
+  name: Handled
+  nameWithType: MUIActionResult.Handled
+  fullName: MFramework.MUIActionResult.Handled
+- uid: MFramework.MUIActionResult.NavigateTo*
+  commentId: Overload:MFramework.MUIActionResult.NavigateTo
+  href: MFramework.MUIActionResult.html#MFramework_MUIActionResult_NavigateTo__1_System_Object_
+  name: NavigateTo
+  nameWithType: MUIActionResult.NavigateTo
+  fullName: MFramework.MUIActionResult.NavigateTo
+- uid: MFramework.MUIActionResult.Back*
+  commentId: Overload:MFramework.MUIActionResult.Back
+  href: MFramework.MUIActionResult.html#MFramework_MUIActionResult_Back
+  name: Back
+  nameWithType: MUIActionResult.Back
+  fullName: MFramework.MUIActionResult.Back
+- uid: MFramework.MUIActionResult.ClosePopup*
+  commentId: Overload:MFramework.MUIActionResult.ClosePopup
+  href: MFramework.MUIActionResult.html#MFramework_MUIActionResult_ClosePopup_MFramework_MUIPopupResult_
+  name: ClosePopup
+  nameWithType: MUIActionResult.ClosePopup
+  fullName: MFramework.MUIActionResult.ClosePopup
+- uid: MFramework.MUIActionResult.Rejected*
+  commentId: Overload:MFramework.MUIActionResult.Rejected
+  href: MFramework.MUIActionResult.html#MFramework_MUIActionResult_Rejected_System_String_
+  name: Rejected
+  nameWithType: MUIActionResult.Rejected
+  fullName: MFramework.MUIActionResult.Rejected

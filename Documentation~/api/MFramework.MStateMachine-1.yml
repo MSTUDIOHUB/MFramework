@@ -1,0 +1,1197 @@
+### YamlMime:ManagedReference
+items:
+- uid: MFramework.MStateMachine`1
+  commentId: T:MFramework.MStateMachine`1
+  id: MStateMachine`1
+  parent: MFramework
+  children:
+  - MFramework.MStateMachine`1.#ctor(`0)
+  - MFramework.MStateMachine`1.ChangeState``1
+  - MFramework.MStateMachine`1.Contains``1
+  - MFramework.MStateMachine`1.Context
+  - MFramework.MStateMachine`1.CurrentState
+  - MFramework.MStateMachine`1.CurrentStateType
+  - MFramework.MStateMachine`1.Dispose
+  - MFramework.MStateMachine`1.Get``1
+  - MFramework.MStateMachine`1.IsIn``1
+  - MFramework.MStateMachine`1.Register``1(``0)
+  - MFramework.MStateMachine`1.StateCount
+  - MFramework.MStateMachine`1.Stop
+  - MFramework.MStateMachine`1.Tick(System.Single)
+  langs:
+  - csharp
+  - vb
+  name: MStateMachine<TContext>
+  nameWithType: MStateMachine<TContext>
+  fullName: MFramework.MStateMachine<TContext>
+  type: Class
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 使用同一个共享上下文运行显式注册的状态。
+  remarks: >-
+    状态按照泛型类型显式注册。状态机只把 <xref href="System.Type" data-throw-if-not-resolved="false"></xref> 用作字典键，
+
+    不会扫描程序集、通过反射创建状态，也不会按名称调用成员。
+  example: []
+  syntax:
+    content: 'public sealed class MStateMachine<TContext> : IDisposable'
+    typeParameters:
+    - id: TContext
+      description: 传给每个状态回调的共享数据与服务类型。
+    content.vb: Public NotInheritable Class MStateMachine(Of TContext) Implements IDisposable
+  inheritance:
+  - System.Object
+  implements:
+  - System.IDisposable
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - MFramework.MStateMachine`1.MFramework.MDisposableExtensions.AddTo``1(MFramework.MAssetScope)
+  - MFramework.MStateMachine`1.MFramework.MDisposableExtensions.AddTo``1(MFramework.MDisposableBag)
+  nameWithType.vb: MStateMachine(Of TContext)
+  fullName.vb: MFramework.MStateMachine(Of TContext)
+  name.vb: MStateMachine(Of TContext)
+- uid: MFramework.MStateMachine`1.#ctor(`0)
+  commentId: M:MFramework.MStateMachine`1.#ctor(`0)
+  id: '#ctor(`0)'
+  parent: MFramework.MStateMachine`1
+  langs:
+  - csharp
+  - vb
+  name: MStateMachine(TContext)
+  nameWithType: MStateMachine<TContext>.MStateMachine(TContext)
+  fullName: MFramework.MStateMachine<TContext>.MStateMachine(TContext)
+  type: Constructor
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 创建一个状态机。
+  example: []
+  syntax:
+    content: public MStateMachine(TContext context)
+    parameters:
+    - id: context
+      type: '{TContext}'
+      description: 传给每个状态回调的共享上下文。
+    content.vb: Public Sub New(context As TContext)
+  overload: MFramework.MStateMachine`1.#ctor*
+  nameWithType.vb: MStateMachine(Of TContext).New(TContext)
+  fullName.vb: MFramework.MStateMachine(Of TContext).New(TContext)
+  name.vb: New(TContext)
+- uid: MFramework.MStateMachine`1.Context
+  commentId: P:MFramework.MStateMachine`1.Context
+  id: Context
+  parent: MFramework.MStateMachine`1
+  langs:
+  - csharp
+  - vb
+  name: Context
+  nameWithType: MStateMachine<TContext>.Context
+  fullName: MFramework.MStateMachine<TContext>.Context
+  type: Property
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 获取共享的状态上下文。
+  example: []
+  syntax:
+    content: public TContext Context { get; }
+    parameters: []
+    return:
+      type: '{TContext}'
+    content.vb: Public ReadOnly Property Context As TContext
+  overload: MFramework.MStateMachine`1.Context*
+  nameWithType.vb: MStateMachine(Of TContext).Context
+  fullName.vb: MFramework.MStateMachine(Of TContext).Context
+- uid: MFramework.MStateMachine`1.CurrentState
+  commentId: P:MFramework.MStateMachine`1.CurrentState
+  id: CurrentState
+  parent: MFramework.MStateMachine`1
+  langs:
+  - csharp
+  - vb
+  name: CurrentState
+  nameWithType: MStateMachine<TContext>.CurrentState
+  fullName: MFramework.MStateMachine<TContext>.CurrentState
+  type: Property
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 获取当前状态；首次切换前以及调用 <xref href="MFramework.MStateMachine%601.Stop" data-throw-if-not-resolved="false"></xref> 后返回 null。
+  example: []
+  syntax:
+    content: public IMState<TContext> CurrentState { get; }
+    parameters: []
+    return:
+      type: MFramework.IMState{{TContext}}
+    content.vb: Public Property CurrentState As IMState(Of TContext)
+  overload: MFramework.MStateMachine`1.CurrentState*
+  nameWithType.vb: MStateMachine(Of TContext).CurrentState
+  fullName.vb: MFramework.MStateMachine(Of TContext).CurrentState
+- uid: MFramework.MStateMachine`1.CurrentStateType
+  commentId: P:MFramework.MStateMachine`1.CurrentStateType
+  id: CurrentStateType
+  parent: MFramework.MStateMachine`1
+  langs:
+  - csharp
+  - vb
+  name: CurrentStateType
+  nameWithType: MStateMachine<TContext>.CurrentStateType
+  fullName: MFramework.MStateMachine<TContext>.CurrentStateType
+  type: Property
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 获取当前状态的具体类型；没有当前状态时返回 null。
+  example: []
+  syntax:
+    content: public Type CurrentStateType { get; }
+    parameters: []
+    return:
+      type: System.Type
+    content.vb: Public ReadOnly Property CurrentStateType As Type
+  overload: MFramework.MStateMachine`1.CurrentStateType*
+  nameWithType.vb: MStateMachine(Of TContext).CurrentStateType
+  fullName.vb: MFramework.MStateMachine(Of TContext).CurrentStateType
+- uid: MFramework.MStateMachine`1.StateCount
+  commentId: P:MFramework.MStateMachine`1.StateCount
+  id: StateCount
+  parent: MFramework.MStateMachine`1
+  langs:
+  - csharp
+  - vb
+  name: StateCount
+  nameWithType: MStateMachine<TContext>.StateCount
+  fullName: MFramework.MStateMachine<TContext>.StateCount
+  type: Property
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 获取已经显式注册的状态类型数量。
+  example: []
+  syntax:
+    content: public int StateCount { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property StateCount As Integer
+  overload: MFramework.MStateMachine`1.StateCount*
+  nameWithType.vb: MStateMachine(Of TContext).StateCount
+  fullName.vb: MFramework.MStateMachine(Of TContext).StateCount
+- uid: MFramework.MStateMachine`1.Register``1(``0)
+  commentId: M:MFramework.MStateMachine`1.Register``1(``0)
+  id: Register``1(``0)
+  parent: MFramework.MStateMachine`1
+  langs:
+  - csharp
+  - vb
+  name: Register<TState>(TState)
+  nameWithType: MStateMachine<TContext>.Register<TState>(TState)
+  fullName: MFramework.MStateMachine<TContext>.Register<TState>(TState)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 使用状态的泛型类型注册一个状态实例。
+  example: []
+  syntax:
+    content: 'public MStateMachine<TContext> Register<TState>(TState state) where TState : class, IMState<TContext>'
+    parameters:
+    - id: state
+      type: '{TState}'
+      description: 要注册的状态实例。
+    typeParameters:
+    - id: TState
+      description: 后续切换状态时使用的具体状态类型。
+    return:
+      type: MFramework.MStateMachine`1
+      description: 当前状态机，可用于链式完成初始化。
+    content.vb: Public Function Register(Of TState As {Class, IMState(Of TContext)})(state As TState) As MStateMachine(Of TContext)
+  overload: MFramework.MStateMachine`1.Register*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code class="paramref">state</code> 为 null。
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: <code class="typeparamref">TState</code> 已经注册。
+  nameWithType.vb: MStateMachine(Of TContext).Register(Of TState)(TState)
+  fullName.vb: MFramework.MStateMachine(Of TContext).Register(Of TState)(TState)
+  name.vb: Register(Of TState)(TState)
+- uid: MFramework.MStateMachine`1.Contains``1
+  commentId: M:MFramework.MStateMachine`1.Contains``1
+  id: Contains``1
+  parent: MFramework.MStateMachine`1
+  langs:
+  - csharp
+  - vb
+  name: Contains<TState>()
+  nameWithType: MStateMachine<TContext>.Contains<TState>()
+  fullName: MFramework.MStateMachine<TContext>.Contains<TState>()
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 获取指定状态类型是否已经显式注册。
+  example: []
+  syntax:
+    content: 'public bool Contains<TState>() where TState : class, IMState<TContext>'
+    typeParameters:
+    - id: TState
+      description: 要查找的状态类型。
+    return:
+      type: System.Boolean
+      description: 该状态类型已经注册时返回 <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>。
+    content.vb: Public Function Contains(Of TState As {Class, IMState(Of TContext)})() As Boolean
+  overload: MFramework.MStateMachine`1.Contains*
+  nameWithType.vb: MStateMachine(Of TContext).Contains(Of TState)()
+  fullName.vb: MFramework.MStateMachine(Of TContext).Contains(Of TState)()
+  name.vb: Contains(Of TState)()
+- uid: MFramework.MStateMachine`1.Get``1
+  commentId: M:MFramework.MStateMachine`1.Get``1
+  id: Get``1
+  parent: MFramework.MStateMachine`1
+  langs:
+  - csharp
+  - vb
+  name: Get<TState>()
+  nameWithType: MStateMachine<TContext>.Get<TState>()
+  fullName: MFramework.MStateMachine<TContext>.Get<TState>()
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 获取一个必须存在的已注册状态。
+  example: []
+  syntax:
+    content: 'public TState Get<TState>() where TState : class, IMState<TContext>'
+    typeParameters:
+    - id: TState
+      description: 已注册的状态类型。
+    return:
+      type: '{TState}'
+      description: 已经注册的状态实例。
+    content.vb: Public Function [Get](Of TState As {Class, IMState(Of TContext)})() As TState
+  overload: MFramework.MStateMachine`1.Get*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: 请求的状态类型尚未注册。
+  nameWithType.vb: MStateMachine(Of TContext).Get(Of TState)()
+  fullName.vb: MFramework.MStateMachine(Of TContext).Get(Of TState)()
+  name.vb: Get(Of TState)()
+- uid: MFramework.MStateMachine`1.ChangeState``1
+  commentId: M:MFramework.MStateMachine`1.ChangeState``1
+  id: ChangeState``1
+  parent: MFramework.MStateMachine`1
+  langs:
+  - csharp
+  - vb
+  name: ChangeState<TState>()
+  nameWithType: MStateMachine<TContext>.ChangeState<TState>()
+  fullName: MFramework.MStateMachine<TContext>.ChangeState<TState>()
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 退出当前状态，并进入一个已注册的状态。
+  remarks: >-
+    不允许在 Enter 或 Exit 中递归调用该方法。请在后续 Tick 中请求下一次切换，
+
+    使生命周期顺序保持清晰、可预测。
+  example: []
+  syntax:
+    content: 'public bool ChangeState<TState>() where TState : class, IMState<TContext>'
+    typeParameters:
+    - id: TState
+      description: 已注册的目标状态类型。
+    return:
+      type: System.Boolean
+      description: >-
+        成功切换状态时返回 <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>；请求的状态已经是当前状态时返回
+
+        <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>。
+    content.vb: Public Function ChangeState(Of TState As {Class, IMState(Of TContext)})() As Boolean
+  overload: MFramework.MStateMachine`1.ChangeState*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: 请求的状态尚未注册，或另一次状态切换正在进行。
+  nameWithType.vb: MStateMachine(Of TContext).ChangeState(Of TState)()
+  fullName.vb: MFramework.MStateMachine(Of TContext).ChangeState(Of TState)()
+  name.vb: ChangeState(Of TState)()
+- uid: MFramework.MStateMachine`1.IsIn``1
+  commentId: M:MFramework.MStateMachine`1.IsIn``1
+  id: IsIn``1
+  parent: MFramework.MStateMachine`1
+  langs:
+  - csharp
+  - vb
+  name: IsIn<TState>()
+  nameWithType: MStateMachine<TContext>.IsIn<TState>()
+  fullName: MFramework.MStateMachine<TContext>.IsIn<TState>()
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 获取指定的已注册状态当前是否正在运行。
+  example: []
+  syntax:
+    content: 'public bool IsIn<TState>() where TState : class, IMState<TContext>'
+    typeParameters:
+    - id: TState
+      description: 要比较的状态类型。
+    return:
+      type: System.Boolean
+      description: 该已注册状态是当前状态时返回 <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>。
+    content.vb: Public Function IsIn(Of TState As {Class, IMState(Of TContext)})() As Boolean
+  overload: MFramework.MStateMachine`1.IsIn*
+  nameWithType.vb: MStateMachine(Of TContext).IsIn(Of TState)()
+  fullName.vb: MFramework.MStateMachine(Of TContext).IsIn(Of TState)()
+  name.vb: IsIn(Of TState)()
+- uid: MFramework.MStateMachine`1.Tick(System.Single)
+  commentId: M:MFramework.MStateMachine`1.Tick(System.Single)
+  id: Tick(System.Single)
+  parent: MFramework.MStateMachine`1
+  langs:
+  - csharp
+  - vb
+  name: Tick(float)
+  nameWithType: MStateMachine<TContext>.Tick(float)
+  fullName: MFramework.MStateMachine<TContext>.Tick(float)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 如果存在当前状态，则推进该状态。
+  example: []
+  syntax:
+    content: public void Tick(float deltaTime)
+    parameters:
+    - id: deltaTime
+      type: System.Single
+      description: 自上次 Tick 以来经过的时间，单位为秒，不能为负数。
+    content.vb: Public Sub Tick(deltaTime As Single)
+  overload: MFramework.MStateMachine`1.Tick*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: <code class="paramref">deltaTime</code> 为负数。
+  nameWithType.vb: MStateMachine(Of TContext).Tick(Single)
+  fullName.vb: MFramework.MStateMachine(Of TContext).Tick(Single)
+  name.vb: Tick(Single)
+- uid: MFramework.MStateMachine`1.Stop
+  commentId: M:MFramework.MStateMachine`1.Stop
+  id: Stop
+  parent: MFramework.MStateMachine`1
+  langs:
+  - csharp
+  - vb
+  name: Stop()
+  nameWithType: MStateMachine<TContext>.Stop()
+  fullName: MFramework.MStateMachine<TContext>.Stop()
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 退出当前状态，使状态机进入未激活状态。
+  remarks: 重复调用不会产生额外影响。
+  example: []
+  syntax:
+    content: public void Stop()
+    content.vb: Public Sub [Stop]()
+  overload: MFramework.MStateMachine`1.Stop*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: 另一次状态切换正在进行。
+  nameWithType.vb: MStateMachine(Of TContext).Stop()
+  fullName.vb: MFramework.MStateMachine(Of TContext).Stop()
+- uid: MFramework.MStateMachine`1.Dispose
+  commentId: M:MFramework.MStateMachine`1.Dispose
+  id: Dispose
+  parent: MFramework.MStateMachine`1
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: MStateMachine<TContext>.Dispose()
+  fullName: MFramework.MStateMachine<TContext>.Dispose()
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 停止当前状态。
+  example: []
+  syntax:
+    content: public void Dispose()
+    content.vb: Public Sub Dispose()
+  overload: MFramework.MStateMachine`1.Dispose*
+  implements:
+  - System.IDisposable.Dispose
+  nameWithType.vb: MStateMachine(Of TContext).Dispose()
+  fullName.vb: MFramework.MStateMachine(Of TContext).Dispose()
+references:
+- uid: System.Type
+  commentId: T:System.Type
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.type
+  name: Type
+  nameWithType: Type
+  fullName: System.Type
+- uid: MFramework
+  commentId: N:MFramework
+  href: MFramework.html
+  name: MFramework
+  nameWithType: MFramework
+  fullName: MFramework
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: MFramework.MStateMachine`1.MFramework.MDisposableExtensions.AddTo``1(MFramework.MAssetScope)
+  commentId: M:MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MAssetScope)
+  parent: MFramework.MDisposableExtensions
+  definition: MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MAssetScope)
+  href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MAssetScope_
+  name: AddTo<MStateMachine<TContext>>(MStateMachine<TContext>, MAssetScope)
+  nameWithType: MDisposableExtensions.AddTo<MStateMachine<TContext>>(MStateMachine<TContext>, MAssetScope)
+  fullName: MFramework.MDisposableExtensions.AddTo<MFramework.MStateMachine<TContext>>(MFramework.MStateMachine<TContext>, MFramework.MAssetScope)
+  nameWithType.vb: MDisposableExtensions.AddTo(Of MStateMachine(Of TContext))(MStateMachine(Of TContext), MAssetScope)
+  fullName.vb: MFramework.MDisposableExtensions.AddTo(Of MFramework.MStateMachine(Of TContext))(MFramework.MStateMachine(Of TContext), MFramework.MAssetScope)
+  name.vb: AddTo(Of MStateMachine(Of TContext))(MStateMachine(Of TContext), MAssetScope)
+  spec.csharp:
+  - uid: MFramework.MDisposableExtensions.AddTo``1(MFramework.MStateMachine{`0},MFramework.MAssetScope)
+    name: AddTo
+    href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MAssetScope_
+  - name: <
+  - uid: MFramework.MStateMachine`1
+    name: MStateMachine
+    href: MFramework.MStateMachine-1.html
+  - name: <
+  - name: TContext
+  - name: '>'
+  - name: '>'
+  - name: (
+  - uid: MFramework.MStateMachine`1
+    name: MStateMachine
+    href: MFramework.MStateMachine-1.html
+  - name: <
+  - name: TContext
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: MFramework.MAssetScope
+    name: MAssetScope
+    href: MFramework.MAssetScope.html
+  - name: )
+  spec.vb:
+  - uid: MFramework.MDisposableExtensions.AddTo``1(MFramework.MStateMachine{`0},MFramework.MAssetScope)
+    name: AddTo
+    href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MAssetScope_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MFramework.MStateMachine`1
+    name: MStateMachine
+    href: MFramework.MStateMachine-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TContext
+  - name: )
+  - name: )
+  - name: (
+  - uid: MFramework.MStateMachine`1
+    name: MStateMachine
+    href: MFramework.MStateMachine-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TContext
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: MFramework.MAssetScope
+    name: MAssetScope
+    href: MFramework.MAssetScope.html
+  - name: )
+- uid: MFramework.MStateMachine`1.MFramework.MDisposableExtensions.AddTo``1(MFramework.MDisposableBag)
+  commentId: M:MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MDisposableBag)
+  parent: MFramework.MDisposableExtensions
+  definition: MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MDisposableBag)
+  href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MDisposableBag_
+  name: AddTo<MStateMachine<TContext>>(MStateMachine<TContext>, MDisposableBag)
+  nameWithType: MDisposableExtensions.AddTo<MStateMachine<TContext>>(MStateMachine<TContext>, MDisposableBag)
+  fullName: MFramework.MDisposableExtensions.AddTo<MFramework.MStateMachine<TContext>>(MFramework.MStateMachine<TContext>, MFramework.MDisposableBag)
+  nameWithType.vb: MDisposableExtensions.AddTo(Of MStateMachine(Of TContext))(MStateMachine(Of TContext), MDisposableBag)
+  fullName.vb: MFramework.MDisposableExtensions.AddTo(Of MFramework.MStateMachine(Of TContext))(MFramework.MStateMachine(Of TContext), MFramework.MDisposableBag)
+  name.vb: AddTo(Of MStateMachine(Of TContext))(MStateMachine(Of TContext), MDisposableBag)
+  spec.csharp:
+  - uid: MFramework.MDisposableExtensions.AddTo``1(MFramework.MStateMachine{`0},MFramework.MDisposableBag)
+    name: AddTo
+    href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MDisposableBag_
+  - name: <
+  - uid: MFramework.MStateMachine`1
+    name: MStateMachine
+    href: MFramework.MStateMachine-1.html
+  - name: <
+  - name: TContext
+  - name: '>'
+  - name: '>'
+  - name: (
+  - uid: MFramework.MStateMachine`1
+    name: MStateMachine
+    href: MFramework.MStateMachine-1.html
+  - name: <
+  - name: TContext
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: MFramework.MDisposableBag
+    name: MDisposableBag
+    href: MFramework.MDisposableBag.html
+  - name: )
+  spec.vb:
+  - uid: MFramework.MDisposableExtensions.AddTo``1(MFramework.MStateMachine{`0},MFramework.MDisposableBag)
+    name: AddTo
+    href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MDisposableBag_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MFramework.MStateMachine`1
+    name: MStateMachine
+    href: MFramework.MStateMachine-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TContext
+  - name: )
+  - name: )
+  - name: (
+  - uid: MFramework.MStateMachine`1
+    name: MStateMachine
+    href: MFramework.MStateMachine-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TContext
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: MFramework.MDisposableBag
+    name: MDisposableBag
+    href: MFramework.MDisposableBag.html
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MAssetScope)
+  commentId: M:MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MAssetScope)
+  href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MAssetScope_
+  name: AddTo<T>(T, MAssetScope)
+  nameWithType: MDisposableExtensions.AddTo<T>(T, MAssetScope)
+  fullName: MFramework.MDisposableExtensions.AddTo<T>(T, MFramework.MAssetScope)
+  nameWithType.vb: MDisposableExtensions.AddTo(Of T)(T, MAssetScope)
+  fullName.vb: MFramework.MDisposableExtensions.AddTo(Of T)(T, MFramework.MAssetScope)
+  name.vb: AddTo(Of T)(T, MAssetScope)
+  spec.csharp:
+  - uid: MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MAssetScope)
+    name: AddTo
+    href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MAssetScope_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: MFramework.MAssetScope
+    name: MAssetScope
+    href: MFramework.MAssetScope.html
+  - name: )
+  spec.vb:
+  - uid: MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MAssetScope)
+    name: AddTo
+    href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MAssetScope_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: MFramework.MAssetScope
+    name: MAssetScope
+    href: MFramework.MAssetScope.html
+  - name: )
+- uid: MFramework.MDisposableExtensions
+  commentId: T:MFramework.MDisposableExtensions
+  parent: MFramework
+  href: MFramework.MDisposableExtensions.html
+  name: MDisposableExtensions
+  nameWithType: MDisposableExtensions
+  fullName: MFramework.MDisposableExtensions
+- uid: MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MDisposableBag)
+  commentId: M:MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MDisposableBag)
+  href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MDisposableBag_
+  name: AddTo<T>(T, MDisposableBag)
+  nameWithType: MDisposableExtensions.AddTo<T>(T, MDisposableBag)
+  fullName: MFramework.MDisposableExtensions.AddTo<T>(T, MFramework.MDisposableBag)
+  nameWithType.vb: MDisposableExtensions.AddTo(Of T)(T, MDisposableBag)
+  fullName.vb: MFramework.MDisposableExtensions.AddTo(Of T)(T, MFramework.MDisposableBag)
+  name.vb: AddTo(Of T)(T, MDisposableBag)
+  spec.csharp:
+  - uid: MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MDisposableBag)
+    name: AddTo
+    href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MDisposableBag_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: MFramework.MDisposableBag
+    name: MDisposableBag
+    href: MFramework.MDisposableBag.html
+  - name: )
+  spec.vb:
+  - uid: MFramework.MDisposableExtensions.AddTo``1(``0,MFramework.MDisposableBag)
+    name: AddTo
+    href: MFramework.MDisposableExtensions.html#MFramework_MDisposableExtensions_AddTo__1___0_MFramework_MDisposableBag_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: MFramework.MDisposableBag
+    name: MDisposableBag
+    href: MFramework.MDisposableBag.html
+  - name: )
+- uid: MFramework.MStateMachine`1.#ctor*
+  commentId: Overload:MFramework.MStateMachine`1.#ctor
+  href: MFramework.MStateMachine-1.html#MFramework_MStateMachine_1__ctor__0_
+  name: MStateMachine
+  nameWithType: MStateMachine<TContext>.MStateMachine
+  fullName: MFramework.MStateMachine<TContext>.MStateMachine
+  nameWithType.vb: MStateMachine(Of TContext).New
+  fullName.vb: MFramework.MStateMachine(Of TContext).New
+  name.vb: New
+- uid: '{TContext}'
+  commentId: '!:TContext'
+  definition: TContext
+  name: TContext
+  nameWithType: TContext
+  fullName: TContext
+- uid: TContext
+  name: TContext
+  nameWithType: TContext
+  fullName: TContext
+- uid: MFramework.MStateMachine`1.Context*
+  commentId: Overload:MFramework.MStateMachine`1.Context
+  href: MFramework.MStateMachine-1.html#MFramework_MStateMachine_1_Context
+  name: Context
+  nameWithType: MStateMachine<TContext>.Context
+  fullName: MFramework.MStateMachine<TContext>.Context
+  nameWithType.vb: MStateMachine(Of TContext).Context
+  fullName.vb: MFramework.MStateMachine(Of TContext).Context
+- uid: MFramework.MStateMachine`1.Stop
+  commentId: M:MFramework.MStateMachine`1.Stop
+  href: MFramework.MStateMachine-1.html#MFramework_MStateMachine_1_Stop
+  name: Stop()
+  nameWithType: MStateMachine<TContext>.Stop()
+  fullName: MFramework.MStateMachine<TContext>.Stop()
+  nameWithType.vb: MStateMachine(Of TContext).Stop()
+  fullName.vb: MFramework.MStateMachine(Of TContext).Stop()
+  spec.csharp:
+  - uid: MFramework.MStateMachine`1.Stop
+    name: Stop
+    href: MFramework.MStateMachine-1.html#MFramework_MStateMachine_1_Stop
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: MFramework.MStateMachine`1.Stop
+    name: Stop
+    href: MFramework.MStateMachine-1.html#MFramework_MStateMachine_1_Stop
+  - name: (
+  - name: )
+- uid: MFramework.MStateMachine`1.CurrentState*
+  commentId: Overload:MFramework.MStateMachine`1.CurrentState
+  href: MFramework.MStateMachine-1.html#MFramework_MStateMachine_1_CurrentState
+  name: CurrentState
+  nameWithType: MStateMachine<TContext>.CurrentState
+  fullName: MFramework.MStateMachine<TContext>.CurrentState
+  nameWithType.vb: MStateMachine(Of TContext).CurrentState
+  fullName.vb: MFramework.MStateMachine(Of TContext).CurrentState
+- uid: MFramework.IMState{{TContext}}
+  commentId: T:MFramework.IMState{`0}
+  parent: MFramework
+  definition: MFramework.IMState`1
+  href: MFramework.IMState-1.html
+  name: IMState<TContext>
+  nameWithType: IMState<TContext>
+  fullName: MFramework.IMState<TContext>
+  nameWithType.vb: IMState(Of TContext)
+  fullName.vb: MFramework.IMState(Of TContext)
+  name.vb: IMState(Of TContext)
+  spec.csharp:
+  - uid: MFramework.IMState`1
+    name: IMState
+    href: MFramework.IMState-1.html
+  - name: <
+  - name: TContext
+  - name: '>'
+  spec.vb:
+  - uid: MFramework.IMState`1
+    name: IMState
+    href: MFramework.IMState-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TContext
+  - name: )
+- uid: MFramework.IMState`1
+  commentId: T:MFramework.IMState`1
+  href: MFramework.IMState-1.html
+  name: IMState<TContext>
+  nameWithType: IMState<TContext>
+  fullName: MFramework.IMState<TContext>
+  nameWithType.vb: IMState(Of TContext)
+  fullName.vb: MFramework.IMState(Of TContext)
+  name.vb: IMState(Of TContext)
+  spec.csharp:
+  - uid: MFramework.IMState`1
+    name: IMState
+    href: MFramework.IMState-1.html
+  - name: <
+  - name: TContext
+  - name: '>'
+  spec.vb:
+  - uid: MFramework.IMState`1
+    name: IMState
+    href: MFramework.IMState-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TContext
+  - name: )
+- uid: MFramework.MStateMachine`1.CurrentStateType*
+  commentId: Overload:MFramework.MStateMachine`1.CurrentStateType
+  href: MFramework.MStateMachine-1.html#MFramework_MStateMachine_1_CurrentStateType
+  name: CurrentStateType
+  nameWithType: MStateMachine<TContext>.CurrentStateType
+  fullName: MFramework.MStateMachine<TContext>.CurrentStateType
+  nameWithType.vb: MStateMachine(Of TContext).CurrentStateType
+  fullName.vb: MFramework.MStateMachine(Of TContext).CurrentStateType
+- uid: MFramework.MStateMachine`1.StateCount*
+  commentId: Overload:MFramework.MStateMachine`1.StateCount
+  href: MFramework.MStateMachine-1.html#MFramework_MStateMachine_1_StateCount
+  name: StateCount
+  nameWithType: MStateMachine<TContext>.StateCount
+  fullName: MFramework.MStateMachine<TContext>.StateCount
+  nameWithType.vb: MStateMachine(Of TContext).StateCount
+  fullName.vb: MFramework.MStateMachine(Of TContext).StateCount
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.ArgumentNullException
+  commentId: T:System.ArgumentNullException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.argumentnullexception
+  name: ArgumentNullException
+  nameWithType: ArgumentNullException
+  fullName: System.ArgumentNullException
+- uid: System.InvalidOperationException
+  commentId: T:System.InvalidOperationException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.invalidoperationexception
+  name: InvalidOperationException
+  nameWithType: InvalidOperationException
+  fullName: System.InvalidOperationException
+- uid: MFramework.MStateMachine`1.Register*
+  commentId: Overload:MFramework.MStateMachine`1.Register
+  href: MFramework.MStateMachine-1.html#MFramework_MStateMachine_1_Register__1___0_
+  name: Register
+  nameWithType: MStateMachine<TContext>.Register
+  fullName: MFramework.MStateMachine<TContext>.Register
+  nameWithType.vb: MStateMachine(Of TContext).Register
+  fullName.vb: MFramework.MStateMachine(Of TContext).Register
+- uid: '{TState}'
+  commentId: '!:TState'
+  definition: TState
+  name: TState
+  nameWithType: TState
+  fullName: TState
+- uid: MFramework.MStateMachine`1
+  commentId: T:MFramework.MStateMachine`1
+  parent: MFramework
+  href: MFramework.MStateMachine-1.html
+  name: MStateMachine<TContext>
+  nameWithType: MStateMachine<TContext>
+  fullName: MFramework.MStateMachine<TContext>
+  nameWithType.vb: MStateMachine(Of TContext)
+  fullName.vb: MFramework.MStateMachine(Of TContext)
+  name.vb: MStateMachine(Of TContext)
+  spec.csharp:
+  - uid: MFramework.MStateMachine`1
+    name: MStateMachine
+    href: MFramework.MStateMachine-1.html
+  - name: <
+  - name: TContext
+  - name: '>'
+  spec.vb:
+  - uid: MFramework.MStateMachine`1
+    name: MStateMachine
+    href: MFramework.MStateMachine-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TContext
+  - name: )
+- uid: TState
+  name: TState
+  nameWithType: TState
+  fullName: TState
+- uid: MFramework.MStateMachine`1.Contains*
+  commentId: Overload:MFramework.MStateMachine`1.Contains
+  href: MFramework.MStateMachine-1.html#MFramework_MStateMachine_1_Contains__1
+  name: Contains
+  nameWithType: MStateMachine<TContext>.Contains
+  fullName: MFramework.MStateMachine<TContext>.Contains
+  nameWithType.vb: MStateMachine(Of TContext).Contains
+  fullName.vb: MFramework.MStateMachine(Of TContext).Contains
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: MFramework.MStateMachine`1.Get*
+  commentId: Overload:MFramework.MStateMachine`1.Get
+  href: MFramework.MStateMachine-1.html#MFramework_MStateMachine_1_Get__1
+  name: Get
+  nameWithType: MStateMachine<TContext>.Get
+  fullName: MFramework.MStateMachine<TContext>.Get
+  nameWithType.vb: MStateMachine(Of TContext).Get
+  fullName.vb: MFramework.MStateMachine(Of TContext).Get
+- uid: MFramework.MStateMachine`1.ChangeState*
+  commentId: Overload:MFramework.MStateMachine`1.ChangeState
+  href: MFramework.MStateMachine-1.html#MFramework_MStateMachine_1_ChangeState__1
+  name: ChangeState
+  nameWithType: MStateMachine<TContext>.ChangeState
+  fullName: MFramework.MStateMachine<TContext>.ChangeState
+  nameWithType.vb: MStateMachine(Of TContext).ChangeState
+  fullName.vb: MFramework.MStateMachine(Of TContext).ChangeState
+- uid: MFramework.MStateMachine`1.IsIn*
+  commentId: Overload:MFramework.MStateMachine`1.IsIn
+  href: MFramework.MStateMachine-1.html#MFramework_MStateMachine_1_IsIn__1
+  name: IsIn
+  nameWithType: MStateMachine<TContext>.IsIn
+  fullName: MFramework.MStateMachine<TContext>.IsIn
+  nameWithType.vb: MStateMachine(Of TContext).IsIn
+  fullName.vb: MFramework.MStateMachine(Of TContext).IsIn
+- uid: System.ArgumentOutOfRangeException
+  commentId: T:System.ArgumentOutOfRangeException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.argumentoutofrangeexception
+  name: ArgumentOutOfRangeException
+  nameWithType: ArgumentOutOfRangeException
+  fullName: System.ArgumentOutOfRangeException
+- uid: MFramework.MStateMachine`1.Tick*
+  commentId: Overload:MFramework.MStateMachine`1.Tick
+  href: MFramework.MStateMachine-1.html#MFramework_MStateMachine_1_Tick_System_Single_
+  name: Tick
+  nameWithType: MStateMachine<TContext>.Tick
+  fullName: MFramework.MStateMachine<TContext>.Tick
+  nameWithType.vb: MStateMachine(Of TContext).Tick
+  fullName.vb: MFramework.MStateMachine(Of TContext).Tick
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: MFramework.MStateMachine`1.Stop*
+  commentId: Overload:MFramework.MStateMachine`1.Stop
+  href: MFramework.MStateMachine-1.html#MFramework_MStateMachine_1_Stop
+  name: Stop
+  nameWithType: MStateMachine<TContext>.Stop
+  fullName: MFramework.MStateMachine<TContext>.Stop
+  nameWithType.vb: MStateMachine(Of TContext).Stop
+  fullName.vb: MFramework.MStateMachine(Of TContext).Stop
+- uid: MFramework.MStateMachine`1.Dispose*
+  commentId: Overload:MFramework.MStateMachine`1.Dispose
+  href: MFramework.MStateMachine-1.html#MFramework_MStateMachine_1_Dispose
+  name: Dispose
+  nameWithType: MStateMachine<TContext>.Dispose
+  fullName: MFramework.MStateMachine<TContext>.Dispose
+  nameWithType.vb: MStateMachine(Of TContext).Dispose
+  fullName.vb: MFramework.MStateMachine(Of TContext).Dispose
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )

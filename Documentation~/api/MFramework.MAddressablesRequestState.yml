@@ -1,0 +1,120 @@
+### YamlMime:ManagedReference
+items:
+- uid: MFramework.MAddressablesRequestState
+  commentId: T:MFramework.MAddressablesRequestState
+  id: MAddressablesRequestState
+  parent: MFramework
+  children:
+  - MFramework.MAddressablesRequestState.Abandoned
+  - MFramework.MAddressablesRequestState.Failed
+  - MFramework.MAddressablesRequestState.Pending
+  - MFramework.MAddressablesRequestState.Succeeded
+  langs:
+  - csharp
+  - vb
+  name: MAddressablesRequestState
+  nameWithType: MAddressablesRequestState
+  fullName: MFramework.MAddressablesRequestState
+  type: Enum
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 描述 MFramework Addressables 请求的当前状态。
+  example: []
+  syntax:
+    content: public enum MAddressablesRequestState
+    content.vb: Public Enum MAddressablesRequestState
+- uid: MFramework.MAddressablesRequestState.Pending
+  commentId: F:MFramework.MAddressablesRequestState.Pending
+  id: Pending
+  parent: MFramework.MAddressablesRequestState
+  langs:
+  - csharp
+  - vb
+  name: Pending
+  nameWithType: MAddressablesRequestState.Pending
+  fullName: MFramework.MAddressablesRequestState.Pending
+  type: Field
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 底层 Addressables 操作尚未完成。
+  example: []
+  syntax:
+    content: Pending = 0
+    return:
+      type: MFramework.MAddressablesRequestState
+- uid: MFramework.MAddressablesRequestState.Succeeded
+  commentId: F:MFramework.MAddressablesRequestState.Succeeded
+  id: Succeeded
+  parent: MFramework.MAddressablesRequestState
+  langs:
+  - csharp
+  - vb
+  name: Succeeded
+  nameWithType: MAddressablesRequestState.Succeeded
+  fullName: MFramework.MAddressablesRequestState.Succeeded
+  type: Field
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 操作已经成功完成。
+  example: []
+  syntax:
+    content: Succeeded = 1
+    return:
+      type: MFramework.MAddressablesRequestState
+- uid: MFramework.MAddressablesRequestState.Failed
+  commentId: F:MFramework.MAddressablesRequestState.Failed
+  id: Failed
+  parent: MFramework.MAddressablesRequestState
+  langs:
+  - csharp
+  - vb
+  name: Failed
+  nameWithType: MAddressablesRequestState.Failed
+  fullName: MFramework.MAddressablesRequestState.Failed
+  type: Field
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 操作因错误而结束。
+  example: []
+  syntax:
+    content: Failed = 2
+    return:
+      type: MFramework.MAddressablesRequestState
+- uid: MFramework.MAddressablesRequestState.Abandoned
+  commentId: F:MFramework.MAddressablesRequestState.Abandoned
+  id: Abandoned
+  parent: MFramework.MAddressablesRequestState
+  langs:
+  - csharp
+  - vb
+  name: Abandoned
+  nameWithType: MAddressablesRequestState.Abandoned
+  fullName: MFramework.MAddressablesRequestState.Abandoned
+  type: Field
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 调用方在请求完成前停止了观察。
+  example: []
+  syntax:
+    content: Abandoned = 3
+    return:
+      type: MFramework.MAddressablesRequestState
+references:
+- uid: MFramework
+  commentId: N:MFramework
+  href: MFramework.html
+  name: MFramework
+  nameWithType: MFramework
+  fullName: MFramework
+- uid: MFramework.MAddressablesRequestState
+  commentId: T:MFramework.MAddressablesRequestState
+  parent: MFramework
+  href: MFramework.MAddressablesRequestState.html
+  name: MAddressablesRequestState
+  nameWithType: MAddressablesRequestState
+  fullName: MFramework.MAddressablesRequestState

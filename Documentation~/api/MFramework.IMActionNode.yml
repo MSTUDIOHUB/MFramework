@@ -1,0 +1,244 @@
+### YamlMime:ManagedReference
+items:
+- uid: MFramework.IMActionNode
+  commentId: T:MFramework.IMActionNode
+  id: IMActionNode
+  parent: MFramework
+  children:
+  - MFramework.IMActionNode.Cancel
+  - MFramework.IMActionNode.Failure
+  - MFramework.IMActionNode.Start
+  - MFramework.IMActionNode.Status
+  - MFramework.IMActionNode.Tick(System.Single)
+  langs:
+  - csharp
+  - vb
+  name: IMActionNode
+  nameWithType: IMActionNode
+  fullName: MFramework.IMActionNode
+  type: Interface
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 定义一个可由 <xref href="MFramework.MActionRunner" data-throw-if-not-resolved="false"></xref> 确定性驱动的动作节点。
+  remarks: 每个节点只能使用一次。每次启动流程时都应创建新节点；需要重复动作时，请使用工厂创建节点。
+  example: []
+  syntax:
+    content: public interface IMActionNode
+    content.vb: Public Interface IMActionNode
+  derivedClasses:
+  - MFramework.MActionNode
+- uid: MFramework.IMActionNode.Status
+  commentId: P:MFramework.IMActionNode.Status
+  id: Status
+  parent: MFramework.IMActionNode
+  langs:
+  - csharp
+  - vb
+  name: Status
+  nameWithType: IMActionNode.Status
+  fullName: MFramework.IMActionNode.Status
+  type: Property
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 获取当前生命周期状态。
+  example: []
+  syntax:
+    content: MActionStatus Status { get; }
+    parameters: []
+    return:
+      type: MFramework.MActionStatus
+    content.vb: ReadOnly Property Status As MActionStatus
+  overload: MFramework.IMActionNode.Status*
+- uid: MFramework.IMActionNode.Failure
+  commentId: P:MFramework.IMActionNode.Failure
+  id: Failure
+  parent: MFramework.IMActionNode
+  langs:
+  - csharp
+  - vb
+  name: Failure
+  nameWithType: IMActionNode.Failure
+  fullName: MFramework.IMActionNode.Failure
+  type: Property
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 获取导致 Failed 状态的异常；如果动作未失败，则返回 null。
+  example: []
+  syntax:
+    content: Exception Failure { get; }
+    parameters: []
+    return:
+      type: System.Exception
+    content.vb: ReadOnly Property Failure As Exception
+  overload: MFramework.IMActionNode.Failure*
+- uid: MFramework.IMActionNode.Start
+  commentId: M:MFramework.IMActionNode.Start
+  id: Start
+  parent: MFramework.IMActionNode
+  langs:
+  - csharp
+  - vb
+  name: Start()
+  nameWithType: IMActionNode.Start()
+  fullName: MFramework.IMActionNode.Start()
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 启动该节点。每个节点只能启动一次。
+  example: []
+  syntax:
+    content: void Start()
+    content.vb: Sub Start()
+  overload: MFramework.IMActionNode.Start*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: 该节点已经启动过。
+- uid: MFramework.IMActionNode.Tick(System.Single)
+  commentId: M:MFramework.IMActionNode.Tick(System.Single)
+  id: Tick(System.Single)
+  parent: MFramework.IMActionNode
+  langs:
+  - csharp
+  - vb
+  name: Tick(float)
+  nameWithType: IMActionNode.Tick(float)
+  fullName: MFramework.IMActionNode.Tick(float)
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 推进一个正在运行的节点。
+  example: []
+  syntax:
+    content: void Tick(float deltaTime)
+    parameters:
+    - id: deltaTime
+      type: System.Single
+      description: 自上次 Tick 以来经过的时间，单位为秒，不能为负数。
+    content.vb: Sub Tick(deltaTime As Single)
+  overload: MFramework.IMActionNode.Tick*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: <code class="paramref">deltaTime</code> 为负数。
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: 该节点尚未启动。
+  nameWithType.vb: IMActionNode.Tick(Single)
+  fullName.vb: MFramework.IMActionNode.Tick(Single)
+  name.vb: Tick(Single)
+- uid: MFramework.IMActionNode.Cancel
+  commentId: M:MFramework.IMActionNode.Cancel
+  id: Cancel
+  parent: MFramework.IMActionNode
+  langs:
+  - csharp
+  - vb
+  name: Cancel()
+  nameWithType: IMActionNode.Cancel()
+  fullName: MFramework.IMActionNode.Cancel()
+  type: Method
+  assemblies:
+  - MStudio.MFramework.Runtime
+  namespace: MFramework
+  summary: 取消该节点及其所有正在运行的子节点。
+  example: []
+  syntax:
+    content: void Cancel()
+    content.vb: Sub Cancel()
+  overload: MFramework.IMActionNode.Cancel*
+references:
+- uid: MFramework.MActionRunner
+  commentId: T:MFramework.MActionRunner
+  href: MFramework.MActionRunner.html
+  name: MActionRunner
+  nameWithType: MActionRunner
+  fullName: MFramework.MActionRunner
+- uid: MFramework
+  commentId: N:MFramework
+  href: MFramework.html
+  name: MFramework
+  nameWithType: MFramework
+  fullName: MFramework
+- uid: MFramework.IMActionNode.Status*
+  commentId: Overload:MFramework.IMActionNode.Status
+  href: MFramework.IMActionNode.html#MFramework_IMActionNode_Status
+  name: Status
+  nameWithType: IMActionNode.Status
+  fullName: MFramework.IMActionNode.Status
+- uid: MFramework.MActionStatus
+  commentId: T:MFramework.MActionStatus
+  parent: MFramework
+  href: MFramework.MActionStatus.html
+  name: MActionStatus
+  nameWithType: MActionStatus
+  fullName: MFramework.MActionStatus
+- uid: MFramework.IMActionNode.Failure*
+  commentId: Overload:MFramework.IMActionNode.Failure
+  href: MFramework.IMActionNode.html#MFramework_IMActionNode_Failure
+  name: Failure
+  nameWithType: IMActionNode.Failure
+  fullName: MFramework.IMActionNode.Failure
+- uid: System.Exception
+  commentId: T:System.Exception
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception
+  name: Exception
+  nameWithType: Exception
+  fullName: System.Exception
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.InvalidOperationException
+  commentId: T:System.InvalidOperationException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.invalidoperationexception
+  name: InvalidOperationException
+  nameWithType: InvalidOperationException
+  fullName: System.InvalidOperationException
+- uid: MFramework.IMActionNode.Start*
+  commentId: Overload:MFramework.IMActionNode.Start
+  href: MFramework.IMActionNode.html#MFramework_IMActionNode_Start
+  name: Start
+  nameWithType: IMActionNode.Start
+  fullName: MFramework.IMActionNode.Start
+- uid: System.ArgumentOutOfRangeException
+  commentId: T:System.ArgumentOutOfRangeException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.argumentoutofrangeexception
+  name: ArgumentOutOfRangeException
+  nameWithType: ArgumentOutOfRangeException
+  fullName: System.ArgumentOutOfRangeException
+- uid: MFramework.IMActionNode.Tick*
+  commentId: Overload:MFramework.IMActionNode.Tick
+  href: MFramework.IMActionNode.html#MFramework_IMActionNode_Tick_System_Single_
+  name: Tick
+  nameWithType: IMActionNode.Tick
+  fullName: MFramework.IMActionNode.Tick
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: MFramework.IMActionNode.Cancel*
+  commentId: Overload:MFramework.IMActionNode.Cancel
+  href: MFramework.IMActionNode.html#MFramework_IMActionNode_Cancel
+  name: Cancel
+  nameWithType: IMActionNode.Cancel
+  fullName: MFramework.IMActionNode.Cancel

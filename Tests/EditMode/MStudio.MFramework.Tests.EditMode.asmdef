@@ -1,0 +1,25 @@
+{
+  "name": "MStudio.MFramework.Tests.EditMode",
+  "rootNamespace": "MFramework.Tests.EditMode",
+  "references": [
+    "MStudio.MFramework.Foundation",
+    "MStudio.MFramework.Runtime",
+    "Unity.Addressables"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": false,
+  "defineConstraints": [
+    "UNITY_INCLUDE_TESTS"
+  ],
+  "versionDefines": [],
+  "noEngineReferences": false,
+  "optionalUnityReferences": [
+    "TestAssemblies"
+  ]
+}

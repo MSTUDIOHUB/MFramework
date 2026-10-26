@@ -1,0 +1,21 @@
+{
+  "name": "MStudio.MFramework.Tests.PlayMode",
+  "rootNamespace": "MFramework.Tests.PlayMode",
+  "references": [
+    "MStudio.MFramework.Runtime"
+  ],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": false,
+  "defineConstraints": [
+    "UNITY_INCLUDE_TESTS"
+  ],
+  "versionDefines": [],
+  "noEngineReferences": false,
+  "optionalUnityReferences": [
+    "TestAssemblies"
+  ]
+}

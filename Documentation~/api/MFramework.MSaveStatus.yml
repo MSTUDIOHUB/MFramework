@@ -1,0 +1,267 @@
+### YamlMime:ManagedReference
+items:
+- uid: MFramework.MSaveStatus
+  commentId: T:MFramework.MSaveStatus
+  id: MSaveStatus
+  parent: MFramework
+  children:
+  - MFramework.MSaveStatus.CommitUnknown
+  - MFramework.MSaveStatus.Conflict
+  - MFramework.MSaveStatus.Corrupt
+  - MFramework.MSaveStatus.IoFailure
+  - MFramework.MSaveStatus.MigrationFailure
+  - MFramework.MSaveStatus.NotFound
+  - MFramework.MSaveStatus.RecoveryRequired
+  - MFramework.MSaveStatus.SerializationFailure
+  - MFramework.MSaveStatus.Success
+  - MFramework.MSaveStatus.UnsupportedStorage
+  - MFramework.MSaveStatus.UnsupportedVersion
+  langs:
+  - csharp
+  - vb
+  name: MSaveStatus
+  nameWithType: MSaveStatus
+  fullName: MFramework.MSaveStatus
+  type: Enum
+  assemblies:
+  - MStudio.MFramework.Foundation
+  namespace: MFramework
+  summary: 描述一次完整快照操作的结果；业务必须检查结果，不能把所有失败当作首次运行。
+  example: []
+  syntax:
+    content: public enum MSaveStatus
+    content.vb: Public Enum MSaveStatus
+- uid: MFramework.MSaveStatus.Success
+  commentId: F:MFramework.MSaveStatus.Success
+  id: Success
+  parent: MFramework.MSaveStatus
+  langs:
+  - csharp
+  - vb
+  name: Success
+  nameWithType: MSaveStatus.Success
+  fullName: MFramework.MSaveStatus.Success
+  type: Field
+  assemblies:
+  - MStudio.MFramework.Foundation
+  namespace: MFramework
+  summary: 操作已完成；保存时表示后端确认发布成功。
+  example: []
+  syntax:
+    content: Success = 0
+    return:
+      type: MFramework.MSaveStatus
+- uid: MFramework.MSaveStatus.NotFound
+  commentId: F:MFramework.MSaveStatus.NotFound
+  id: NotFound
+  parent: MFramework.MSaveStatus
+  langs:
+  - csharp
+  - vb
+  name: NotFound
+  nameWithType: MSaveStatus.NotFound
+  fullName: MFramework.MSaveStatus.NotFound
+  type: Field
+  assemblies:
+  - MStudio.MFramework.Foundation
+  namespace: MFramework
+  summary: 指定的主档或备份确实不存在，不表示读权限不足或数据损坏。
+  example: []
+  syntax:
+    content: NotFound = 1
+    return:
+      type: MFramework.MSaveStatus
+- uid: MFramework.MSaveStatus.Corrupt
+  commentId: F:MFramework.MSaveStatus.Corrupt
+  id: Corrupt
+  parent: MFramework.MSaveStatus
+  langs:
+  - csharp
+  - vb
+  name: Corrupt
+  nameWithType: MSaveStatus.Corrupt
+  fullName: MFramework.MSaveStatus.Corrupt
+  type: Field
+  assemblies:
+  - MStudio.MFramework.Foundation
+  namespace: MFramework
+  summary: 信封、完整性摘要或反序列化内容损坏；禁止直接覆盖。
+  example: []
+  syntax:
+    content: Corrupt = 2
+    return:
+      type: MFramework.MSaveStatus
+- uid: MFramework.MSaveStatus.UnsupportedVersion
+  commentId: F:MFramework.MSaveStatus.UnsupportedVersion
+  id: UnsupportedVersion
+  parent: MFramework.MSaveStatus
+  langs:
+  - csharp
+  - vb
+  name: UnsupportedVersion
+  nameWithType: MSaveStatus.UnsupportedVersion
+  fullName: MFramework.MSaveStatus.UnsupportedVersion
+  type: Field
+  assemblies:
+  - MStudio.MFramework.Foundation
+  namespace: MFramework
+  summary: 信封或数据结构版本比当前实现新，或者缺少迁移步骤；禁止覆盖。
+  example: []
+  syntax:
+    content: UnsupportedVersion = 3
+    return:
+      type: MFramework.MSaveStatus
+- uid: MFramework.MSaveStatus.Conflict
+  commentId: F:MFramework.MSaveStatus.Conflict
+  id: Conflict
+  parent: MFramework.MSaveStatus
+  langs:
+  - csharp
+  - vb
+  name: Conflict
+  nameWithType: MSaveStatus.Conflict
+  fullName: MFramework.MSaveStatus.Conflict
+  type: Field
+  assemblies:
+  - MStudio.MFramework.Foundation
+  namespace: MFramework
+  summary: 期望提交凭据或恢复指纹已过期；需重新读取后由业务决定。
+  example: []
+  syntax:
+    content: Conflict = 4
+    return:
+      type: MFramework.MSaveStatus
+- uid: MFramework.MSaveStatus.RecoveryRequired
+  commentId: F:MFramework.MSaveStatus.RecoveryRequired
+  id: RecoveryRequired
+  parent: MFramework.MSaveStatus
+  langs:
+  - csharp
+  - vb
+  name: RecoveryRequired
+  nameWithType: MSaveStatus.RecoveryRequired
+  fullName: MFramework.MSaveStatus.RecoveryRequired
+  type: Field
+  assemblies:
+  - MStudio.MFramework.Foundation
+  namespace: MFramework
+  summary: 主档缺失但备份存在；必须显式检查并恢复，不能当新档创建。
+  example: []
+  syntax:
+    content: RecoveryRequired = 5
+    return:
+      type: MFramework.MSaveStatus
+- uid: MFramework.MSaveStatus.IoFailure
+  commentId: F:MFramework.MSaveStatus.IoFailure
+  id: IoFailure
+  parent: MFramework.MSaveStatus
+  langs:
+  - csharp
+  - vb
+  name: IoFailure
+  nameWithType: MSaveStatus.IoFailure
+  fullName: MFramework.MSaveStatus.IoFailure
+  type: Field
+  assemblies:
+  - MStudio.MFramework.Foundation
+  namespace: MFramework
+  summary: 访问或提交前 I/O 失败；内置文件后端保证未进入发布阶段。
+  example: []
+  syntax:
+    content: IoFailure = 6
+    return:
+      type: MFramework.MSaveStatus
+- uid: MFramework.MSaveStatus.CommitUnknown
+  commentId: F:MFramework.MSaveStatus.CommitUnknown
+  id: CommitUnknown
+  parent: MFramework.MSaveStatus
+  langs:
+  - csharp
+  - vb
+  name: CommitUnknown
+  nameWithType: MSaveStatus.CommitUnknown
+  fullName: MFramework.MSaveStatus.CommitUnknown
+  type: Field
+  assemblies:
+  - MStudio.MFramework.Foundation
+  namespace: MFramework
+  summary: 进入发布阶段后无法确定提交结果；先重新 Load 核对业务回执，不能盲目重试。
+  example: []
+  syntax:
+    content: CommitUnknown = 7
+    return:
+      type: MFramework.MSaveStatus
+- uid: MFramework.MSaveStatus.UnsupportedStorage
+  commentId: F:MFramework.MSaveStatus.UnsupportedStorage
+  id: UnsupportedStorage
+  parent: MFramework.MSaveStatus
+  langs:
+  - csharp
+  - vb
+  name: UnsupportedStorage
+  nameWithType: MSaveStatus.UnsupportedStorage
+  fullName: MFramework.MSaveStatus.UnsupportedStorage
+  type: Field
+  assemblies:
+  - MStudio.MFramework.Foundation
+  namespace: MFramework
+  summary: 平台明确不支持所需的持久化操作。
+  example: []
+  syntax:
+    content: UnsupportedStorage = 8
+    return:
+      type: MFramework.MSaveStatus
+- uid: MFramework.MSaveStatus.SerializationFailure
+  commentId: F:MFramework.MSaveStatus.SerializationFailure
+  id: SerializationFailure
+  parent: MFramework.MSaveStatus
+  langs:
+  - csharp
+  - vb
+  name: SerializationFailure
+  nameWithType: MSaveStatus.SerializationFailure
+  fullName: MFramework.MSaveStatus.SerializationFailure
+  type: Field
+  assemblies:
+  - MStudio.MFramework.Foundation
+  namespace: MFramework
+  summary: 序列化新快照失败；尚未写入存储。
+  example: []
+  syntax:
+    content: SerializationFailure = 9
+    return:
+      type: MFramework.MSaveStatus
+- uid: MFramework.MSaveStatus.MigrationFailure
+  commentId: F:MFramework.MSaveStatus.MigrationFailure
+  id: MigrationFailure
+  parent: MFramework.MSaveStatus
+  langs:
+  - csharp
+  - vb
+  name: MigrationFailure
+  nameWithType: MSaveStatus.MigrationFailure
+  fullName: MFramework.MSaveStatus.MigrationFailure
+  type: Field
+  assemblies:
+  - MStudio.MFramework.Foundation
+  namespace: MFramework
+  summary: 迁移步骤抛出异常或返回无效数据；原始存档保持不变。
+  example: []
+  syntax:
+    content: MigrationFailure = 10
+    return:
+      type: MFramework.MSaveStatus
+references:
+- uid: MFramework
+  commentId: N:MFramework
+  href: MFramework.html
+  name: MFramework
+  nameWithType: MFramework
+  fullName: MFramework
+- uid: MFramework.MSaveStatus
+  commentId: T:MFramework.MSaveStatus
+  parent: MFramework
+  href: MFramework.MSaveStatus.html
+  name: MSaveStatus
+  nameWithType: MSaveStatus
+  fullName: MFramework.MSaveStatus
